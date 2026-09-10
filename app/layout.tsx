@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/content/restaurants";
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
 
 // Figtree is GCI's face on gci2016.org. Black for the hero, ExtraBold for
 // section heads, Regular for body — all one family, self-hosted by next/font.
@@ -27,11 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${figtree.variable} h-full antialiased`}>
-      <body className="min-h-full overflow-x-hidden bg-paper text-ink">
-        <Header />
-        <main>{children}</main>
-        <Footer />
-      </body>
+      <body className="min-h-full overflow-x-hidden bg-paper text-ink">{children}</body>
     </html>
   );
 }

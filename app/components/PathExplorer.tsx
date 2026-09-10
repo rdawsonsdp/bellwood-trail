@@ -2,10 +2,8 @@
 import Image from "next/image";
 import { useMemo, useState, type ReactNode } from "react";
 import { CORRIDORS, FOOD_CATEGORIES, type Meal, type Restaurant } from "@/content/restaurants";
-import type { StopStatus } from "@/app/lib/live-status";
+import type { Stop } from "@/app/lib/live-status";
 import { Arrow, MapPin, Phone, Search } from "./icons";
-
-export type Stop = Restaurant & { status: StopStatus; imageSrc: string | null };
 
 type Service = "dine-in" | "carryout";
 const SERVICES: { key: Service; label: string }[] = [
@@ -171,7 +169,7 @@ function StopCard({ stop: s }: { stop: Stop }) {
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-paper shadow-soft transition-shadow hover:shadow-card">
       <a href={s.site} target="_blank" rel="noopener noreferrer" className="relative block aspect-[4/3] bg-cream">
         {s.imageSrc ? (
-          <Image src={s.imageSrc} alt={`${s.name} — ${s.signature[0]}`} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+          <Image src={s.imageSrc} alt={s.imageAlt || `${s.name} — ${s.signature[0] ?? s.cuisine[0] ?? "photo"}`} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
         ) : (
           <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-gold/30 to-orange/20" />
         )}

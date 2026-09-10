@@ -1,14 +1,14 @@
 /* ===== The Culinary Path =====
- * One entry per stop. This file is the single source of truth for the trail:
- * adding a business is adding an entry here and dropping its photo in
- * /public/images/restaurants/<slug>.*. Nothing else needs touching.
+ * One entry per stop. This file is the SEED: the trail starts from it, and
+ * once someone saves in /admin the live copy lives in the content store
+ * (app/lib/content-store.ts) and this file is no longer read.
  *
  * Every address, phone and schedule below was taken from the business's own
- * site. `builtByGci` marks sites built on the GCI template, which all emit a
- * schema.org openingHoursSpecification — the live "open now" reads that at
- * request time, and falls back to `schedule` here only if the fetch fails.
- * External sites have no usable structured hours, so `schedule` IS their
- * source and is transcribed from what they publish. */
+ * site. `builtByGci` marks sites built on the GCI template, which publish
+ * schema.org hours, phone and address — the cards read those live at request
+ * time and fall back to the values here only if the fetch fails. External
+ * sites have no usable structured data, so the values here ARE their source
+ * and are transcribed from what they publish. */
 
 /** [open, close] in minutes past midnight, America/Chicago; null = closed. Index 0 = Sunday. */
 export type DayHours = readonly [number, number] | null;
@@ -27,12 +27,19 @@ export interface Restaurant {
   phone: string;
   phoneHref: string;
   site: string;
+  /** Read hours, phone and address live from `site` (GCI template sites publish them). */
   builtByGci: boolean;
+  /** Card photo: a /public path without extension (resolved on the server), a
+   *  path with one, or a full URL (photos saved from /admin). */
   image: string;
+  /** What the card photo shows, for screen readers. Defaults to the first signature dish. */
+  imageAlt?: string;
   since?: string;
   schedule: DayHours[];
-  lat: number;
-  lng: number;
+  lat?: number;
+  lng?: number;
+  /** Kept in the content but left off the trail. */
+  hidden?: boolean;
   /** Which corridor the stop sits on — drives the trail grouping. */
   corridor: "75th" | "79th" | "cottage-grove" | "beyond";
   /** Seats to eat in (true) or carryout only (false) — the Dining pills. From
@@ -64,7 +71,7 @@ export const RESTAURANTS: Restaurant[] = [
     neighborhood: "Chatham", address: "203 E 75th St, Chicago, IL 60619",
     phone: "(773) 224-0104", phoneHref: "tel:+17732240104",
     site: "https://soulveg.vercel.app", builtByGci: true, image: "/images/restaurants/soulveg",
-    schedule: [[h(11),h(18)],[h(11),h(18)],[h(11),h(18)],[h(11),h(18)],[h(11),h(18)],[h(11),h(18)],[h(11),h(18)]],
+    schedule: [[h(10),h(18)],[h(9),h(17)],[h(9),h(17)],[h(11),h(18)],[h(11),h(18)],[h(11),h(18)],[h(10),h(18)]],
     dineIn: true, meals: ["lunch"],
     lat: 41.7587, lng: -87.6215, corridor: "75th",
   },
@@ -84,12 +91,14 @@ export const RESTAURANTS: Restaurant[] = [
   {
     slug: "lemsbbq", name: "Lem's Bar-B-Q",
     tagline: "BBQ as God meant it to be. Since 1954.",
-    cuisine: ["Barbecue", "Rib Tips"], signature: ["Rib Tips", "Hot Links", "Slab", "Sauce"],
+    cuisine: ["Barbecue", "Rib Tips"], signature: ["Rib Tips", "Hot Links", "Ribs", "Fried Chicken", "Shrimp"],
     neighborhood: "Chatham", address: "311 E 75th St, Chicago, IL 60619",
-    phone: "", phoneHref: "",
+    phone: "(773) 994-2428", phoneHref: "tel:+17739942428",
     site: "https://lemsbbq.vercel.app", builtByGci: true, image: "/images/restaurants/lemsbbq",
+    imageAlt: "Lem's green and red Bar-B-Q marquee sign on 75th Street",
     since: "1954",
-    // Closed Tuesdays — their site says so twice.
+    // Its site publishes no structured hours, so this schedule drives the chip.
+    // Closed Tuesdays — matches lemsbbq.vercel.app as of 2026-09-10.
     schedule: [[h(12),h(22)],[h(12),h(22)],null,[h(12),h(22)],[h(12),h(22)],[h(12),h(23)],[h(12),h(23)]],
     // Carryout only: "doesn't offer indoor dining. Never has." (Resy, 2022).
     dineIn: false, meals: ["lunch", "dinner"],
@@ -140,7 +149,8 @@ export const RESTAURANTS: Restaurant[] = [
     phone: "(773) 224-7766", phoneHref: "tel:+17732247766",
     site: "https://tropic-island.vercel.app", builtByGci: true, image: "/images/restaurants/tropic-island",
     since: "1993",
-    schedule: [[h(12),h(20)],null,[h(10),h(20)],[h(10),h(20)],[h(10),h(20)],[h(10),h(21)],[h(10),h(21)]],
+    // Its site lists three locations; these are the 79th Street hours.
+    schedule: [null,[h(10),h(20)],[h(10),h(20)],null,[h(10),h(20)],[h(10),h(20)],[h(10),h(20)]],
     meals: ["lunch", "dinner"],
     lat: 41.7510, lng: -87.6062, corridor: "79th",
   },
@@ -175,6 +185,7 @@ export const RESTAURANTS: Restaurant[] = [
     neighborhood: "Chatham", address: "8548 S Cottage Grove Ave, Chicago, IL 60619",
     phone: "(773) 966-4435", phoneHref: "tel:+17739664435",
     site: "https://owi.vercel.app", builtByGci: true, image: "/images/restaurants/owi",
+    imageAlt: "The Oooh Wee! IT IS dining room — yellow walls, black tufted booths and gold ring-back chairs",
     schedule: [[h(8),h(21)],null,[h(8),h(21)],[h(8),h(21)],[h(8),h(21)],[h(8),h(21)],[h(8),h(21)]],
     dineIn: true, meals: ["breakfast", "lunch", "dinner"],
     lat: 41.7395, lng: -87.6046, corridor: "cottage-grove",
@@ -183,12 +194,13 @@ export const RESTAURANTS: Restaurant[] = [
     slug: "unclejohns", name: "Uncle John's Barbecue",
     tagline: "Rib tips, hot links and the aquarium smoker.",
     cuisine: ["Barbecue", "Soul Food"], signature: ["Rib Tips", "Hot Links", "Fried Chicken", "Full Slab"],
-    neighborhood: "Greater Grand Crossing", address: "S Cottage Grove Ave, Chicago, IL",
+    neighborhood: "Greater Grand Crossing", address: "8249 S Cottage Grove Ave, Chicago, IL 60619",
     phone: "", phoneHref: "",
     site: "https://unclejohns.vercel.app", builtByGci: true, image: "/images/restaurants/unclejohns",
-    schedule: [[h(11),h(20)],[h(11),h(22)],[h(11),h(22)],[h(11),h(19,30)],[h(11),h(22)],[h(11),h(23)],[h(11),h(23)]],
+    // Its site also lists a Wrigleyville location; these are the Cottage Grove hours.
+    schedule: [[h(12),h(20)],[h(11),h(22)],[h(11),h(22)],[h(11),h(19,30)],[h(11),h(22)],[h(11),h(23)],[h(11),h(23)]],
     dineIn: true, meals: ["lunch", "dinner"],
-    lat: 41.7620, lng: -87.6055, corridor: "cottage-grove",
+    lat: 41.7443, lng: -87.6048, corridor: "cottage-grove",
   },
   {
     slug: "justicepies", name: "Justice of the Pies",

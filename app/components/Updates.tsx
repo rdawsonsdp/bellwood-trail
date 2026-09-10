@@ -1,8 +1,10 @@
-import { UPDATES } from "@/content/updates";
+import type { Update } from "@/content/updates";
 
 const TAG: Record<string, string> = { "New on the path": "bg-orange text-ink", Event: "bg-crimson text-paper", FoodLab: "bg-gold text-ink", Announcement: "bg-ink text-paper" };
 
-export function Updates() {
+export function Updates({ updates }: { updates: Update[] }) {
+  if (updates.length === 0) return null;
+  const sorted = [...updates].sort((a, b) => b.date.localeCompare(a.date));
   const fmt = (d: string) => new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
   return (
     <section id="updates" className="scroll-mt-28 bg-cream py-16 md:py-20">
@@ -10,8 +12,8 @@ export function Updates() {
         <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold-ink">Updates</p>
         <h2 className="font-display mt-2 text-h1 text-crimson">What's new <span className="text-orange">on the path</span></h2>
         <ol className="mt-10 grid gap-5 md:grid-cols-3">
-          {UPDATES.map((u) => (
-            <li key={u.date + u.title} className="flex flex-col rounded-2xl border border-line bg-paper p-6 shadow-soft">
+          {sorted.map((u) => (
+            <li key={u.id} className="flex flex-col rounded-2xl border border-line bg-paper p-6 shadow-soft">
               <div className="flex items-center justify-between gap-3">
                 <span className={`rounded-pill px-2.5 py-1 text-xs font-bold ${TAG[u.tag]}`}>{u.tag}</span>
                 <time dateTime={u.date} className="text-xs font-semibold text-warm-gray">{fmt(u.date)}</time>

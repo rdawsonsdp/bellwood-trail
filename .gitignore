@@ -5,3 +5,7 @@ node_modules/
 *.tsbuildinfo
 next-env.d.ts
 .vercel
+
+# /admin saves when no Blob store is connected (local mode)
+.content/
+public/uploads/
