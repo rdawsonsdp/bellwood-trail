@@ -8,7 +8,7 @@ import { Arrow, MapPin, Phone, Search } from "./icons";
 export type Stop = Restaurant & { status: StopStatus; imageSrc: string | null };
 
 /**
- * The trail itself. Search is instant and client-side — twelve kitchens do not
+ * The trail itself. Search is instant and client-side — thirteen kitchens do not
  * need a search service — across name, cuisine, signature dishes and
  * neighborhood. Results keep their corridor grouping so the "path" reads as a
  * path even when filtered; an "open now" toggle answers the question a tourist

@@ -8,7 +8,7 @@ Live status: **built and committed, not yet deployed.** See *Where this stands*.
 ## What it is
 
 - **Hero** — an overhead shot of Brown Sugar Bakery on 75th, two-tone Figtree headline.
-- **The Path** — twelve kitchens grouped by corridor (75th, 79th, Cottage
+- **The Path** — thirteen kitchens grouped by corridor (75th, 79th, Cottage
   Grove, and just beyond), each with a live *Open now · until 9 PM* chip.
 - **Search** — instant, client-side, across name, cuisine, signature dishes and
   neighborhood, plus an *Open now* filter.
@@ -18,7 +18,7 @@ Live status: **built and committed, not yet deployed.** See *Where this stands*.
 
 Next.js 16 · React 19 · Tailwind v4 · App Router · TypeScript. **No
 dependencies beyond next/react.** No CMS, no database, no search service —
-twelve entries do not need one.
+thirteen entries do not need one.
 
 ## Adding a stop
 
@@ -51,7 +51,7 @@ Orange and gold are split into fill and `-ink` text rungs (5.59:1 / 5.43:1).
 ## Where this stands (handoff, 2026-09-10)
 
 **Done**
-- 12 stops with verified NAP from each business's own site; 12 photos, each
+- 13 stops with verified NAP from each business's own site; 13 photos, each
   named by real MIME type.
 - `next build` clean.
 - Repo `rdawsonsdp/chatham-culinary-path` (private).
@@ -61,7 +61,7 @@ Orange and gold are split into fill and `-ink` text rungs (5.59:1 / 5.43:1).
    from this directory; Vercel will alias the first deployment to production.
 2. **Run the verification checklist** from the `gci-restaurant-template`
    skill: overflow at 390/1280, console/hydration, every image rendering, and
-   the live-status fetch actually returning `source: "live"` for the ten
+   the live-status fetch actually returning `source: "live"` for the eleven
    GCI-built stops. The machine ran out of memory before a local smoke test
    could run, so this is unverified beyond the production build.
 3. **Copy pass.** The hero and corridor blurbs are working copy in GCI's voice.

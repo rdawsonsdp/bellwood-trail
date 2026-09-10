@@ -80,6 +80,16 @@ export const RESTAURANTS: Restaurant[] = [
     lat: 41.7586, lng: -87.6186, corridor: "75th",
   },
   {
+    slug: "mabes", name: "Mabe's Sandwich Shop",
+    tagline: "Hot off the press, made to order.",
+    cuisine: ["Sandwiches", "Salads", "Breakfast"], signature: ["DJ's Jerk Turkey Panini", "Double Decker Turkey Club", "Turkey Cristo", "French Toast Breakfast Sandwich"],
+    neighborhood: "Chatham", address: "312 E 75th St, Chicago, IL 60619",
+    phone: "(773) 891-1798", phoneHref: "tel:+17738911798",
+    site: "https://www.mabessandwich.com", builtByGci: true, image: "/images/restaurants/mabes",
+    schedule: [null,[h(10),h(16)],[h(9),h(16)],[h(9),h(16)],[h(9),h(16)],[h(10),h(17)],[h(10),h(15)]],
+    lat: 41.7587, lng: -87.6156, corridor: "75th",
+  },
+  {
     slug: "just-jerk", name: "Just Jerk Cafe",
     tagline: "Jerk chicken, oxtails & curry goat on 79th.",
     cuisine: ["Jamaican", "Caribbean"], signature: ["Jerk Chicken", "Oxtails", "Curry Goat", "Jerk Wings", "Rice & Peas"],

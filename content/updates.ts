@@ -10,6 +10,8 @@ export interface Update {
 }
 
 export const UPDATES: Update[] = [
+  { date: "2026-09-10", tag: "New on the path", title: "Mabe's Sandwich Shop joins the Culinary Path",
+    body: "Jerk turkey paninis, double-decker clubs and a deep-fried Turkey Cristo, made to order at 312 E 75th, on the same block as Brown Sugar Bakery and Lem's.", href: "https://www.mabessandwich.com" },
   { date: "2026-09-09", tag: "New on the path", title: "Three more stops join the Culinary Path",
     body: "Brown Sugar Bakery, Justice of the Pies and Oooh Wee! IT IS join the trail — caramel cake on 75th, pie in Avalon Park, and a Southern breakfast bar on Cottage Grove." },
   { date: "2026-09-09", tag: "Announcement", title: "Eight Greater Chatham kitchens get new websites",
