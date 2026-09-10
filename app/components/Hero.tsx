@@ -2,14 +2,14 @@ import Image from "next/image";
 import { SITE } from "@/content/restaurants";
 import { Arrow } from "./icons";
 
-// Full-bleed hero on GCI's own aerial of the corridor, headline set in the
+// Full-bleed hero on an overhead shot of Brown Sugar Bakery on 75th, headline set in the
 // two-tone crimson/orange Figtree Black that gci2016.org leads with. The scrim
-// runs near-solid ink behind the copy and opens to the right, so the street
+// runs near-solid ink behind the copy and opens to the right, so the storefront
 // stays visible — and so the copy contrast does not depend on the photograph.
 export function Hero({ count }: { count: number }) {
   return (
     <section className="relative isolate overflow-hidden bg-ink">
-      <Image src="/images/brand/hero-corridor-aerial.jpg" alt="Aerial view of the 79th Street corridor in Greater Chatham" fill priority sizes="100vw" className="-z-20 object-cover object-center" />
+      <Image src="/images/brand/hero-brown-sugar-storefront.jpg" alt="Brown Sugar Bakery's red-and-gold awnings on 75th Street in Greater Chatham, seen from above" fill priority sizes="100vw" className="-z-20 object-cover object-[55%_30%]" />
       <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/92 via-ink/70 to-ink/25" />
       <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-5 py-20 sm:px-6 md:py-28 lg:py-36">
         <p className="w-fit rounded-pill border border-gold/60 bg-ink/40 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-gold backdrop-blur-sm">

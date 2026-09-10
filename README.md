@@ -7,7 +7,7 @@ Live status: **built and committed, not yet deployed.** See *Where this stands*.
 
 ## What it is
 
-- **Hero** — GCI's own aerial of the corridor, two-tone Figtree headline.
+- **Hero** — an overhead shot of Brown Sugar Bakery on 75th, two-tone Figtree headline.
 - **The Path** — twelve kitchens grouped by corridor (75th, 79th, Cottage
   Grove, and just beyond), each with a live *Open now · until 9 PM* chip.
 - **Search** — instant, client-side, across name, cuisine, signature dishes and
