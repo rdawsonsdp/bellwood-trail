@@ -77,7 +77,8 @@ export const RESTAURANTS: Restaurant[] = [
     site: "https://www.brownsugarbakerychicago.com", builtByGci: false, image: "/images/restaurants/brownsugar",
     since: "2004",
     schedule: [[h(12),h(17)],[h(10),h(18)],[h(10),h(18)],[h(10),h(18)],[h(10),h(18)],[h(10),h(18)],[h(10),h(18)]],
-    meals: [],
+    // Carryout only: counter service, no seating (its FAQ; The Infatuation, 2023).
+    dineIn: false, meals: [],
     lat: 41.7586, lng: -87.6181, corridor: "75th",
   },
   {
@@ -90,7 +91,8 @@ export const RESTAURANTS: Restaurant[] = [
     since: "1954",
     // Closed Tuesdays — their site says so twice.
     schedule: [[h(12),h(22)],[h(12),h(22)],null,[h(12),h(22)],[h(12),h(22)],[h(12),h(23)],[h(12),h(23)]],
-    meals: ["lunch", "dinner"],
+    // Carryout only: "doesn't offer indoor dining. Never has." (Resy, 2022).
+    dineIn: false, meals: ["lunch", "dinner"],
     lat: 41.7586, lng: -87.6186, corridor: "75th",
   },
   {
@@ -125,7 +127,9 @@ export const RESTAURANTS: Restaurant[] = [
     // hours, so `schedule` is the source — matches herbachi.com as of 2026-09-10.
     site: "https://herbachi.com", builtByGci: false, image: "/images/restaurants/herbachi",
     schedule: [[h(11),h(20)],null,[h(11),h(20)],[h(11),h(20)],[h(11),h(20)],[h(11),h(20)],[h(11),h(20)]],
-    dineIn: false, meals: ["lunch", "dinner"],
+    // dineIn unset: its site says pickup and delivery, but a 2026 video says it
+    // added a dine-in area. Confirm by phone before setting.
+    meals: ["lunch", "dinner"],
     lat: 41.7509, lng: -87.6072, corridor: "79th",
   },
   {
@@ -149,7 +153,8 @@ export const RESTAURANTS: Restaurant[] = [
     site: "https://hareshrimp.vercel.app", builtByGci: true, image: "/images/restaurants/hareshrimp",
     since: "1980s",
     schedule: [[h(12),h(17)],[h(11),h(20)],[h(11),h(20)],[h(11),h(20)],[h(11),h(20)],[h(11),h(22)],[h(11),h(22)]],
-    meals: ["lunch", "dinner"],
+    // Carryout only: no indoor seating (public listings, 2026).
+    dineIn: false, meals: ["lunch", "dinner"],
     lat: 41.7594, lng: -87.6382, corridor: "beyond",
   },
   {
@@ -193,7 +198,8 @@ export const RESTAURANTS: Restaurant[] = [
     phone: "", phoneHref: "",
     site: "https://www.justiceofthepies.com", builtByGci: false, image: "/images/restaurants/justicepies",
     schedule: [[h(9),h(17)],null,null,null,null,[h(9),h(17)],[h(9),h(17)]],
-    meals: [],
+    // Dine in: a small seating area (visitor reviews).
+    dineIn: true, meals: [],
     lat: 41.7377, lng: -87.5897, corridor: "beyond",
   },
 ];
