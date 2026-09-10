@@ -1,32 +1,62 @@
 "use client";
 import Image from "next/image";
-import { useMemo, useState } from "react";
-import { CORRIDORS, type Restaurant } from "@/content/restaurants";
+import { useMemo, useState, type ReactNode } from "react";
+import { CORRIDORS, FOOD_CATEGORIES, type Meal, type Restaurant } from "@/content/restaurants";
 import type { StopStatus } from "@/app/lib/live-status";
 import { Arrow, MapPin, Phone, Search } from "./icons";
 
 export type Stop = Restaurant & { status: StopStatus; imageSrc: string | null };
 
+type Service = "dine-in" | "carryout";
+const SERVICES: { key: Service; label: string }[] = [
+  { key: "dine-in", label: "Dine in" },
+  { key: "carryout", label: "Carryout only" },
+];
+const MEALS: { key: Meal; label: string }[] = [
+  { key: "breakfast", label: "Breakfast" },
+  { key: "lunch", label: "Lunch" },
+  { key: "dinner", label: "Dinner" },
+];
+
+const inCategory = (s: Restaurant, key: string) =>
+  FOOD_CATEGORIES.find((c) => c.key === key)?.cuisines.some((c) => s.cuisine.includes(c)) ?? false;
+const toggle = <T,>(list: T[], v: T) => (list.includes(v) ? list.filter((x) => x !== v) : [...list, v]);
+
 /**
  * The trail itself. Search is instant and client-side — thirteen kitchens do not
  * need a search service — across name, cuisine, signature dishes and
- * neighborhood. Results keep their corridor grouping so the "path" reads as a
- * path even when filtered; an "open now" toggle answers the question a tourist
- * standing on 79th Street actually has.
+ * neighborhood. Pills narrow it by food, by dine-in or carryout, and by meal:
+ * pills in one row widen each other (Barbecue or Caribbean), rows narrow each
+ * other (Barbecue and Dinner). Results keep their corridor grouping so the
+ * "path" reads as a path even when filtered; an "open now" toggle answers the
+ * question a tourist standing on 79th Street actually has.
  */
 export function PathExplorer({ stops }: { stops: Stop[] }) {
   const [q, setQ] = useState("");
   const [openOnly, setOpenOnly] = useState(false);
+  const [foods, setFoods] = useState<string[]>([]);
+  const [service, setService] = useState<Service | null>(null);
+  const [meals, setMeals] = useState<Meal[]>([]);
+
+  const term = q.trim();
+  const filtersOn = openOnly || foods.length > 0 || service !== null || meals.length > 0;
+  const clearAll = () => { setQ(""); setOpenOnly(false); setFoods([]); setService(null); setMeals([]); };
 
   const filtered = useMemo(() => {
-    const t = q.trim().toLowerCase();
+    const t = term.toLowerCase();
     return stops.filter((s) => {
       if (openOnly && !s.status.open) return false;
+      if (foods.length && !foods.some((k) => inCategory(s, k))) return false;
+      if (service && s.dineIn !== (service === "dine-in")) return false;
+      if (meals.length && !meals.some((m) => s.meals.includes(m))) return false;
       if (!t) return true;
       const hay = [s.name, s.tagline, s.neighborhood, ...s.cuisine, ...s.signature].join(" ").toLowerCase();
       return t.split(/\s+/).every((w) => hay.includes(w));
     });
-  }, [stops, q, openOnly]);
+  }, [stops, term, openOnly, foods, service, meals]);
+
+  // Only offer a food pill if some stop on the path would answer it.
+  const categories = FOOD_CATEGORIES.filter((c) => stops.some((s) => inCategory(s, c.key)));
 
   const byCorridor = (Object.keys(CORRIDORS) as Restaurant["corridor"][])
     .map((c) => ({ key: c, ...CORRIDORS[c], stops: filtered.filter((s) => s.corridor === c) }))
@@ -58,11 +88,46 @@ export function PathExplorer({ stops }: { stops: Stop[] }) {
           </button>
         </div>
 
+        {/* food / dining / meal pills */}
+        <div className="mt-5 space-y-3">
+          <PillRow label="Food">
+            {categories.map((c) => (
+              <Pill key={c.key} active={foods.includes(c.key)} onClick={() => setFoods((f) => toggle(f, c.key))}>{c.label}</Pill>
+            ))}
+          </PillRow>
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
+            <PillRow label="Dining">
+              {SERVICES.map((o) => (
+                <Pill key={o.key} active={service === o.key} onClick={() => setService((v) => (v === o.key ? null : o.key))}>{o.label}</Pill>
+              ))}
+            </PillRow>
+            <PillRow label="Meal">
+              {MEALS.map((m) => (
+                <Pill key={m.key} active={meals.includes(m.key)} onClick={() => setMeals((l) => toggle(l, m.key))}>{m.label}</Pill>
+              ))}
+            </PillRow>
+          </div>
+        </div>
+
+        <div className="mt-4 flex min-h-6 items-center gap-4 text-small text-warm-gray">
+          <p aria-live="polite">{filtersOn || term ? `Showing ${filtered.length} of ${stops.length} kitchens` : ""}</p>
+          {(filtersOn || term) && (
+            <button type="button" onClick={clearAll} className="font-bold text-crimson underline-offset-4 hover:underline">Clear filters</button>
+          )}
+        </div>
+
         {filtered.length === 0 && (
-          <p className="mt-10 rounded-2xl border border-line bg-cream p-8 text-center text-warm-gray">Nothing on the path matches “{q}”{openOnly ? " that's open right now" : ""}. Try a cuisine — jerk, barbecue, vegan, bakery.</p>
+          <div className="mt-8 rounded-2xl border border-line bg-cream p-8 text-center text-warm-gray">
+            <p>
+              {term && !filtersOn && <>Nothing on the path matches “{term}”. Try a cuisine — jerk, barbecue, vegan, bakery.</>}
+              {term && filtersOn && <>Nothing on the path matches “{term}” with those filters.</>}
+              {!term && <>No kitchen on the path matches all of those filters.</>}
+            </p>
+            <button type="button" onClick={clearAll} className="mt-3 font-bold text-crimson underline-offset-4 hover:underline">Clear filters</button>
+          </div>
         )}
 
-        <div className="mt-10 space-y-14">
+        <div className="mt-8 space-y-14">
           {byCorridor.map((g) => (
             <div key={g.key}>
               <div className="flex items-center gap-4">
@@ -80,6 +145,24 @@ export function PathExplorer({ stops }: { stops: Stop[] }) {
         </div>
       </div>
     </section>
+  );
+}
+
+function PillRow({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <div role="group" aria-label={label} className="flex flex-col gap-2 sm:flex-row sm:items-start">
+      <span aria-hidden className="shrink-0 text-xs font-bold uppercase tracking-[0.2em] text-gold-ink sm:w-16 sm:pt-3">{label}</span>
+      <div className="flex flex-wrap gap-2">{children}</div>
+    </div>
+  );
+}
+
+function Pill({ active, onClick, children }: { active: boolean; onClick: () => void; children: ReactNode }) {
+  return (
+    <button type="button" onClick={onClick} aria-pressed={active}
+      className={`rounded-pill border px-4 py-2 text-small font-semibold transition-colors ${active ? "border-orange bg-orange text-ink" : "border-line bg-paper text-ink hover:border-orange hover:text-orange-ink"}`}>
+      {children}
+    </button>
   );
 }
 

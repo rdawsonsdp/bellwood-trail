@@ -9,7 +9,7 @@ import { openState, type OpenState } from "./hours";
  * openingHoursSpecification, and that block is what drives their own
  * open/closed chips and their Google listings — so it is the freshest
  * possible source. We fetch each site at request time (ISR-cached for ten
- * minutes so eleven kitchens are not hit on every page view), parse the hours
+ * minutes so ten kitchens are not hit on every page view), parse the hours
  * out of the JSON-LD, and compute the state here. If a fetch fails or the
  * block is missing, the stop falls back to the schedule in content/, so a
  * restaurant site being down never takes a card off the trail.

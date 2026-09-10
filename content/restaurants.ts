@@ -14,6 +14,8 @@
 export type DayHours = readonly [number, number] | null;
 const h = (hr: number, min = 0) => hr * 60 + min;
 
+export type Meal = "breakfast" | "lunch" | "dinner";
+
 export interface Restaurant {
   slug: string;
   name: string;
@@ -33,6 +35,14 @@ export interface Restaurant {
   lng: number;
   /** Which corridor the stop sits on — drives the trail grouping. */
   corridor: "75th" | "79th" | "cottage-grove" | "beyond";
+  /** Seats to eat in (true) or carryout only (false) — the Dining pills. From
+   *  the business's own site where it says, otherwise its public listings.
+   *  Leave unset if unconfirmed: the stop then matches neither pill. */
+  dineIn?: boolean;
+  /** Meals it is a real option for — the Meal pills. Breakfast = it advertises
+   *  a breakfast menu. Lunch / dinner = it serves full meals and is open at
+   *  noon / past 6 PM. Bakeries and dessert shops carry none. */
+  meals: Meal[];
 }
 
 export const RESTAURANTS: Restaurant[] = [
@@ -44,6 +54,7 @@ export const RESTAURANTS: Restaurant[] = [
     phone: "(773) 488-9533", phoneHref: "tel:+17734889533",
     site: "https://harolds.vercel.app", builtByGci: true, image: "/images/restaurants/harolds",
     schedule: [[h(11),h(25)],[h(11),h(25)],[h(11),h(25)],[h(11),h(25)],[h(11),h(25)],[h(11),h(26)],[h(11),h(26)]],
+    meals: ["lunch", "dinner"],
     lat: 41.7587, lng: -87.6149, corridor: "75th",
   },
   {
@@ -54,6 +65,7 @@ export const RESTAURANTS: Restaurant[] = [
     phone: "(773) 224-0104", phoneHref: "tel:+17732240104",
     site: "https://soulveg.vercel.app", builtByGci: true, image: "/images/restaurants/soulveg",
     schedule: [[h(11),h(18)],[h(11),h(18)],[h(11),h(18)],[h(11),h(18)],[h(11),h(18)],[h(11),h(18)],[h(11),h(18)]],
+    dineIn: true, meals: ["lunch"],
     lat: 41.7587, lng: -87.6215, corridor: "75th",
   },
   {
@@ -65,6 +77,7 @@ export const RESTAURANTS: Restaurant[] = [
     site: "https://www.brownsugarbakerychicago.com", builtByGci: false, image: "/images/restaurants/brownsugar",
     since: "2004",
     schedule: [[h(12),h(17)],[h(10),h(18)],[h(10),h(18)],[h(10),h(18)],[h(10),h(18)],[h(10),h(18)],[h(10),h(18)]],
+    meals: [],
     lat: 41.7586, lng: -87.6181, corridor: "75th",
   },
   {
@@ -77,6 +90,7 @@ export const RESTAURANTS: Restaurant[] = [
     since: "1954",
     // Closed Tuesdays — their site says so twice.
     schedule: [[h(12),h(22)],[h(12),h(22)],null,[h(12),h(22)],[h(12),h(22)],[h(12),h(23)],[h(12),h(23)]],
+    meals: ["lunch", "dinner"],
     lat: 41.7586, lng: -87.6186, corridor: "75th",
   },
   {
@@ -87,6 +101,7 @@ export const RESTAURANTS: Restaurant[] = [
     phone: "(773) 891-1798", phoneHref: "tel:+17738911798",
     site: "https://www.mabessandwich.com", builtByGci: true, image: "/images/restaurants/mabes",
     schedule: [null,[h(10),h(16)],[h(9),h(16)],[h(9),h(16)],[h(9),h(16)],[h(10),h(17)],[h(10),h(15)]],
+    meals: ["breakfast", "lunch"],
     lat: 41.7587, lng: -87.6156, corridor: "75th",
   },
   {
@@ -97,6 +112,7 @@ export const RESTAURANTS: Restaurant[] = [
     phone: "(773) 846-2232", phoneHref: "tel:+17738462232",
     site: "https://just-jerk.vercel.app", builtByGci: true, image: "/images/restaurants/just-jerk",
     schedule: [null,[h(11,30),h(22)],[h(11,30),h(22)],[h(11,30),h(22)],[h(11,30),h(22)],[h(11,30),h(23)],[h(11,30),h(22)]],
+    dineIn: true, meals: ["lunch", "dinner"],
     lat: 41.7513, lng: -87.6210, corridor: "79th",
   },
   {
@@ -105,8 +121,11 @@ export const RESTAURANTS: Restaurant[] = [
     cuisine: ["Hibachi", "Asian Fusion"], signature: ["Hibachi Bowl", "Fried Korean Wings", "Bang Bang Salmon", "Gold Reserve"],
     neighborhood: "Chatham", address: "522 E 79th St, Chicago, IL 60619",
     phone: "(872) 303-3100", phoneHref: "tel:+18723033100",
-    site: "https://herbachi.vercel.app", builtByGci: true, image: "/images/restaurants/herbachi",
+    // Links to HerBachi's own WordPress site, which publishes no structured
+    // hours, so `schedule` is the source — matches herbachi.com as of 2026-09-10.
+    site: "https://herbachi.com", builtByGci: false, image: "/images/restaurants/herbachi",
     schedule: [[h(11),h(20)],null,[h(11),h(20)],[h(11),h(20)],[h(11),h(20)],[h(11),h(20)],[h(11),h(20)]],
+    dineIn: false, meals: ["lunch", "dinner"],
     lat: 41.7509, lng: -87.6072, corridor: "79th",
   },
   {
@@ -118,6 +137,7 @@ export const RESTAURANTS: Restaurant[] = [
     site: "https://tropic-island.vercel.app", builtByGci: true, image: "/images/restaurants/tropic-island",
     since: "1993",
     schedule: [[h(12),h(20)],null,[h(10),h(20)],[h(10),h(20)],[h(10),h(20)],[h(10),h(21)],[h(10),h(21)]],
+    meals: ["lunch", "dinner"],
     lat: 41.7510, lng: -87.6062, corridor: "79th",
   },
   {
@@ -129,6 +149,7 @@ export const RESTAURANTS: Restaurant[] = [
     site: "https://hareshrimp.vercel.app", builtByGci: true, image: "/images/restaurants/hareshrimp",
     since: "1980s",
     schedule: [[h(12),h(17)],[h(11),h(20)],[h(11),h(20)],[h(11),h(20)],[h(11),h(20)],[h(11),h(22)],[h(11),h(22)]],
+    meals: ["lunch", "dinner"],
     lat: 41.7594, lng: -87.6382, corridor: "beyond",
   },
   {
@@ -139,6 +160,7 @@ export const RESTAURANTS: Restaurant[] = [
     phone: "(773) 723-1002", phoneHref: "tel:+17737231002",
     site: "https://datdonut.vercel.app", builtByGci: true, image: "/images/restaurants/datdonut",
     schedule: [[h(9),h(16)],[h(5,30),h(21)],[h(5,30),h(21)],[h(5,30),h(21)],[h(5,30),h(21)],[h(5,30),h(21)],[h(6),h(21)]],
+    dineIn: true, meals: ["breakfast"],
     lat: 41.7449, lng: -87.6046, corridor: "cottage-grove",
   },
   {
@@ -149,6 +171,7 @@ export const RESTAURANTS: Restaurant[] = [
     phone: "(773) 966-4435", phoneHref: "tel:+17739664435",
     site: "https://owi.vercel.app", builtByGci: true, image: "/images/restaurants/owi",
     schedule: [[h(8),h(21)],null,[h(8),h(21)],[h(8),h(21)],[h(8),h(21)],[h(8),h(21)],[h(8),h(21)]],
+    dineIn: true, meals: ["breakfast", "lunch", "dinner"],
     lat: 41.7395, lng: -87.6046, corridor: "cottage-grove",
   },
   {
@@ -159,6 +182,7 @@ export const RESTAURANTS: Restaurant[] = [
     phone: "", phoneHref: "",
     site: "https://unclejohns.vercel.app", builtByGci: true, image: "/images/restaurants/unclejohns",
     schedule: [[h(11),h(20)],[h(11),h(22)],[h(11),h(22)],[h(11),h(19,30)],[h(11),h(22)],[h(11),h(23)],[h(11),h(23)]],
+    dineIn: true, meals: ["lunch", "dinner"],
     lat: 41.7620, lng: -87.6055, corridor: "cottage-grove",
   },
   {
@@ -169,6 +193,7 @@ export const RESTAURANTS: Restaurant[] = [
     phone: "", phoneHref: "",
     site: "https://www.justiceofthepies.com", builtByGci: false, image: "/images/restaurants/justicepies",
     schedule: [[h(9),h(17)],null,null,null,null,[h(9),h(17)],[h(9),h(17)]],
+    meals: [],
     lat: 41.7377, lng: -87.5897, corridor: "beyond",
   },
 ];
@@ -179,6 +204,20 @@ export const CORRIDORS: Record<Restaurant["corridor"], { label: string; blurb: s
   "cottage-grove": { label: "Cottage Grove Avenue",   blurb: "Donuts at dawn, soul food all day, barbecue into the night." },
   "beyond":        { label: "Greater Grand Crossing & Avalon Park", blurb: "Just off the corridors, and worth the trip." },
 };
+
+/** The Food pills atop the trail. A stop joins a category when any of its
+ *  `cuisine` tags is listed here, so a new stop files itself; a category with
+ *  no stops is simply not shown. */
+export const FOOD_CATEGORIES: { key: string; label: string; cuisines: string[] }[] = [
+  { key: "soul-food",  label: "Soul Food",       cuisines: ["Soul Food"] },
+  { key: "barbecue",   label: "Barbecue",        cuisines: ["Barbecue", "Rib Tips"] },
+  { key: "caribbean",  label: "Caribbean",       cuisines: ["Jamaican", "Caribbean"] },
+  { key: "seafood",    label: "Seafood",         cuisines: ["Seafood", "Fried Shrimp"] },
+  { key: "hibachi",    label: "Hibachi & Asian", cuisines: ["Hibachi", "Asian Fusion"] },
+  { key: "vegan",      label: "Vegan",           cuisines: ["Vegan"] },
+  { key: "sandwiches", label: "Sandwiches",      cuisines: ["Sandwiches"] },
+  { key: "sweets",     label: "Bakery & Sweets", cuisines: ["Bakery", "Cakes", "Candy", "Donuts", "Pies"] },
+];
 
 export const SITE = {
   name: "Chatham Culinary Path",

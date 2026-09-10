@@ -11,7 +11,8 @@ Live status: **built and committed, not yet deployed.** See *Where this stands*.
 - **The Path** — thirteen kitchens grouped by corridor (75th, 79th, Cottage
   Grove, and just beyond), each with a live *Open now · until 9 PM* chip.
 - **Search** — instant, client-side, across name, cuisine, signature dishes and
-  neighborhood, plus an *Open now* filter.
+  neighborhood, plus an *Open now* filter and Food / Dining / Meal pills
+  (Soul Food, Barbecue… · Dine in, Carryout only · Breakfast, Lunch, Dinner).
 - **Updates** — a dated feed from `content/updates.ts`.
 
 ## Stack
@@ -37,7 +38,8 @@ listing. If the fetch fails or the block is missing, the stop falls back to the
 `schedule` in `content/`. A restaurant site going down never removes a card.
 
 Stops built on the GCI template (`builtByGci: true`) have that block. Brown
-Sugar Bakery and Justice of the Pies are external and don't, so for those two
+Sugar Bakery, Justice of the Pies and HerBachi (herbachi.com) are external
+and don't, so for those three
 the `schedule` in content IS the source, transcribed from what they publish.
 
 ## Brand
@@ -61,7 +63,7 @@ Orange and gold are split into fill and `-ink` text rungs (5.59:1 / 5.43:1).
    from this directory; Vercel will alias the first deployment to production.
 2. **Run the verification checklist** from the `gci-restaurant-template`
    skill: overflow at 390/1280, console/hydration, every image rendering, and
-   the live-status fetch actually returning `source: "live"` for the eleven
+   the live-status fetch actually returning `source: "live"` for the ten
    GCI-built stops. The machine ran out of memory before a local smoke test
    could run, so this is unverified beyond the production build.
 3. **Copy pass.** The hero and corridor blurbs are working copy in GCI's voice.
