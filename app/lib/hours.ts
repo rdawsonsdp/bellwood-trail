@@ -25,27 +25,35 @@ export function chicagoNow(): { day: number; minutes: number } {
   return { day: day < 0 ? 0 : day, minutes: parseInt(g("hour") || "0", 10) * 60 + parseInt(g("minute") || "0", 10) };
 }
 
-export interface OpenState { open: boolean; label: string; short: string }
+export interface OpenState {
+  open: boolean;
+  /** Worded like the restaurant sites' own header bars: "Now open till 9 PM",
+   *  "Opens at 11 AM", "Opens tomorrow 10 AM", "Opens Tue 8 AM". */
+  headline: string;
+  /** "Today 8 AM – 9 PM" or "Closed today". */
+  today: string;
+}
 
 /**
- * "Open now · until 9 PM" / "Closed · opens Fri 9 AM". Understands closes past
+ * Open/closed right now, in the trail's timezone. Understands closes past
  * midnight (Harold's runs to 1 AM): a close > 1440 counts, and the previous
  * day's late spillover keeps a kitchen "open" at 12:30 AM.
  */
 export function openState(schedule: DayHours[]): OpenState {
   const { day, minutes } = chicagoNow();
   const today = schedule[day];
+  const todayLine = today ? `Today ${formatRange(today)}` : "Closed today";
   if (today && minutes >= today[0] && minutes < today[1])
-    return { open: true, label: `Open now · until ${formatTime(today[1])}`, short: `until ${formatTime(today[1])}` };
+    return { open: true, headline: `Now open till ${formatTime(today[1])}`, today: todayLine };
   const prev = schedule[(day + 6) % 7];
   if (prev && prev[1] > 1440 && minutes < prev[1] - 1440)
-    return { open: true, label: `Open now · until ${formatTime(prev[1])}`, short: `until ${formatTime(prev[1])}` };
+    return { open: true, headline: `Now open till ${formatTime(prev[1])}`, today: todayLine };
   for (let i = 0; i < 7; i++) {
     const idx = (day + i) % 7; const s = schedule[idx];
     if (!s) continue;
     if (i === 0 && minutes >= s[0]) continue;
-    const when = idx === day ? "" : idx === (day + 1) % 7 ? "tomorrow " : `${DAY_SHORT[idx]} `;
-    return { open: false, label: `Closed · opens ${when}${formatTime(s[0])}`, short: `opens ${when}${formatTime(s[0])}` };
+    const when = idx === day ? "at" : idx === (day + 1) % 7 ? "tomorrow" : DAY_SHORT[idx];
+    return { open: false, headline: `Opens ${when} ${formatTime(s[0])}`, today: todayLine };
   }
-  return { open: false, label: "Closed", short: "closed" };
+  return { open: false, headline: "Closed", today: todayLine };
 }

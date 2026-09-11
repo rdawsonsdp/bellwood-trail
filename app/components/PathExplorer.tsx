@@ -173,12 +173,16 @@ function StopCard({ stop: s }: { stop: Stop }) {
         ) : (
           <div aria-hidden className="absolute inset-0 bg-gradient-to-br from-gold/30 to-orange/20" />
         )}
-        <span className={`absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-pill px-2.5 py-1 text-xs font-bold backdrop-blur ${s.status.open ? "bg-open text-paper" : "bg-ink/80 text-paper"}`}>
-          <span aria-hidden className={`h-1.5 w-1.5 rounded-full ${s.status.open ? "bg-paper" : "bg-orange"}`} />
-          {s.status.open ? `Open · ${s.status.short}` : s.status.short}
-        </span>
         {s.since && <span className="absolute right-3 top-3 rounded-pill bg-paper/90 px-2.5 py-1 text-xs font-bold text-gold-ink">Since {s.since}</span>}
       </a>
+      {/* Open status, worded and set like the utility bar atop the restaurants' own sites. */}
+      <p className="flex flex-wrap items-center justify-between gap-x-3 gap-y-0.5 bg-ink px-4 py-2 text-xs">
+        <span className="inline-flex items-center gap-2 font-bold uppercase tracking-[0.08em] text-paper">
+          <span aria-hidden className={`h-2 w-2 shrink-0 rounded-full ${s.status.open ? "bg-open-bright" : "bg-orange"}`} />
+          {s.status.headline}
+        </span>
+        <span className="text-paper/70">{s.status.today}</span>
+      </p>
       <div className="flex flex-1 flex-col gap-2 p-5">
         <div className="flex flex-wrap gap-1.5">
           {s.cuisine.map((c) => <span key={c} className="rounded-pill bg-cream px-2.5 py-0.5 text-xs font-semibold text-gold-ink">{c}</span>)}

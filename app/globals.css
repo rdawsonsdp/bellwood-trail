@@ -29,6 +29,7 @@
   --color-warm-gray: #5f5852;     /* muted body — 6.9:1 on white */
   --color-line: #ebe4da;
   --color-open: #2f7d4f;
+  --color-open-bright: #43c47a;   /* the open green, lifted for dark grounds (the cards' status bar) */
 
   --color-background: #ffffff;
   --color-foreground: #141210;
