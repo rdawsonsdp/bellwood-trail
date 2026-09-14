@@ -1,30 +1,11 @@
 import type { Update } from "@/content/updates";
-
-const TAG: Record<string, string> = { "New on the path": "bg-orange text-ink", Event: "bg-crimson text-paper", FoodLab: "bg-gold text-ink", Announcement: "bg-ink text-paper" };
-
+import { Arrow } from "./icons";
 export function Updates({ updates }: { updates: Update[] }) {
-  if (updates.length === 0) return null;
+  if (!updates.length) return null;
   const sorted = [...updates].sort((a, b) => b.date.localeCompare(a.date));
-  const fmt = (d: string) => new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-  return (
-    <section id="updates" className="scroll-mt-28 bg-cream py-16 md:py-20">
-      <div className="mx-auto max-w-[1200px] px-5 sm:px-6">
-        <p className="text-xs font-bold uppercase tracking-[0.25em] text-gold-ink">Updates</p>
-        <h2 className="font-display mt-2 text-h1 text-crimson">What's new <span className="text-orange">on the path</span></h2>
-        <ol className="mt-10 grid gap-5 md:grid-cols-3">
-          {sorted.map((u) => (
-            <li key={u.id} className="flex flex-col rounded-2xl border border-line bg-paper p-6 shadow-soft">
-              <div className="flex items-center justify-between gap-3">
-                <span className={`rounded-pill px-2.5 py-1 text-xs font-bold ${TAG[u.tag]}`}>{u.tag}</span>
-                <time dateTime={u.date} className="text-xs font-semibold text-warm-gray">{fmt(u.date)}</time>
-              </div>
-              <h3 className="font-head mt-4 text-h4 leading-tight text-ink">{u.title}</h3>
-              <p className="mt-2 flex-1 text-small leading-relaxed text-warm-gray">{u.body}</p>
-              {u.href && <a href={u.href} target="_blank" rel="noopener noreferrer" className="mt-4 text-small font-bold text-crimson hover:text-orange-ink">Read more →</a>}
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
-  );
+  const fmt = (date: string) => new Date(date + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  return <section id="updates" className="site-container updates-section" aria-labelledby="updates-heading">
+    <div className="section-heading"><div><h2 id="updates-heading">Fresh from the neighborhood.</h2><p>New arrivals, good news, and the people behind the path.</p></div></div>
+    <ol className="update-grid">{sorted.map(u => <li key={u.id} className="update-card"><div className="update-meta"><span>{u.tag}</span><time dateTime={u.date}>{fmt(u.date)}</time></div><h3>{u.title}</h3><p>{u.body}</p>{u.href && <a href={u.href} target="_blank" rel="noopener noreferrer">Read the story<Arrow /><span className="sr-only"> — {u.title}, opens in a new tab</span></a>}</li>)}</ol>
+  </section>;
 }

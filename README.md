@@ -3,9 +3,25 @@
 A Greater Chatham Initiative showcase: the food businesses of Chicago's South
 Side as one trail, for people discovering Chatham for the first time.
 
-Live status: **built and committed, not yet deployed.** See *Where this stands*.
+Production: [chatham-culinary-path.vercel.app](https://chatham-culinary-path.vercel.app/).
 
-## What it is
+The September 14 discovery redesign is prepared on `codex/vrbo-inspired-discovery`. See [the design review](docs/discovery-design.md) for the reference patterns and implementation decisions.
+
+## Discovery experience
+
+- Structured hero search for a dish, cuisine, kitchen, or street.
+- Photographic food collections and four neighborhood choices.
+- Kitchen cards with open status, location, save actions, and in-page details.
+- Combined food, corridor, dining, meal, and open-now filters, with sorting and shareable URL state.
+- Saved kitchens persist on the visitor’s device. No account or booking service is implied.
+- Native accessible dialogs for filters and restaurant details, compact mobile controls, and horizontal food browsing.
+- Existing content storage, live restaurant lookups, and admin authentication remain in place.
+
+### Local checks
+
+`npm ci`, `npm test`, `npm run build`, then `npm run dev -- --port 3002`. The tests use the existing TypeScript compiler and Node test runner; no additional dependency is needed.
+
+## Original site foundation
 
 - **Hero** — an overhead shot of Brown Sugar Bakery on 75th, two-tone Figtree headline.
 - **The Path** — thirteen kitchens grouped by corridor (75th, 79th, Cottage
@@ -80,7 +96,7 @@ correction: GCI's own site puts white and crimson labels on orange buttons at
 3.08:1 and ~2:1; **black on orange is 6.83:1**, so the pills here carry black.
 Orange and gold are split into fill and `-ink` text rungs (5.59:1 / 5.43:1).
 
-## Where this stands (handoff, 2026-09-10)
+## Historical handoff (2026-09-10)
 
 **Done**
 - 13 stops with verified NAP from each business's own site. Refreshed

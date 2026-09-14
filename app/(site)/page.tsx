@@ -1,6 +1,8 @@
 import { SITE } from "@/content/restaurants";
 import { getContent } from "@/app/lib/content-store";
 import { resolveStops } from "@/app/lib/live-status";
+import { FoodCollections } from "@/app/components/FoodCollections";
+import { Neighborhoods } from "@/app/components/Neighborhoods";
 import { Hero } from "@/app/components/Hero";
 import { PathExplorer } from "@/app/components/PathExplorer";
 import { Updates } from "@/app/components/Updates";
@@ -28,7 +30,9 @@ export default async function Home() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <Hero count={stops.length} />
+      <FoodCollections stops={stops} />
       <PathExplorer stops={stops} />
+      <Neighborhoods stops={stops} />
       <Updates updates={updates} />
     </>
   );

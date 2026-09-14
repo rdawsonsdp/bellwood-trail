@@ -1,38 +1,34 @@
+"use client";
 import Image from "next/image";
-import { SITE } from "@/content/restaurants";
-import { Arrow } from "./icons";
+import { useEffect, useState } from "react";
+import { CORRIDORS, type Restaurant } from "@/content/restaurants";
+import { EMPTY_FILTERS } from "@/app/lib/discovery";
+import { useDiscovery } from "./DiscoveryContext";
+import { Clock, Heart, MapPin, Search, Store } from "./icons";
 
-// Full-bleed hero on an overhead shot of Brown Sugar Bakery on 75th, headline set in the
-// two-tone crimson/orange Figtree Black that gci2016.org leads with. The scrim
-// runs near-solid ink behind the copy and opens to the right, so the storefront
-// stays visible — and so the copy contrast does not depend on the photograph.
 export function Hero({ count }: { count: number }) {
-  return (
-    <section className="relative isolate overflow-hidden bg-ink">
-      <Image src="/images/brand/hero-brown-sugar-storefront.jpg" alt="Brown Sugar Bakery's red-and-gold awnings on 75th Street in Greater Chatham, seen from above" fill priority sizes="100vw" className="-z-20 object-cover object-[55%_30%]" />
-      <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/92 via-ink/70 to-ink/25" />
-      <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-5 py-20 sm:px-6 md:py-28 lg:py-36">
-        <p className="w-fit rounded-pill border border-gold/60 bg-ink/40 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-gold backdrop-blur-sm">
-          Chicago's South Side · {count} kitchens · one path
-        </p>
-        <h1 className="font-display max-w-4xl text-hero text-paper">
-          <span className="block text-orange">Taste the</span>
-          <span className="block">Culinary Path</span>
-          <span className="block text-orange">of Greater Chatham</span>
-        </h1>
-        <p className="max-w-xl text-h4 leading-snug text-paper/90">
-          Fried chicken and jerk, barbecue and vegan soul food, donuts at dawn and caramel cake by afternoon — all within a few blocks of 75th and 79th. This is where Chicago's South Side eats.
-        </p>
-        <div className="mt-2 flex flex-wrap gap-3">
-          <a href="#path" className="inline-flex items-center gap-2 rounded-pill bg-orange px-7 py-3.5 text-small font-bold uppercase tracking-wider text-ink shadow-float transition-colors hover:bg-paper">
-            Start the path <Arrow className="h-4 w-4" />
-          </a>
-          <a href="#updates" className="inline-flex items-center gap-2 rounded-pill border border-paper/60 px-7 py-3.5 text-small font-bold uppercase tracking-wider text-paper transition-colors hover:border-orange hover:text-orange">
-            What's new
-          </a>
-        </div>
-        <p className="text-small text-paper/70">Curated by the <a href={SITE.orgUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-orange">Greater Chatham Initiative</a> · an Illinois State-Designated Cultural District</p>
+  const { filters, updateFilters } = useDiscovery();
+  const [query, setQuery] = useState(filters.q);
+  const [area, setArea] = useState<Restaurant["corridor"] | "">(filters.area);
+  useEffect(() => { setQuery(filters.q); setArea(filters.area); }, [filters.q, filters.area]);
+  return <>
+    <section className="discovery-hero site-container" aria-labelledby="hero-heading">
+      <div className="hero-scene">
+        <Image src="/images/brand/hero-brown-sugar-storefront.jpg" alt="Brown Sugar Bakery's red and gold awnings on 75th Street in Greater Chatham" fill priority sizes="(min-width: 1328px) 1280px, 100vw" className="hero-photo" />
+        <div className="hero-shade" />
+        <div className="hero-copy"><p><MapPin />Chicago’s South Side</p><h1 id="hero-heading">Good food.<br />Great neighborhood.</h1><span>Find your next favorite among {count} local kitchens.<br className="desktop-break" /> Come for a bite. Stay for the stories.</span></div>
+        <a className="hero-photo-credit" href="#neighborhoods">On the path: 75th Street</a>
       </div>
+      <form id="discover-search" className="discovery-search" role="search" onSubmit={e => { e.preventDefault(); updateFilters({ ...EMPTY_FILTERS, q: query, area }, true); }}>
+        <label className="search-segment query-segment"><Search /><span><strong>What sounds good?</strong><input type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder="A dish, a cuisine, a kitchen" maxLength={200} aria-label="Search a dish, cuisine, or kitchen" /></span></label>
+        <label className="search-segment area-segment"><MapPin /><span><strong>Where on the path?</strong><select value={area} onChange={e => setArea(e.target.value as typeof area)} aria-label="Search area"><option value="">All of Greater Chatham</option>{Object.entries(CORRIDORS).map(([key, value]) => <option key={key} value={key}>{value.label}</option>)}</select></span></label>
+        <button className="primary-button search-submit" type="submit"><Search />Find a kitchen</button>
+      </form>
     </section>
-  );
+    <div className="site-container discovery-reassurance">
+      <div><Store /><p><strong>Local knowledge. Real flavor.</strong><span>Curated by Greater Chatham Initiative.</span></p></div>
+      <div><Clock /><p><strong>Know before you go.</strong><span>Opening hours right on each kitchen.</span></p></div>
+      <div><Heart /><p><strong>Make the path your own.</strong><span>Save the spots you want to try.</span></p></div>
+    </div>
+  </>;
 }
