@@ -58,3 +58,10 @@ test('fetch only the supplied business, disable caching, and reject ambiguous re
     await assert.rejects(fetchRestaurantReviews(restaurant,'fixture-not-a-key'),/403/);
   } finally { global.fetch=originalFetch; }
 });
+
+test('recognize cafe possessives, accents, and BBQ spelling with strict address matching', () => {
+  assert.equal(matchesRestaurant({...place, displayName:{text:"Just Jerk Cafe's"}}, {...restaurant,name:'Just Jerk Cafe'}),true);
+  assert.equal(matchesRestaurant({...place, displayName:{text:'Just Jerk Café'}}, {...restaurant,name:'Just Jerk Cafe'}),true);
+  assert.equal(matchesRestaurant({...place, displayName:{text:"Uncle John's BBQ"}}, {...restaurant,name:"Uncle John's Barbecue"}),true);
+  assert.equal(matchesRestaurant({...place, displayName:{text:"Uncle John's BBQ"},formattedAddress:'947 W Addison St, Chicago, IL 60613'}, {...restaurant,name:"Uncle John's Barbecue"}),false);
+});

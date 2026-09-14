@@ -39,7 +39,7 @@ export function safeGoogleUrl(value?: string) {
     return url.protocol === "https:" && /(^|\.)(google\.com|googleusercontent\.com|gstatic\.com)$/.test(url.hostname) ? url.href : undefined;
   } catch { return undefined; }
 }
-const normalized = (value: string) => value.toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9 ]/g, " ").replace(/\b(street|avenue|east|west|south|north)\b/g, word => ({ street: "st", avenue: "ave", east: "e", west: "w", south: "s", north: "n" })[word]!).replace(/\s+/g, " ").trim();
+const normalized = (value: string) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9 ]/g, " ").replace(/\b(street|avenue|east|west|south|north)\b/g, word => ({ street: "st", avenue: "ave", east: "e", west: "w", south: "s", north: "n" })[word]!).replace(/\b(barbecue|barbeque|bar b q)\b/g, "bbq").replace(/\bcafes\b/g, "cafe").replace(/\s+/g, " ").trim();
 /** A search result is not enough: require the same street and business name. */
 export function matchesRestaurant(place: Place, restaurant: { name: string; address: string }) {
   const street = normalized(restaurant.address.split(",")[0]);
