@@ -16,6 +16,7 @@ export function PathExplorer({ stops }: { stops: Stop[] }) {
   const [filterOpen, setFilterOpen] = useState(false);
   const [draft, setDraft] = useState<DiscoveryFilters>(filters);
   const [selected, setSelected] = useState<Stop | null>(null);
+  const [reviewStop, setReviewStop] = useState<Stop | null>(null);
   const filtered = useMemo(() => filterStops(stops, filters, saved), [stops, filters, saved]);
   const categories = FOOD_CATEGORIES.filter(c => stops.some(s => inCategory(s, c.key)));
   const extraCount = filters.foods.length + Number(!!filters.area) + Number(!!filters.meal);
@@ -42,7 +43,7 @@ export function PathExplorer({ stops }: { stops: Stop[] }) {
       </div>
       {active.length > 0 && <div className="active-filters" aria-label="Active filters">{active.map(item => <button key={item.label} onClick={() => updateFilters(item.patch)} aria-label={`Remove ${item.label} filter`}>{item.label}<Close /></button>)}<button className="clear-filters" onClick={resetFilters}>Clear all</button></div>}
       <div className="results-summary"><p role="status" aria-live="polite">{filtered.length === stops.length ? `All ${stops.length} kitchens` : `${filtered.length} of ${stops.length} kitchens`}{!active.length && <span> · Explore at your own pace</span>}</p><label>Sort by<select aria-label="Sort kitchens" value={filters.sort} onChange={e => updateFilters({ sort: e.target.value as DiscoveryFilters["sort"] })}><option value="path">On the path</option><option value="name">Name: A–Z</option><option value="open">Open first</option></select></label></div>
-      {filtered.length ? <div className="kitchen-grid">{filtered.map(stop => <StopCard key={stop.slug} stop={stop} onDetails={() => setSelected(stop)} />)}</div> : <div className="discovery-empty">{filters.saved && !saved.length ? <><Heart /><h3>Your next food trail starts here.</h3><p>Tap the heart on any kitchen to keep it in your list.</p></> : <><Search /><h3>No kitchens match just yet.</h3><p>Try another dish or remove a filter to see more of the path.</p></>}<button className="primary-button" onClick={resetFilters}>Explore all kitchens</button></div>}
+      {filtered.length ? <div className="kitchen-grid">{filtered.map(stop => <StopCard key={stop.slug} stop={stop} onDetails={() => setSelected(stop)} onReviews={() => setReviewStop(stop)} />)}</div> : <div className="discovery-empty">{filters.saved && !saved.length ? <><Heart /><h3>Your next food trail starts here.</h3><p>Tap the heart on any kitchen to keep it in your list.</p></> : <><Search /><h3>No kitchens match just yet.</h3><p>Try another dish or remove a filter to see more of the path.</p></>}<button className="primary-button" onClick={resetFilters}>Explore all kitchens</button></div>}
       <p className="hours-note">Hours shown in Chicago time. Updated from restaurant websites where available; otherwise, the kitchen’s listed hours are shown.</p>
     </div>
     <div className={`save-notice ${message ? "visible" : ""}`} role="status" aria-live="polite">{message && <><Heart filled />{message}</>}</div>
@@ -54,6 +55,9 @@ export function PathExplorer({ stops }: { stops: Stop[] }) {
         <label className="checkbox-field"><input type="checkbox" checked={draft.open} onChange={e => setDraft(d => ({ ...d, open: e.target.checked }))} />Only kitchens open now</label>
       </div>
       <div className="dialog-actions"><button className="text-button" onClick={() => setDraft({ ...EMPTY_FILTERS, q: filters.q, saved: filters.saved, sort: filters.sort })}>Reset filters</button><button className="primary-button" onClick={() => { updateFilters(draft); setFilterOpen(false); }}>Show {filterStops(stops, draft, saved).length} kitchens</button></div>
+    </DiscoveryDialog>
+    <DiscoveryDialog title={reviewStop?.name ?? "Google reviews"} open={!!reviewStop} onClose={() => setReviewStop(null)}>
+      {reviewStop && <div className="direct-reviews"><RestaurantReviews key={reviewStop.slug} slug={reviewStop.slug} name={reviewStop.name} address={reviewStop.address} /></div>}
     </DiscoveryDialog>
     <DiscoveryDialog title={selected?.name ?? "Kitchen details"} open={!!selected} onClose={() => setSelected(null)}>
       {selected && <div className="kitchen-detail">

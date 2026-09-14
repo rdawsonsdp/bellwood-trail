@@ -17,7 +17,7 @@ export function RestaurantReviews({ slug, name, address }: { slug: string; name:
     return () => controller.abort();
   }, [slug]);
   return <section className="restaurant-reviews" aria-label={`Google reviews for ${name}`}>
-    <div className="reviews-heading"><h3>What guests say</h3><span className="google-attribution" translate="no">Google Maps</span></div>
+    <div className="reviews-heading"><h3>Google reviews</h3><span className="google-attribution" translate="no">Google Maps</span></div>
     {loading ? <p role="status">Loading reviews…</p> : <>
       {result?.available && result.rating !== undefined && <p className="reviews-rating"><span aria-hidden="true">★</span> <strong>{result.rating.toFixed(1)}</strong> / 5{result.count !== undefined && <span> · {result.count.toLocaleString()} Google reviews</span>}</p>}
       {!!result?.reviews.length && <p className="reviews-order">Up to 3 written reviews, ordered by Google relevance.</p>}
