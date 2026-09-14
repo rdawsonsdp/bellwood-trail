@@ -8,6 +8,7 @@ import { EMPTY_FILTERS, filterStops, inCategory, type DiscoveryFilters } from "@
 import { useDiscovery } from "./DiscoveryContext";
 import { DiscoveryDialog } from "./DiscoveryDialog";
 import { StopCard } from "./StopCard";
+import { RestaurantReviews } from "./RestaurantReviews";
 import { Close, Heart, MapPin, Phone, Search, Sliders } from "./icons";
 
 export function PathExplorer({ stops }: { stops: Stop[] }) {
@@ -63,6 +64,7 @@ export function PathExplorer({ stops }: { stops: Stop[] }) {
           <a className="detail-address" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selected.address)}`} target="_blank" rel="noopener noreferrer"><MapPin />{selected.address}<span className="sr-only"> — open map in a new tab</span></a>
           <details className="detail-hours"><summary>Opening hours <span>{selected.status.today}</span></summary><dl>{selected.schedule.map((hours, day) => <div key={day}><dt>{DAY_SHORT[day]}</dt><dd>{formatRange(hours)}</dd></div>)}</dl><p>{selected.status.source === "live" ? "Hours from the restaurant’s website." : "Listed opening hours."} All times are in Chicago.</p></details>
           <div className="detail-actions"><a className="primary-button" href={selected.site} target="_blank" rel="noopener noreferrer">Visit restaurant website<span className="sr-only"> — opens in a new tab</span></a>{selected.phoneHref && <a className="secondary-button" href={selected.phoneHref}><Phone />{selected.phone}</a>}</div>
+          <RestaurantReviews key={selected.slug} slug={selected.slug} name={selected.name} address={selected.address} />
         </div>
       </div>}
     </DiscoveryDialog>
