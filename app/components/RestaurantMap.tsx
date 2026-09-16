@@ -139,7 +139,7 @@ export function RestaurantMap({ stops }: { stops: Stop[] }) {
   }, [open]);
   return <>
     <section className="map-intro site-container" aria-labelledby="map-intro-title">
-      <div className="map-intro-copy"><p className="map-location"><MapPin />Greater Chatham, Chicago</p><h2 id="map-intro-title">Your next bite.<br />Find it on the map.</h2><p>From 75th Street to Cottage Grove. Explore the kitchens, see what’s nearby, and pick your next stop.</p><button ref={opener} className="primary-button" type="button" aria-haspopup="dialog" onClick={() => setOpen(true)}><MapPin />Explore the map</button><span>{located.length} kitchens on the map</span></div>
+      <div className="map-intro-copy"><p className="map-location"><MapPin />Greater Chatham, Chicago</p><h2 id="map-intro-title">Find your next great meal.</h2><p>From 75th Street to Cottage Grove. Explore the kitchens, see what’s nearby, and pick your next stop.</p><button ref={opener} className="primary-button" type="button" aria-haspopup="dialog" onClick={() => setOpen(true)}><MapPin />Explore the map</button><span>{located.length} kitchens on the map</span></div>
       <div className="map-preview"><StreetMap stops={located} /><button className="map-preview-open" type="button" aria-label="Open interactive restaurant map" aria-haspopup="dialog" onClick={() => setOpen(true)}><span>Tap to explore the neighborhood ↗</span></button></div>
     </section>
     <dialog className="restaurant-map-dialog" ref={dialog} aria-labelledby="map-dialog-title" onCancel={e => { e.preventDefault(); setOpen(false); }} onKeyDown={e => {
