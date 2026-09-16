@@ -185,6 +185,21 @@ export const RESTAURANTS: Restaurant[] = [
     lat: 41.7594, lng: -87.6382, corridor: "beyond",
   },
   {
+    slug: "dat-hoagy-shoppe", name: "Dat Hoagy Shoppe",
+    tagline: "Steak hoagies, sweet or hot, inside Dat Donut.",
+    cuisine: ["Sandwiches", "Cheesesteak", "Italian Beef"],
+    signature: ["Steak Hoagie", "The Greedy", "Turkey Hoagie", "Italian Beef", "Fries with House Sauce"],
+    neighborhood: "Chatham", address: "8251 S Cottage Grove Ave, Chicago, IL 60619",
+    phone: "(773) 723-1002", phoneHref: "tel:+17737231002",
+    site: "https://dat-hoagy-shoppe.vercel.app", builtByGci: true,
+    image: "/images/restaurants/dat-hoagy-shoppe.jpeg",
+    imageAlt: "Dat Hoagy Shoppe deli and turkey hoagies with pickles, onion and tomato, beside a steak sandwich with peppers",
+    // Published by the shop's website; the sandwich counter has its own hours.
+    schedule: Array.from({ length: 7 }, () => [h(9), h(20,30)] as const),
+    meals: ["lunch", "dinner"],
+    lat: 41.7449, lng: -87.6046, corridor: "cottage-grove",
+  },
+  {
     slug: "datdonut", name: "Dat Donut",
     tagline: "Home of the famous Big DAT Donut.",
     cuisine: ["Donuts", "Bakery", "Breakfast"], signature: ["Big DAT Donut", "Apple Fritter", "Breakfast Sandwich", "Glazed"],
