@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Figtree } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/content/restaurants";
@@ -9,6 +9,8 @@ const figtree = Figtree({ subsets: ["latin"], weight: ["400", "600", "700", "800
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://chatham-culinary-path.vercel.app").replace(/\/+$/, "");
 const TITLE = "Chatham Culinary Path — Explore the Food of Chicago's South Side";
+
+export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover" };
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

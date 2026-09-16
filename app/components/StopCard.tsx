@@ -11,7 +11,7 @@ export function StopCard({ stop, onDetails, onReviews }: { stop: Stop; onDetails
   return <article className="kitchen-card" data-kitchen={stop.slug}>
     <div className="kitchen-photo">
       <button className="photo-detail-button" onClick={onDetails} aria-label={`View details for ${stop.name}`}>
-        {stop.imageSrc ? <Image src={stop.imageSrc} alt={stop.imageAlt || `${stop.name}: ${stop.signature[0] ?? stop.cuisine[0] ?? "kitchen on the path"}`} fill sizes="(min-width: 1200px) 300px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw" /> : <span className="kitchen-photo-fallback"><Store />{stop.name}</span>}
+        {stop.imageSrc ? <Image src={stop.imageSrc} alt={stop.imageAlt || `${stop.name}: ${stop.signature[0] ?? stop.cuisine[0] ?? "kitchen on the path"}`} fill sizes="(min-width: 1200px) 300px, (min-width: 900px) 33vw, 50vw" /> : <span className="kitchen-photo-fallback"><Store />{stop.name}</span>}
       </button>
       <button type="button" className={`save-kitchen icon-button ${isSaved ? "is-saved" : ""}`} aria-label={`${isSaved ? "Unsave" : "Save"} ${stop.name}`} aria-pressed={isSaved} onClick={() => toggleSaved(stop.slug, stop.name)}><Heart filled={isSaved} /></button>
       <span className="kitchen-area">{area}</span>

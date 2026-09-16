@@ -6,6 +6,7 @@ import type { Stop } from "@/app/lib/live-status";
 import { fitMap, hasCoordinates, MAX_ZOOM, MIN_ZOOM, project, zoomAt, type MapView } from "@/app/lib/map";
 import { useDiscovery } from "./DiscoveryContext";
 import { Close, Heart, MapPin } from "./icons";
+import { MobileNavigation } from "./MobileNavigation";
 
 type LocatedStop = Stop & { lat: number; lng: number };
 type Size = { width: number; height: number };
@@ -133,9 +134,10 @@ export function RestaurantMap({ stops }: { stops: Stop[] }) {
   const active = matches.find(s => s.slug === selected);
   useEffect(() => {
     if (!open) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
     dialog.current?.showModal();
     const old = document.body.style.overflow; document.body.style.overflow = "hidden";
-    return () => { dialog.current?.close(); document.body.style.overflow = old; opener.current?.focus(); };
+    return () => { dialog.current?.close(); document.body.style.overflow = old; previousFocus?.focus({ preventScroll: true }); };
   }, [open]);
   return <>
     <section className="map-intro site-container" aria-labelledby="map-intro-title">
@@ -165,7 +167,8 @@ export function RestaurantMap({ stops }: { stops: Stop[] }) {
             <div className="map-results">{matches.map(stop => <button key={stop.slug} type="button" className="map-result" aria-pressed={stop.slug === active?.slug} onClick={() => { setSelected(stop.slug); dialog.current?.querySelector(".map-kitchens")?.scrollTo({ top: 0, behavior: "instant" }); }}>
               {stop.imageSrc ? <Image src={stop.imageSrc} alt="" width={64} height={64} /> : <MapPin />}<span><strong>{stop.name}</strong><span>{stop.address.split(",")[0]}</span><small>{stop.status.headline.replace("Now open till", "Open until")}{!hasCoordinates(stop) ? " · Not mapped yet" : ""}</small></span><MapPin /></button>)}</div>
           </aside>
-        </div></>}
+        </div><MobileNavigation mapActive onMap={() => {}} onNavigate={() => setOpen(false)} /></>}
     </dialog>
+    <MobileNavigation onMap={() => setOpen(true)} />
   </>;
 }

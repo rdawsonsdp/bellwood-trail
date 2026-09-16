@@ -31,7 +31,7 @@ export function PathExplorer({ stops }: { stops: Stop[] }) {
   ];
   return <section id="path" className="explorer-section" aria-labelledby="path-heading">
     <div className="site-container">
-      <div className="section-heading explorer-heading"><div><h2 id="path-heading">{filters.saved ? "Your saved kitchens." : "Find your next favorite."}</h2><p>{filters.saved ? "A little list of places worth coming back for. Saved on this device." : "Explore the kitchens that make Greater Chatham taste like home."}</p></div><span className="path-count">{stops.length} local kitchens</span></div>
+      <div className="section-heading explorer-heading"><div><h2 id="path-heading" tabIndex={-1}>{filters.saved ? "Your favorites." : "Find your next favorite."}</h2><p>{filters.saved ? "A little list of places worth coming back for. Saved on this device." : "Explore the kitchens that make Greater Chatham taste like home."}</p></div><span className="path-count">{stops.length} local kitchens</span></div>
       <div className="explorer-toolbar">
         <label className="directory-search"><Search /><input type="search" value={filters.q} onChange={e => updateFilters({ q: e.target.value }, false, true)} maxLength={200} aria-label="Search kitchens" placeholder="Search kitchens or dishes" /></label>
         <div className="quick-filters">

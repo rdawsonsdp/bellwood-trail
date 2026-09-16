@@ -1,0 +1,67 @@
+/* Phone discovery: the existing GCI colors, compact cards, and thumb navigation. */
+.mobile-bottom-navigation { display: none; }
+
+@media (max-width: 700px) {
+  .culinary-site:has(.mobile-bottom-navigation) { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+  .culinary-site:has(.mobile-bottom-navigation) .header-inner { height: 60px; }
+  .culinary-site:has(.mobile-bottom-navigation) .header-actions,
+  .culinary-site:has(.mobile-bottom-navigation) .desktop-navigation { display: none; }
+  .culinary-site:has(.mobile-bottom-navigation) .brand-mark { height: 34px; }
+  .culinary-site:has(.mobile-bottom-navigation) .brand-type strong { font-size: 17px; }
+  .culinary-site:has(.mobile-bottom-navigation) .brand-type > span { display: none; }
+  .culinary-site .site-container { width: calc(100% - 24px); }
+  .culinary-site section[id] { scroll-margin-top: 72px; }
+  .discovery-hero { margin-top: 12px; }
+  .hero-scene { min-height: 0; border-radius: 12px; }
+  .hero-copy { padding: 22px 20px; }
+  .hero-copy > p { margin-bottom: 10px; font-size: 12px; }
+  .hero-copy h1 { font-size: clamp(32px, 8vw, 44px); margin-bottom: 0; }
+  .hero-logo-script { font-size: clamp(39px, 10.5vw, 58px); }
+  .hero-copy > span, .hero-photo-credit, .discovery-search,
+  .discovery-reassurance, .map-intro { display: none; }
+  .collections-section { padding-block: 14px; }
+  .collections-section .section-heading { display: none; }
+  .collection-rail { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px; scroll-padding-inline: 2px; }
+  .collection-card { flex: 0 0 auto; min-height: 44px; padding: 10px 14px; border: 1px solid #dfe4e9; border-radius: 24px; background: #fff; }
+  .collection-photo, .collection-card > span:last-child { display: none; }
+  .collection-card > strong { font-size: 13px; white-space: nowrap; }
+  .explorer-section { padding-block: 18px 24px; background: #f3f6f8; }
+  .explorer-heading { margin-bottom: 12px; }
+  .explorer-heading h2 { font-size: 24px; }
+  .explorer-heading p, .path-count { display: none; }
+  .explorer-toolbar { flex-wrap: wrap; padding: 8px 10px; gap: 8px; }
+  .directory-search { flex-basis: 100%; padding: 0 2px 6px; border-bottom: 1px solid #e5e9ee; }
+  .directory-search input { min-height: 44px; font-size: 16px; }
+  .quick-filters { width: 100%; justify-content: space-between; }
+  .quick-filters .filter-button { flex: 1; }
+  .quick-filters .saved-filter, .dining-filter { display: none; }
+  .results-summary { padding-block: 8px; font-size: 12px; gap: 4px; }
+  .results-summary > p > span { display: none; }
+  .results-summary select { min-height: 44px; }
+  .active-filters { margin-top: 8px; }
+  .active-filters button { min-height: 44px; }
+  .kitchen-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 10px; }
+  .kitchen-card { border-radius: 12px; }
+  .kitchen-photo { aspect-ratio: 1.25; }
+  .save-kitchen { right: 6px; top: 6px; width: 44px; height: 44px; }
+  .kitchen-area { left: 6px; bottom: 6px; max-width: calc(100% - 12px); font-size: 10px; padding: 4px 6px; }
+  .kitchen-body { padding: 10px; gap: 5px; }
+  .kitchen-status { font-size: 11px; gap: 4px; line-height: 1.4; }
+  .kitchen-body h3 { font-size: 16px; line-height: 1.2; letter-spacing: -.2px; overflow-wrap: anywhere; }
+  .kitchen-body h3 button { min-height: 44px; width: 100%; }
+  .kitchen-cuisine { font-size: 12px; line-height: 1.4; }
+  .kitchen-card .kitchen-tagline, .kitchen-card .kitchen-address,
+  .kitchen-card .kitchen-reviews-button, .kitchen-card .kitchen-actions { display: none; }
+  .hours-note { font-size: 11px; margin-top: 16px; }
+  .save-notice { bottom: calc(84px + env(safe-area-inset-bottom)); font-size: 13px; }
+  .mobile-bottom-navigation { position: fixed; inset: auto 0 0; z-index: 50; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 6px max(12px, env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); background: #fff; border-top: 1px solid #dfe4e9; box-shadow: 0 -4px 18px #172b450a; }
+  .mobile-bottom-navigation > button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 60px; color: #566273; font-size: 12px; font-weight: 600; }
+  .mobile-nav-icon { position: relative; display: grid; place-items: center; width: 60px; height: 30px; border-radius: 18px; }
+  .mobile-nav-icon > svg { width: 22px; height: 22px; }
+  .mobile-bottom-navigation > button[aria-current="page"] { color: #a51827; font-weight: 800; }
+  .mobile-bottom-navigation > button[aria-current="page"] .mobile-nav-icon { background: #fbecee; }
+  .mobile-favorites-count { position: absolute; right: 1px; top: -2px; min-width: 18px; height: 18px; display: grid; place-items: center; border-radius: 12px; background: #bf1e2d; color: #fff; padding-inline: 3px; font-size: 10px; }
+  .restaurant-map-dialog { padding-bottom: calc(73px + env(safe-area-inset-bottom)); }
+  .restaurant-map-dialog .map-explorer-body { min-height: 0; grid-template-rows: minmax(150px, 45%) minmax(0, 1fr); }
+  .restaurant-map-dialog .map-kitchens { padding-bottom: 0; }
+}

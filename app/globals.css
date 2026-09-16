@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./discovery.css";
 @import "./map.css";
+@import "./mobile-discovery.css";
 
 /*
  * Chatham Culinary Path — design system.
