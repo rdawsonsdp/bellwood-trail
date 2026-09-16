@@ -59,8 +59,8 @@
   .kitchen-body h3 button { min-height: 44px; width: 100%; }
   .kitchen-cuisine { font-size: 12px; line-height: 1.4; }
   .kitchen-card .kitchen-address { margin-top: auto; line-height: 1.4; }
-  .kitchen-card .kitchen-tagline,
-  .kitchen-card .kitchen-reviews-button, .kitchen-card .kitchen-actions { display: none; }
+  .kitchen-card .kitchen-actions { padding-top: 6px; margin-top: 0; }
+  .kitchen-card .details-button { width: 100%; padding-inline: 6px; }
   .hours-note { font-size: 11px; margin-top: 16px; }
   .save-notice { bottom: calc(84px + env(safe-area-inset-bottom)); font-size: 13px; }
   .mobile-bottom-navigation { position: fixed; inset: auto 0 0; z-index: 50; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 6px max(12px, env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); background: #fff; border-top: 1px solid #dfe4e9; box-shadow: 0 -4px 18px #172b450a; }

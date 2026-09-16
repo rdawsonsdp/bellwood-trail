@@ -3,8 +3,8 @@ import Image from "next/image";
 import { CORRIDORS } from "@/content/restaurants";
 import type { Stop } from "@/app/lib/live-status";
 import { useDiscovery } from "./DiscoveryContext";
-import { Heart, MapPin, Phone, Store } from "./icons";
-export function StopCard({ stop, onDetails, onReviews }: { stop: Stop; onDetails: () => void; onReviews: () => void }) {
+import { Heart, MapPin, Store } from "./icons";
+export function StopCard({ stop, onDetails }: { stop: Stop; onDetails: () => void }) {
   const { saved, toggleSaved } = useDiscovery();
   const isSaved = saved.includes(stop.slug);
   const area = stop.corridor === "beyond" ? stop.neighborhood : CORRIDORS[stop.corridor].label;
@@ -20,10 +20,8 @@ export function StopCard({ stop, onDetails, onReviews }: { stop: Stop; onDetails
       <p className={`kitchen-status ${stop.status.open ? "is-open" : ""}`}><span aria-hidden />{stop.status.headline.replace("Now open till", "Open until")}</p>
       <h3><button onClick={onDetails}>{stop.name}</button></h3>
       <p className="kitchen-cuisine">{stop.cuisine.slice(0, 2).join(" · ")}{stop.dineIn === true ? " · Dine in" : stop.dineIn === false ? " · Carryout" : ""}</p>
-      <button type="button" className="kitchen-reviews-button" onClick={onReviews} aria-label={`Google reviews for ${stop.name}`}><span aria-hidden="true">★</span> Google reviews <span aria-hidden="true">→</span></button>
-      <p className="kitchen-tagline">{stop.tagline}</p>
       <a className="kitchen-address" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(stop.address)}`} target="_blank" rel="noopener noreferrer"><MapPin /><span>{stop.address.split(",")[0]}</span><span className="sr-only"> (directions, opens in a new tab)</span></a>
-      <div className="kitchen-actions"><button className="details-button" onClick={onDetails}>Explore kitchen</button>{stop.phoneHref && <a className="kitchen-call" href={stop.phoneHref} aria-label={`Call ${stop.name}`}><Phone /><span>Call</span></a>}</div>
+      <div className="kitchen-actions"><button className="details-button" onClick={onDetails}>Explore kitchen</button></div>
     </div>
   </article>;
 }
