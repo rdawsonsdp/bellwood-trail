@@ -5,7 +5,6 @@ import { FoodCollections } from "@/app/components/FoodCollections";
 import { Hero } from "@/app/components/Hero";
 import { RestaurantMap } from "@/app/components/RestaurantMap";
 import { PathExplorer } from "@/app/components/PathExplorer";
-import { Updates } from "@/app/components/Updates";
 
 // Content comes from the store (cached until an admin saves) and each card's
 // hours, phone and address from the kitchen's own site (cached ten minutes in
@@ -13,7 +12,7 @@ import { Updates } from "@/app/components/Updates";
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const { restaurants, updates } = await getContent();
+  const { restaurants } = await getContent();
   const stops = await resolveStops(restaurants);
   const jsonLd = {
     "@context": "https://schema.org",
@@ -33,7 +32,6 @@ export default async function Home() {
       <Hero count={stops.length} />
       <FoodCollections stops={stops} />
       <PathExplorer stops={stops} />
-      <Updates updates={updates} />
     </>
   );
 }
