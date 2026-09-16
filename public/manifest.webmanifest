@@ -1,0 +1,15 @@
+{
+  "id": "/",
+  "name": "Chatham Culinary Path",
+  "short_name": "Culinary Path",
+  "description": "Explore the restaurants of Greater Chatham.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    { "src": "/icons/gci-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/gci-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

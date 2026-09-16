@@ -21,7 +21,17 @@ export const metadata: Metadata = {
     images: [{ url: "/images/brand/hero-corridor-aerial.jpg", width: 1600, height: 1000, alt: "Aerial view of the 79th Street corridor in Greater Chatham" }] },
   twitter: { card: "summary_large_image", title: TITLE, description: SITE.description, images: ["/images/brand/hero-corridor-aerial.jpg"] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
-  icons: { icon: "/images/brand/gci-logo.png" },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: { capable: true, title: "Culinary Path", statusBarStyle: "default" },
+  icons: {
+    icon: [
+      { url: "/icons/gci-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/icons/gci-48.png", type: "image/png", sizes: "48x48" },
+      { url: "/icons/gci-192.png", type: "image/png", sizes: "192x192" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/icons/gci-180.png", sizes: "180x180", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
