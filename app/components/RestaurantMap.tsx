@@ -20,7 +20,7 @@ function StreetMap({ stops, active, interactive = false, onSelect }: { stops: Lo
   const pointers = useRef(new Map<number, { x: number; y: number }>());
   const animation = useRef(0);
   useEffect(() => {
-    const element = ref.current?.querySelector<HTMLElement>(".map-gesture");
+    const element = ref.current;
     if (!element || !interactive) return;
     const wheel = (event: WheelEvent) => {
       event.preventDefault(); cancelAnimationFrame(animation.current);
