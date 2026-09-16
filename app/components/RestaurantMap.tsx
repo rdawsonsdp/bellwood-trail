@@ -149,7 +149,7 @@ export function RestaurantMap({ stops }: { stops: Stop[] }) {
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
     }}>
-      {open && <><header className="map-dialog-header"><div><h2 id="map-dialog-title">Find your next kitchen</h2><p>Greater Chatham & neighboring stops</p></div><button autoFocus className="icon-button" aria-label="Close map" onClick={() => setOpen(false)}><Close /></button></header>
+      {open && <><header className="map-dialog-header"><div><h2 id="map-dialog-title" className="sr-only">Restaurant map</h2><p>Greater Chatham & neighboring stops</p></div><button autoFocus className="icon-button" aria-label="Close map" onClick={() => setOpen(false)}><Close /></button></header>
         <div className="map-filter-bar"><label><span className="sr-only">Search restaurants on the map</span><input type="search" placeholder="Try rib tips, vegan, or a kitchen…" value={query} onChange={e => { setQuery(e.target.value); setSelected(undefined); }} /></label><button className="filter-button" aria-pressed={openOnly} onClick={() => { setOpenOnly(!openOnly); setSelected(undefined); }}>Open now</button></div>
         <div className="map-explorer-body"><div className="map-canvas"><StreetMap stops={mapped} active={active?.slug} interactive onSelect={s => { setSelected(s.slug); dialog.current?.querySelector(".map-kitchens")?.scrollTo({ top: 0, behavior: "instant" }); }} /><p className="map-instructions">Drag to explore. Pinch or use + / − to zoom.</p></div>
           <aside className="map-kitchens" aria-label="Restaurants on the map">
