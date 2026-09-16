@@ -24,7 +24,7 @@ export type Stop = Restaurant & { status: StopStatus; imageSrc: string | null };
 // server rather than guessing. Photos saved from /admin carry a full URL.
 export function resolveImage(image: string): string | null {
   if (/^https?:\/\//.test(image) || /\.\w{3,4}$/.test(image)) return image;
-  for (const ext of ["jpg", "png", "webp"]) {
+  for (const ext of ["webp", "jpg", "png"]) {
     if (fs.existsSync(path.join(process.cwd(), "public", `${image}.${ext}`))) return `${image}.${ext}`;
   }
   return null;
