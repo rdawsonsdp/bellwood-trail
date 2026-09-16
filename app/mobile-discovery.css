@@ -1,5 +1,5 @@
 /* Phone discovery: the existing GCI colors, compact cards, and thumb navigation. */
-.mobile-bottom-navigation { display: none; }
+.mobile-bottom-navigation, .mobile-discovery-pills { display: none; }
 
 @media (max-width: 700px) {
   .culinary-site:has(.mobile-bottom-navigation) { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
@@ -27,17 +27,23 @@
   .collection-card { flex: 0 0 auto; min-height: 44px; padding: 10px 14px; border: 1px solid #dfe4e9; border-radius: 24px; background: #fff; }
   .collection-photo, .collection-card > span:last-child { display: none; }
   .collection-card > strong { font-size: 13px; white-space: nowrap; }
-  .explorer-section { padding-block: 18px 24px; background: #f3f6f8; }
+  .explorer-section { padding-block: 10px 24px; background: #f3f6f8; }
   .explorer-heading { margin-bottom: 12px; }
   .explorer-heading h2 { font-size: 24px; }
   .explorer-heading p, .path-count { display: none; }
-  .explorer-toolbar { flex-wrap: wrap; padding: 8px 10px; gap: 8px; }
-  .directory-search { flex-basis: 100%; padding: 0 2px 6px; border-bottom: 1px solid #e5e9ee; }
+  .mobile-hide-heading { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .explorer-toolbar { padding: 0; border: 0; border-radius: 0; background: transparent; }
+  .directory-search { flex-basis: 100%; padding: 0 12px; border: 1px solid #dfe4e9; border-radius: 24px; background: #fff; }
   .directory-search input { min-height: 44px; font-size: 16px; }
-  .quick-filters { width: 100%; justify-content: space-between; }
+  .quick-filters { display: none; }
+  .mobile-discovery-pills { display: flex; gap: 6px; overflow-x: auto; padding: 8px 2px 2px; }
+  .mobile-discovery-pills button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; flex: 0 0 auto; min-height: 44px; padding: 8px 13px; border: 1px solid #dfe4e9; border-radius: 24px; background: #fff; font-size: 13px; font-weight: 600; white-space: nowrap; }
+  .mobile-discovery-pills button[aria-pressed="true"] { background: #172b45; border-color: #172b45; color: #fff; }
+  .mobile-discovery-pills button[aria-pressed="true"] .open-dot { background: #85d4a7; }
+  .active-filters.mobile-hide-active { display: none; }
   .quick-filters .filter-button { flex: 1; }
   .quick-filters .saved-filter, .dining-filter { display: none; }
-  .results-summary { padding-block: 8px; font-size: 12px; gap: 4px; }
+  .results-summary { padding-block: 2px; font-size: 12px; gap: 4px; }
   .results-summary > p > span { display: none; }
   .results-summary select { min-height: 44px; }
   .active-filters { margin-top: 8px; }

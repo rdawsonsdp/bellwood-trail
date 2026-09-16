@@ -31,7 +31,7 @@ export function PathExplorer({ stops }: { stops: Stop[] }) {
   ];
   return <section id="path" className="explorer-section" aria-labelledby="path-heading">
     <div className="site-container">
-      <div className="section-heading explorer-heading"><div><h2 id="path-heading" tabIndex={-1}>{filters.saved ? "Your favorites." : "Find your next favorite."}</h2><p>{filters.saved ? "A little list of places worth coming back for. Saved on this device." : "Explore the kitchens that make Greater Chatham taste like home."}</p></div><span className="path-count">{stops.length} local kitchens</span></div>
+      <div className={`section-heading explorer-heading ${filters.saved ? "" : "mobile-hide-heading"}`}><div><h2 id="path-heading" tabIndex={-1}>{filters.saved ? "Your favorites." : "Find your next favorite."}</h2><p>{filters.saved ? "A little list of places worth coming back for. Saved on this device." : "Explore the kitchens that make Greater Chatham taste like home."}</p></div><span className="path-count">{stops.length} local kitchens</span></div>
       <div className="explorer-toolbar">
         <label className="directory-search"><Search /><input type="search" value={filters.q} onChange={e => updateFilters({ q: e.target.value }, false, true)} maxLength={200} aria-label="Search kitchens" placeholder="Search kitchens or dishes" /></label>
         <div className="quick-filters">
@@ -41,7 +41,13 @@ export function PathExplorer({ stops }: { stops: Stop[] }) {
           <button type="button" className={`filter-button saved-filter ${filters.saved ? "selected" : ""}`} aria-pressed={filters.saved} onClick={() => updateFilters({ saved: !filters.saved })}><Heart filled={filters.saved} />Saved{saved.length > 0 && <span>{saved.length}</span>}</button>
         </div>
       </div>
-      {active.length > 0 && <div className="active-filters" aria-label="Active filters">{active.map(item => <button key={item.label} onClick={() => updateFilters(item.patch)} aria-label={`Remove ${item.label} filter`}>{item.label}<Close /></button>)}<button className="clear-filters" onClick={resetFilters}>Clear all</button></div>}
+      <div className="mobile-discovery-pills" role="group" aria-label="Quick restaurant choices">
+        <button type="button" aria-pressed={!active.length} onClick={resetFilters}>All</button>
+        <button type="button" aria-pressed={filters.open} onClick={() => updateFilters({ open: !filters.open })}><span className="open-dot" />Open now</button>
+        <button type="button" aria-pressed={filters.dining === "dine-in"} onClick={() => updateFilters({ dining: filters.dining === "dine-in" ? "" : "dine-in" })}>Dine in</button>
+        <button type="button" aria-pressed={filters.dining === "carryout"} onClick={() => updateFilters({ dining: filters.dining === "carryout" ? "" : "carryout" })}>Carryout only</button>
+      </div>
+      {active.length > 0 && <div className={`active-filters ${active.every(item => "open" in item.patch || "dining" in item.patch || "saved" in item.patch) ? "mobile-hide-active" : ""}`} aria-label="Active filters">{active.map(item => <button key={item.label} onClick={() => updateFilters(item.patch)} aria-label={`Remove ${item.label} filter`}>{item.label}<Close /></button>)}<button className="clear-filters" onClick={resetFilters}>Clear all</button></div>}
       <div className="results-summary"><p role="status" aria-live="polite">{filtered.length === stops.length ? `All ${stops.length} kitchens` : `${filtered.length} of ${stops.length} kitchens`}{!active.length && <span> · Explore at your own pace</span>}</p><label>Sort by<select aria-label="Sort kitchens" value={filters.sort} onChange={e => updateFilters({ sort: e.target.value as DiscoveryFilters["sort"] })}><option value="path">On the path</option><option value="name">Name: A–Z</option><option value="open">Open first</option></select></label></div>
       {filtered.length ? <div className="kitchen-grid">{filtered.map(stop => <StopCard key={stop.slug} stop={stop} onDetails={() => setSelected(stop)} onReviews={() => setReviewStop(stop)} />)}</div> : <div className="discovery-empty">{filters.saved && !saved.length ? <><Heart /><h3>Your next food trail starts here.</h3><p>Tap the heart on any kitchen to keep it in your list.</p></> : <><Search /><h3>No kitchens match just yet.</h3><p>Try another dish or remove a filter to see more of the path.</p></>}<button className="primary-button" onClick={resetFilters}>Explore all kitchens</button></div>}
       <p className="hours-note">Hours shown in Chicago time. Updated from restaurant websites where available; otherwise, the kitchen’s listed hours are shown.</p>
