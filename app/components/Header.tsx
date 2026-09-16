@@ -16,7 +16,7 @@ export function Header() {
     <div className="site-container header-inner">
       <a href="/" aria-label={`${SITE.name} — home`} className="brand-link">
         <Image src="/images/brand/gci-logo.png" alt="" width={400} height={311} priority className="brand-mark" />
-        <span className="brand-type"><strong>Chatham Culinary Path</strong><span>By Greater Chatham Initiative</span></span>
+        <span className="brand-type"><strong>{SITE.name}</strong><span>By Greater Chatham Initiative</span></span>
       </a>
       <nav className="desktop-navigation" aria-label="Main navigation">{NAV.map(n => <a key={n.href} href={n.href} onClick={e => { if (n.href === "#path") { e.preventDefault(); updateFilters(EMPTY_FILTERS, true); } }}>{n.label}</a>)}</nav>
       <div className="header-actions">

@@ -256,7 +256,7 @@ export const FOOD_CATEGORIES: { key: string; label: string; cuisines: string[] }
 ];
 
 export const SITE = {
-  name: "Chatham Culinary Path",
+  name: "Greater Chatham Culinary Trail",
   org: "Greater Chatham Initiative",
   orgUrl: "https://www.gci2016.org/",
   tagline: "Taste the culinary path of Greater Chatham",

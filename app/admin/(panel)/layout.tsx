@@ -19,7 +19,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
         <div className="mx-auto flex h-16 max-w-[1100px] items-center justify-between gap-4 px-5">
           <Link href="/admin" className="flex items-center gap-3">
             <Image src="/images/brand/gci-logo.png" alt="" aria-hidden width={400} height={311} className="h-9 w-auto" />
-            <span className="font-head text-base text-ink">Culinary Path admin</span>
+            <span className="font-head text-base text-ink">Culinary Trail admin</span>
           </Link>
           <nav className="flex shrink-0 items-center gap-3 whitespace-nowrap text-xs font-semibold sm:gap-5 sm:text-small">
             <a href="/" target="_blank" rel="noopener noreferrer" className="text-warm-gray hover:text-ink">View site ↗</a>

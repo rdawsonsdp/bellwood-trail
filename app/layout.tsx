@@ -8,7 +8,7 @@ import { SITE } from "@/content/restaurants";
 const figtree = Figtree({ subsets: ["latin"], weight: ["400", "600", "700", "800", "900"], variable: "--font-figtree", display: "swap" });
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://chatham-culinary-path.vercel.app").replace(/\/+$/, "");
-const TITLE = "Chatham Culinary Path — Explore the Food of Chicago's South Side";
+const TITLE = SITE.name;
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover" };
 
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: TITLE, description: SITE.description, images: ["/images/brand/hero-corridor-aerial.jpg"] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
   manifest: "/manifest.webmanifest",
-  appleWebApp: { capable: true, title: "Culinary Path", statusBarStyle: "default" },
+  appleWebApp: { capable: true, title: SITE.name, statusBarStyle: "default" },
   icons: {
     icon: [
       { url: "/icons/gci-32.png", type: "image/png", sizes: "32x32" },

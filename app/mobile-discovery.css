@@ -7,7 +7,9 @@
   .culinary-site:has(.mobile-bottom-navigation) .header-actions,
   .culinary-site:has(.mobile-bottom-navigation) .desktop-navigation { display: none; }
   .culinary-site:has(.mobile-bottom-navigation) .brand-mark { height: 34px; }
-  .culinary-site:has(.mobile-bottom-navigation) .brand-type strong { font-size: 17px; }
+  .culinary-site:has(.mobile-bottom-navigation) .brand-type strong { font-size: 17px; max-width: 230px; }
+  .culinary-site:has(.mobile-bottom-navigation) .brand-link { max-width: 100%; min-width: 0; }
+  .culinary-site:has(.mobile-bottom-navigation) .brand-mark { flex-shrink: 0; }
   .culinary-site:has(.mobile-bottom-navigation) .brand-type > span { display: none; }
   .culinary-site .site-container { width: calc(100% - 24px); }
   .culinary-site section[id] { scroll-margin-top: 72px; }

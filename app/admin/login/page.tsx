@@ -9,7 +9,7 @@ export default async function LoginPage() {
     <div className="flex min-h-screen items-center justify-center px-5 py-16">
       <div className="w-full max-w-sm rounded-2xl border border-line bg-paper p-8 shadow-card">
         <Image src="/images/brand/gci-logo.png" alt="" aria-hidden width={400} height={311} className="h-12 w-auto" />
-        <h1 className="font-head mt-5 text-h3 text-ink">Culinary Path admin</h1>
+        <h1 className="font-head mt-5 text-h3 text-ink">Culinary Trail admin</h1>
         <p className="mt-1 text-small text-warm-gray">Edit the stops on the trail and the updates feed.</p>
         {adminConfigured()
           ? <LoginForm />

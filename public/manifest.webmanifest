@@ -1,7 +1,7 @@
 {
   "id": "/",
-  "name": "Chatham Culinary Path",
-  "short_name": "Culinary Path",
+  "name": "Greater Chatham Culinary Trail",
+  "short_name": "Culinary Trail",
   "description": "Explore the restaurants of Greater Chatham.",
   "start_url": "/",
   "scope": "/",
