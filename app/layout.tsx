@@ -1,11 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Figtree } from "next/font/google";
+import { Figtree, Kaushan_Script } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/content/restaurants";
 
 // Figtree is GCI's face on gci2016.org. Black for the hero, ExtraBold for
 // section heads, Regular for body — all one family, self-hosted by next/font.
 const figtree = Figtree({ subsets: ["latin"], weight: ["400", "600", "700", "800", "900"], variable: "--font-figtree", display: "swap" });
+
+const script = Kaushan_Script({ subsets: ["latin"], weight: "400", variable: "--font-logo-script", display: "swap" });
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://chatham-culinary-path.vercel.app").replace(/\/+$/, "");
 const TITLE = SITE.name;
@@ -36,7 +38,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${figtree.variable} h-full antialiased`}>
+    <html lang="en" className={`${figtree.variable} ${script.variable} h-full antialiased`}>
       <body className="min-h-full overflow-x-hidden bg-paper text-ink">{children}</body>
     </html>
   );

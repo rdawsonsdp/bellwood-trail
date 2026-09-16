@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { useActionState, useEffect, useState } from "react";
 import type { HeroContent } from "@/content/hero";
@@ -15,7 +14,7 @@ export function HeroForm({ hero, version, saved, readonly }: { hero: HeroContent
   return <div className="space-y-6">
     <Link href="/admin" className="text-small font-semibold text-warm-gray">← Admin dashboard</Link>
     <h1 className="font-head text-h2 text-ink">Homepage hero image</h1>
-    <p className="text-small text-warm-gray">Upload a photo to replace the main banner on desktop and mobile. The GCI logo and trail title stay in place.</p>
+    <p className="text-small text-warm-gray">Upload a photo to replace the main banner on desktop and mobile. The trail title appears below the photo.</p>
     {saved && <p role="status" className="rounded-xl bg-green-50 p-4 text-green-900">Hero image saved. The live site now uses your changes.</p>}
     <form onSubmit={keepOnError(action)} className="space-y-5 rounded-2xl border border-line bg-paper p-5 sm:p-6">
       <input type="hidden" name="version" value={version} />
@@ -28,19 +27,18 @@ export function HeroForm({ hero, version, saved, readonly }: { hero: HeroContent
           }
           setPreview(URL.createObjectURL(file));
         }} />
-        <span className="mt-2 block text-xs text-warm-gray">Up to 4 MB. Choose a tall photo with the subject fully visible. The GCI logo sits in the lower-right corner.</span>
+        <span className="mt-2 block text-xs text-warm-gray">Up to 4 MB. Choose a wide photo with the subject centered. The hero displays the photo without a darkening filter or overlaid words.</span>
       </label>
       <label className="block text-small font-semibold">Image description
         <input name="imageAlt" value={description} onChange={event => setDescription(event.target.value)} required maxLength={250} className="mt-2 w-full rounded-xl border border-line px-3 py-3 text-body" />
         <span className="mt-1 block text-xs font-normal text-warm-gray">Describe what is in the photo for visitors using a screen reader.</span>
       </label>
       <div className="grid gap-5 md:grid-cols-[2fr_1fr]">
-        {[{ label: "Desktop preview", ratio: "1.8", logo: "10%" }, { label: "Mobile preview", ratio: "0.75", logo: "18%" }].map(item => <div key={item.label}>
+        {[{ label: "Desktop preview", ratio: "2.94" }, { label: "Mobile preview", ratio: "2.17" }].map(item => <div key={item.label}>
           <p className="mb-2 text-small font-semibold">{item.label}</p>
           <div className="relative grid place-items-center overflow-hidden bg-ink" style={{ aspectRatio: item.ratio }}>
-            <img src={preview || hero.image} alt={description} className="absolute inset-0 h-full w-full object-contain" />
-            
-            <Image src="/images/brand/gci-logo.png" alt="" width={400} height={311} className="absolute bottom-3 right-3 h-auto brightness-0 invert" style={{ width: item.logo }} />
+            <img src={preview || hero.image} alt={description} className="absolute inset-0 h-full w-full object-cover" />
+
           </div>
         </div>)}
       </div>

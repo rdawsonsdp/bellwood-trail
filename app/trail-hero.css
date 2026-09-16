@@ -1,17 +1,13 @@
-/* Lem’s sign is the hero; GCI is a small corner signature. */
+/* Reference: supplied food-table hero, centered white mark, title below. */
 .discovery-hero.trail-hero { width: 100%; margin: 0; }
-.trail-hero-scene { position: relative; display: grid; place-items: center; height: clamp(600px, 82svh, 860px); overflow: hidden; background: #127bb2; }
-.trail-hero-backdrop { object-fit: cover; filter: blur(28px); transform: scale(1.12); opacity: .65; }
-.trail-hero-photo { object-fit: contain; object-position: center; }
-.trail-hero-shade { position: absolute; inset: 0; background: linear-gradient(transparent 75%, rgb(0 0 0 / 18%)); pointer-events: none; }
-.trail-hero-logo { position: absolute; right: 28px; bottom: 24px; width: 112px; height: auto; filter: brightness(0) invert(1) drop-shadow(0 2px 5px #0008); }
+.trail-hero-scene { position: relative; display: grid; place-items: center; height: clamp(300px, 34vw, 520px); overflow: hidden; background: #322719; }
+.trail-hero-photo { object-fit: cover; object-position: center 48%; }
 .trail-hero-title { padding-block: 28px; text-align: center; }
-.trail-hero-title h1 { font-size: clamp(25px, 3vw, 42px); font-weight: 800; line-height: 1.15; text-transform: uppercase; letter-spacing: -.5px; text-wrap: balance; }
+.trail-hero-title h1 { font-size: clamp(25px, 3vw, 42px); font-family: var(--font-logo-script), cursive; font-weight: 400; line-height: 1.3; text-transform: none; letter-spacing: 0; text-wrap: balance; }
 .trail-hero .discovery-search { width: min(1216px, calc(100% - 64px)); margin: 0 auto; box-shadow: none; }
 @media (max-width: 700px) {
-  .trail-hero-scene { height: clamp(440px, 133.5vw, 720px); }
+  .trail-hero-scene { height: clamp(160px, 46vw, 230px); }
   .trail-hero-photo { object-position: center; }
-  .trail-hero-logo { width: 72px; right: 16px; bottom: 16px; }
   .trail-hero-title { padding-block: 14px 4px; }
   .trail-hero-title h1 { font-size: clamp(20px, 5.5vw, 28px); letter-spacing: -.3px; }
 }
