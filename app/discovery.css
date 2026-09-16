@@ -350,3 +350,30 @@
 .culinary-site .direct-reviews { padding: 0 24px 24px; }
 .culinary-site .direct-reviews .restaurant-reviews { border-top: 0; margin-top: 0; padding-top: 12px; }
 @media (max-width: 599px) { .culinary-site .direct-reviews { padding: 0 16px 16px; } }
+
+.cookie-settings-link { margin-left: 16px; min-height: 44px; text-decoration: underline; text-underline-offset: 3px; }
+.cookie-dialog { position: fixed; inset: auto 16px 24px; margin: 0 auto; width: min(520px, calc(100% - 32px)); max-height: calc(100dvh - 48px); overflow: auto; padding: 28px; background: #111; color: #fff; border: 0; border-radius: 12px; }
+.cookie-dialog::backdrop { background: #0005; }
+.cookie-dialog h2 { font-size: 24px; font-weight: 700; margin-bottom: 12px; }
+.cookie-dialog p { font-size: 15px; line-height: 1.6; }
+.cookie-info { margin-block: 12px 18px; }
+.cookie-info a { text-decoration: underline; text-underline-offset: 3px; }
+.cookie-actions { display: grid; gap: 10px; }
+.cookie-actions button { min-height: 46px; border: 1px solid #fff; border-radius: 4px; font-size: 14px; font-weight: 700; }
+.cookie-actions button:hover { background: #fff; color: #111; }
+.culinary-site .cookie-dialog :focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.cookie-options { margin-block: 16px; display: grid; gap: 16px; }
+.cookie-options > div > span { float: right; font-size: 13px; }
+.cookie-options label { display: flex; gap: 18px; align-items: center; cursor: pointer; }
+.cookie-options small { display: block; margin-top: 6px; font-size: 13px; line-height: 1.5; }
+.cookie-options input { width: 24px; height: 24px; flex-shrink: 0; accent-color: #fff; }
+.cookie-close { display: block; min-height: 44px; margin: 12px auto 0; text-decoration: underline; }
+.cookie-information { max-width: 760px; padding-block: 32px; line-height: 1.7; }
+.cookie-information h1 { font-size: 32px; font-weight: 800; }
+.cookie-information h2 { font-size: 21px; font-weight: 700; margin-top: 24px; }
+.cookie-information p { margin-block: 12px; }
+.cookie-information a { text-decoration: underline; }
+@media (max-width: 700px) {
+  .cookie-dialog { bottom: max(16px, env(safe-area-inset-bottom)); padding: 22px; }
+  .cookie-settings-link { display: block; margin-left: 0; }
+}

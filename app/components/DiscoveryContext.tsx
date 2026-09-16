@@ -2,6 +2,8 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { EMPTY_FILTERS, readFilters, writeFilters, type DiscoveryFilters } from "@/app/lib/discovery";
 
+import { CONSENT_EVENT, readConsent } from "@/app/lib/cookie-consent";
+
 const SAVED_KEY = "chatham-saved-kitchens-v1";
 type DiscoveryState = {
   filters: DiscoveryFilters;
@@ -26,12 +28,31 @@ export function DiscoveryProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const restore = () => setFilters(readFilters(new URLSearchParams(window.location.search)));
     restore();
-    try { setSaved(parseSaved(localStorage.getItem(SAVED_KEY))); } catch { /* Saving still works for this visit. */ }
-    const sync = (event: StorageEvent) => { if (event.key === SAVED_KEY || event.key === null) setSaved(parseSaved(event.newValue)); };
+    try { if (readConsent(document.cookie)?.favorites) setSaved(parseSaved(localStorage.getItem(SAVED_KEY))); } catch { /* Saving still works for this visit. */ }
+    const sync = (event: StorageEvent) => { if (readConsent(document.cookie)?.favorites && (event.key === SAVED_KEY || event.key === null)) setSaved(parseSaved(event.newValue)); };
+    const consentChanged = () => {
+      if (!readConsent(document.cookie)?.favorites) {
+        try { localStorage.removeItem(SAVED_KEY); } catch { /* Storage may be blocked. */ }
+      }
+    };
+    window.addEventListener(CONSENT_EVENT, consentChanged);
     window.addEventListener("popstate", restore);
     window.addEventListener("storage", sync);
-    return () => { window.removeEventListener("popstate", restore); window.removeEventListener("storage", sync); };
+    return () => { window.removeEventListener(CONSENT_EVENT, consentChanged); window.removeEventListener("popstate", restore); window.removeEventListener("storage", sync); };
   }, []);
+  useEffect(() => {
+    const persist = () => {
+      if (readConsent(document.cookie)?.favorites) {
+        try {
+          const existing = parseSaved(localStorage.getItem(SAVED_KEY));
+          if (!saved.length && existing.length) setSaved(existing);
+          else localStorage.setItem(SAVED_KEY, JSON.stringify(saved));
+        } catch { /* Session favorites still work. */ }
+      }
+    };
+    window.addEventListener(CONSENT_EVENT, persist);
+    return () => window.removeEventListener(CONSENT_EVENT, persist);
+  }, [saved]);
   useEffect(() => {
     if (!message) return;
     const timer = window.setTimeout(() => setMessage(""), 3500);
@@ -51,7 +72,7 @@ export function DiscoveryProvider({ children }: { children: ReactNode }) {
     const removing = saved.includes(slug);
     const next = removing ? saved.filter(s => s !== slug) : [...saved, slug];
     setSaved(next);
-    try { localStorage.setItem(SAVED_KEY, JSON.stringify(next)); setMessage(removing ? `${name} removed from saved kitchens.` : `${name} saved on this device.`); }
+    try { const remember = readConsent(document.cookie)?.favorites; if (remember) localStorage.setItem(SAVED_KEY, JSON.stringify(next)); setMessage(removing ? `${name} removed from saved kitchens.` : remember ? `${name} saved on this device.` : `${name} saved for this visit.`); }
     catch { setMessage(removing ? `${name} removed.` : `${name} saved for this visit. Browser storage is unavailable.`); }
   };
   return <Context.Provider value={{ filters, updateFilters, resetFilters: () => updateFilters(EMPTY_FILTERS), saved, toggleSaved, message }}>{children}</Context.Provider>;

@@ -1,3 +1,4 @@
+import { CookiePreferences } from "./CookiePreferences";
 import Image from "next/image";
 import { SITE } from "@/content/restaurants";
 
@@ -11,7 +12,7 @@ export function Footer() {
         </a>
         <a className="footer-gci-link" href={SITE.orgUrl}>Visit Greater Chatham Initiative <span aria-hidden="true">→</span></a>
       </div>
-      <div className="site-container footer-bottom">© {new Date().getFullYear()} Greater Chatham Initiative.</div>
+      <div className="site-container footer-bottom">© {new Date().getFullYear()} Greater Chatham Initiative.<CookiePreferences /></div>
     </footer>
   );
 }
