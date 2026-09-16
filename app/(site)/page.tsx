@@ -4,6 +4,7 @@ import { resolveStops } from "@/app/lib/live-status";
 import { FoodCollections } from "@/app/components/FoodCollections";
 import { Neighborhoods } from "@/app/components/Neighborhoods";
 import { Hero } from "@/app/components/Hero";
+import { RestaurantMap } from "@/app/components/RestaurantMap";
 import { PathExplorer } from "@/app/components/PathExplorer";
 import { Updates } from "@/app/components/Updates";
 
@@ -29,6 +30,7 @@ export default async function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <RestaurantMap stops={stops} />
       <Hero count={stops.length} />
       <FoodCollections stops={stops} />
       <PathExplorer stops={stops} />

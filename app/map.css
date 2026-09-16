@@ -1,0 +1,86 @@
+/* GCI crimson and orange, with the existing Figtree face and discovery ink. */
+.map-intro { display:grid; grid-template-columns: .85fr 1.3fr; margin-block:24px 32px; border:1px solid #dfe4e9; border-radius:16px; overflow:hidden; }
+.map-intro-copy { padding:36px; display:flex; flex-direction:column; align-items:flex-start; gap:16px; background:#fff; }
+.map-location { display:flex; align-items:center; gap:6px; color:#9a1724; font-size:14px; font-weight:700; }
+.map-location svg { width:18px; height:18px; }
+.map-intro h2 { font-size:clamp(30px,3.5vw,46px); line-height:1.08; letter-spacing:-1.5px; font-weight:800; }
+.map-intro-copy > p:not(.map-location) { max-width:38ch; line-height:1.6; color:#566273; }
+.map-intro-copy > span { font-size:13px; color:#566273; }
+.map-preview { position:relative; min-height:340px; }
+.street-map { width:100%; height:100%; position:relative; background:#e7eadf; overflow:hidden; isolation:isolate; }
+.map-gesture, .map-tiles { position:absolute; inset:0; }
+.map-gesture { overflow:hidden; }
+.is-interactive .map-gesture { touch-action:none; cursor:grab; }
+.is-interactive .map-gesture:active { cursor:grabbing; }
+.map-gesture:focus-visible { outline:3px solid #bf1e2d; outline-offset:-3px; }
+.map-tiles { pointer-events:none; }
+.map-tiles img { position:absolute; max-width:none; user-select:none; }
+.map-preview-open { position:absolute; inset:0 0 44px; display:flex; align-items:flex-end; justify-content:center; padding:22px; cursor:zoom-in !important; }
+.map-preview-open > span { background:#fff; border:1px solid #dfe4e9; color:#172b45; padding:12px 18px; border-radius:30px; font-weight:700; box-shadow:0 3px 16px #172b4526; }
+.map-pin { position:absolute; width:44px; height:44px; transform:translate(-50%,-50%); background:#bf1e2d; border:3px solid white; color:white; border-radius:50%; display:grid; place-items:center; font-weight:800; box-shadow:0 2px 6px #172b4540; z-index:2; cursor:pointer; }
+.map-pin svg { width:22px; height:22px; }
+.map-pin.is-cluster { background:#172b45; }
+.map-pin.is-selected { background:#f26927; color:#141210; z-index:4; outline:3px solid #172b45; }
+.map-pin:hover, .map-pin:focus-visible { z-index:5; }
+.map-pin-label { display:none; position:absolute; bottom:48px; background:#fff; color:#172b45; border:1px solid #dfe4e9; padding:8px 12px; border-radius:6px; width:max-content; max-width:220px; text-align:center; font-size:13px; pointer-events:none; }
+.map-pin:hover .map-pin-label, .map-pin:focus-visible .map-pin-label, .map-pin.is-selected .map-pin-label { display:block; }
+.map-pin:disabled { cursor:inherit; }
+.map-attribution { position:absolute; right:0; bottom:0; padding:12px 10px; min-height:44px; display:flex; align-items:center; background:#fffffff2; color:#172b45; font-size:11px; z-index:6; text-decoration:underline; }
+.map-controls { position:absolute; top:12px; right:12px; display:grid; gap:6px; z-index:6; }
+.map-controls button { min-width:44px; min-height:44px; background:white; border:1px solid #b7c1cc; border-radius:6px; color:#172b45; font-size:25px; box-shadow:0 2px 5px #172b451a; }
+.map-controls button:disabled { opacity:.5; cursor:default; }
+.map-controls .map-reset { font-size:12px; font-weight:700; padding:8px; }
+.map-error { position:absolute; left:12px; right:88px; bottom:48px; padding:10px; background:white; color:#172b45; font-size:13px; z-index:6; }
+.restaurant-map-dialog { position:fixed; inset:0; margin:auto; width:min(1320px,calc(100vw - 40px)); height:min(860px,calc(100dvh - 40px)); max-width:none; max-height:none; padding:0; border:0; border-radius:16px; background:#fff; color:#172b45; overflow:hidden; }
+.restaurant-map-dialog[open] { display:flex; flex-direction:column; }
+.restaurant-map-dialog::backdrop { background:#101c30b8; }
+.map-dialog-header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 22px; border-bottom:1px solid #dfe4e9; }
+.map-dialog-header h2 { font-size:24px; font-weight:800; letter-spacing:-.6px; }
+.map-dialog-header p { font-size:13px; color:#566273; }
+.map-filter-bar { display:flex; align-items:center; gap:12px; padding:12px 22px; border-bottom:1px solid #dfe4e9; }
+.map-filter-bar label { flex:1; min-width:0; }
+.map-filter-bar input { width:100%; min-height:44px; border:1px solid #b7c1cc; border-radius:8px; padding:10px 12px; font-size:16px; }
+.map-filter-bar [aria-pressed=true] { background:#172b45; color:#fff; }
+.map-explorer-body { flex:1; min-height:0; display:grid; grid-template-columns:1fr 360px; }
+.map-canvas { position:relative; min-width:0; min-height:0; }
+.map-instructions { position:absolute; bottom:48px; left:12px; padding:6px 9px; background:#fffffff0; border-radius:4px; color:#172b45; font-size:12px; pointer-events:none; }
+.map-kitchens { overflow-y:auto; overscroll-behavior:contain; border-left:1px solid #dfe4e9; }
+.map-results-heading { padding:18px 18px 12px; }
+.map-results-heading h3 { font-size:18px; font-weight:800; }
+.map-results-heading p { margin-top:4px; font-size:13px; color:#566273; }
+.map-result { display:flex; align-items:center; gap:12px; width:100%; padding:14px 18px; text-align:left; border-bottom:1px solid #dfe4e9; }
+.map-result > img { width:64px; height:64px; object-fit:cover; border-radius:8px; flex-shrink:0; }
+.map-result > svg { width:18px; height:18px; flex-shrink:0; color:#bf1e2d; }
+.map-result > span { display:grid; flex:1; gap:4px; min-width:0; }
+.map-result strong { font-size:15px; font-weight:750; }
+.map-result span span, .map-result small { font-size:12px; color:#566273; }
+.map-result:hover, .map-result[aria-pressed=true] { background:#faf6f0; }
+.map-result[aria-pressed=true] { box-shadow:inset 4px 0 #bf1e2d; }
+.map-detail { padding:0 18px 20px; border-bottom:2px solid #bf1e2d; }
+.map-detail-heading { display:flex; align-items:center; justify-content:space-between; min-height:48px; font-size:13px; }
+.map-detail-photo { height:150px; position:relative; overflow:hidden; border-radius:8px; }
+.map-detail-photo img { object-fit:cover; }
+.map-detail h3 { font-size:24px; font-weight:800; line-height:1.15; margin-top:14px; }
+.map-detail > p { font-size:14px; line-height:1.5; margin-top:8px; }
+.map-detail .map-hours { font-weight:700; }
+.map-detail-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.map-empty { padding:18px; display:grid; gap:16px; }
+@media (max-width:700px) {
+  .map-intro { grid-template-columns:1fr; margin-top:16px; }
+  .map-intro-copy { padding:22px; gap:12px; }
+  .map-intro h2 { font-size:34px; }
+  .map-intro-copy > p:not(.map-location) { font-size:14px; }
+  .map-preview { height:220px; min-height:220px; }
+  .map-preview-open { padding:12px; }
+  .map-preview-open > span { font-size:13px; }
+  .restaurant-map-dialog { width:100%; height:100dvh; border-radius:0; }
+  .map-dialog-header { padding:12px 16px; padding-top:max(12px,env(safe-area-inset-top)); }
+  .map-dialog-header h2 { font-size:21px; }
+  .map-filter-bar { padding:10px 12px; gap:8px; }
+  .map-filter-bar input { font-size:16px; padding:8px; }
+  .map-explorer-body { grid-template-columns:1fr; grid-template-rows:minmax(200px,44%) minmax(0,1fr); }
+  .map-kitchens { border-left:0; border-top:1px solid #dfe4e9; padding-bottom:env(safe-area-inset-bottom); }
+  .map-detail-photo { height:110px; width:110px; float:right; margin:0 0 10px 12px; }
+  .map-detail-actions { clear:both; }
+  .map-instructions { max-width:220px; font-size:11px; }
+}
