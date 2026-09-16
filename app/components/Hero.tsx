@@ -23,7 +23,7 @@ export function Hero({ count }: { count: number }) {
         <Image src="/images/brand/hero-brown-sugar-storefront.jpg" alt="Brown Sugar Bakery's red and gold awnings on 75th Street in Greater Chatham" fill priority sizes="(min-width: 1328px) 1280px, 100vw" className="hero-photo" />
         <div className="hero-shade" />
         <div className={`hero-copy ${logoSans.variable} ${logoScript.variable}`}><p><MapPin />Chicago’s South Side</p><h1 id="hero-heading"><span className="hero-logo-line">Good food.</span><span className="hero-logo-script">Great neighborhood.</span></h1><span>Find your next favorite among {count} local kitchens.<br className="desktop-break" /> Come for a bite. Stay for the stories.</span></div>
-        <a className="hero-photo-credit" href="#neighborhoods">On the path: 75th Street</a>
+        <span className="hero-photo-credit">On the path: 75th Street</span>
       </div>
       <form id="discover-search" className="discovery-search" role="search" onSubmit={e => { e.preventDefault(); updateFilters({ ...EMPTY_FILTERS, q: query, area }, true); }}>
         <label className="search-segment query-segment"><Search /><span><strong>What sounds good?</strong><input type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder="A dish, a cuisine, a kitchen" maxLength={200} aria-label="Search a dish, cuisine, or kitchen" /></span></label>

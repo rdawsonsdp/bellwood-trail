@@ -6,7 +6,7 @@ import { EMPTY_FILTERS } from "@/app/lib/discovery";
 import { useDiscovery } from "./DiscoveryContext";
 import { Close, Heart, Menu } from "./icons";
 
-const NAV = [{ label: "Explore kitchens", href: "#path" }, { label: "The neighborhood", href: "#neighborhoods" }, { label: "Latest", href: "#updates" }];
+const NAV = [{ label: "Explore kitchens", href: "#path" }, { label: "Latest", href: "#updates" }];
 export function Header() {
   const [open, setOpen] = useState(false);
   const menu = useRef<HTMLButtonElement>(null);

@@ -2,7 +2,6 @@ import { SITE } from "@/content/restaurants";
 import { getContent } from "@/app/lib/content-store";
 import { resolveStops } from "@/app/lib/live-status";
 import { FoodCollections } from "@/app/components/FoodCollections";
-import { Neighborhoods } from "@/app/components/Neighborhoods";
 import { Hero } from "@/app/components/Hero";
 import { RestaurantMap } from "@/app/components/RestaurantMap";
 import { PathExplorer } from "@/app/components/PathExplorer";
@@ -34,7 +33,6 @@ export default async function Home() {
       <Hero count={stops.length} />
       <FoodCollections stops={stops} />
       <PathExplorer stops={stops} />
-      <Neighborhoods stops={stops} />
       <Updates updates={updates} />
     </>
   );
