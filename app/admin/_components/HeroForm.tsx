@@ -28,19 +28,19 @@ export function HeroForm({ hero, version, saved, readonly }: { hero: HeroContent
           }
           setPreview(URL.createObjectURL(file));
         }} />
-        <span className="mt-2 block text-xs text-warm-gray">Up to 4 MB. A wide photo at least 1600 pixels across works best. Choose a photo with room for the centered logo.</span>
+        <span className="mt-2 block text-xs text-warm-gray">Up to 4 MB. Choose a tall photo with the subject fully visible. The GCI logo sits in the lower-right corner.</span>
       </label>
       <label className="block text-small font-semibold">Image description
         <input name="imageAlt" value={description} onChange={event => setDescription(event.target.value)} required maxLength={250} className="mt-2 w-full rounded-xl border border-line px-3 py-3 text-body" />
         <span className="mt-1 block text-xs font-normal text-warm-gray">Describe what is in the photo for visitors using a screen reader.</span>
       </label>
       <div className="grid gap-5 md:grid-cols-[2fr_1fr]">
-        {[{ label: "Desktop preview", ratio: "2.94", logo: "22%" }, { label: "Mobile preview", ratio: "2.17", logo: "44%" }].map(item => <div key={item.label}>
+        {[{ label: "Desktop preview", ratio: "1.8", logo: "10%" }, { label: "Mobile preview", ratio: "0.75", logo: "18%" }].map(item => <div key={item.label}>
           <p className="mb-2 text-small font-semibold">{item.label}</p>
           <div className="relative grid place-items-center overflow-hidden bg-ink" style={{ aspectRatio: item.ratio }}>
-            <img src={preview || hero.image} alt={description} className="absolute inset-0 h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-black/40" />
-            <Image src="/images/brand/gci-logo.png" alt="" width={400} height={311} className="relative h-auto brightness-0 invert" style={{ width: item.logo }} />
+            <img src={preview || hero.image} alt={description} className="absolute inset-0 h-full w-full object-contain" />
+            
+            <Image src="/images/brand/gci-logo.png" alt="" width={400} height={311} className="absolute bottom-3 right-3 h-auto brightness-0 invert" style={{ width: item.logo }} />
           </div>
         </div>)}
       </div>

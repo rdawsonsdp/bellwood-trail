@@ -15,6 +15,7 @@ export function Hero({ hero = DEFAULT_HERO }: { hero?: HeroContent }) {
   return <>
     <section className="discovery-hero trail-hero" aria-labelledby="hero-heading">
       <div className="trail-hero-scene">
+        <Image src={hero.image} alt="" fill sizes="100vw" className="trail-hero-backdrop" aria-hidden="true" />
         <Image src={hero.image} alt={hero.imageAlt} fill priority sizes="100vw" className="trail-hero-photo" />
         <div className="trail-hero-shade" />
         <Image src="/images/brand/gci-logo.png" alt="Greater Chatham Initiative" width={400} height={311} priority className="trail-hero-logo" />
