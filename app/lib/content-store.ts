@@ -69,6 +69,9 @@ const cachedRead = unstable_cache(readContent, [CONTENT_TAG], { tags: [CONTENT_T
 
 /** Read for the public page: cached until the next save expires CONTENT_TAG. */
 export async function getContent(): Promise<SiteContent> {
+  // Repository content changes with deployments, not admin saves. Next's data
+  // cache can survive deployments, so never cache a read-only seed snapshot.
+  if (storageMode() === "readonly") return seed();
   try {
     return await cachedRead();
   } catch (e) {

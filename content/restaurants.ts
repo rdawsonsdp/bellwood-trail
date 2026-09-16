@@ -54,6 +54,23 @@ export interface Restaurant {
 
 export const RESTAURANTS: Restaurant[] = [
   {
+    slug: "park-manor-75", name: "Park Manor 75",
+    tagline: "Wine, charcuterie, and Chicago-inspired fatbreads on 75th.",
+    cuisine: ["Wine Bar", "Charcuterie", "Small Plates"],
+    signature: ["Chef’s Choice Charcuterie", "The Park Manor Fatbread", "The Pilsen Fatbread", "Collard Green Dip", "Craft Cocktails"],
+    neighborhood: "Greater Grand Crossing", address: "600 E 75th St, Chicago, IL 60619",
+    phone: "(773) 919-3986", phoneHref: "tel:+17739193986",
+    site: "https://parkmanor75.com", builtByGci: false,
+    image: "/images/restaurants/park-manor-75.jpg",
+    imageAlt: "Screenshot of Park Manor 75’s teal logo and patterned artwork on its website",
+    // Official website hours, checked 2026-09-16. Friday and Saturday close at 1 AM the next day.
+    // Phone/neighborhood: Choose Chicago. Coordinates: Census address geocoder.
+    // Sources and screenshot capture are documented in docs/park-manor-75.md.
+    schedule: [[h(13),h(20)],null,null,[h(14),h(22)],[h(14),h(23)],[h(14),h(25)],[h(14),h(25)]],
+    dineIn: true, meals: ["dinner"],
+    lat: 41.758546461524, lng: -87.610178959674, corridor: "75th",
+  },
+  {
     slug: "harolds", name: "Harold's Chicken #24",
     tagline: "Fried fresh. Mild sauce mandatory.",
     cuisine: ["Fried Chicken", "Soul Food"], signature: ["Wings", "Half Chicken", "Mild Sauce", "Fish & Shrimp", "Gizzards"],
@@ -227,6 +244,7 @@ export const CORRIDORS: Record<Restaurant["corridor"], { label: string; blurb: s
  *  `cuisine` tags is listed here, so a new stop files itself; a category with
  *  no stops is simply not shown. */
 export const FOOD_CATEGORIES: { key: string; label: string; cuisines: string[] }[] = [
+  { key: "wine-small-plates", label: "Wine & Small Plates", cuisines: ["Wine Bar", "Charcuterie", "Small Plates"] },
   { key: "soul-food",  label: "Soul Food",       cuisines: ["Soul Food"] },
   { key: "barbecue",   label: "Barbecue",        cuisines: ["Barbecue", "Rib Tips"] },
   { key: "caribbean",  label: "Caribbean",       cuisines: ["Jamaican", "Caribbean"] },
