@@ -22,8 +22,8 @@ export function MobileNavigation({ onMap, mapActive = false, onNavigate }: {
   }, []);
   const destination = mapActive ? "map" : filters.saved ? "favorites" : homeVisible && !filters.q ? "home" : "search";
   const goHome = () => {
+    window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
     flushSync(() => { onNavigate?.(); updateFilters(EMPTY_FILTERS); });
-    window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}#hero-heading`);
     document.getElementById("hero-heading")?.focus({ preventScroll: true });
     window.scrollTo({ top: 0, behavior: "instant" });
     // Filter changes can trigger browser scroll anchoring after the render.
