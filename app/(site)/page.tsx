@@ -12,7 +12,7 @@ import { PathExplorer } from "@/app/components/PathExplorer";
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const { restaurants } = await getContent();
+  const { restaurants, hero } = await getContent();
   const stops = await resolveStops(restaurants);
   const jsonLd = {
     "@context": "https://schema.org",
@@ -28,7 +28,7 @@ export default async function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <Hero />
+      <Hero hero={hero} />
       <RestaurantMap stops={stops} />
       <FoodCollections stops={stops} />
       <PathExplorer stops={stops} />

@@ -1,4 +1,5 @@
 "use server";
+import { DEFAULT_HERO } from "@/content/hero";
 import { redirect } from "next/navigation";
 import { updateTag } from "next/cache";
 import { CORRIDORS, type Restaurant } from "@/content/restaurants";
@@ -181,4 +182,22 @@ export async function deleteUpdate(form: FormData): Promise<void> {
   const id = String(form.get("id"));
   await mutateOrNotice(String(form.get("version")), (c) => ({ ...c, updates: c.updates.filter((u) => u.id !== id) }));
   redirect("/admin?deleted=1#updates");
+}
+
+/* ---------- homepage hero ---------- */
+export async function saveHero(_: FormState, form: FormData): Promise<FormState> {
+  await requireAdmin();
+  try {
+    const version = String(form.get("version") ?? "");
+    const current = await readContent();
+    if (current.version !== version) throw new ConflictError();
+    const imageAlt = String(form.get("imageAlt") ?? "").trim();
+    if (!imageAlt || imageAlt.length > 250) return { error: "Describe the hero image in 1 to 250 characters." };
+    const file = form.get("photo");
+    const image = file instanceof File && file.size > 0
+      ? await saveImage(file, "homepage-hero")
+      : (current.hero ?? DEFAULT_HERO).image;
+    await mutate(version, content => ({ ...content, hero: { image, imageAlt } }));
+  } catch (error) { return fail(error); }
+  redirect("/admin/hero?saved=1");
 }

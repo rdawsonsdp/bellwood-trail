@@ -1,4 +1,5 @@
 "use client";
+import { DEFAULT_HERO, type HeroContent } from "@/content/hero";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { CORRIDORS, SITE, type Restaurant } from "@/content/restaurants";
@@ -6,7 +7,7 @@ import { EMPTY_FILTERS } from "@/app/lib/discovery";
 import { useDiscovery } from "./DiscoveryContext";
 import { Clock, Heart, MapPin, Search, Store } from "./icons";
 
-export function Hero() {
+export function Hero({ hero = DEFAULT_HERO }: { hero?: HeroContent }) {
   const { filters, updateFilters } = useDiscovery();
   const [query, setQuery] = useState(filters.q);
   const [area, setArea] = useState<Restaurant["corridor"] | "">(filters.area);
@@ -14,7 +15,7 @@ export function Hero() {
   return <>
     <section className="discovery-hero trail-hero" aria-labelledby="hero-heading">
       <div className="trail-hero-scene">
-        <Image src="/images/restaurants/lemsbbq.jpg" alt="Lem’s Bar-B-Q sign against a blue sky in Greater Chatham" fill priority sizes="100vw" className="trail-hero-photo" />
+        <Image src={hero.image} alt={hero.imageAlt} fill priority sizes="100vw" className="trail-hero-photo" />
         <div className="trail-hero-shade" />
         <Image src="/images/brand/gci-logo.png" alt="Greater Chatham Initiative" width={400} height={311} priority className="trail-hero-logo" />
       </div>

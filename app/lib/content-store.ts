@@ -4,6 +4,7 @@ import path from "node:path";
 import { unstable_cache } from "next/cache";
 import { BlobPreconditionFailedError, get, put } from "@vercel/blob";
 import { RESTAURANTS, type Restaurant } from "@/content/restaurants";
+import type { HeroContent } from "@/content/hero";
 import { UPDATES, type Update } from "@/content/updates";
 
 /**
@@ -21,7 +22,7 @@ import { UPDATES, type Update } from "@/content/updates";
  * Until the first save there is no document at all and the seed is served.
  */
 
-export interface SiteContent { restaurants: Restaurant[]; updates: Update[] }
+export interface SiteContent { restaurants: Restaurant[]; updates: Update[]; hero?: HeroContent }
 /** Content plus the version it was read at — pass the version back to save. */
 export interface VersionedContent extends SiteContent { version: string }
 
@@ -57,13 +58,13 @@ export async function readContent(): Promise<VersionedContent> {
     });
     if (!res || res.statusCode !== 200) return seed();
     const data = (await new Response(res.stream).json()) as SiteContent;
-    return { restaurants: data.restaurants, updates: data.updates, version: res.blob.etag };
+    return { restaurants: data.restaurants, updates: data.updates, hero: data.hero, version: res.blob.etag };
   }
   if (mode === "local") {
     try {
       const [raw, stat] = await Promise.all([fs.readFile(LOCAL_DOC, "utf8"), fs.stat(LOCAL_DOC)]);
       const data = JSON.parse(raw) as SiteContent;
-      return { restaurants: data.restaurants, updates: data.updates, version: String(stat.mtimeMs) };
+      return { restaurants: data.restaurants, updates: data.updates, hero: data.hero, version: String(stat.mtimeMs) };
     } catch (e) {
       if ((e as NodeJS.ErrnoException).code === "ENOENT") return seed();
       throw e;
@@ -72,7 +73,7 @@ export async function readContent(): Promise<VersionedContent> {
   return seed();
 }
 
-const cachedRead = unstable_cache(readContent, [CONTENT_TAG, storageMode(), process.env.CONTENT_BLOB_READ_WRITE_TOKEN ? "private-data" : "legacy"], { tags: [CONTENT_TAG] });
+const cachedRead = unstable_cache(readContent, [CONTENT_TAG, "hero-v1", storageMode(), process.env.CONTENT_BLOB_READ_WRITE_TOKEN ? "private-data" : "legacy"], { tags: [CONTENT_TAG] });
 
 /** Read for the public page: cached until the next save expires CONTENT_TAG. */
 export async function getContent(): Promise<SiteContent> {
@@ -95,7 +96,7 @@ export async function getContent(): Promise<SiteContent> {
  */
 export async function writeContent(next: SiteContent, baseVersion: string): Promise<void> {
   const mode = storageMode();
-  const body = JSON.stringify({ restaurants: next.restaurants, updates: next.updates }, null, 1);
+  const body = JSON.stringify({ restaurants: next.restaurants, updates: next.updates, hero: next.hero }, null, 1);
   if (mode === "blob") {
     try {
       await put(DOC, body, {

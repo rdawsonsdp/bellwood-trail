@@ -28,6 +28,10 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
       {/* Floats, because a save lands back here wherever the list was scrolled. */}
       {notice && <p role="status" className="fixed inset-x-5 bottom-5 z-50 mx-auto max-w-xl rounded-xl bg-ink px-5 py-3 text-center text-small font-semibold text-paper shadow-float">{notice}</p>}
 
+      <section className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-line bg-paper p-5">
+        <div><h2 className="font-head text-h3 text-ink">Homepage hero</h2><p className="mt-1 text-small text-warm-gray">Change the main image on desktop and mobile.</p></div>
+        <Link href="/admin/hero" className="rounded-pill border border-line px-5 py-3 text-small font-bold text-crimson">Edit hero image</Link>
+      </section>
       <section>
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
