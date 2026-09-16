@@ -3,7 +3,7 @@ import Image from "next/image";
 import { CORRIDORS } from "@/content/restaurants";
 import type { Stop } from "@/app/lib/live-status";
 import { useDiscovery } from "./DiscoveryContext";
-import { Directions, Heart, MapPin, Phone, Store } from "./icons";
+import { Heart, MapPin, Phone, Store } from "./icons";
 export function StopCard({ stop, onDetails, onReviews }: { stop: Stop; onDetails: () => void; onReviews: () => void }) {
   const { saved, toggleSaved } = useDiscovery();
   const isSaved = saved.includes(stop.slug);
@@ -22,8 +22,7 @@ export function StopCard({ stop, onDetails, onReviews }: { stop: Stop; onDetails
       <p className="kitchen-cuisine">{stop.cuisine.slice(0, 2).join(" · ")}{stop.dineIn === true ? " · Dine in" : stop.dineIn === false ? " · Carryout" : ""}</p>
       <button type="button" className="kitchen-reviews-button" onClick={onReviews} aria-label={`Google reviews for ${stop.name}`}><span aria-hidden="true">★</span> Google reviews <span aria-hidden="true">→</span></button>
       <p className="kitchen-tagline">{stop.tagline}</p>
-      <a className="kitchen-address" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(stop.address)}`} target="_blank" rel="noopener noreferrer"><MapPin /><span>{stop.address.split(",")[0]}</span><span className="sr-only"> — open map in a new tab</span></a>
-      <a className="kitchen-directions" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(stop.address)}`} target="_blank" rel="noopener noreferrer" aria-label={`Directions to ${stop.name} (opens in a new tab)`}><Directions /><span>Directions</span></a>
+      <a className="kitchen-address" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(stop.address)}`} target="_blank" rel="noopener noreferrer"><MapPin /><span>{stop.address.split(",")[0]}</span><span className="sr-only"> (directions, opens in a new tab)</span></a>
       <div className="kitchen-actions"><button className="details-button" onClick={onDetails}>Explore kitchen</button>{stop.phoneHref && <a className="kitchen-call" href={stop.phoneHref} aria-label={`Call ${stop.name}`}><Phone /><span>Call</span></a>}</div>
     </div>
   </article>;

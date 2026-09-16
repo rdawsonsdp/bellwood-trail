@@ -52,7 +52,8 @@
   .kitchen-body h3 { font-size: 16px; line-height: 1.2; letter-spacing: -.2px; overflow-wrap: anywhere; }
   .kitchen-body h3 button { min-height: 44px; width: 100%; }
   .kitchen-cuisine { font-size: 12px; line-height: 1.4; }
-  .kitchen-card .kitchen-tagline, .kitchen-card .kitchen-address,
+  .kitchen-card .kitchen-address { margin-top: auto; line-height: 1.4; }
+  .kitchen-card .kitchen-tagline,
   .kitchen-card .kitchen-reviews-button, .kitchen-card .kitchen-actions { display: none; }
   .hours-note { font-size: 11px; margin-top: 16px; }
   .save-notice { bottom: calc(84px + env(safe-area-inset-bottom)); font-size: 13px; }
