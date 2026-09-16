@@ -20,19 +20,19 @@ export const metadata: Metadata = {
   description: SITE.description,
   alternates: { canonical: "/" },
   openGraph: { type: "website", siteName: SITE.name, locale: "en_US", url: SITE_URL, title: TITLE, description: SITE.description,
-    images: [{ url: "/images/brand/hero-corridor-aerial.jpg", width: 1600, height: 1000, alt: "Aerial view of the 79th Street corridor in Greater Chatham" }] },
-  twitter: { card: "summary_large_image", title: TITLE, description: SITE.description, images: ["/images/brand/hero-corridor-aerial.jpg"] },
+    images: [{ url: "/icons/lems-gci-1024.png", width: 1024, height: 1024, alt: "Lem’s Bar-B-Q sign with the Greater Chatham Initiative logo" }] },
+  twitter: { card: "summary", title: TITLE, description: SITE.description, images: ["/icons/lems-gci-1024.png"] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, title: SITE.name, statusBarStyle: "default" },
   icons: {
     icon: [
-      { url: "/icons/gci-32.png", type: "image/png", sizes: "32x32" },
-      { url: "/icons/gci-48.png", type: "image/png", sizes: "48x48" },
-      { url: "/icons/gci-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icons/lems-gci-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/icons/lems-gci-48.png", type: "image/png", sizes: "48x48" },
+      { url: "/icons/lems-gci-192.png", type: "image/png", sizes: "192x192" },
     ],
-    shortcut: "/favicon.ico",
-    apple: [{ url: "/icons/gci-180.png", sizes: "180x180", type: "image/png" }],
+    shortcut: "/favicon.ico?v=lems-gci",
+    apple: [{ url: "/icons/lems-gci-180.png", sizes: "180x180", type: "image/png" }],
   },
 };
 
