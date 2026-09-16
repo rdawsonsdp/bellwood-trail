@@ -65,7 +65,7 @@ export async function readContent(): Promise<VersionedContent> {
   return seed();
 }
 
-const cachedRead = unstable_cache(readContent, [CONTENT_TAG], { tags: [CONTENT_TAG] });
+const cachedRead = unstable_cache(readContent, [CONTENT_TAG, storageMode()], { tags: [CONTENT_TAG] });
 
 /** Read for the public page: cached until the next save expires CONTENT_TAG. */
 export async function getContent(): Promise<SiteContent> {
@@ -112,13 +112,13 @@ export async function writeContent(next: SiteContent, baseVersion: string): Prom
 
 const EXT: Record<string, string> = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp", "image/avif": "avif", "image/gif": "gif" };
 export const IMAGE_TYPES = Object.keys(EXT);
-export const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+export const MAX_IMAGE_BYTES = 4 * 1024 * 1024;
 
 /** Store a card photo and return the URL the card should use. */
 export async function saveImage(data: Blob, slug: string): Promise<string> {
   const ext = EXT[data.type];
   if (!ext) throw new Error("Photos must be JPEG, PNG, WebP, AVIF or GIF.");
-  if (data.size > MAX_IMAGE_BYTES) throw new Error("That photo is over 5 MB. Export it at about 1600 pixels wide and try again.");
+  if (data.size > MAX_IMAGE_BYTES) throw new Error("That image is over 4 MB. Export it at about 1600 pixels wide and try again.");
   const name = `${slug}-${Date.now()}.${ext}`;
   const mode = storageMode();
   if (mode === "blob") {

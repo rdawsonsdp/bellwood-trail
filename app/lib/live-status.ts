@@ -22,7 +22,7 @@ export type Stop = Restaurant & { status: StopStatus; imageSrc: string | null };
 // A seed photo may be .jpg, .png or .webp depending on what its site served,
 // and is stored without the extension. Resolve the real file once on the
 // server rather than guessing. Photos saved from /admin carry a full URL.
-function resolveImage(image: string): string | null {
+export function resolveImage(image: string): string | null {
   if (/^https?:\/\//.test(image) || /\.\w{3,4}$/.test(image)) return image;
   for (const ext of ["jpg", "png", "webp"]) {
     if (fs.existsSync(path.join(process.cwd(), "public", `${image}.${ext}`))) return `${image}.${ext}`;

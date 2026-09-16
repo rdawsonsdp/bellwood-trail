@@ -5,7 +5,7 @@ import { useActionState, useEffect, useRef, useState, useTransition, type ReactN
 import { CORRIDORS } from "@/content/restaurants";
 import type { SiteSnapshot } from "@/app/lib/site-data";
 import { formatRange } from "@/app/lib/hours";
-import { deleteStop, loadSite, saveStop, type FormState } from "../actions";
+import { deleteStop, loadSite, locateStop, saveStop, type FormState } from "../actions";
 import { CORRIDOR_KEYS, DAY_NAMES, MEAL_OPTIONS, rowsFromSchedule, scheduleFromRows, type StopDraft } from "../stop-draft";
 import { ConfirmButton } from "./ConfirmButton";
 import { keepOnError } from "./keep-on-error";
@@ -30,6 +30,16 @@ export function StopForm({ slug, initial, version, imageSrc }: {
   const [snap, setSnap] = useState<SiteSnapshot | null>(null);
   const [checking, startCheck] = useTransition();
   const check = () => startCheck(async () => setSnap(await loadSite(d.site, d.address)));
+  const [locating, startLocating] = useTransition();
+  const [locationMessage, setLocationMessage] = useState("");
+  const locate = () => startLocating(async () => {
+    const result = await locateStop(d.address);
+    if ("error" in result) setLocationMessage(result.error);
+    else {
+      setD(previous => ({ ...previous, lat: String(result.lat), lng: String(result.lng) }));
+      setLocationMessage(`Location found: ${result.matchedAddress}. Save changes to publish it on the map.`);
+    }
+  });
 
   const liveHours = snap?.schedule;
   const applySite = () => {
@@ -47,7 +57,7 @@ export function StopForm({ slug, initial, version, imageSrc }: {
   return (
     <div className="space-y-6">
       <Link href="/admin" className="text-small font-semibold text-warm-gray hover:text-ink">← All stops</Link>
-      <h1 className="font-head text-h2 text-ink">{slug ? `Edit ${initial.name}` : "Add a stop"}</h1>
+      <h1 className="font-head text-h2 text-ink">{slug ? `Edit ${initial.name}` : "Add a restaurant"}</h1>
 
       <form onSubmit={keepOnError(action)} className="space-y-6">
         <input type="hidden" name="data" value={JSON.stringify(d)} />
@@ -96,13 +106,13 @@ export function StopForm({ slug, initial, version, imageSrc }: {
           )}
         </Panel>
 
-        <Panel title="Card photo">
+        <Panel title="Restaurant image">
           <div className="grid gap-5 sm:grid-cols-[260px_1fr]">
             <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-line bg-cream">
               {preview ? <img src={preview} alt="" className="absolute inset-0 h-full w-full object-cover" /> : <span className="absolute inset-0 flex items-center justify-center text-small text-warm-gray">No photo yet</span>}
             </div>
             <div className="space-y-4">
-              <Field label="Upload a photo" hint="JPEG, PNG or WebP, under 5 MB. About 1600 px wide is plenty. The card crops to 4:3.">
+              <Field label="Upload an image or homepage screenshot" hint="JPEG, PNG or WebP, under 4 MB. About 1600 px wide is plenty. Preview the card crop here before saving.">
                 <input ref={fileRef} name="photo" type="file" accept="image/jpeg,image/png,image/webp,image/avif,image/gif"
                   onChange={(e) => { const f = e.target.files?.[0]; setFilePreview(f ? URL.createObjectURL(f) : null); }}
                   className="mt-1.5 block w-full text-small file:mr-3 file:rounded-pill file:border-0 file:bg-ink file:px-4 file:py-2 file:text-small file:font-bold file:text-paper" />
@@ -149,6 +159,15 @@ export function StopForm({ slug, initial, version, imageSrc }: {
               </select>
             </Field>
           </div>
+        </Panel>
+
+        <Panel title="Map location" aside={<button type="button" onClick={locate} disabled={locating || !d.address.trim()} className="min-h-11 rounded-pill border border-line px-4 py-2 text-small font-bold disabled:opacity-50">{locating ? "Finding location…" : "Find from address"}</button>}>
+          <p className="mb-4 text-small text-warm-gray">Find the restaurant using its street address above. If you leave both coordinates blank, it still appears in the directory but has no map pin.</p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Field label="Latitude"><input className={input} type="number" step="any" min="-85" max="85" value={d.lat} onChange={e => set("lat", e.target.value)} /></Field>
+            <Field label="Longitude"><input className={input} type="number" step="any" min="-180" max="180" value={d.lng} onChange={e => set("lng", e.target.value)} /></Field>
+          </div>
+          {locationMessage && <p role="status" className="mt-3 text-small">{locationMessage}</p>}
         </Panel>
 
         <Panel title="Food & filters">

@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/app/lib/admin-auth";
 import { notFound } from "next/navigation";
 import { readContent } from "@/app/lib/content-store";
 import { resolveStops } from "@/app/lib/live-status";
@@ -5,6 +6,7 @@ import { StopForm } from "../../../_components/StopForm";
 import { toDraft } from "../../../stop-draft";
 
 export default async function EditStop({ params }: { params: Promise<{ slug: string }> }) {
+  await requireAdmin();
   const { slug } = await params;
   const { restaurants, version } = await readContent();
   const stop = restaurants.find((r) => r.slug === slug);

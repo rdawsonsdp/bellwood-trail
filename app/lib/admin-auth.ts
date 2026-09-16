@@ -39,7 +39,7 @@ export async function endSession(): Promise<void> {
 export async function isAdmin(): Promise<boolean> {
   const k = key(); if (!k) return false;
   const [exp, sig] = ((await cookies()).get(COOKIE)?.value ?? "").split(".");
-  if (!exp || !sig || Number(exp) * 1000 < Date.now()) return false;
+  if (!exp || !sig || !/^\d+$/.test(exp) || !Number.isFinite(Number(exp)) || Number(exp) * 1000 <= Date.now()) return false;
   const want = Buffer.from(sign(exp, k)), got = Buffer.from(sig);
   return want.length === got.length && timingSafeEqual(want, got);
 }

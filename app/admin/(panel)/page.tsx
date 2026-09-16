@@ -1,18 +1,22 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Suspense } from "react";
 import { CORRIDORS } from "@/content/restaurants";
 import { readContent } from "@/app/lib/content-store";
+import { requireAdmin } from "@/app/lib/admin-auth";
+import { resolveImage } from "@/app/lib/live-status";
 import { SiteHealth } from "../_components/SiteHealth";
 import { ConfirmButton } from "../_components/ConfirmButton";
 import { deleteUpdate, refreshSites } from "../actions";
 
 const NOTICES: Record<string, string> = {
-  refreshed: "Done — every card re-reads its restaurant's site on the next visit.",
+  refreshed: "Hours and contact details will be refreshed from restaurant websites. Images stay as you selected them.",
   deleted: "Deleted.",
   conflict: "Someone else saved changes first, so nothing was deleted. The list below is current — try again.",
 };
 
 export default async function Dashboard({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
+  await requireAdmin();
   const q = await searchParams;
   const { restaurants, updates, version } = await readContent();
   const notice = q.saved ? `Saved${q.saved === "update" ? " the update" : ` ${q.saved}`}. The trail shows it now.`
@@ -27,16 +31,16 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
       <section>
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="font-head text-h2 text-ink">Stops on the path</h1>
+            <h1 className="font-head text-h2 text-ink">Restaurants on the path</h1>
             <p className="mt-1 max-w-2xl text-small text-warm-gray">
-              Hours, phone and address on a card come live from the restaurant&apos;s own site when it publishes them. Everything else — name, photo, tagline, tags — is set here.
+              Edit a restaurant to change its image, details, hours or map location. Upload your own photo or homepage screenshot, or choose an image from its website.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <form action={refreshSites}>
-              <button className="rounded-pill border border-line bg-paper px-4 py-2.5 text-small font-bold text-ink hover:border-orange">Refresh all sites now</button>
+              <button className="rounded-pill border border-line bg-paper px-4 py-2.5 text-small font-bold text-ink hover:border-orange">Refresh hours & contact details</button>
             </form>
-            <Link href="/admin/stops/new" className="rounded-pill bg-orange px-5 py-2.5 text-small font-bold text-ink hover:bg-crimson hover:text-paper">+ Add a stop</Link>
+            <Link href="/admin/stops/new" className="rounded-pill bg-orange px-5 py-2.5 text-small font-bold text-ink hover:bg-crimson hover:text-paper">+ Add a restaurant</Link>
           </div>
         </div>
 
@@ -50,6 +54,7 @@ export default async function Dashboard({ searchParams }: { searchParams: Promis
                 <ul className="mt-2 divide-y divide-line overflow-hidden rounded-2xl border border-line bg-paper">
                   {list.map((r) => (
                     <li key={r.slug} className="flex flex-col gap-1 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                      {resolveImage(r.image) && <Image src={resolveImage(r.image)!} alt={`Current image for ${r.name}`} width={96} height={72} className="h-[72px] w-24 shrink-0 rounded-lg object-cover" />}
                       <div className="min-w-0">
                         <p className="font-semibold text-ink">
                           {r.name}

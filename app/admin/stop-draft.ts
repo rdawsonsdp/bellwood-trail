@@ -17,6 +17,7 @@ export interface StopDraft {
   dineIn: "yes" | "no" | "unknown"; meals: Meal[];
   hours: HoursRow[];
   image: string; imageAlt: string; hidden: boolean;
+  lat: string; lng: string;
 }
 
 const hhmm = (m: number) => `${String(Math.floor(m / 60) % 24).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
@@ -44,8 +45,16 @@ export function toDraft(r?: Restaurant): StopDraft {
     dineIn: r?.dineIn === undefined ? "unknown" : r.dineIn ? "yes" : "no", meals: r?.meals ?? [],
     hours: rowsFromSchedule(r?.schedule ?? [null, null, null, null, null, null, null]),
     image: r?.image ?? "", imageAlt: r?.imageAlt ?? "", hidden: r?.hidden ?? false,
+    lat: r?.lat === undefined ? "" : String(r.lat), lng: r?.lng === undefined ? "" : String(r.lng),
   };
 }
 
 export const splitList = (s: string) => s.split(",").map((t) => t.trim()).filter(Boolean);
+export function coordinatesFromDraft(lat: string, lng: string): { lat?: number; lng?: number } {
+  if (!lat.trim() && !lng.trim()) return { lat: undefined, lng: undefined };
+  if (!lat.trim() || !lng.trim()) throw new Error("Enter both latitude and longitude, or leave both blank.");
+  const latitude = Number(lat), longitude = Number(lng);
+  if (!Number.isFinite(latitude) || !Number.isFinite(longitude) || Math.abs(latitude) > 85 || Math.abs(longitude) > 180) throw new Error("Enter valid map coordinates.");
+  return { lat: latitude, lng: longitude };
+}
 export const slugify = (s: string) => s.toLowerCase().normalize("NFKD").replace(/[^\w\s-]/g, "").trim().replace(/[\s_]+/g, "-").replace(/-+/g, "-").slice(0, 48);

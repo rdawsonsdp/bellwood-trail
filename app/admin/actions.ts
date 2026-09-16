@@ -6,7 +6,7 @@ import { UPDATE_TAGS, type Update } from "@/content/updates";
 import { endSession, passwordMatches, requireAdmin, startSession } from "@/app/lib/admin-auth";
 import { CONTENT_TAG, ConflictError, IMAGE_TYPES, MAX_IMAGE_BYTES, readContent, saveImage, writeContent, type SiteContent } from "@/app/lib/content-store";
 import { SITE_TAG, fetchSite, formatPhone, phoneHref } from "@/app/lib/site-data";
-import { MEAL_OPTIONS, scheduleFromRows, slugify, splitList, type StopDraft } from "./stop-draft";
+import { coordinatesFromDraft, MEAL_OPTIONS, scheduleFromRows, slugify, splitList, type StopDraft } from "./stop-draft";
 
 export interface FormState { error?: string }
 
@@ -54,10 +54,10 @@ async function photoFrom(form: FormData, slug: string): Promise<string | null> {
   if (file instanceof File && file.size > 0) return saveImage(file, slug);
   const from = httpUrl(String(form.get("copyFrom") ?? ""));
   if (!from) return null;
-  const res = await fetch(from, { signal: AbortSignal.timeout(10000) });
+  const res = await fetch(from, { cache: "no-store", signal: AbortSignal.timeout(10000) });
   const type = (res.headers.get("content-type") ?? "").split(";")[0];
   if (!res.ok || !IMAGE_TYPES.includes(type)) throw new Error("Couldn't copy that photo from the site. Try another, or upload it.");
-  if (Number(res.headers.get("content-length") ?? 0) > MAX_IMAGE_BYTES) throw new Error("That photo is over 5 MB. Upload a smaller copy instead.");
+  if (Number(res.headers.get("content-length") ?? 0) > MAX_IMAGE_BYTES) throw new Error("That photo is over 4 MB. Upload a smaller copy instead.");
   return saveImage(new Blob([await res.arrayBuffer()], { type }), slug);
 }
 
@@ -99,6 +99,7 @@ export async function saveStop(_: FormState, form: FormData): Promise<FormState>
       dineIn: d.dineIn === "unknown" ? undefined : d.dineIn === "yes",
       meals: MEAL_OPTIONS.filter((m) => d.meals.includes(m)),
       schedule, image, imageAlt: d.imageAlt.trim() || undefined, hidden: d.hidden || undefined,
+      ...coordinatesFromDraft(d.lat ?? "", d.lng ?? ""),
     };
     await mutate(version, (c) => ({
       ...c,
@@ -109,6 +110,22 @@ export async function saveStop(_: FormState, form: FormData): Promise<FormState>
     return fail(e);
   }
   redirect(`/admin?saved=${encodeURIComponent(savedName)}`);
+}
+
+export async function locateStop(address: string): Promise<{ lat: number; lng: number; matchedAddress: string } | { error: string }> {
+  await requireAdmin();
+  if (!address.trim() || address.length > 300) return { error: "Enter the complete street address first." };
+  try {
+    const params = new URLSearchParams({ address: address.trim(), benchmark: "Public_AR_Current", format: "json" });
+    const response = await fetch(`https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?${params}`, { cache: "no-store", signal: AbortSignal.timeout(10000) });
+    if (!response.ok) throw new Error("Map lookup unavailable.");
+    const data = await response.json();
+    const matches = data.result?.addressMatches;
+    if (!Array.isArray(matches) || matches.length !== 1) return { error: "No unique location found. Check the street address, city and ZIP, or enter coordinates below." };
+    const match = matches[0];
+    const point = coordinatesFromDraft(String(match.coordinates?.y), String(match.coordinates?.x));
+    return { lat: point.lat!, lng: point.lng!, matchedAddress: String(match.matchedAddress) };
+  } catch { return { error: "Map lookup is unavailable right now. Try again or enter the coordinates below." }; }
 }
 
 /** Deletes can't show a form error, so a conflict comes back as a notice on the list. */
