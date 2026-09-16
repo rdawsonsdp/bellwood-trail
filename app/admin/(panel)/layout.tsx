@@ -21,7 +21,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
             <Image src="/images/brand/gci-logo.png" alt="" aria-hidden width={400} height={311} className="h-9 w-auto" />
             <span className="font-head text-base text-ink">Culinary Path admin</span>
           </Link>
-          <nav className="flex items-center gap-5 text-small font-semibold">
+          <nav className="flex shrink-0 items-center gap-3 whitespace-nowrap text-xs font-semibold sm:gap-5 sm:text-small">
             <a href="/" target="_blank" rel="noopener noreferrer" className="text-warm-gray hover:text-ink">View site ↗</a>
             <form action={logout}><button className="text-crimson hover:underline">Log out</button></form>
           </nav>

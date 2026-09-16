@@ -16,6 +16,8 @@ The refresh button updates website hours and contact details. It does not replac
 
 ## Storage
 
-The production project uses its dedicated public Vercel Blob store, `chatham-culinary-path-content`, for restaurant data and uploaded images. The stored document becomes authoritative after the first save, initially preserving all fourteen repository listings and the existing updates. Edits use version checks and invalidate the public content cache. Subsequent code deployments do not overwrite admin edits. Image uploads get unique URLs to prevent old image caches from hiding changes.
+Restaurant data lives in the private Vercel Blob store `chatham-culinary-path-data`, authenticated with `CONTENT_BLOB_READ_WRITE_TOKEN`. Reads bypass the storage CDN so a save is immediately visible, and request uncompressed JSON to preserve the strong ETag needed for version checks. The public `chatham-culinary-path-content` store, using `BLOB_READ_WRITE_TOKEN`, serves uploaded images with unique URLs to prevent stale image caches.
+
+The stored document is authoritative and was initialized with all fourteen repository listings and the existing updates. Edits use version checks and invalidate the public content cache. Subsequent code deployments do not overwrite admin edits.
 
 Local development without a Blob token continues to use `.content/` and `public/uploads/`, both ignored by Git. Never point routine local testing at the production store. Credentials and environment files must not be committed.

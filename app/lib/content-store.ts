@@ -37,7 +37,7 @@ export class ConflictError extends Error {
 
 export type StorageMode = "blob" | "local" | "readonly";
 export function storageMode(): StorageMode {
-  if (process.env.BLOB_READ_WRITE_TOKEN) return "blob";
+  if (process.env.CONTENT_BLOB_READ_WRITE_TOKEN || process.env.BLOB_READ_WRITE_TOKEN) return "blob";
   return process.env.NODE_ENV === "production" ? "readonly" : "local";
 }
 
@@ -47,7 +47,14 @@ const seed = (): VersionedContent => ({ restaurants: RESTAURANTS, updates: UPDAT
 export async function readContent(): Promise<VersionedContent> {
   const mode = storageMode();
   if (mode === "blob") {
-    const res = await get(DOC, { access: "public", useCache: false });
+    const res = await get(DOC, {
+      access: process.env.CONTENT_BLOB_READ_WRITE_TOKEN ? "private" : "public",
+      token: process.env.CONTENT_BLOB_READ_WRITE_TOKEN || process.env.BLOB_READ_WRITE_TOKEN,
+      useCache: false,
+      // Compression weakens the HTTP ETag. Conditional writes need the original
+      // strong version, so read JSON without a transfer encoding.
+      headers: { "accept-encoding": "identity" },
+    });
     if (!res || res.statusCode !== 200) return seed();
     const data = (await new Response(res.stream).json()) as SiteContent;
     return { restaurants: data.restaurants, updates: data.updates, version: res.blob.etag };
@@ -65,7 +72,7 @@ export async function readContent(): Promise<VersionedContent> {
   return seed();
 }
 
-const cachedRead = unstable_cache(readContent, [CONTENT_TAG, storageMode()], { tags: [CONTENT_TAG] });
+const cachedRead = unstable_cache(readContent, [CONTENT_TAG, storageMode(), process.env.CONTENT_BLOB_READ_WRITE_TOKEN ? "private-data" : "legacy"], { tags: [CONTENT_TAG] });
 
 /** Read for the public page: cached until the next save expires CONTENT_TAG. */
 export async function getContent(): Promise<SiteContent> {
@@ -92,7 +99,9 @@ export async function writeContent(next: SiteContent, baseVersion: string): Prom
   if (mode === "blob") {
     try {
       await put(DOC, body, {
-        access: "public", contentType: "application/json", addRandomSuffix: false, cacheControlMaxAge: 60,
+        access: process.env.CONTENT_BLOB_READ_WRITE_TOKEN ? "private" : "public",
+        token: process.env.CONTENT_BLOB_READ_WRITE_TOKEN || process.env.BLOB_READ_WRITE_TOKEN,
+        contentType: "application/json", addRandomSuffix: false, cacheControlMaxAge: 60,
         ...(baseVersion === SEED ? { allowOverwrite: true } : { ifMatch: baseVersion }),
       });
     } catch (e) {
