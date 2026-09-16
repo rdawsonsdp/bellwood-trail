@@ -28,8 +28,8 @@ export default async function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <RestaurantMap stops={stops} />
       <Hero count={stops.length} />
+      <RestaurantMap stops={stops} />
       <FoodCollections stops={stops} />
       <PathExplorer stops={stops} />
     </>
