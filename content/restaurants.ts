@@ -79,7 +79,10 @@ export const RESTAURANTS: Restaurant[] = [
     signature: ["Thin-Crust Pizza", "Chicken Vesuvio", "Baked Mostaccioli", "Italian Beef", "Full Bar"],
     neighborhood: "Bellwood", address: "5201 St Charles Rd, Bellwood, IL 60104",
     phone: "(708) 544-0380", phoneHref: "tel:+17085440380",
-    site: "https://gioacchinosristorante.pizza", liveDetails: false, image: "",
+    site: "https://gioacchinosristorante.pizza", liveDetails: false,
+    // From the banner on its own site.
+    image: "/images/restaurants/gioacchinos.jpg",
+    imageAlt: "A cheese and sausage thin-crust pizza on a pan, from Gioacchino's website",
     since: "1977",
     // UNVERIFIED beyond one day: its site shows "Open today 11:00 am – 10:00 pm"
     // and notes the kitchen closes 30 minutes before the dining room. Whether
@@ -124,7 +127,10 @@ export const RESTAURANTS: Restaurant[] = [
     signature: ["Spumoni", "Italian Ice", "Cassata Cake", "Tortoni", "Cannoli"],
     neighborhood: "Bellwood", address: "4009 St Charles Rd, Bellwood, IL 60104",
     phone: "(708) 547-5969", phoneHref: "tel:+17085475969",
-    site: "https://lezza.com", liveDetails: false, image: "",
+    site: "https://lezza.com", liveDetails: false,
+    // Lezza's own product photograph, published on lezza.com.
+    image: "/images/restaurants/lezza.jpg",
+    imageAlt: "Pistachio-crusted cannoli dusted with sugar, from Lezza's website",
     // The company dates itself to 1904; a 2026 business listing puts it at
     // "121 years in business," which agrees within a year. Worth confirming
     // with the family before it goes on a sign.
@@ -204,7 +210,10 @@ export const RESTAURANTS: Restaurant[] = [
     signature: ["Gyros with Ariston Sauce", "Baby Back Ribs", "Chicken Kabob", "Pizza Puff", "Fries with Mild Sauce"],
     neighborhood: "Bellwood", address: "919 Mannheim Rd, Bellwood, IL 60104",
     phone: "(708) 544-8766", phoneHref: "tel:+17085448766",
-    site: "https://aristongyros.com", liveDetails: false, image: "",
+    site: "https://aristongyros.com", liveDetails: false,
+    // From Ariston's own photo gallery — its food, not a stock picture.
+    image: "/images/restaurants/ariston.jpg",
+    imageAlt: "A gyros platter with crinkle-cut fries and a cup of Ariston sauce, from Ariston's website",
     // VERIFIED: Sun 10:30 AM–midnight, Mon–Thu 9:30 AM–1 AM, Fri 9:30 AM–2 AM,
     // Sat 9:30 AM–1 AM (its map listing, checked 2026-09-22).
     schedule: [[h(10, 30), h(24)], [h(9, 30), h(25)], [h(9, 30), h(25)], [h(9, 30), h(25)], [h(9, 30), h(25)], [h(9, 30), h(26)], [h(9, 30), h(25)]],
@@ -218,7 +227,13 @@ export const RESTAURANTS: Restaurant[] = [
     signature: ["Thin-Crust Sausage", "Italian Beef", "Meatball Sandwich", "Stuffed Pizza"],
     neighborhood: "Bellwood", address: "815 Mannheim Rd, Bellwood, IL 60104",
     phone: "(708) 493-2200", phoneHref: "tel:+17084932200",
-    site: "https://www.nickspizzabeef.com", liveDetails: false, image: "",
+    site: "https://www.nickspizzabeef.com", liveDetails: false,
+    // Its own logo mark. The only photographs on Nick's site are stock, so the
+    // mark is the honest choice until someone shoots the storefront.
+    image: "/images/restaurants/nicks.png",
+    imageAlt: "The Original Nick's Pizza & Beef logo — a pizza wheel with a banner, Est. 1972",
+    // "EST. 1972" is lettered on the logo.
+    since: "1972",
     // UNVERIFIED — placeholder. Pizzeria hours assumed.
     schedule: [[h(11), h(21)], [h(11), h(21)], [h(11), h(21)], [h(11), h(21)], [h(11), h(21)], [h(11), h(23)], [h(11), h(23)]],
     meals: ["lunch", "dinner"],
@@ -226,12 +241,16 @@ export const RESTAURANTS: Restaurant[] = [
   },
   {
     slug: "mickeys", name: "Mickey's Drive-In",
-    tagline: "A Chicago beef stand, the way a beef stand should be.",
-    cuisine: ["Hot Dogs", "Italian Beef", "Burgers"],
-    signature: ["Italian Beef", "Chicago Dog", "Double Cheeseburger", "Tamale", "Fries"],
+    tagline: "Famous Italian beef, sausage and meat balls. Since 1959.",
+    // Straight off the marquee: FAMOUS ITALIAN BEEF / SAUSAGE AND MEAT BALLS /
+    // HOT DOGS / Polish Sausage, and EST. 1959 along the bottom.
+    cuisine: ["Italian Beef", "Hot Dogs", "Sausage"],
+    signature: ["Famous Italian Beef", "Italian Sausage", "Meat Balls", "Hot Dogs", "Polish Sausage"],
     neighborhood: "Bellwood", address: "635 Mannheim Rd, Bellwood, IL 60104",
     phone: "(708) 547-7866", phoneHref: "tel:+17085477866",
-    site: "", liveDetails: false, image: "",
+    site: "", liveDetails: false, image: "/images/restaurants/mickeys.jpg",
+    imageAlt: "Mickey's illuminated marquee above the roofline on Mannheim Road, lettered Famous Italian Beef, Sausage and Meat Balls, Hot Dogs, Polish Sausage, Est. 1959",
+    since: "1959",
     // VERIFIED: closed Sunday, Mon–Thu 10:30–9, Fri–Sat 10:30–9:30 (its
     // listing, checked 2026-09-22).
     schedule: [null, [h(10, 30), h(21)], [h(10, 30), h(21)], [h(10, 30), h(21)], [h(10, 30), h(21)], [h(10, 30), h(21, 30)], [h(10, 30), h(21, 30)]],
@@ -349,7 +368,11 @@ export const RESTAURANTS: Restaurant[] = [
     signature: ["Steak Taco", "Gigante Burrito", "Shrimp Tacos", "Chimichanga", "Cheese Fries"],
     neighborhood: "Bellwood", address: "4018 Butterfield Rd, Bellwood, IL 60104",
     phone: "(708) 544-1112", phoneHref: "tel:+17085441112",
-    site: "https://tacopatio.com", liveDetails: false, image: "",
+    site: "https://tacopatio.com", liveDetails: false,
+    // Its own logo. Taco Patio's site carries polished food photography that is
+    // stock rather than its kitchen's, so the mark goes on the card instead.
+    image: "/images/restaurants/taco-patio.png",
+    imageAlt: "The Taco Patio logo",
     // VERIFIED: 10 AM–midnight Sunday to Thursday, 10 AM–2 AM Friday and
     // Saturday (its listings, checked 2026-09-22).
     schedule: [[h(10), h(24)], [h(10), h(24)], [h(10), h(24)], [h(10), h(24)], [h(10), h(24)], [h(10), h(26)], [h(10), h(26)]],

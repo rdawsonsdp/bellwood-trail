@@ -75,10 +75,19 @@ Family Is Our Future*.
 
 ### Art
 
-**There are no photographs in this repo.** The hero and the card fallbacks are
-drawn marks in the village's two colours, generated so that nothing on the page
-claims to be a picture of a Bellwood block it isn't. The single biggest visual
-upgrade available is twenty storefront photographs, uploaded through `/admin`.
+**The hero is Mickey's marquee at 635 Mannheim Road** — a real Bellwood
+storefront, and a stop on the trail. The source photograph is portrait, so it
+is baked into a 16:9 frame against a blurred backdrop taken from the same
+image; the hero slot is `object-fit: cover`, and cropping a portrait into it
+would cut the sign in half.
+
+Six of the twenty stops carry a card photo. Five came off the businesses' own
+websites, the way the admin photo picker works; the sixth is Mickey's. The
+other fourteen show a name plate in the village blue with a gold rule — no
+stock photography stands in for a Bellwood storefront anywhere on this trail.
+See *Photographs* in [docs/bellwood-stops.md](docs/bellwood-stops.md) for which
+is which, and for the two sites whose food photography is stock and was
+therefore left off.
 
 ## Stack
 
@@ -103,7 +112,7 @@ to argue about — see the last section of
 
 The photo, name, tagline and tags are editorial and set in the admin. The photo
 picker lists every image on the restaurant's home page, so "use the picture
-from their site" is one click for the four stops that have one.
+from their site" is one click for the six stops that have one.
 
 ## Admin
 
@@ -165,7 +174,11 @@ unchanged in shape. What is Bellwood's:
 1. **Make the calls** in [docs/bellwood-stops.md](docs/bellwood-stops.md).
    Thirteen of the twenty do not publish their hours, and three have no phone
    number at all.
-2. **Photograph the twenty storefronts.**
+2. **Photograph the other fourteen storefronts.** Mickey's is done and five
+   stops borrow from their own sites; the rest still show a name plate. Also
+   worth confirming the Village is happy to reuse each business's own photo,
+   which is normal for a directory that links back but is the kind of thing to
+   settle before launch rather than after.
 3. **Copy pass with the Mayor's office.** The taglines and corridor blurbs are
    working copy. Nothing in the repo quotes Mayor Harvey or announces a Village
    decision, and nothing should until his office writes it.

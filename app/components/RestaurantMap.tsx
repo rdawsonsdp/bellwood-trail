@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import type { Stop } from "@/app/lib/live-status";
-import { fitMap, hasCoordinates, MAX_ZOOM, MIN_ZOOM, project, zoomAt, type MapView } from "@/app/lib/map";
+import { BELLWOOD_CENTER, BELLWOOD_ZOOM, fitMap, hasCoordinates, MAX_ZOOM, MIN_ZOOM, project, zoomAt, type MapView } from "@/app/lib/map";
 import { useDiscovery } from "./DiscoveryContext";
 import { Close, Heart, MapPin } from "./icons";
 import { MobileNavigation } from "./MobileNavigation";
@@ -15,7 +15,9 @@ const tileTemplate = process.env.NEXT_PUBLIC_MAP_TILE_URL || "https://tile.opens
 function StreetMap({ stops, active, interactive = false, onSelect }: { stops: LocatedStop[]; active?: string; interactive?: boolean; onSelect?: (stop: LocatedStop) => void }) {
   const ref = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState<Size>({ width: 0, height: 0 });
-  const [view, setView] = useState<MapView>({ ...project(41.75, -87.615), zoom: 13 });
+  // Opens over Bellwood, so the first tiles fetched are the right ones and
+  // there is no flash of another town before fitMap settles on the stops.
+  const [view, setView] = useState<MapView>({ ...project(BELLWOOD_CENTER.lat, BELLWOOD_CENTER.lng), zoom: BELLWOOD_ZOOM });
   const viewRef = useRef(view); viewRef.current = view;
   const [failed, setFailed] = useState(false);
   const pointers = useRef(new Map<number, { x: number; y: number }>());

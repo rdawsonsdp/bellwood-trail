@@ -1,5 +1,12 @@
 export type MapPoint = { x: number; y: number };
 export type MapView = MapPoint & { zoom: number };
+/* Bellwood: the bounding box centre of the twenty stops. Used only when a
+ * map is asked to fit no points at all — every real view is fitted to the
+ * stops it is given. Zoom 14 frames the whole village; the trail spans about
+ * 1.8 miles east to west, which is narrower than the Chatham trail this was
+ * built for, so the default zoom is one step tighter. */
+export const BELLWOOD_CENTER = { lat: 41.8824, lng: -87.8808 };
+export const BELLWOOD_ZOOM = 14;
 export const MIN_ZOOM = 11;
 export const MAX_ZOOM = 19;
 export function project(lat: number, lng: number): MapPoint {
@@ -10,7 +17,7 @@ export function hasCoordinates<T extends { lat?: number; lng?: number }>(stop: T
   return Number.isFinite(stop.lat) && Number.isFinite(stop.lng) && Math.abs(stop.lat!) <= 85 && Math.abs(stop.lng!) <= 180;
 }
 export function fitMap(points: MapPoint[], width: number, height: number): MapView {
-  if (!points.length) return { ...project(41.75, -87.615), zoom: 13 };
+  if (!points.length) return { ...project(BELLWOOD_CENTER.lat, BELLWOOD_CENTER.lng), zoom: BELLWOOD_ZOOM };
   const xs = points.map(p => p.x), ys = points.map(p => p.y);
   const left = Math.min(...xs), right = Math.max(...xs), top = Math.min(...ys), bottom = Math.max(...ys);
   const zoom = Math.min(Math.log2(Math.max(80, width - 112) / (256 * Math.max(right - left, .00001))), Math.log2(Math.max(80, height - 112) / (256 * Math.max(bottom - top, .00001))));

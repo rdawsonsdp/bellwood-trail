@@ -77,9 +77,15 @@ const cachedRead = unstable_cache(readContent, [CONTENT_TAG, "hero-v1", storageM
 
 /** Read for the public page: cached until the next save expires CONTENT_TAG. */
 export async function getContent(): Promise<SiteContent> {
+  const mode = storageMode();
   // Repository content changes with deployments, not admin saves. Next's data
   // cache can survive deployments, so never cache a read-only seed snapshot.
-  if (storageMode() === "readonly") return seed();
+  if (mode === "readonly") return seed();
+  // Local mode reads one file off disk, so the cache buys nothing — and it
+  // costs correctness: before the first admin save there is no file, the seed
+  // gets cached under .next/, and every later edit to content/ is invisible
+  // until someone deletes .next. Only the Blob read is worth caching.
+  if (mode === "local") return await readContent();
   try {
     return await cachedRead();
   } catch (e) {

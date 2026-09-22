@@ -79,6 +79,16 @@ two-minute call, and every answer goes straight into `/admin`.
 13. **Gioacchino's**, (708) 544-0380 — the full week, and whether it keeps a closed day.
 14. **Montego Bay**, (708) 547-7911 — is it open Mondays? One review says no, its own listing says yes.
 
+## Two founding dates, settled by the signs
+
+- **Mickey's: EST. 1959**, lettered along the bottom of the marquee. The same
+  sign gives the menu the card now lists: FAMOUS ITALIAN BEEF, SAUSAGE AND MEAT
+  BALLS, HOT DOGS, Polish Sausage.
+- **Nick's: EST. 1972**, lettered on the logo on its own website.
+
+Neither appears in the Village directory or in any listing; both came off the
+businesses' own artwork, which makes them about as reliable as this gets.
+
 ## Coordinates
 
 Every address was run through the **US Census geocoder**
@@ -101,11 +111,34 @@ launch.
 
 ## Photographs
 
-**There are none.** Every card currently shows its name on the village blue
-with a gold rule, because borrowing a photograph of somewhere else would be
-worse than showing no photograph. Twenty storefront photos is the single
-biggest visual upgrade available, and the admin photo picker will pull one
-straight off a business's website for the four stops that have one.
+Six of the twenty have one. The other fourteen show a name plate in the village
+blue with a gold rule, because borrowing a photograph of somewhere else would
+be worse than showing no photograph.
+
+| Stop | Photo | Source |
+|---|---|---|
+| Mickey's Drive-In | the marquee at 635 Mannheim | photographed on site |
+| Ariston Restaurant | gyros platter with crinkle fries | its own gallery on aristongyros.com |
+| Gioacchino's | thin-crust pizza | the banner on its own site |
+| Lezza Spumoni | pistachio cannoli | its own product photo on lezza.com |
+| Nick's Pizza & Beef | the logo | nickspizzabeef.com |
+| Taco Patio | the logo | tacopatio.com |
+
+**Two sites were deliberately not used for food photography.** Nick's and Taco
+Patio both carry polished, studio-lit dishes — tamales on a woven basket,
+tacos styled on a serape, a cheese-pull pizza on black — that are stock
+photography rather than pictures of their kitchens. Putting those on a village
+trail card would be the same lie as a stock storefront, so both stops carry
+their own logo instead, which at least is theirs. Taco Patio's site also has an
+interior shot of what appears to be a school cafeteria serving line; that is
+not Taco Patio and was left alone.
+
+**Tastee Rolls could not be fetched at all** — tasteerolls.com answers 403 to
+anything that is not a person in a browser. Grab that one by hand through the
+admin photo picker.
+
+Replacing the five borrowed images with real storefront photography is the
+single biggest visual upgrade left.
 
 ## What this prototype is arguing
 
