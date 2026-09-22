@@ -1,75 +1,123 @@
-# Chatham Culinary Path
+# Bellwood Culinary Path
 
-A Greater Chatham Initiative showcase: the food businesses of Chicago's South
-Side as one trail, for people discovering Chatham for the first time.
+A Village of Bellwood prototype: the food businesses of Bellwood, Illinois as
+one trail, for people discovering the village for the first time.
 
-Production: [chatham-culinary-path.vercel.app](https://chatham-culinary-path.vercel.app/).
+**This is a prototype.** It is the Greater Chatham Culinary Trail's structure,
+rebranded to Bellwood and repopulated with twenty Bellwood restaurants, built
+to show Mayor Harvey's office what a village culinary trail looks like when it
+is real rather than a mockup. It does not replace or affect the Greater Chatham
+Culinary Trail, which lives on in its own repository.
 
-The September 14 discovery redesign is prepared on `codex/vrbo-inspired-discovery`. See [the design review](docs/discovery-design.md) for the reference patterns and implementation decisions.
+Read [docs/bellwood-stops.md](docs/bellwood-stops.md) before showing this to
+anyone: it lists where every stop's data came from, which hours are still
+guesses, and the fourteen phone calls that would make the roster solid.
+
+## The twenty stops
+
+Every stop is an independently owned food business with a Bellwood, IL 60104
+address. No chains. They group onto four corridors:
+
+- **St. Charles Road** (7) — downtown Bellwood. Gioacchino's, Taqueria Mi
+  Jerez, MD Phats, Lezza Spumoni, Vari's Southern Cuisine, Joe's Hideaway,
+  Shark's Fish & Chicken.
+- **Mannheim Road** (6) — Stacy's Cafe, Ariston, Nick's Pizza & Beef, Mickey's
+  Drive-In, First Chop Suey, JJ Fish & Chicken.
+- **Bellwood Avenue** (3) — Montego Bay, Tastee Rolls, Bellwood Sweets.
+- **25th Avenue & Butterfield** (4) — Captain B's, Donnie's Bar & Grill, Taco
+  Patio, Mr. Submarine.
+
+The roster came from the Village's own business directory, cross-checked
+against each business's site and listings. Sources are in
+[docs/bellwood-stops.md](docs/bellwood-stops.md).
 
 ## Discovery experience
 
 - Structured hero search for a dish, cuisine, kitchen, or street.
-- Photographic food collections and four neighborhood choices.
+- Food collections and four corridor choices.
 - Kitchen cards with open status, location, save actions, and in-page details.
-- Combined food, corridor, dining, meal, and open-now filters, with sorting and shareable URL state.
-- Saved kitchens persist on the visitor’s device. No account or booking service is implied.
-- Native accessible dialogs for filters and restaurant details, compact mobile controls, and horizontal food browsing.
-- Existing content storage, live restaurant lookups, and admin authentication remain in place.
+- Combined food, corridor, dining, meal, and open-now filters, with sorting and
+  shareable URL state.
+- Saved kitchens persist on the visitor's device. No account or booking service
+  is implied.
+- Native accessible dialogs for filters and restaurant details, compact mobile
+  controls, and horizontal food browsing.
+- Admin at `/admin` — edit every stop, add or hide stops, change card photos,
+  and post to the Updates feed.
 
 ### Local checks
 
-`npm ci`, `npm test`, `npm run build`, then `npm run dev -- --port 3002`. The tests use the existing TypeScript compiler and Node test runner; no additional dependency is needed.
+`npm ci`, `npm test`, `npm run build`, then `npm run dev -- --port 3002`. The
+tests use the project's own TypeScript compiler and the Node test runner; no
+extra dependency is needed.
 
-## Original site foundation
+## Brand
 
-- **Hero** — an overhead shot of Brown Sugar Bakery on 75th, two-tone Figtree headline.
-- **The Path** — thirteen kitchens grouped by corridor (75th, 79th, Cottage
-  Grove, and just beyond), each with a live *Open now · until 9 PM* chip.
-- **Search** — instant, client-side, across name, cuisine, signature dishes and
-  neighborhood, plus an *Open now* filter and Food / Dining / Meal pills
-  (Soul Food, Barbecue… · Dine in, Carryout only · Breakfast, Lunch, Dinner).
-- **Updates** — a dated feed.
-- **Admin** at `/admin` — edit every stop, add or hide stops, change card
-  photos, and post to the Updates feed. See *Admin*.
+The palette is the Village of Bellwood's, sampled pixel-for-pixel from the
+logo files served on vil.bellwood.il.us — not guessed, and not matched by eye.
+The village logo is exactly two colours, and those two are the whole palette:
+
+| Token | Value | Contrast on white | Role |
+|---|---|---|---|
+| `--color-blue` | `#0055a5` | **7.39:1** | Body text, links, headings, button fills (white labels, also 7.39:1) |
+| `--color-blue-dark` | `#003f7d` | 10.46:1 | Hover, pressed, card headings |
+| `--color-gold` | `#fdb813` | 1.74:1 | **Fill only.** Dark ink on it is 10.72:1; it never takes a white label |
+| `--color-gold-ink` | `#8a5a00` | 5.93:1 | Small gold words on a light ground |
+
+The village blue is unusually dark for a brand blue, which is a gift: it
+carries small text as well as button fills, so the interface needs only one
+accent rung rather than the fill/text split GCI's orange required. The gold
+follows the same discipline GCI's orange did — a fill, at display size, with
+dark labels.
+
+Type is Figtree throughout, loaded via `next/font`. The village motto is *Your
+Family Is Our Future*.
+
+### Art
+
+**There are no photographs in this repo.** The hero and the card fallbacks are
+drawn marks in the village's two colours, generated so that nothing on the page
+claims to be a picture of a Bellwood block it isn't. The single biggest visual
+upgrade available is twenty storefront photographs, uploaded through `/admin`.
 
 ## Stack
 
 Next.js 16 · React 19 · Tailwind v4 · App Router · TypeScript. One dependency
 beyond next/react: `@vercel/blob`, where the admin saves. No database, no
-search service — thirteen entries do not need one.
+search service — twenty entries do not need one.
 
 ## How the cards stay current
 
-A card is the stored stop (`content/`, or the Blob store once someone has
-saved in the admin), overlaid with what the restaurant's own site publishes
-right now. For stops marked `builtByGci` ("Read hours, phone and address live
-from this website" in the admin), `app/lib/site-data.ts` fetches the site's home
+A card is the stored stop (`content/`, or the Blob store once someone has saved
+in the admin), overlaid with what the restaurant's own site publishes right
+now. For stops marked `liveDetails` ("Read hours, phone and address live from
+this website" in the admin), `app/lib/site-data.ts` fetches the site's home
 page at request time, cached ten minutes, and reads its schema.org JSON-LD:
-hours, phone and address. That is the same block that drives the site's own
-chip and its Google listing. Sites that list several locations (Tropic Island,
-Uncle John's) are matched on the stop's street number.
+hours, phone and address.
 
-Anything the site doesn't publish, or a site that's down, falls back to the
-stored value. A restaurant site going down never removes a card.
+**No Bellwood stop qualifies yet.** Sixteen of the twenty have no website at
+all, and the four that do publish no structured data, so today every card is
+served entirely from the stored values. That is the gap this prototype exists
+to argue about — see the last section of
+[docs/bellwood-stops.md](docs/bellwood-stops.md).
 
-The photo, name, tagline and tags are editorial and set in the admin. The
-photo picker lists every image on the restaurant's home page, so "use the
-picture from their site" is one click.
-
-Brown Sugar Bakery, Justice of the Pies and HerBachi (herbachi.com) are
-external sites with no usable structured data, and Lem's site publishes none,
-so for those four the stored values ARE the source.
+The photo, name, tagline and tags are editorial and set in the admin. The photo
+picker lists every image on the restaurant's home page, so "use the picture
+from their site" is one click for the four stops that have one.
 
 ## Admin
 
 `/admin`, one shared password from the `ADMIN_PASSWORD` environment variable,
-which is never in the code or the repo. Locally it lives in `.env.local`. A login lasts twelve hours;
-changing the password signs everyone out.
+which is never in the code or the repo. Locally it lives in `.env.local`. A
+login lasts twelve hours; changing the password signs everyone out.
 
 The dashboard checks every stop's site as it loads: up, SSL problems, and
-whether the card is getting live details. **Refresh all sites now** drops
-the ten-minute cache so every card re-reads its site.
+whether the card is getting live details. **Refresh all sites now** drops the
+ten-minute cache so every card re-reads its site.
+
+A stop may be saved with **no website and no photo** — that is the normal
+starting condition in Bellwood, and the card falls back to its name plate
+rather than borrowing a picture of somewhere else.
 
 **Where saves go** (`app/lib/content-store.ts`):
 
@@ -79,53 +127,47 @@ the ten-minute cache so every card re-reads its site.
 | Your machine, no Blob token | `.content/` and `public/uploads/` | Git-ignored. Lets you try the admin without touching production. |
 | Vercel, no store connected | none | The trail serves the seed in `content/`; the admin says it can't save. |
 
-Until the first save, the trail serves the seed files in `content/`. After
-that the Blob copy is the truth and `content/` is only the starting point.
-There is no edit history yet: each save replaces the document.
+Until the first save, the trail serves the seed files in `content/`. After that
+the Blob copy is the truth and `content/` is only the starting point.
 
 **To turn it on in production:** in the Vercel project, create a Blob store
 (Storage → Blob, **public** access) and connect it to the project, which sets
 `BLOB_READ_WRITE_TOKEN`. Then add `ADMIN_PASSWORD` under Settings →
 Environment Variables and redeploy.
 
-## Brand
+## What changed from the Chatham build
 
-Sampled from gci2016.org, not guessed — crimson `#bf1e2d`, orange `#f26927`,
-gold `#c2915e`, Figtree Black/ExtraBold, full-pill buttons. One deliberate
-correction: GCI's own site puts white and crimson labels on orange buttons at
-3.08:1 and ~2:1; **black on orange is 6.83:1**, so the pills here carry black.
-Orange and gold are split into fill and `-ink` text rungs (5.59:1 / 5.43:1).
+Structure, components, filter model, admin and tests are all carried over
+unchanged in shape. What is Bellwood's:
 
-## Historical handoff (2026-09-10)
+- **Palette** — blue and gold from the village logo, replacing GCI's crimson,
+  orange and gold. All hardcoded brand hexes in the CSS were replaced, and the
+  Tailwind tokens renamed (`crimson`→`blue`, `orange`→`gold`, `cream`→`mist`,
+  `warm-gray`→`muted`) rather than left with misleading names.
+- **Corridors** — `st-charles` / `mannheim` / `bellwood-ave` /
+  `butterfield-25th`, replacing 75th / 79th / Cottage Grove / beyond. The
+  "beyond" special case in `StopCard` is gone: every Bellwood stop has a real
+  corridor.
+- **Twenty stops** replacing thirteen, with new food categories.
+- **`builtByGci` renamed `liveDetails`** — the field was always about
+  structured data, not about who built the site.
+- **Website and photo are now optional** on a stop, in the data, the admin
+  validation and the rendered cards. In Chatham every stop had both; in
+  Bellwood almost none do.
+- **The Google-reviews address matcher was fixed.** It folded *Street*→*St* and
+  *Avenue*→*Ave* but not *Road*→*Rd* or *Saint*→*St*, so all seven St. Charles
+  Road stops would have failed to match their own Google listing. It now folds
+  the full set of street types. This was a latent bug in Chatham too; it just
+  never fired there.
 
-**Done**
-- 13 stops with verified NAP from each business's own site. Refreshed
-  2026-09-10 against every home page: Soul Veg and Tropic Island hours, Uncle
-  John's full address, Lem's phone and marquee photo, Oooh Wee's dining-room
-  photo.
-- Admin: login, stop editor with live site check and photo picker, uploads,
-  hide and delete, updates feed, conflict handling. All exercised locally in
-  local mode.
-- Repo `rdawsonsdp/chatham-culinary-path` (private).
+## Next steps
 
-**Not yet done — in order**
-1. **Deploy.** Held deliberately for a separate go-ahead. `vercel deploy --yes`
-   from this directory; Vercel will alias the first deployment to production.
-2. **Connect a Blob store and set `ADMIN_PASSWORD`** (see *Admin*). Until then
-   the production admin can't save.
-3. **Run the verification checklist** from the `gci-restaurant-template`
-   skill: overflow at 390/1280, console/hydration, every image rendering.
-4. **Copy pass.** The hero and corridor blurbs are working copy in GCI's voice.
-   Worth a read by GCI before launch; the `storybrand` skill applies.
-5. Set `NEXT_PUBLIC_SITE_URL` when a real domain is chosen.
-
-**Known issues on the underlying sites**
-- **herbachi.com's SSL certificate expired 2026-08-11.** Visitors who tap
-  Visit get a browser warning until HerBachi's host renews it.
-  herbachi.vercel.app is up if the card should point there meanwhile.
-- **Lem's site publishes no structured data**, so its card can't update
-  itself. Adding the template's JSON-LD to that site would fix it.
-- Uncle John's neighborhood reads "Greater Grand Crossing"; at 8249 S Cottage
-  Grove that's likely wrong. Dat Donut next door is listed as Chatham.
-- Carried from their builds: Uncle John's hours contradiction, Just Jerk's
-  three-way closing time, Soul Veg's one unpriced item.
+1. **Make the calls** in [docs/bellwood-stops.md](docs/bellwood-stops.md).
+   Thirteen stops have placeholder hours and two have no phone number.
+2. **Photograph the twenty storefronts.**
+3. **Copy pass with the Mayor's office.** The taglines and corridor blurbs are
+   working copy. Nothing in the repo quotes Mayor Harvey or announces a Village
+   decision, and nothing should until his office writes it.
+4. **Deploy.** `vercel deploy --yes` from this directory.
+5. **Connect a Blob store and set `ADMIN_PASSWORD`** (see *Admin*).
+6. Set `NEXT_PUBLIC_SITE_URL` when a domain is chosen.

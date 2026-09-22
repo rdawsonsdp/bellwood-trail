@@ -20,14 +20,14 @@ function loadTs(filename) {
   return module.exports;
 }
 const { matchesRestaurant, reviewSelection, safeGoogleUrl, fetchRestaurantReviews } = loadTs(path.join(__dirname, '../app/lib/google-reviews.ts'));
-const restaurant = { name: 'Fixture Kitchen', address: '123 E 75th St, Chicago, IL 60619' };
-const place = { displayName: { text: 'Fixture Kitchen' }, formattedAddress: '123 East 75th Street, Chicago, IL 60619, USA' };
+const restaurant = { name: 'Fixture Kitchen', address: '123 St Charles Rd, Bellwood, IL 60104' };
+const place = { displayName: { text: 'Fixture Kitchen' }, formattedAddress: '123 Saint Charles Road, Bellwood, IL 60104, USA' };
 const review = i => ({ name: `fixture-${i}`, rating: (i % 5) + 1, originalText: { text: `Synthetic test review ${i}` }, authorAttribution: { displayName: `Fixture author ${i}`, uri: 'https://www.google.com/maps/contrib/test' }, googleMapsUri: `https://www.google.com/maps/reviews/test${i}` });
 test('require the same business, street, and ZIP before displaying reviews', () => {
   assert.equal(matchesRestaurant(place, restaurant), true);
-  assert.equal(matchesRestaurant({...place, formattedAddress:'456 E 75th St, Chicago, IL 60619'}, restaurant), false);
+  assert.equal(matchesRestaurant({...place, formattedAddress:'456 St Charles Rd, Bellwood, IL 60104'}, restaurant), false);
   assert.equal(matchesRestaurant({...place, displayName:{text:'Different Kitchen'}}, restaurant), false);
-  assert.equal(matchesRestaurant({...place, formattedAddress:'123 E 75th St, Other City, IL 60000'}, restaurant), false);
+  assert.equal(matchesRestaurant({...place, formattedAddress:'123 St Charles Rd, Other City, IL 60000'}, restaurant), false);
 });
 test('limit to three attributed written reviews without filtering by stars or changing relevance', () => {
   const data = reviewSelection({reviews:[review(0), review(0), {rating:5}, review(1), review(2), review(3)], rating:4.1, userRatingCount:150}, 'fallback');
@@ -60,8 +60,20 @@ test('fetch only the supplied business, disable caching, and reject ambiguous re
 });
 
 test('recognize cafe possessives, accents, and BBQ spelling with strict address matching', () => {
-  assert.equal(matchesRestaurant({...place, displayName:{text:"Just Jerk Cafe's"}}, {...restaurant,name:'Just Jerk Cafe'}),true);
-  assert.equal(matchesRestaurant({...place, displayName:{text:'Just Jerk Café'}}, {...restaurant,name:'Just Jerk Cafe'}),true);
-  assert.equal(matchesRestaurant({...place, displayName:{text:"Uncle John's BBQ"}}, {...restaurant,name:"Uncle John's Barbecue"}),true);
-  assert.equal(matchesRestaurant({...place, displayName:{text:"Uncle John's BBQ"},formattedAddress:'947 W Addison St, Chicago, IL 60613'}, {...restaurant,name:"Uncle John's Barbecue"}),false);
+  assert.equal(matchesRestaurant({...place, displayName:{text:"Corner Cafe's"}}, {...restaurant,name:'Corner Cafe'}),true);
+  assert.equal(matchesRestaurant({...place, displayName:{text:'Corner Café'}}, {...restaurant,name:'Corner Cafe'}),true);
+  assert.equal(matchesRestaurant({...place, displayName:{text:"Donnie's BBQ"}}, {...restaurant,name:"Donnie's Barbecue"}),true);
+  assert.equal(matchesRestaurant({...place, displayName:{text:"Donnie's BBQ"},formattedAddress:'4018 Butterfield Rd, Bellwood, IL 60104'}, {...restaurant,name:"Donnie's Barbecue"}),false);
+});
+
+// Google spells street types out; the village's own listings abbreviate them.
+// Seven of the twenty stops sit on St. Charles Road, so this is load-bearing.
+test('fold spelled-out street types so St. Charles Road matches Saint Charles Rd', () => {
+  const on = (address) => matchesRestaurant({...place, formattedAddress: address}, restaurant);
+  assert.equal(on('123 Saint Charles Road, Bellwood, IL 60104, USA'), true);
+  assert.equal(on('123 St Charles Rd, Bellwood, IL 60104'), true);
+  assert.equal(matchesRestaurant({...place, formattedAddress:'919 North Mannheim Road, Bellwood, IL 60104'}, {...restaurant, address:'919 N Mannheim Rd, Bellwood, IL 60104'}), true);
+  assert.equal(matchesRestaurant({...place, formattedAddress:'633 Bellwood Avenue, Bellwood, IL 60104'}, {...restaurant, address:'633 Bellwood Ave, Bellwood, IL 60104'}), true);
+  // A different house number on the right street is still the wrong place.
+  assert.equal(on('125 Saint Charles Road, Bellwood, IL 60104'), false);
 });

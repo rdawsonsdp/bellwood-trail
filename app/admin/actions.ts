@@ -72,8 +72,11 @@ export async function saveStop(_: FormState, form: FormData): Promise<FormState>
 
     const name = d.name.trim();
     if (!name) return { error: "Give the stop a name." };
-    const site = httpUrl(d.site.trim());
-    if (!site) return { error: "The website needs to be a full address, starting with https://" };
+    // A stop with no website is normal here: most Bellwood kitchens have
+    // none yet. An entered address still has to be a real http(s) one.
+    const typedSite = d.site.trim();
+    const site = typedSite ? httpUrl(typedSite) : "";
+    if (site === null) return { error: "The website needs to be a full address, starting with https://" };
     if (!(d.corridor in CORRIDORS)) return { error: "Pick which corridor the stop is on." };
     const phone = d.phone.trim() ? formatPhone(d.phone) : "";
     if (phone === undefined) return { error: "The phone number should be a 10-digit US number, like (773) 555-0100." };
@@ -87,13 +90,14 @@ export async function saveStop(_: FormState, form: FormData): Promise<FormState>
     // "new" is taken by the /admin/stops/new route.
     if (!existing) { let n = 2; const base = slug; while (slug === "new" || current.restaurants.some((r) => r.slug === slug)) slug = `${base}-${n++}`; }
 
+    // No photo is also normal: the card falls back to the stop's name plate
+    // rather than borrow a picture of somewhere else.
     const image = (await photoFrom(form, slug)) ?? d.image.trim();
-    if (!image) return { error: "Add a card photo — choose one from the site or upload one." };
 
     const stop: Restaurant = {
       ...existing,
       slug, name, site, phone, phoneHref: phone ? phoneHref(phone) : "",
-      tagline: d.tagline.trim(), builtByGci: d.builtByGci,
+      tagline: d.tagline.trim(), liveDetails: d.liveDetails,
       address: d.address.trim(), neighborhood: d.neighborhood.trim(), corridor: d.corridor,
       since: d.since.trim() || undefined,
       cuisine: splitList(d.cuisine), signature: splitList(d.signature),

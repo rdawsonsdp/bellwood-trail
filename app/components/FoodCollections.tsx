@@ -6,13 +6,19 @@ import { EMPTY_FILTERS, inCategory } from "@/app/lib/discovery";
 import { useDiscovery } from "./DiscoveryContext";
 import { Chevron } from "./icons";
 
+/* `photo` names the stop whose card photo fronts the collection. None of the
+ * Bellwood stops have been photographed yet, so every tile falls back to its
+ * label on a plain ground until one is; the intended stop is named so the
+ * tile picks the photo up the moment it lands in /admin. */
 const COLLECTIONS = [
-  { key: "soul-food", label: "Soul food favorites", photo: "harolds" },
-  { key: "barbecue", label: "Barbecue classics", photo: "unclejohns" },
-  { key: "caribbean", label: "A taste of the islands", photo: "tropic-island" },
-  { key: "seafood", label: "Seafood cravings", photo: "hareshrimp" },
-  { key: "vegan", label: "Plant-based goodness", photo: "soulveg" },
-  { key: "sweets", label: "Something sweet", photo: "brownsugar" },
+  { key: "southern", label: "Southern & soul", photo: "varis" },
+  { key: "caribbean", label: "A taste of the islands", photo: "montego-bay" },
+  { key: "italian", label: "Italian & pizza", photo: "gioacchinos" },
+  { key: "mexican", label: "Tacos & tortas", photo: "taco-patio" },
+  { key: "seafood", label: "Fish & seafood", photo: "sharks" },
+  { key: "greek-bbq", label: "Gyros & ribs", photo: "ariston" },
+  { key: "sandwiches", label: "Beef & sandwiches", photo: "mickeys" },
+  { key: "sweets", label: "Something sweet", photo: "lezza" },
 ];
 export function FoodCollections({ stops }: { stops: Stop[] }) {
   const { updateFilters } = useDiscovery();

@@ -1,25 +1,33 @@
 /* ===== Updates =====
  * A dated feed, newest first. Like restaurants.ts this is the SEED: once
  * someone saves in /admin, the live copy lives in the content store. Dates
- * are ISO so they sort and format without ambiguity. */
+ * are ISO so they sort and format without ambiguity.
+ *
+ * PROTOTYPE CONTENT. Every item below is sourced from something already
+ * public — a press report, or the Village of Bellwood's own site. Nothing here
+ * quotes Mayor Harvey or announces a Village decision; anything of that kind
+ * has to come from the Mayor's office before it is published. */
 export interface Update {
   id: string;
   date: string;
   title: string;
   body: string;
   href?: string;
-  tag: "New on the path" | "Event" | "FoodLab" | "Announcement";
+  tag: "New on the path" | "Event" | "Village news" | "Announcement";
 }
 
-export const UPDATE_TAGS: Update["tag"][] = ["New on the path", "Event", "FoodLab", "Announcement"];
+export const UPDATE_TAGS: Update["tag"][] = ["New on the path", "Event", "Village news", "Announcement"];
 
 export const UPDATES: Update[] = [
-  { id: "2026-09-10-mabes", date: "2026-09-10", tag: "New on the path", title: "Mabe's Sandwich Shop joins the Culinary Path",
-    body: "Jerk turkey paninis, double-decker clubs and a deep-fried Turkey Cristo, made to order at 312 E 75th, on the same block as Brown Sugar Bakery and Lem's.", href: "https://www.mabessandwich.com" },
-  { id: "2026-09-09-three-stops", date: "2026-09-09", tag: "New on the path", title: "Three more stops join the Culinary Path",
-    body: "Brown Sugar Bakery, Justice of the Pies and Oooh Wee! IT IS join the trail — caramel cake on 75th, pie in Avalon Park, and a Southern breakfast bar on Cottage Grove." },
-  { id: "2026-09-09-new-websites", date: "2026-09-09", tag: "Announcement", title: "Eight Greater Chatham kitchens get new websites",
-    body: "Haire's, HerBachi, Harold's #24, Tropic Island, Dat Donut, Just Jerk Cafe, Soul Veg City and Uncle John's each launched a new site this week — with live hours, full menus and one-tap ordering." },
-  { id: "2026-09-01-foodlab", date: "2026-09-01", tag: "FoodLab", title: "FoodLab Chicago has now supported 100+ food businesses",
-    body: "GCI's food-business program keeps growing. If you run a kitchen on the South Side, the door is open.", href: "https://www.gci2016.org/" },
+  { id: "2026-09-22-launch", date: "2026-09-22", tag: "Announcement", title: "Twenty Bellwood kitchens, on one path",
+    body: "The Bellwood Culinary Path opens with twenty locally owned restaurants across four corridors — St. Charles Road, Mannheim, Bellwood Avenue, and 25th at Butterfield. No chains. Every stop is a Bellwood business with a Bellwood address." },
+  { id: "2026-09-04-varis", date: "2026-09-04", tag: "New on the path", title: "Vari's Southern Cuisine is coming to 2712 St. Charles Road",
+    body: "Nanetta Dancy-Matthews is opening a second Vari's in downtown Bellwood, bringing the fried ribs, catfish filet, oxtail and lamb her Hillside dining room is known for. She is aiming for late October.",
+    href: "https://whatnow.com/chicago/restaurants/local-restaurateur-bringing-second-southern-cuisine-spot-to-bellwood/" },
+  { id: "2026-09-01-gateway", date: "2026-09-01", tag: "Village news", title: "The Gateway Project is rebuilding downtown Bellwood",
+    body: "The $42.5 million Bellwood Gateway Project is reshaping St. Charles Road — the same stretch that carries seven of the twenty stops on this path, from Gioacchino's at 5201 down to Shark's at 2500.",
+    href: "https://www.vil.bellwood.il.us/" },
+  { id: "2026-08-15-since-1977", date: "2026-08-15", tag: "New on the path", title: "Two Bellwood kitchens older than most of the village's businesses",
+    body: "Gioacchino's has been serving thin crust and Chicken Vesuvio at 5201 St. Charles Road since 1977. Lezza Spumoni, four blocks east at 4009, dates itself to 1904 — it has been making Bellwood's spumoni longer than the Eisenhower has existed.",
+    href: "https://lezza.com" },
 ];

@@ -7,7 +7,7 @@ import { Heart, MapPin, Store } from "./icons";
 export function StopCard({ stop, onDetails }: { stop: Stop; onDetails: () => void }) {
   const { saved, toggleSaved } = useDiscovery();
   const isSaved = saved.includes(stop.slug);
-  const area = stop.corridor === "beyond" ? stop.neighborhood : CORRIDORS[stop.corridor].label;
+  const area = CORRIDORS[stop.corridor].label;
   return <article className="kitchen-card" data-kitchen={stop.slug}>
     <div className="kitchen-photo">
       <button className="photo-detail-button" onClick={onDetails} aria-label={`View details for ${stop.name}`}>

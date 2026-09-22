@@ -11,7 +11,7 @@ export const CORRIDOR_KEYS = Object.keys(CORRIDORS) as Restaurant["corridor"][];
 export interface HoursRow { closed: boolean; open: string; close: string }
 
 export interface StopDraft {
-  name: string; tagline: string; site: string; builtByGci: boolean;
+  name: string; tagline: string; site: string; liveDetails: boolean;
   address: string; phone: string; neighborhood: string; corridor: Restaurant["corridor"]; since: string;
   cuisine: string; signature: string;
   dineIn: "yes" | "no" | "unknown"; meals: Meal[];
@@ -38,9 +38,9 @@ export function scheduleFromRows(rows: HoursRow[]): DayHours[] {
 
 export function toDraft(r?: Restaurant): StopDraft {
   return {
-    name: r?.name ?? "", tagline: r?.tagline ?? "", site: r?.site ?? "", builtByGci: r?.builtByGci ?? false,
-    address: r?.address ?? "", phone: r?.phone ?? "", neighborhood: r?.neighborhood ?? "Chatham",
-    corridor: r?.corridor ?? "75th", since: r?.since ?? "",
+    name: r?.name ?? "", tagline: r?.tagline ?? "", site: r?.site ?? "", liveDetails: r?.liveDetails ?? false,
+    address: r?.address ?? "", phone: r?.phone ?? "", neighborhood: r?.neighborhood ?? "Bellwood",
+    corridor: r?.corridor ?? "st-charles", since: r?.since ?? "",
     cuisine: (r?.cuisine ?? []).join(", "), signature: (r?.signature ?? []).join(", "),
     dineIn: r?.dineIn === undefined ? "unknown" : r.dineIn ? "yes" : "no", meals: r?.meals ?? [],
     hours: rowsFromSchedule(r?.schedule ?? [null, null, null, null, null, null, null]),

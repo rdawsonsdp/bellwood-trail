@@ -11,7 +11,7 @@ test('invalid or missing coordinates are excluded without dropping valid zero co
   for (const value of [{}, {lat:null,lng:null}, {lat:NaN,lng:0}, {lat:86,lng:0}, {lat:0,lng:181}]) assert.equal(hasCoordinates(value), false);
   assert.equal(hasCoordinates({lat:0,lng:0}), true);
 });
-test('all Greater Chatham stops fit within a phone map with room for the pins', () => {
+test('all Bellwood stops fit within a phone map with room for the pins', () => {
   const points = [project(41.7594,-87.6382),project(41.7377,-87.5897)];
   const width = 390, height = 260, view = fitMap(points,width,height), scale = 256 * 2 ** view.zoom;
   for (const p of points) {

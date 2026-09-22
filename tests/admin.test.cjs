@@ -37,7 +37,7 @@ test('admin session rejects missing, tampered, expired and revoked cookies', asy
 });
 
 test('restaurant editor preserves existing pins and rejects incomplete or invalid coordinates', () => {
-  const { coordinatesFromDraft, toDraft } = load('../app/admin/stop-draft.ts', { '@/content/restaurants': { CORRIDORS: { '75th': {} } } });
+  const { coordinatesFromDraft, toDraft } = load('../app/admin/stop-draft.ts', { '@/content/restaurants': { CORRIDORS: { 'st-charles': {} } } });
   assert.deepEqual(coordinatesFromDraft('', ''), { lat: undefined, lng: undefined });
   assert.deepEqual(coordinatesFromDraft('41.75', '-87.61'), { lat: 41.75, lng: -87.61 });
   for (const [lat, lng] of [['41.75', ''], ['', '-87.61'], ['NaN', '1'], ['91', '1'], ['1', '181']]) assert.throws(() => coordinatesFromDraft(lat, lng));

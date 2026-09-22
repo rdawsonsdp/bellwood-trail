@@ -1,0 +1,40 @@
+/* Village of Bellwood colours, sampled from the logo on vil.bellwood.il.us:
+   blue #0055A5 and gold #FDB813. Those two, and nothing else.
+
+   Where GCI's trail put crimson, Bellwood puts blue; where it put orange,
+   Bellwood puts gold. The contrast discipline is the same: blue takes white
+   labels (7.39:1), gold takes dark ones (10.72:1) and never white. */
+.culinary-site {
+  --discovery-ink: var(--color-ink);
+  --discovery-muted: var(--color-muted);
+  --discovery-line: var(--color-line);
+  --discovery-soft: var(--color-mist);
+}
+.culinary-site .trail-hero-title h1,
+.culinary-site .section-heading h2,
+.culinary-site .map-intro-copy h2,
+.culinary-site .brand-type strong { color: var(--color-blue); }
+.culinary-site .kitchen-body h3,
+.culinary-site .neighborhood-choices h3,
+.culinary-site .update-card h3,
+.culinary-site .collection-card strong,
+.culinary-site .dialog-heading h2,
+.culinary-site .footer-brand { color: var(--color-blue-dark); }
+.culinary-site .primary-button,
+.culinary-site .filter-button.selected,
+.culinary-site .mobile-discovery-pills button[aria-pressed="true"],
+.culinary-site .map-filter-bar [aria-pressed="true"],
+.culinary-site .details-button:hover { background: var(--color-blue); border-color: var(--color-blue); color: white; }
+.culinary-site .primary-button:hover { background: var(--color-blue-dark); border-color: var(--color-blue-dark); }
+.culinary-site .secondary-button,
+.culinary-site .details-button { border-color: var(--color-blue); color: var(--color-blue); }
+.culinary-site .discovery-header { border-bottom: 3px solid var(--color-gold); }
+.culinary-site .explorer-section { background: linear-gradient(var(--color-mist), white 500px); border-color: var(--color-line); }
+.culinary-site .discovery-footer { background: var(--color-mist); border-top: 3px solid var(--color-gold); }
+.culinary-site .update-card { border-top-color: var(--color-gold); }
+.culinary-site .active-filters button:not(.clear-filters) { background: #e7f0f9; color: var(--color-blue-dark); }
+.culinary-site .map-pin.is-cluster { background: var(--color-blue); }
+/* The selected pin flips to gold, so it carries the site's ink, not white. */
+.culinary-site .map-pin.is-selected { background: var(--color-gold); color: var(--color-ink); outline-color: var(--color-blue); }
+.culinary-site .mobile-bottom-navigation > button[aria-current="page"] { color: var(--color-blue); }
+.culinary-site .mobile-bottom-navigation > .mobile-home-button[aria-current="page"] .mobile-nav-icon { background: var(--color-gold); color: var(--color-ink); }

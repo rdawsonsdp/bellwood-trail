@@ -4,7 +4,7 @@ import { EMPTY_FILTERS, readFilters, writeFilters, type DiscoveryFilters } from 
 
 import { CONSENT_EVENT, readConsent } from "@/app/lib/cookie-consent";
 
-const SAVED_KEY = "chatham-saved-kitchens-v1";
+const SAVED_KEY = "bellwood-saved-kitchens-v1";
 type DiscoveryState = {
   filters: DiscoveryFilters;
   updateFilters: (patch: Partial<DiscoveryFilters>, scroll?: boolean, replace?: boolean) => void;

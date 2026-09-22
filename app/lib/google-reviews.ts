@@ -39,7 +39,18 @@ export function safeGoogleUrl(value?: string) {
     return url.protocol === "https:" && /(^|\.)(google\.com|googleusercontent\.com|gstatic\.com)$/.test(url.hostname) ? url.href : undefined;
   } catch { return undefined; }
 }
-const normalized = (value: string) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9 ]/g, " ").replace(/\b(street|avenue|east|west|south|north)\b/g, word => ({ street: "st", avenue: "ave", east: "e", west: "w", south: "s", north: "n" })[word]!).replace(/\b(barbecue|barbeque|bar b q)\b/g, "bbq").replace(/\bcafes\b/g, "cafe").replace(/\s+/g, " ").trim();
+/* Street words Google spells out and the stops store abbreviated, collapsed to
+ * one spelling before comparison. "saint" and "street" both fold to "st",
+ * which is the convention both sides already use: Bellwood's own listings
+ * write "St Charles Rd" while Google returns "Saint Charles Road". Without
+ * road/saint here, every stop on St. Charles Road would fail to match. */
+const STREET_WORDS: Record<string, string> = {
+  street: "st", saint: "st", avenue: "ave", road: "rd", drive: "dr",
+  boulevard: "blvd", court: "ct", lane: "ln", place: "pl", parkway: "pkwy",
+  highway: "hwy", terrace: "ter",
+  east: "e", west: "w", south: "s", north: "n",
+};
+const normalized = (value: string) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9 ]/g, " ").replace(new RegExp(`\\b(${Object.keys(STREET_WORDS).join("|")})\\b`, "g"), word => STREET_WORDS[word]).replace(/\b(barbecue|barbeque|bar b q)\b/g, "bbq").replace(/\bcafes\b/g, "cafe").replace(/\s+/g, " ").trim();
 /** A search result is not enough: require the same street and business name. */
 export function matchesRestaurant(place: Place, restaurant: { name: string; address: string }) {
   const street = normalized(restaurant.address.split(",")[0]);

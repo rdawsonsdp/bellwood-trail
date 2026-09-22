@@ -12,6 +12,6 @@ export default async function EditStop({ params }: { params: Promise<{ slug: str
   const stop = restaurants.find((r) => r.slug === slug);
   if (!stop) notFound();
   // Resolve the photo the way the card does, for the preview.
-  const [card] = await resolveStops([{ ...stop, hidden: false, builtByGci: false }]);
+  const [card] = await resolveStops([{ ...stop, hidden: false, liveDetails: false }]);
   return <StopForm key={version} slug={slug} initial={toDraft(stop)} version={version} imageSrc={card.imageSrc} />;
 }

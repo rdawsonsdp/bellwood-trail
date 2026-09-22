@@ -3,49 +3,50 @@
 @import "./map.css";
 @import "./mobile-discovery.css";
 @import "./trail-hero.css";
-@import "./gci-brand.css";
+@import "./bellwood-brand.css";
 
 /*
- * Chatham Culinary Path — design system.
+ * Bellwood Culinary Path — design system.
  *
- * Structure is the GCI restaurant template's (token architecture, fluid type
- * scale, the display/body font split). The VALUES are Greater Chatham
- * Initiative's, sampled from gci2016.org: the crimson and orange its hero
- * headline is set in, the gold of its bands and logo, Figtree throughout, and
- * full-pill buttons.
+ * Structure is carried over from the Greater Chatham Culinary Trail (token
+ * architecture, fluid type scale, the display/body font split). The VALUES are
+ * the Village of Bellwood's, sampled pixel-for-pixel from the village logo
+ * served at vil.bellwood.il.us (VofB_Logo_1200x190.png, Logo_400x170.png and
+ * Sticky-Logo.png): the logo is exactly two colours, and those two are the
+ * whole palette here.
  */
 @theme {
   --color-paper: #ffffff;
-  --color-cream: #faf6f0;         /* warm off-white for alternating bands */
-  --color-ink: #141210;
-  --color-crimson: #bf1e2d;       /* GCI headline crimson — 6.4:1 on white */
-  --color-crimson-dark: #9a1724;
-  /* Orange is GCI's CTA colour and the second half of its two-tone headline.
-     It is 3.08:1 on white: a fill, and display-size type only. Their own site
-     puts white and crimson labels on orange buttons at ~3:1 and ~2:1; black
-     on orange is 6.83:1, so that is what the pills carry here. orange-ink is
-     the same hue at 5.59:1 for any small orange word on a light ground. */
-  --color-orange: #f26927;
-  --color-orange-ink: #b04716;
-  /* Gold: the logo's "GREATER" and GCI's warm band. 2.84:1 on white — a fill.
-     gold-ink is the small-text rung at 5.43:1. */
-  --color-gold: #c2915e;
-  --color-gold-ink: #8a6230;
-  --color-warm-gray: #5f5852;     /* muted body — 6.9:1 on white */
-  --color-line: #ebe4da;
+  --color-mist: #f2f7fb;          /* cool off-white for alternating bands */
+  --color-ink: #111820;
+  /* The village blue, straight off the logo. 7.39:1 on white, so unlike a
+     typical brand blue it carries body text, links and small labels as well as
+     button fills — white on it is also 7.39:1. */
+  --color-blue: #0055a5;
+  --color-blue-dark: #003f7d;     /* 10.46:1 — hover and pressed */
+  /* The village gold, also straight off the logo. 1.74:1 on white: a FILL, and
+     display-size type only. Black on gold is 12.04:1 and the site's ink on
+     gold is 10.72:1, so gold pills carry dark labels, never white ones.
+     gold-ink is the same hue pushed to 5.93:1 for any small gold word on a
+     light ground. */
+  --color-gold: #fdb813;
+  --color-gold-ink: #8a5a00;
+  --color-sand: #ffe9b0;          /* the gold at band strength — 1.2:1, decorative only */
+  --color-muted: #5f6b7a;         /* muted body — 5.43:1 on white */
+  --color-line: #dde5ec;
   --color-open: #2f7d4f;
   --color-open-bright: #43c47a;   /* the open green, lifted for dark grounds (the cards' status bar) */
 
   --color-background: #ffffff;
-  --color-foreground: #141210;
+  --color-foreground: #111820;
 
-  /* Figtree is GCI's face — Black for the biggest headlines, ExtraBold for
+  /* Figtree carries the headlines: Black for the biggest, ExtraBold for
      section heads, Regular for body. Loaded via next/font in layout.tsx. */
   --font-display: var(--font-figtree), system-ui, -apple-system, sans-serif;
   --font-body: var(--font-figtree), system-ui, -apple-system, sans-serif;
 
-  /* Fluid scale. GCI's site renders the hero at a flat 60px and h2 at 36px;
-     those are the ceilings, and clamp() steps them down on phones. */
+  /* Fluid scale: 60px hero and 36px h2 are the ceilings, and clamp() steps
+     them down on phones. */
   --text-hero: clamp(2.5rem, 6vw + 1rem, 3.75rem);     /* 40 → 60 */
   --text-h1: clamp(2rem, 4vw + 0.75rem, 3rem);         /* 32 → 48 */
   --text-h2: clamp(1.625rem, 2.5vw + 0.75rem, 2.25rem);/* 26 → 36 */
@@ -55,23 +56,23 @@
   --text-small: 0.9rem;
   --text-xs: 0.75rem;
 
-  --radius-pill: 50px;            /* GCI's buttons are full pills */
-  --shadow-soft: 0 1px 3px rgba(20, 18, 16, 0.06);
-  --shadow-card: 0 10px 30px -12px rgba(20, 18, 16, 0.22);
-  --shadow-float: 2px 8px 60px -2px rgba(20, 18, 16, 0.18);
+  --radius-pill: 50px;
+  --shadow-soft: 0 1px 3px rgba(17, 24, 32, 0.06);
+  --shadow-card: 0 10px 30px -12px rgba(17, 24, 32, 0.22);
+  --shadow-float: 2px 8px 60px -2px rgba(17, 24, 32, 0.18);
 }
 
 html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
 body { background: var(--color-background); color: var(--color-foreground); font-family: var(--font-body); }
 
-/* GCI's headline voice: Figtree Black, tight, and two-tone crimson/orange. */
+/* The headline voice: Figtree Black, tight, and two-tone blue/gold. */
 .font-display { font-family: var(--font-display); font-weight: 900; letter-spacing: -0.02em; line-height: 1.02; }
 .font-head    { font-family: var(--font-display); font-weight: 800; letter-spacing: -0.01em; }
 
-/* Orange squiggle under the active nav item — the template's current-page
-   marker, recoloured to GCI orange. */
+/* Gold squiggle under the active nav item — the template's current-page
+   marker, recoloured to the village gold. */
 .squiggle {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='6' viewBox='0 0 40 6'%3E%3Cpath d='M0 3 Q5 0 10 3 T20 3 T30 3 T40 3' fill='none' stroke='%23f26927' stroke-width='1.8'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='6' viewBox='0 0 40 6'%3E%3Cpath d='M0 3 Q5 0 10 3 T20 3 T30 3 T40 3' fill='none' stroke='%23fdb813' stroke-width='1.8'/%3E%3C/svg%3E");
   background-repeat: repeat-x; background-position: bottom; background-size: 20px 6px; padding-bottom: 6px;
 }
 

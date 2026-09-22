@@ -30,7 +30,7 @@ export function PathExplorer({ stops }: { stops: Stop[] }) {
   ];
   return <section id="path" className="explorer-section" aria-labelledby="path-heading">
     <div className="site-container">
-      <div className={`section-heading explorer-heading ${filters.saved ? "" : "mobile-hide-heading"}`}><div><h2 id="path-heading" tabIndex={-1}>{filters.saved ? "Your favorites." : "Find your next favorite."}</h2><p>{filters.saved ? "Your favorite places, together in one list." : "Explore the kitchens that make Greater Chatham taste like home."}</p></div><span className="path-count">{stops.length} local kitchens</span></div>
+      <div className={`section-heading explorer-heading ${filters.saved ? "" : "mobile-hide-heading"}`}><div><h2 id="path-heading" tabIndex={-1}>{filters.saved ? "Your favorites." : "Find your next favorite."}</h2><p>{filters.saved ? "Your favorite places, together in one list." : "Explore the kitchens that make Bellwood taste like home."}</p></div><span className="path-count">{stops.length} local kitchens</span></div>
       <div className="explorer-toolbar">
         <label className="directory-search"><Search /><input type="search" value={filters.q} onChange={e => updateFilters({ q: e.target.value }, false, true)} maxLength={200} aria-label="Search kitchens" placeholder="Search kitchens or dishes" /></label>
         <div className="quick-filters">
@@ -69,7 +69,7 @@ export function PathExplorer({ stops }: { stops: Stop[] }) {
           <h3>Come hungry for</h3><p>{selected.signature.join(", ")}</p>
           <a className="detail-address" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selected.address)}`} target="_blank" rel="noopener noreferrer"><MapPin />{selected.address}<span className="sr-only"> — open map in a new tab</span></a>
           <details className="detail-hours"><summary>Opening hours <span>{selected.status.today}</span></summary><dl>{selected.schedule.map((hours, day) => <div key={day}><dt>{DAY_SHORT[day]}</dt><dd>{formatRange(hours)}</dd></div>)}</dl><p>{selected.status.source === "live" ? "Hours from the restaurant’s website." : "Listed opening hours."} All times are in Chicago.</p></details>
-          <div className="detail-actions"><a className="primary-button" href={selected.site} target="_blank" rel="noopener noreferrer">Visit restaurant website<span className="sr-only"> — opens in a new tab</span></a>{selected.phoneHref && <a className="secondary-button" href={selected.phoneHref}><Phone />{selected.phone}</a>}</div>
+          <div className="detail-actions">{selected.site && <a className="primary-button" href={selected.site} target="_blank" rel="noopener noreferrer">Visit restaurant website<span className="sr-only"> — opens in a new tab</span></a>}{selected.phoneHref && <a className="secondary-button" href={selected.phoneHref}><Phone />{selected.phone}</a>}</div>
           <RestaurantReviews key={selected.slug} slug={selected.slug} name={selected.name} address={selected.address} />
         </div>
       </div>}

@@ -10,7 +10,7 @@ import { CORRIDOR_KEYS, DAY_NAMES, MEAL_OPTIONS, rowsFromSchedule, scheduleFromR
 import { ConfirmButton } from "./ConfirmButton";
 import { keepOnError } from "./keep-on-error";
 
-const input = "mt-1.5 w-full rounded-xl border border-line bg-paper px-3.5 py-2.5 text-body text-ink focus:border-orange focus:outline-none focus:ring-2 focus:ring-orange/40";
+const input = "mt-1.5 w-full rounded-xl border border-line bg-paper px-3.5 py-2.5 text-body text-ink focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40";
 
 export function StopForm({ slug, initial, version, imageSrc }: {
   /** Empty for a new stop. */
@@ -56,7 +56,7 @@ export function StopForm({ slug, initial, version, imageSrc }: {
 
   return (
     <div className="space-y-6">
-      <Link href="/admin" className="text-small font-semibold text-warm-gray hover:text-ink">← All stops</Link>
+      <Link href="/admin" className="text-small font-semibold text-muted hover:text-ink">← All stops</Link>
       <h1 className="font-head text-h2 text-ink">{slug ? `Edit ${initial.name}` : "Add a restaurant"}</h1>
 
       <form onSubmit={keepOnError(action)} className="space-y-6">
@@ -70,37 +70,37 @@ export function StopForm({ slug, initial, version, imageSrc }: {
             <Field label="Name"><input className={input} value={d.name} onChange={(e) => set("name", e.target.value)} required maxLength={80} /></Field>
             <Field label="Tagline" hint="One line under the name on the card."><input className={input} value={d.tagline} onChange={(e) => set("tagline", e.target.value)} maxLength={120} /></Field>
             <Field label="Website" hint="Where the card's Visit link goes.">
-              <input className={input} type="url" value={d.site} onChange={(e) => set("site", e.target.value)} required placeholder="https://" />
+              <input className={input} type="url" value={d.site} onChange={(e) => set("site", e.target.value)} placeholder="https:// — leave blank if it has none" />
             </Field>
             <Field label="Since" hint="Year it opened, shown as a badge. Optional."><input className={input} value={d.since} onChange={(e) => set("since", e.target.value)} maxLength={12} /></Field>
           </div>
           <label className="mt-4 flex items-start gap-3 text-small text-ink">
-            <input type="checkbox" className="mt-1 h-4 w-4 accent-orange" checked={d.builtByGci} onChange={(e) => set("builtByGci", e.target.checked)} />
-            <span><b>Read hours, phone and address live from this website.</b> Turn on for sites built on the GCI template. When the site publishes them, they replace the values below on the card.</span>
+            <input type="checkbox" className="mt-1 h-4 w-4 accent-gold" checked={d.liveDetails} onChange={(e) => set("liveDetails", e.target.checked)} />
+            <span><b>Read hours, phone and address live from this website.</b> Turn on once the site publishes schema.org hours (a JSON-LD Restaurant block). When the site publishes them, they replace the values below on the card.</span>
           </label>
         </Panel>
 
         <Panel title="Check the site" aside={
-          <button type="button" onClick={check} disabled={checking || !d.site} className="rounded-pill border border-line bg-paper px-4 py-2 text-small font-bold text-ink hover:border-orange disabled:opacity-50">
+          <button type="button" onClick={check} disabled={checking || !d.site} className="rounded-pill border border-line bg-paper px-4 py-2 text-small font-bold text-ink hover:border-gold disabled:opacity-50">
             {checking ? "Reading the site…" : snap ? "Check again" : "Check the site now"}
           </button>}>
-          {!snap && <p className="text-small text-warm-gray">Reads the restaurant&apos;s home page right now: what it publishes, and the photos on it you can use for the card.</p>}
-          {snap && !snap.ok && <p className="text-small font-semibold text-crimson">⚠ {snap.error}</p>}
+          {!snap && <p className="text-small text-muted">Reads the restaurant&apos;s home page right now: what it publishes, and the photos on it you can use for the card.</p>}
+          {snap && !snap.ok && <p className="text-small font-semibold text-blue">⚠ {snap.error}</p>}
           {snap?.ok && (
             <div className="space-y-3 text-small">
               {!snap.phone && !snap.address && !liveHours
-                ? <p className="text-orange-ink">The site is up, but it publishes no hours, phone or address in a form the card can read. Enter them below.</p>
+                ? <p className="text-gold-ink">The site is up, but it publishes no hours, phone or address in a form the card can read. Enter them below.</p>
                 : <>
                     <dl className="grid gap-x-6 gap-y-2 sm:grid-cols-[auto_1fr]">
-                      <dt className="font-semibold">Phone</dt><dd>{snap.phone ?? <i className="text-warm-gray">not published</i>}</dd>
-                      <dt className="font-semibold">Address</dt><dd>{snap.address ?? <i className="text-warm-gray">not published</i>}</dd>
+                      <dt className="font-semibold">Phone</dt><dd>{snap.phone ?? <i className="text-muted">not published</i>}</dd>
+                      <dt className="font-semibold">Address</dt><dd>{snap.address ?? <i className="text-muted">not published</i>}</dd>
                       <dt className="font-semibold">Hours</dt>
                       <dd>{liveHours ? DAY_NAMES.map((n, i) => {
                         const differs = formatRange(liveHours[i]) !== formHours[i];
-                        return <span key={n} className={`mr-3 inline-block ${differs ? "font-semibold text-crimson" : ""}`}>{n.slice(0, 3)} {formatRange(liveHours[i])}</span>;
-                      }) : <i className="text-warm-gray">not published</i>}</dd>
+                        return <span key={n} className={`mr-3 inline-block ${differs ? "font-semibold text-blue" : ""}`}>{n.slice(0, 3)} {formatRange(liveHours[i])}</span>;
+                      }) : <i className="text-muted">not published</i>}</dd>
                     </dl>
-                    <button type="button" onClick={applySite} className="rounded-pill bg-ink px-4 py-2 text-small font-bold text-paper hover:bg-crimson">Copy these into the form</button>
+                    <button type="button" onClick={applySite} className="rounded-pill bg-ink px-4 py-2 text-small font-bold text-paper hover:bg-blue">Copy these into the form</button>
                   </>}
             </div>
           )}
@@ -108,8 +108,8 @@ export function StopForm({ slug, initial, version, imageSrc }: {
 
         <Panel title="Restaurant image">
           <div className="grid gap-5 sm:grid-cols-[260px_1fr]">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-line bg-cream">
-              {preview ? <img src={preview} alt="" className="absolute inset-0 h-full w-full object-cover" /> : <span className="absolute inset-0 flex items-center justify-center text-small text-warm-gray">No photo yet</span>}
+            <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-line bg-mist">
+              {preview ? <img src={preview} alt="" className="absolute inset-0 h-full w-full object-cover" /> : <span className="absolute inset-0 flex items-center justify-center text-small text-muted">No photo yet</span>}
             </div>
             <div className="space-y-4">
               <Field label="Upload an image or homepage screenshot" hint="JPEG, PNG or WebP, under 4 MB. About 1600 px wide is plenty. Preview the card crop here before saving.">
@@ -118,7 +118,7 @@ export function StopForm({ slug, initial, version, imageSrc }: {
                   className="mt-1.5 block w-full text-small file:mr-3 file:rounded-pill file:border-0 file:bg-ink file:px-4 file:py-2 file:text-small file:font-bold file:text-paper" />
               </Field>
               {(filePreview || copyFrom) && (
-                <button type="button" className="text-small font-semibold text-crimson hover:underline"
+                <button type="button" className="text-small font-semibold text-blue hover:underline"
                   onClick={() => { setCopyFrom(""); setFilePreview(null); if (fileRef.current) fileRef.current.value = ""; }}>
                   Keep the current photo instead
                 </button>
@@ -130,15 +130,15 @@ export function StopForm({ slug, initial, version, imageSrc }: {
           </div>
           <div className="mt-5">
             <p className="text-small font-semibold text-ink">Or pick a photo from the restaurant&apos;s home page</p>
-            {!snap && <p className="mt-1 text-small text-warm-gray">Use <b>Check the site now</b> above to load them.</p>}
-            {snap?.ok && snap.images.length === 0 && <p className="mt-1 text-small text-warm-gray">No photos found on that page.</p>}
+            {!snap && <p className="mt-1 text-small text-muted">Use <b>Check the site now</b> above to load them.</p>}
+            {snap?.ok && snap.images.length === 0 && <p className="mt-1 text-small text-muted">No photos found on that page.</p>}
             {snap?.ok && snap.images.length > 0 && (
               <ul className="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-5 lg:grid-cols-6">
                 {snap.images.map((im) => (
                   <li key={im.src}>
                     <button type="button" title={im.alt || im.src}
                       onClick={() => { setCopyFrom(im.src); setFilePreview(null); if (fileRef.current) fileRef.current.value = ""; if (im.alt && !/^Link-preview|^Image listed/.test(im.alt)) set("imageAlt", im.alt); }}
-                      className={`relative block aspect-square w-full overflow-hidden rounded-lg border-2 bg-cream ${copyFrom === im.src ? "border-orange ring-2 ring-orange/40" : "border-transparent hover:border-line"}`}>
+                      className={`relative block aspect-square w-full overflow-hidden rounded-lg border-2 bg-mist ${copyFrom === im.src ? "border-gold ring-2 ring-gold/40" : "border-transparent hover:border-line"}`}>
                       <img src={im.src} alt={im.alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
                     </button>
                   </li>
@@ -150,7 +150,7 @@ export function StopForm({ slug, initial, version, imageSrc }: {
 
         <Panel title="Location & contact">
           <div className="grid gap-4 sm:grid-cols-2">
-            <Field label="Street address"><input className={input} value={d.address} onChange={(e) => set("address", e.target.value)} placeholder="311 E 75th St, Chicago, IL 60619" /></Field>
+            <Field label="Street address"><input className={input} value={d.address} onChange={(e) => set("address", e.target.value)} placeholder="5201 St Charles Rd, Bellwood, IL 60104" /></Field>
             <Field label="Phone" hint="Leave blank if the business doesn't list one."><input className={input} type="tel" value={d.phone} onChange={(e) => set("phone", e.target.value)} placeholder="(773) 555-0100" /></Field>
             <Field label="Neighborhood"><input className={input} value={d.neighborhood} onChange={(e) => set("neighborhood", e.target.value)} /></Field>
             <Field label="Corridor" hint="Which group it sits in on the trail.">
@@ -162,7 +162,7 @@ export function StopForm({ slug, initial, version, imageSrc }: {
         </Panel>
 
         <Panel title="Map location" aside={<button type="button" onClick={locate} disabled={locating || !d.address.trim()} className="min-h-11 rounded-pill border border-line px-4 py-2 text-small font-bold disabled:opacity-50">{locating ? "Finding location…" : "Find from address"}</button>}>
-          <p className="mb-4 text-small text-warm-gray">Find the restaurant using its street address above. If you leave both coordinates blank, it still appears in the directory but has no map pin.</p>
+          <p className="mb-4 text-small text-muted">Find the restaurant using its street address above. If you leave both coordinates blank, it still appears in the directory but has no map pin.</p>
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Latitude"><input className={input} type="number" step="any" min="-85" max="85" value={d.lat} onChange={e => set("lat", e.target.value)} /></Field>
             <Field label="Longitude"><input className={input} type="number" step="any" min="-180" max="180" value={d.lng} onChange={e => set("lng", e.target.value)} /></Field>
@@ -184,7 +184,7 @@ export function StopForm({ slug, initial, version, imageSrc }: {
               <legend className="text-small font-semibold text-ink">Dining</legend>
               <div className="mt-2 flex flex-wrap gap-4 text-small">
                 {([["yes", "Dine in"], ["no", "Carryout only"], ["unknown", "Not confirmed"]] as const).map(([v, l]) => (
-                  <label key={v} className="flex items-center gap-2"><input type="radio" className="accent-orange" checked={d.dineIn === v} onChange={() => set("dineIn", v)} />{l}</label>
+                  <label key={v} className="flex items-center gap-2"><input type="radio" className="accent-gold" checked={d.dineIn === v} onChange={() => set("dineIn", v)} />{l}</label>
                 ))}
               </div>
             </fieldset>
@@ -193,7 +193,7 @@ export function StopForm({ slug, initial, version, imageSrc }: {
               <div className="mt-2 flex flex-wrap gap-4 text-small">
                 {MEAL_OPTIONS.map((m) => (
                   <label key={m} className="flex items-center gap-2 capitalize">
-                    <input type="checkbox" className="accent-orange" checked={d.meals.includes(m)}
+                    <input type="checkbox" className="accent-gold" checked={d.meals.includes(m)}
                       onChange={(e) => set("meals", e.target.checked ? [...d.meals, m] : d.meals.filter((x) => x !== m))} />{m}
                   </label>
                 ))}
@@ -202,18 +202,18 @@ export function StopForm({ slug, initial, version, imageSrc }: {
           </div>
         </Panel>
 
-        <Panel title="Hours" aside={d.builtByGci ? <span className="text-xs text-warm-gray">Used only when the site doesn&apos;t publish hours</span> : undefined}>
-          <p className="mb-3 text-small text-warm-gray">A closing time earlier than the opening time means it runs past midnight (open 11:00 AM, close 1:00 AM).</p>
+        <Panel title="Hours" aside={d.liveDetails ? <span className="text-xs text-muted">Used only when the site doesn&apos;t publish hours</span> : undefined}>
+          <p className="mb-3 text-small text-muted">A closing time earlier than the opening time means it runs past midnight (open 11:00 AM, close 1:00 AM).</p>
           <div className="space-y-2">
             {d.hours.map((row, i) => {
               const upd = (patch: Partial<typeof row>) => set("hours", d.hours.map((r, j) => (j === i ? { ...r, ...patch } : r)));
               return (
                 <div key={DAY_NAMES[i]} className="flex flex-wrap items-center gap-3 text-small">
                   <span className="w-24 font-semibold">{DAY_NAMES[i]}</span>
-                  <label className="flex items-center gap-2"><input type="checkbox" className="accent-orange" checked={row.closed} onChange={(e) => upd({ closed: e.target.checked })} />Closed</label>
+                  <label className="flex items-center gap-2"><input type="checkbox" className="accent-gold" checked={row.closed} onChange={(e) => upd({ closed: e.target.checked })} />Closed</label>
                   {!row.closed && <>
                     <input type="time" aria-label={`${DAY_NAMES[i]} opens`} className="rounded-lg border border-line px-2 py-1.5" value={row.open} onChange={(e) => upd({ open: e.target.value })} required />
-                    <span className="text-warm-gray">to</span>
+                    <span className="text-muted">to</span>
                     <input type="time" aria-label={`${DAY_NAMES[i]} closes`} className="rounded-lg border border-line px-2 py-1.5" value={row.close} onChange={(e) => upd({ close: e.target.value })} required />
                   </>}
                 </div>
@@ -224,23 +224,23 @@ export function StopForm({ slug, initial, version, imageSrc }: {
 
         <Panel title="Visibility">
           <label className="flex items-start gap-3 text-small text-ink">
-            <input type="checkbox" className="mt-1 h-4 w-4 accent-orange" checked={d.hidden} onChange={(e) => set("hidden", e.target.checked)} />
+            <input type="checkbox" className="mt-1 h-4 w-4 accent-gold" checked={d.hidden} onChange={(e) => set("hidden", e.target.checked)} />
             <span><b>Hide this stop from the trail.</b> It stays here so you can bring it back.</span>
           </label>
         </Panel>
 
-        {state.error && <p role="alert" className="rounded-xl border border-crimson/30 bg-crimson/5 px-4 py-3 text-small font-semibold text-crimson">{state.error}</p>}
-        <div className="sticky bottom-0 -mx-5 flex flex-wrap items-center gap-3 border-t border-line bg-cream/95 px-5 py-4 backdrop-blur">
-          <button disabled={saving} className="rounded-pill bg-orange px-6 py-3 text-small font-bold text-ink hover:bg-crimson hover:text-paper disabled:opacity-60">
+        {state.error && <p role="alert" className="rounded-xl border border-blue/30 bg-blue/5 px-4 py-3 text-small font-semibold text-blue">{state.error}</p>}
+        <div className="sticky bottom-0 -mx-5 flex flex-wrap items-center gap-3 border-t border-line bg-mist/95 px-5 py-4 backdrop-blur">
+          <button disabled={saving} className="rounded-pill bg-gold px-6 py-3 text-small font-bold text-ink hover:bg-blue hover:text-paper disabled:opacity-60">
             {saving ? "Saving…" : slug ? "Save changes" : "Add to the path"}
           </button>
-          <Link href="/admin" className="text-small font-semibold text-warm-gray hover:text-ink">Cancel</Link>
+          <Link href="/admin" className="text-small font-semibold text-muted hover:text-ink">Cancel</Link>
         </div>
       </form>
 
       {slug && (
         <div className="flex items-center justify-between rounded-2xl border border-line bg-paper px-5 py-4">
-          <p className="text-small text-warm-gray">Delete removes the stop for good. To take it off the trail for now, use <b>Hide</b> above.</p>
+          <p className="text-small text-muted">Delete removes the stop for good. To take it off the trail for now, use <b>Hide</b> above.</p>
           <ConfirmButton action={deleteStop} fields={{ slug, version }} label="Delete stop" confirmLabel="Yes, delete it" />
         </div>
       )}
@@ -265,7 +265,7 @@ function Field({ label, hint, children }: { label: string; hint?: string; childr
     <label className="block">
       <span className="text-small font-semibold text-ink">{label}</span>
       {children}
-      {hint && <span className="mt-1 block text-xs text-warm-gray">{hint}</span>}
+      {hint && <span className="mt-1 block text-xs text-muted">{hint}</span>}
     </label>
   );
 }

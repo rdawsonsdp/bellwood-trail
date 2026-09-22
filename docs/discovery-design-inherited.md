@@ -1,4 +1,14 @@
-# Chatham discovery redesign
+# Discovery redesign — inherited design record
+
+> **This is the Greater Chatham Culinary Trail's design review, kept because it
+> is why the interface looks the way it does.** The structure it describes —
+> the hero search, the food rail, the corridor cards, the filter model — is
+> what the Bellwood Culinary Path is built on, and is still accurate. The
+> **colours in it are not**: every crimson `#BF1E2D` here is Bellwood blue
+> `#0055A5` in this repo, and every orange `#F26927` is Bellwood gold
+> `#FDB813`. See `app/globals.css` for the palette that actually ships.
+
+## Original review
 
 Reviewed September 14, 2026.
 

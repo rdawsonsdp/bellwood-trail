@@ -24,4 +24,4 @@ Local development without a Blob token continues to use `.content/` and `public/
 
 ## Homepage hero
 
-Open `/admin/hero` from the dashboard’s Edit hero image link. Upload an image up to 4 MB, add its accessible description, review the desktop/mobile crops, and save. The hero is stored alongside restaurant content and survives deployments. Existing content without a hero setting falls back to the Lem’s photo. Saving uses the same version checks as restaurant edits and refreshes the public content cache.
+Open `/admin/hero` from the dashboard’s Edit hero image link. Upload an image up to 4 MB, add its accessible description, review the desktop/mobile crops, and save. The hero is stored alongside restaurant content and survives deployments. Existing content without a hero setting falls back to the Bellwood trail mark in `content/hero.ts`. Saving uses the same version checks as restaurant edits and refreshes the public content cache.

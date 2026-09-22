@@ -7,12 +7,12 @@ export function Footer() {
     <footer className="discovery-footer">
       <div className="site-container footer-main">
         <a className="footer-brand" href="/" aria-label={`${SITE.name} home`}>
-          <Image src="/images/brand/gci-logo.png" alt="" width={400} height={311} />
+          <Image src="/images/brand/bellwood-logo.png" alt="" width={400} height={170} />
           <strong>{SITE.name}</strong>
         </a>
-        <a className="footer-gci-link" href={SITE.orgUrl}>Visit Greater Chatham Initiative <span aria-hidden="true">→</span></a>
+        <a className="footer-org-link" href={SITE.orgUrl}>Visit the Village of Bellwood <span aria-hidden="true">→</span></a>
       </div>
-      <div className="site-container footer-bottom">© {new Date().getFullYear()} Greater Chatham Initiative.<CookiePreferences /></div>
+      <div className="site-container footer-bottom">© {new Date().getFullYear()} Village of Bellwood.<CookiePreferences /></div>
     </footer>
   );
 }

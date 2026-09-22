@@ -1,5 +1,5 @@
-export const CONSENT_COOKIE = "gci_cookie_preferences";
-export const CONSENT_EVENT = "gci-cookie-preferences-changed";
+export const CONSENT_COOKIE = "bellwood_cookie_preferences";
+export const CONSENT_EVENT = "bellwood-cookie-preferences-changed";
 export type CookieConsent = { version: 1; favorites: boolean };
 
 export function readConsent(cookie: string): CookieConsent | null {

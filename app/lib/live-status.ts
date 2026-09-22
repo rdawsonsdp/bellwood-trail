@@ -9,7 +9,7 @@ import { fetchSite, phoneHref } from "./site-data";
  * The cards as visitors see them: the stored stop, overlaid with whatever its
  * own site publishes right now.
  *
- * For stops marked builtByGci the hours, phone and address come live from the
+ * For stops marked liveDetails the hours, phone and address come live from the
  * site's JSON-LD (fetch-cached ten minutes in site-data.ts). Anything the site
  * doesn't publish, or a site that is down, falls back to the stored value, so
  * a restaurant site going down never takes a card off the trail. Everything
@@ -31,7 +31,7 @@ export function resolveImage(image: string): string | null {
 }
 
 async function resolveStop(r: Restaurant): Promise<Stop> {
-  const live = r.builtByGci ? await fetchSite(r.site, r.address) : null;
+  const live = r.liveDetails ? await fetchSite(r.site, r.address) : null;
   const phone = live?.phone ?? r.phone;
   const schedule = live?.schedule ?? r.schedule;
   return {

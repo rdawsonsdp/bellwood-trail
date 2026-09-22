@@ -1,6 +1,6 @@
 # Restaurant map
 
-The homepage opens with a click-to-explore street map, using the existing GCI crimson (#bf1e2d), orange (#f26927), discovery ink (#172b45), and Figtree typography. On mobile the primary action appears before the map preview. Opening it presents a full-screen map with a separately scrolling kitchen list. Desktop uses a map and sidebar.
+The homepage opens with a click-to-explore street map, using the village blue (#0055a5), village gold (#fdb813), discovery ink (#172b45), and Figtree typography. Pins are blue; the selected pin flips to gold and carries dark ink. On mobile the primary action appears before the map preview. Opening it presents a full-screen map with a separately scrolling kitchen list. Desktop uses a map and sidebar.
 
 Select a pin or list entry to move the map to that kitchen and show its photo, hours, address, directions, website, phone, and save action. Neighboring pins group together; selecting a group zooms in. At high zoom, grouped pins cycle through their kitchens. Every kitchen is also available in the list. Search matches dishes, cuisine, names and addresses. Open now uses the same status as the main directory. These map filters are local to the explorer; the main directory filters stay unchanged.
 

@@ -4,7 +4,7 @@ import type { DayHours } from "@/content/restaurants";
 /**
  * Reads what a restaurant's own home page publishes about itself.
  *
- * Sites built on the GCI template emit schema.org Restaurant JSON-LD — hours,
+ * A site that emits schema.org Restaurant JSON-LD publishes its hours,
  * phone, address — and that block is what drives their own open/closed chip
  * and their Google listing, so it is the freshest source there is. Some list
  * several locations (Tropic Island has three, Uncle John's two); the node
@@ -143,7 +143,7 @@ export async function fetchSite(site: string, storedAddress: string, opts: { fre
   try {
     const res = await fetch(site, {
       ...(opts.fresh ? { cache: "no-store" as const } : { next: { revalidate: 600, tags: [SITE_TAG] } }),
-      headers: { "User-Agent": "ChathamCulinaryPath/1.0 (+https://www.gci2016.org/)" },
+      headers: { "User-Agent": "BellwoodCulinaryPath/1.0 (+https://www.vil.bellwood.il.us/)" },
       signal: AbortSignal.timeout(8000),
     });
     if (!res.ok) return { ok: false, error: `The site answered with an error (HTTP ${res.status}).`, images: [] };

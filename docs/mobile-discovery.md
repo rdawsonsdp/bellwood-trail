@@ -1,6 +1,6 @@
 # Mobile restaurant discovery
 
-Use the current Chatham Culinary Path as the template. Keep GCI's red (#bf1e2d), navy text (#172b45), muted text (#566273), white (#ffffff), and pale gray (#f3f6f8). Keep Figtree for controls and the existing Jost/Italianno logo-inspired hero lettering.
+Keep the Village of Bellwood's blue (#0055a5), gold (#fdb813), navy text (#172b45), muted text (#5f6b7a), white (#ffffff), and pale slate (#f2f7fb). Keep Figtree for controls and the script face for the hero lettering.
 
 Phone layout: compact header, short storefront hero, horizontal cuisine choices, search and filters, two-column restaurant grid, fixed Map / Search / Favorites navigation. The grid is left aligned; restaurant names and real restaurant images carry the visual identity. No new dependencies.
 
