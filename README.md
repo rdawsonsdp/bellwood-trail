@@ -163,7 +163,8 @@ unchanged in shape. What is Bellwood's:
 ## Next steps
 
 1. **Make the calls** in [docs/bellwood-stops.md](docs/bellwood-stops.md).
-   Thirteen stops have placeholder hours and two have no phone number.
+   Thirteen of the twenty do not publish their hours, and three have no phone
+   number at all.
 2. **Photograph the twenty storefronts.**
 3. **Copy pass with the Mayor's office.** The taglines and corridor blurbs are
    working copy. Nothing in the repo quotes Mayor Harvey or announces a Village

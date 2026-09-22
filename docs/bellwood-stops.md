@@ -61,7 +61,7 @@ someone calls.
 
 ## The call sheet
 
-Thirteen calls, in the order that most improves the demo. Each one is a
+Fourteen calls, in the order that most improves the demo. Each one is a
 two-minute call, and every answer goes straight into `/admin`.
 
 1. **Bellwood Sweets** (no phone, no hours) — confirm it is still trading at all.
