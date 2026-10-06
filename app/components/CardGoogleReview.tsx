@@ -29,7 +29,7 @@ export function CardGoogleReview({ slug, name, address }: { slug: string; name: 
     </a> : <a className="card-google-link" href={url} target="_blank" rel="noopener noreferrer">See reviews on Google Maps ↗</a>}
     {review && <figure>
       <blockquote>“{excerpt}”</blockquote>
-      <figcaption>{review.authorUrl ? <a href={review.authorUrl} target="_blank" rel="noopener noreferrer">{review.author}</a> : review.author}<span> · {review.rating}/5{review.date ? ` · ${review.date}` : ""}</span></figcaption>
+      <figcaption>{review.avatar && <img src={review.avatar} alt="" width={24} height={24} loading="lazy" referrerPolicy="no-referrer" />}{review.authorUrl ? <a href={review.authorUrl} target="_blank" rel="noopener noreferrer">{review.author}</a> : review.author}<span> · {review.rating}/5{review.date ? ` · ${review.date}` : ""}</span></figcaption>
       <a className="card-google-source" href={review.url} target="_blank" rel="noopener noreferrer">Read full review on Google ↗</a>
     </figure>}
     {result?.available && <a className="card-review-info" href="/review-information">About Google reviews</a>}

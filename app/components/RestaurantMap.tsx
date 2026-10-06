@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { GoogleStreetMap, GOOGLE_MAPS_KEY } from "./GoogleStreetMap";
 import { CORRIDORS, type Restaurant } from "@/content/restaurants";
 import { useEffect, useRef, useState } from "react";
 import type { Stop } from "@/app/lib/live-status";
@@ -117,6 +118,8 @@ function StreetMap({ stops, active, interactive = false, onSelect }: { stops: Lo
   </div>;
 }
 
+const RestaurantStreetMap = GOOGLE_MAPS_KEY ? GoogleStreetMap : StreetMap;
+
 export function RestaurantMap({ stops, embedded = false }: { stops: Stop[]; embedded?: boolean }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -145,7 +148,7 @@ export function RestaurantMap({ stops, embedded = false }: { stops: Stop[]; embe
   const explorer = <><header className="map-dialog-header"><div><h2 id="map-dialog-title" >Bellwood restaurant map</h2><p>{located.length} local kitchens · Four food corridors</p></div>{!embedded && <button autoFocus className="icon-button" aria-label="Close map" onClick={() => setOpen(false)}><Close /></button>}{embedded && <a className="filter-button" href="/map">Full map ↗</a>}</header>
         <div className="map-filter-bar"><label><span className="sr-only">Search restaurants on the map</span><input type="search" placeholder="Try rib tips, vegan, or a kitchen…" value={query} onChange={e => { setQuery(e.target.value); setSelected(undefined); }} /></label><label className="map-corridor-filter"><span className="sr-only">Filter map by corridor</span><select value={corridor} onChange={e => { setCorridor(e.target.value as typeof corridor); setSelected(undefined); }}><option value="">All corridors</option>{Object.entries(CORRIDORS).map(([key, value]) => <option key={key} value={key}>{value.label}</option>)}</select></label></div>
         {legend}
-        <div className="map-explorer-body"><div className="map-canvas"><StreetMap stops={mapped} active={active?.slug} interactive onSelect={s => { setSelected(s.slug); (embedded ? embeddedRef.current : dialog.current)?.querySelector(".map-kitchens")?.scrollTo({ top: 0, behavior: "instant" }); }} /><p className="map-instructions">One pin per kitchen. Lines connect nearby pins to their locations. Drag or zoom to explore.</p></div>
+        <div className="map-explorer-body"><div className="map-canvas"><RestaurantStreetMap stops={mapped} active={active?.slug} interactive onSelect={s => { setSelected(s.slug); (embedded ? embeddedRef.current : dialog.current)?.querySelector(".map-kitchens")?.scrollTo({ top: 0, behavior: "instant" }); }} /><p className="map-instructions">One pin per kitchen. Lines connect nearby pins to their locations. Drag or zoom to explore.</p></div>
           <aside className="map-kitchens" aria-label="Restaurants on the map">
             {active && <article className="map-detail" aria-label={active.name}>
               <div className="map-detail-heading"><p>Selected kitchen</p><button className="icon-button" aria-label="Back to all map results" onClick={() => setSelected(undefined)}><Close /></button></div>
@@ -164,7 +167,7 @@ export function RestaurantMap({ stops, embedded = false }: { stops: Stop[]; embe
   return <>
     <section id="restaurant-map" className="map-intro site-container" aria-labelledby="map-intro-title">
       <div className="map-intro-copy"><p className="map-location"><MapPin />Bellwood, Illinois</p><h2 id="map-intro-title">Find your next great meal.</h2><p>From St. Charles Road to Butterfield. Explore the kitchens, see what’s nearby, and pick your next stop.</p><button ref={opener} className="primary-button" type="button" aria-haspopup="dialog" onClick={() => setOpen(true)}><MapPin />Explore the map</button><span>{located.length} kitchens on the map</span>{legend}</div>
-      <div className="map-preview"><StreetMap stops={located} /><button className="map-preview-open" type="button" aria-label="Open interactive restaurant map" aria-haspopup="dialog" onClick={() => setOpen(true)}><span>Tap to explore the neighborhood ↗</span></button></div>
+      <div className="map-preview"><RestaurantStreetMap stops={located} /><button className="map-preview-open" type="button" aria-label="Open interactive restaurant map" aria-haspopup="dialog" onClick={() => setOpen(true)}><span>Tap to explore the neighborhood ↗</span></button></div>
     </section>
     <dialog className="restaurant-map-dialog" ref={dialog} aria-labelledby="map-dialog-title" onCancel={e => { e.preventDefault(); setOpen(false); }} onKeyDown={e => {
       if (e.key !== "Tab") return;

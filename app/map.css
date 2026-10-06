@@ -112,3 +112,6 @@
 .map-type-dot { margin-right:5px; }
 .map-intro-copy .map-cuisine-legend { padding:0; border:0; }
 .culinary-site .map-pin.is-selected { outline:3px solid #fdb813; }
+
+.google-map-background { position:absolute; inset:0; }
+.google-map-reset { position:absolute; top:12px; left:12px; z-index:6; min-height:44px; padding:10px 14px; background:white; border:1px solid #b7c1cc; border-radius:6px; color:#172b45; font-size:12px; font-weight:700; box-shadow:0 2px 5px #172b451a; }
