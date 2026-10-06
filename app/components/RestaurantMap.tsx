@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { CORRIDORS, type Restaurant } from "@/content/restaurants";
 import { useEffect, useRef, useState } from "react";
 import type { Stop } from "@/app/lib/live-status";
 import { BELLWOOD_CENTER, BELLWOOD_ZOOM, fitMap, hasCoordinates, MAX_ZOOM, MIN_ZOOM, project, zoomAt, type MapView } from "@/app/lib/map";
@@ -122,18 +123,23 @@ function StreetMap({ stops, active, interactive = false, onSelect }: { stops: Lo
   </div>;
 }
 
-export function RestaurantMap({ stops }: { stops: Stop[] }) {
+export function RestaurantMap({ stops, embedded = false }: { stops: Stop[]; embedded?: boolean }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const [openOnly, setOpenOnly] = useState(false);
+  const [corridor, setCorridor] = useState<Restaurant["corridor"] | "">("");
+  const embeddedRef = useRef<HTMLElement>(null);
   const [selected, setSelected] = useState<string>();
   const dialog = useRef<HTMLDialogElement>(null);
   const opener = useRef<HTMLButtonElement>(null);
   const { saved, toggleSaved } = useDiscovery();
   const located = stops.filter(hasCoordinates);
-  const matches = stops.filter(s => (!openOnly || s.status.open) && `${s.name} ${s.cuisine.join(" ")} ${s.signature.join(" ")} ${s.address}`.toLowerCase().includes(query.trim().toLowerCase()));
+  const matches = stops.filter(s => (!corridor || s.corridor === corridor) && `${s.name} ${s.cuisine.join(" ")} ${s.signature.join(" ")} ${s.address}`.toLowerCase().includes(query.trim().toLowerCase()));
   const mapped = matches.filter(hasCoordinates);
   const active = matches.find(s => s.slug === selected);
+  useEffect(() => {
+    const slug = new URLSearchParams(window.location.search).get("stop");
+    if (slug) setSelected(slug);
+  }, []);
   useEffect(() => {
     if (!open) return;
     const previousFocus = document.activeElement as HTMLElement | null;
@@ -141,8 +147,26 @@ export function RestaurantMap({ stops }: { stops: Stop[] }) {
     const old = document.body.style.overflow; document.body.style.overflow = "hidden";
     return () => { dialog.current?.close(); document.body.style.overflow = old; previousFocus?.focus({ preventScroll: true }); };
   }, [open]);
+  const explorer = <><header className="map-dialog-header"><div><h2 id="map-dialog-title" >Bellwood restaurant map</h2><p>{located.length} local kitchens · Four food corridors</p></div>{!embedded && <button autoFocus className="icon-button" aria-label="Close map" onClick={() => setOpen(false)}><Close /></button>}{embedded && <a className="filter-button" href="/map">Full map ↗</a>}</header>
+        <div className="map-filter-bar"><label><span className="sr-only">Search restaurants on the map</span><input type="search" placeholder="Try rib tips, vegan, or a kitchen…" value={query} onChange={e => { setQuery(e.target.value); setSelected(undefined); }} /></label><label className="map-corridor-filter"><span className="sr-only">Filter map by corridor</span><select value={corridor} onChange={e => { setCorridor(e.target.value as typeof corridor); setSelected(undefined); }}><option value="">All corridors</option>{Object.entries(CORRIDORS).map(([key, value]) => <option key={key} value={key}>{value.label}</option>)}</select></label></div>
+        <div className="map-explorer-body"><div className="map-canvas"><StreetMap stops={mapped} active={active?.slug} interactive onSelect={s => { setSelected(s.slug); (embedded ? embeddedRef.current : dialog.current)?.querySelector(".map-kitchens")?.scrollTo({ top: 0, behavior: "instant" }); }} /><p className="map-instructions">Drag to explore. Pinch or use + / − to zoom.</p></div>
+          <aside className="map-kitchens" aria-label="Restaurants on the map">
+            {active && <article className="map-detail" aria-label={active.name}>
+              <div className="map-detail-heading"><p>Selected kitchen</p><button className="icon-button" aria-label="Back to all map results" onClick={() => setSelected(undefined)}><Close /></button></div>
+              {active.imageSrc && <div className="map-detail-photo"><Image src={active.imageSrc} alt={active.imageAlt || active.name} fill sizes="(max-width: 700px) 100vw, 350px" /></div>}
+              <h3>{active.name}</h3><p>{active.cuisine.join(" · ")}</p><p className="map-hours">Check hours with the restaurant before visiting.</p><p>{active.address}</p><p>{active.tagline}</p>
+              {!hasCoordinates(active) && <p>Map location isn’t available yet. Use directions to find this kitchen.</p>}
+              <div className="map-detail-actions"><a className="primary-button" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(active.address)}`} target="_blank" rel="noopener noreferrer">Get directions<span className="sr-only"> (opens a new tab)</span></a>{active.site && <a className="filter-button" href={active.site} target="_blank" rel="noopener noreferrer">Visit website<span className="sr-only"> (opens a new tab)</span></a>}{active.phoneHref && <a className="filter-button" href={active.phoneHref}>Call</a>}<button className="filter-button" aria-pressed={saved.includes(active.slug)} onClick={() => toggleSaved(active.slug, active.name)}><Heart filled={saved.includes(active.slug)} />{saved.includes(active.slug) ? "Saved" : "Save kitchen"}</button></div>
+            </article>}
+            <div className="map-results-heading"><h3>{matches.length} {matches.length === 1 ? "kitchen" : "kitchens"} to explore</h3><p role="status">{active ? `${active.name} selected. Details above.` : "Select a kitchen to take a closer look."}</p></div>
+            {!matches.length && <div className="map-empty"><p>No kitchens match that search.</p><button className="filter-button" onClick={() => { setQuery(""); setCorridor(""); }}>Clear filters</button></div>}
+            <div className="map-results">{matches.map(stop => <button key={stop.slug} type="button" className="map-result" aria-pressed={stop.slug === active?.slug} onClick={() => { setSelected(stop.slug); (embedded ? embeddedRef.current : dialog.current)?.querySelector(".map-kitchens")?.scrollTo({ top: 0, behavior: "instant" }); }}>
+              {stop.imageSrc ? <Image src={stop.imageSrc} alt="" width={64} height={64} /> : <MapPin />}<span><strong>{stop.name}</strong><span>{stop.address.split(",")[0]}</span><small>{stop.cuisine.slice(0, 2).join(" · ")}{!hasCoordinates(stop) ? " · Not mapped yet" : ""}</small></span><MapPin /></button>)}</div>
+          </aside>
+        </div>{!embedded && <MobileNavigation mapActive onMap={() => {}} onNavigate={() => setOpen(false)} />}</>;
+  if (embedded) return <><section ref={embeddedRef} id="restaurant-map" className="embedded-restaurant-map site-container" aria-labelledby="map-dialog-title">{explorer}</section><MobileNavigation onMap={() => document.getElementById("restaurant-map")?.scrollIntoView({ behavior: "smooth" })} /></>;
   return <>
-    <section className="map-intro site-container" aria-labelledby="map-intro-title">
+    <section id="restaurant-map" className="map-intro site-container" aria-labelledby="map-intro-title">
       <div className="map-intro-copy"><p className="map-location"><MapPin />Bellwood, Illinois</p><h2 id="map-intro-title">Find your next great meal.</h2><p>From St. Charles Road to Butterfield. Explore the kitchens, see what’s nearby, and pick your next stop.</p><button ref={opener} className="primary-button" type="button" aria-haspopup="dialog" onClick={() => setOpen(true)}><MapPin />Explore the map</button><span>{located.length} kitchens on the map</span></div>
       <div className="map-preview"><StreetMap stops={located} /><button className="map-preview-open" type="button" aria-label="Open interactive restaurant map" aria-haspopup="dialog" onClick={() => setOpen(true)}><span>Tap to explore the neighborhood ↗</span></button></div>
     </section>
@@ -153,23 +177,7 @@ export function RestaurantMap({ stops }: { stops: Stop[] }) {
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
     }}>
-      {open && <><header className="map-dialog-header"><div><h2 id="map-dialog-title" className="sr-only">Restaurant map</h2><p>Every stop in the village</p></div><button autoFocus className="icon-button" aria-label="Close map" onClick={() => setOpen(false)}><Close /></button></header>
-        <div className="map-filter-bar"><label><span className="sr-only">Search restaurants on the map</span><input type="search" placeholder="Try rib tips, vegan, or a kitchen…" value={query} onChange={e => { setQuery(e.target.value); setSelected(undefined); }} /></label><button className="filter-button" aria-pressed={openOnly} onClick={() => { setOpenOnly(!openOnly); setSelected(undefined); }}>Open now</button></div>
-        <div className="map-explorer-body"><div className="map-canvas"><StreetMap stops={mapped} active={active?.slug} interactive onSelect={s => { setSelected(s.slug); dialog.current?.querySelector(".map-kitchens")?.scrollTo({ top: 0, behavior: "instant" }); }} /><p className="map-instructions">Drag to explore. Pinch or use + / − to zoom.</p></div>
-          <aside className="map-kitchens" aria-label="Restaurants on the map">
-            {active && <article className="map-detail" aria-label={active.name}>
-              <div className="map-detail-heading"><p>Selected kitchen</p><button className="icon-button" aria-label="Back to all map results" onClick={() => setSelected(undefined)}><Close /></button></div>
-              {active.imageSrc && <div className="map-detail-photo"><Image src={active.imageSrc} alt={active.imageAlt || active.name} fill sizes="(max-width: 700px) 100vw, 350px" /></div>}
-              <h3>{active.name}</h3><p>{active.cuisine.join(" · ")}</p><p className="map-hours">{active.status.headline.replace("Now open till", "Open until")} · {active.status.today}</p><p>{active.address}</p><p>{active.tagline}</p>
-              {!hasCoordinates(active) && <p>Map location isn’t available yet. Use directions to find this kitchen.</p>}
-              <div className="map-detail-actions"><a className="primary-button" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(active.address)}`} target="_blank" rel="noopener noreferrer">Get directions<span className="sr-only"> (opens a new tab)</span></a>{active.site && <a className="filter-button" href={active.site} target="_blank" rel="noopener noreferrer">Visit website<span className="sr-only"> (opens a new tab)</span></a>}{active.phoneHref && <a className="filter-button" href={active.phoneHref}>Call</a>}<button className="filter-button" aria-pressed={saved.includes(active.slug)} onClick={() => toggleSaved(active.slug, active.name)}><Heart filled={saved.includes(active.slug)} />{saved.includes(active.slug) ? "Saved" : "Save kitchen"}</button></div>
-            </article>}
-            <div className="map-results-heading"><h3>{matches.length} {matches.length === 1 ? "kitchen" : "kitchens"} to explore</h3><p role="status">{active ? `${active.name} selected. Details above.` : "Select a kitchen to take a closer look."}</p></div>
-            {!matches.length && <div className="map-empty"><p>No kitchens match that search.</p><button className="filter-button" onClick={() => { setQuery(""); setOpenOnly(false); }}>Clear filters</button></div>}
-            <div className="map-results">{matches.map(stop => <button key={stop.slug} type="button" className="map-result" aria-pressed={stop.slug === active?.slug} onClick={() => { setSelected(stop.slug); dialog.current?.querySelector(".map-kitchens")?.scrollTo({ top: 0, behavior: "instant" }); }}>
-              {stop.imageSrc ? <Image src={stop.imageSrc} alt="" width={64} height={64} /> : <MapPin />}<span><strong>{stop.name}</strong><span>{stop.address.split(",")[0]}</span><small>{stop.status.headline.replace("Now open till", "Open until")}{!hasCoordinates(stop) ? " · Not mapped yet" : ""}</small></span><MapPin /></button>)}</div>
-          </aside>
-        </div><MobileNavigation mapActive onMap={() => {}} onNavigate={() => setOpen(false)} /></>}
+      {open && explorer}
     </dialog>
     <MobileNavigation onMap={() => setOpen(true)} />
   </>;

@@ -1,3 +1,13 @@
+# Restaurant map — October 2026 update
+
+The homepage now matches the Chatham reference with a compact map preview that opens the full-screen explorer. The dedicated `/map` route retains the embedded interactive view. Search matches names, addresses, cuisines and dishes. A corridor selector filters both list and pins. Selecting a restaurant shows its photo, address, website, call link, save control and Google Maps directions. `/map?stop=mickeys` (or another valid slug) opens the selected restaurant. Nearby pins cluster and expand on zoom; the searchable list keeps every stop reachable.
+
+The map uses the existing tile renderer, keyboard controls and pinch/drag support. Twenty seed entries remain; nineteen are visible because Vari’s has not confirmed its opening. Tastee Rolls uses the current Mannheim Road address and a Census address-range geocode. Some inherited pins are approximations; see bellwood-stops.md. The map deliberately omits open-now filtering because inherited hours include placeholders.
+
+The original modal remains available to callers that omit `embedded`. Street tiles require internet access; failures preserve the restaurant list and directions. OpenStreetMap attribution stays visible. No key or map-library dependency was added.
+
+## Original renderer notes
+
 # Restaurant map
 
 The homepage opens with a click-to-explore street map, using the village blue (#0055a5), village gold (#fdb813), discovery ink (#172b45), and Figtree typography. Pins are blue; the selected pin flips to gold and carries dark ink. On mobile the primary action appears before the map preview. Opening it presents a full-screen map with a separately scrolling kitchen list. Desktop uses a map and sidebar.

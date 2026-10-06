@@ -1,0 +1,30 @@
+.craving-section { padding-block:24px; }
+.craving-section h2 { font-size:clamp(23px,2.2vw,30px); font-weight:800; line-height:1.2; letter-spacing:-.7px; color:var(--color-blue); margin-bottom:14px; }
+.craving-pills { display:flex; flex-wrap:wrap; gap:8px; }
+.craving-pills button { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:10px 17px; border:1px solid #b8cce0; border-radius:999px; background:#fff; color:#003f7d; font-size:13px; font-weight:700; line-height:1.25; }
+.craving-pills button:hover { border-color:#0055a5; background:#edf4fb; }
+.craving-pills button[aria-pressed="true"] { background:#0055a5; border-color:#0055a5; color:#fff; }
+.kitchen-grid { gap:2px; }
+.kitchen-card { border-radius:0; }
+.kitchen-photo { aspect-ratio:1.65; }
+.kitchen-body { padding:13px; gap:6px; }
+.kitchen-body h3 { font-size:19px; line-height:1.2; }
+.kitchen-photo-fallback { font-size:13px; gap:6px; padding:16px 16px 44px; }
+.kitchen-photo-fallback svg { width:25px; height:25px; }
+.kitchen-card .kitchen-actions { padding-top:6px; }
+.explorer-section { padding-block:24px; }
+.explorer-heading { margin-bottom:16px; }
+.results-summary { padding-block:12px; }
+@media(max-width:700px) {
+  .craving-section { padding-block:16px; }
+  .craving-section h2 { font-size:22px; margin-bottom:10px; }
+  .craving-pills { gap:6px; }
+  .craving-pills button { padding:9px 13px; font-size:12px; }
+  .kitchen-photo { aspect-ratio:1.4; }
+  .kitchen-body { padding:9px; gap:4px; }
+  .kitchen-body h3 { font-size:15px; }
+  .kitchen-photo-fallback { padding:12px 10px 34px; font-size:12px; }
+  .kitchen-photo-fallback svg { width:22px; height:22px; }
+  .explorer-section { padding-block:10px 20px; }
+  .results-summary { padding-block:2px; }
+}

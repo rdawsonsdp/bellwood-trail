@@ -20,7 +20,7 @@ export const UPDATE_TAGS: Update["tag"][] = ["New on the path", "Event", "Villag
 
 export const UPDATES: Update[] = [
   { id: "2026-09-22-launch", date: "2026-09-22", tag: "Announcement", title: "Twenty Bellwood kitchens, on one path",
-    body: "The Bellwood Culinary Path opens with twenty locally owned restaurants across four corridors — St. Charles Road, Mannheim, Bellwood Avenue, and 25th at Butterfield. No chains. Every stop is a Bellwood business with a Bellwood address." },
+    body: "Dine Bellwood opens with twenty locally owned restaurants across four corridors — St. Charles Road, Mannheim, Bellwood Avenue, and 25th at Butterfield. No chains. Every stop is a Bellwood business with a Bellwood address." },
   { id: "2026-09-04-varis", date: "2026-09-04", tag: "New on the path", title: "Vari's Southern Cuisine is coming to 2712 St. Charles Road",
     body: "Nanetta Dancy-Matthews is opening a second Vari's in downtown Bellwood, bringing the fried ribs, catfish filet, oxtail and lamb her Hillside dining room is known for. She is aiming for late October.",
     href: "https://whatnow.com/chicago/restaurants/local-restaurateur-bringing-second-southern-cuisine-spot-to-bellwood/" },

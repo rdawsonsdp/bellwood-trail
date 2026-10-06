@@ -1,0 +1,64 @@
+/* Colors sampled from the user's Bellwood event references. */
+.culinary-site { --bellwood-gold:#fdb813; --bellwood-cream:#fffbf2; --bellwood-soft-blue:#91b5d9; --bellwood-deep-blue:#0055a5; }
+.bellwood-promotion { position:relative; background:var(--bellwood-soft-blue); color:#003f7d; padding:54px 0; overflow:hidden; }
+.promotion-inner { display:grid; grid-template-columns:.8fr 1.2fr; align-items:center; gap:48px; }
+.vip-eyebrow { font-size:11px; line-height:1.5; font-weight:800; letter-spacing:1.6px; color:#003f7d; }
+.promotion-intro h2 { font-size:clamp(34px,3.6vw,52px); line-height:1.05; font-weight:800; letter-spacing:-1.8px; margin:12px 0 18px; }
+.promotion-intro h2 em { display:block; font-family:Georgia,serif; font-weight:400; }
+.promotion-intro > p:last-child { max-width:35ch; line-height:1.65; font-size:15px; }
+.promotion-ticket { display:grid; grid-template-columns:1fr 142px; background:var(--bellwood-cream); border-radius:20px; box-shadow:0 14px 24px #003f7d1a; }
+.promotion-ticket-copy { padding:28px; }
+.promotion-tag { display:inline-block; background:var(--bellwood-gold); color:#003f7d; padding:6px 10px; border-radius:30px; font-size:9px; font-weight:800; letter-spacing:1.2px; }
+.promotion-ticket-copy h3 { font-family:Georgia,serif; font-size:32px; margin:14px 0 10px; }
+.promotion-ticket-copy > p { font-size:14px; line-height:1.6; margin-bottom:20px; color:#365675; }
+.promotion-ticket-copy .primary-button { font-size:13px; min-height:48px; white-space:normal; text-align:center; }
+.promotion-ticket-date { border-left:3px dotted var(--bellwood-soft-blue); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:22px 12px; gap:24px; }
+.promotion-ticket-date span { font-size:10px; line-height:1.6; font-weight:800; letter-spacing:1.4px; }
+.promotion-ticket-date strong { font-family:Georgia,serif; font-size:29px; line-height:1.15; font-weight:400; }
+.dine-vip-dialog { position:fixed; inset:0; margin:auto; width:min(520px,calc(100vw - 32px)); max-width:none; max-height:calc(100dvh - 32px); padding:0; border:0; border-radius:24px; background:var(--bellwood-cream); color:#003f7d; overflow:auto; overscroll-behavior:contain; box-shadow:0 24px 80px #002b5866; }
+.dine-vip-dialog::backdrop { background:#002b5899; backdrop-filter:blur(4px); }
+.dine-vip-inner { position:relative; }
+.vip-close { position:absolute; top:14px; right:14px; z-index:1; background:var(--bellwood-cream); border-radius:50%; color:#003f7d; }
+.vip-banner { padding:24px 60px 20px; background:var(--bellwood-gold); text-align:center; }
+.vip-banner p { font-size:10px; font-weight:800; letter-spacing:1.6px; margin-top:10px; }
+.vip-seal { display:grid; place-items:center; margin:auto; width:68px; height:68px; background:var(--bellwood-cream); border:3px dotted #91b5d9; border-radius:50%; font-family:Georgia,serif; font-weight:bold; font-size:26px; transform:rotate(-10deg); }
+.vip-content { padding:28px 36px 30px; }
+.vip-content h2 { font-size:36px; line-height:1.12; font-weight:800; letter-spacing:-1.3px; margin:10px 0 14px; }
+.vip-content h2 em { font-family:Georgia,serif; }
+.vip-content > p:not(.vip-eyebrow) { font-size:14px; line-height:1.7; color:#365675; }
+.vip-form { display:grid; gap:16px; margin-top:24px; }
+.vip-form label { display:grid; gap:7px; font-size:13px; font-weight:700; }
+.vip-form input { width:100%; min-height:48px; padding:12px 14px; background:white; border:1px solid #769abd; border-radius:9px; font-size:16px; font-weight:400; color:#003f7d; }
+.vip-form input:focus-visible { outline:3px solid #0055a5; outline-offset:2px; }
+.vip-form input::placeholder { color:#60758a; }
+.vip-placeholder-note { font-size:12px; line-height:1.5; color:#365675; }
+.vip-form .primary-button { width:100%; justify-content:center; min-height:50px; }
+.vip-not-now { min-height:44px; font-size:13px; text-decoration:underline; color:#365675; }
+.vip-preview-result { margin-top:24px; border-top:2px dotted var(--bellwood-soft-blue); padding-top:20px; }
+.vip-preview-result h3 { font-size:22px; font-weight:800; }
+.vip-preview-result p { font-size:14px; line-height:1.6; margin:12px 0 20px; }
+@media(max-width:900px) { .promotion-inner { grid-template-columns:1fr; gap:26px; } .promotion-intro h2 em { display:inline; } .promotion-intro > p:last-child { max-width:55ch; } }
+@media(max-width:540px) {
+  .bellwood-promotion { padding:32px 0; }
+  .promotion-ticket { grid-template-columns:1fr 100px; border-radius:14px; }
+  .promotion-ticket-copy { padding:20px 16px; }
+  .promotion-ticket-copy h3 { font-size:26px; }
+  .promotion-ticket-copy .primary-button { padding:12px; font-size:12px; }
+  .promotion-ticket-date { padding:16px 8px; }
+  .promotion-ticket-date strong { font-size:24px; }
+  .promotion-ticket-date span { font-size:9px; letter-spacing:1px; }
+  .vip-content { padding:24px; }
+  .vip-content h2 { font-size:32px; }
+  .vip-banner { padding:18px 60px 16px; }
+  .vip-seal { width:54px; height:54px; font-size:23px; }
+}
+@media(prefers-reduced-motion:reduce) { .dine-vip-dialog { scroll-behavior:auto; } }
+
+/* User-selected Samuel Isaacs photograph for the Vari’s teaser. */
+.bellwood-promotion .promotion-background { object-fit:cover; object-position:center 55%; }
+.bellwood-promotion::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(0,22,43,.85),rgba(0,22,43,.48)); pointer-events:none; }
+.bellwood-promotion .promotion-inner { position:relative; z-index:1; }
+.bellwood-promotion .promotion-intro, .bellwood-promotion .promotion-intro h2 { color:#fffbf2; }
+.bellwood-promotion .promotion-intro .vip-eyebrow { color:#fdb813; }
+
+.promotion-varis-logo { display:block; width:min(100%,320px); height:auto; margin:18px 0; border-radius:4px; }

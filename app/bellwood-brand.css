@@ -10,7 +10,6 @@
   --discovery-line: var(--color-line);
   --discovery-soft: var(--color-mist);
 }
-.culinary-site .trail-hero-title h1,
 .culinary-site .section-heading h2,
 .culinary-site .map-intro-copy h2,
 .culinary-site .brand-type strong { color: var(--color-blue); }

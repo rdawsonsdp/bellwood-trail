@@ -1,0 +1,23 @@
+{
+  "mode": "Built-in image_gen",
+  "generated": [
+    {
+      "path": "public/images/illustrations/mickeys.webp",
+      "prompt": "Use case: illustration-story. Asset type: landscape restaurant landing page illustration, 3:2. Create a beautiful tactile editorial gouache and screenprint food illustration inspired by Mickey's Drive-In in Bellwood, Illinois: a Chicago-style hot dog in a poppy seed bun, mustard, bright green relish, tomato wedges, pickle spear and sport peppers, with golden fries on unbranded deli paper. Close-up food still life, appetizing and sophisticated travel-magazine art, rich cobalt blue backdrop #0055a5, golden yellow #fdb813, warm cream paper texture, bold shadows, hand-painted detail. Center composition for responsive crops. No text, logos, buildings, people, watermark or invented brand packaging. It must visibly be illustration, not documentary restaurant photography."
+    },
+    {
+      "path": "public/images/illustrations/gioacchinos.webp",
+      "prompt": "Use case: illustration-story. Asset type: landscape restaurant landing page illustration, 3:2. Create a beautiful tactile editorial gouache and screenprint food illustration inspired by Gioacchino's Ristorante & Pizzeria in Bellwood, Illinois: a round Chicago tavern-style thin-crust sausage pizza cut into squares on a metal pizza pan, golden melted cheese, rich red tomato sauce, browned sausage, crisp edges. Appetizing sophisticated travel-magazine art, rich cobalt blue backdrop #0055a5, golden yellow #fdb813, warm cream paper texture, bold shadows, hand-painted detail. Center composition for responsive crops. No text, logos, buildings, people, watermark or invented brand packaging. It must visibly be illustration, not documentary restaurant photography."
+    },
+    {
+      "path": "public/images/illustrations/tastee-rolls.webp",
+      "prompt": "Use case: illustration-story. Asset type: landscape restaurant landing page illustration, 3:2. Create a beautiful tactile editorial gouache and screenprint food illustration inspired by Tastee Rolls in Bellwood, Illinois: golden crispy egg rolls, one cut diagonally revealing a savory chopped jerk chicken filling, alongside a small dipping cup on unbranded deli paper. Appetizing sophisticated travel-magazine art, rich cobalt blue backdrop #0055a5, golden yellow #fdb813, warm cream paper texture, bold shadows, hand-painted detail. Center composition for responsive crops. No text, logos, buildings, people, watermark or invented brand packaging. It must visibly be illustration, not documentary restaurant photography."
+    }
+  ],
+  "hero": {
+    "path": "public/images/brand/bellwood-gateway-hero-v2.avif",
+    "source": "User supplied /Users/robd/Downloads/bellwoodgateway2.avif",
+    "credit": "DESIGNBRIDGE project page credits Angie McMonigal",
+    "url": "https://www.designbridgeltd.com/projects/bellwood-gateway"
+  }
+}

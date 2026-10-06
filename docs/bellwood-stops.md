@@ -1,5 +1,18 @@
 # The twenty stops — sources, and what still needs a phone call
 
+## Research update — October 5, 2026
+
+- Tastee Rolls now publishes **504 Mannheim Road**, **(708) 632-4646**, Tuesday–Saturday 10–9, Sunday 11–7, Monday closed on its [Bellwood location page](https://www.tasteerolls.com/locations/bellwood). The seed address, phone, schedule and corridor have been corrected. The Census Public_AR_Current address-range geocoder returned 41.883354306903, -87.883361791701 for this address. This is an address-range pin, not a surveyed entrance.
+- Mickey’s [own history](https://mickeysdrivein.com/about/) confirms 1959. Its [menu](https://mickeysdrivein.com/menu/) supports the hot-dog and Italian-beef feature. Added its website to the seed.
+- Gioacchino’s [established website](https://www.gioacchinopizza.com/) identifies 5201 St. Charles Road and more than 40 years of homemade Italian cooking. Sources disagree on a precise founding year, so the new feature avoids an exact year.
+- Tastee Rolls’ [menu](https://www.tasteerolls.com/menu-bellwood) supports the jerk chicken and Philly steak egg-roll feature.
+- Vari’s is hidden in the seed until opening is confirmed. The [September 4 opening report](https://whatnow.com/chicago/restaurants/local-restaurateur-bringing-second-southern-cuisine-spot-to-bellwood/) targets late October 2026. Nineteen stops are visible now; the twentieth remains editable in admin.
+- The new map shows cuisine instead of open/closed claims, because much of the inherited schedule data remains unverified. The directory retains its prior hours behavior.
+- Other restaurant records and coordinate estimates below remain inherited prototype data, not newly verified locations.
+
+The original September research follows; where it conflicts, the update above takes precedence.
+
+
 The roster in `content/restaurants.ts` was assembled on **2026-09-22**. This is
 where each field came from, and which fields are still guesses.
 
@@ -148,3 +161,15 @@ compare the Chatham build, where eight GCI-template sites fed their own cards
 live. That gap is the case for the digital-storefront work: the trail is the
 shop window, and right now Bellwood's kitchens have nothing behind the glass
 for it to read.
+
+## Vari’s promotion background
+
+User supplied `samuel-isaacs-iGQRdE2WSVI-unsplash.jpg`, copied unchanged to `public/images/promotions/varis-coming-soon.jpg`. Used as a decorative background for the coming-soon feature, not as verified photography of Vari’s food. Photographer named by the supplied filename: Samuel Isaacs, Unsplash.
+
+## October 5 photo and listing audit
+
+- 18 of the 20 seed records now have restaurant-specific photos; all 17 published stops have photos. Vari’s remains a coming-soon promotion. Existing official-site photos for Mickey’s, Ariston, Lezza and Gioacchino’s are retained. Fourteen additional photo files and their exact source links are recorded in `restaurant-photo-sources.json`. Each selected image was visually checked.
+- MD Phats: retained in seed but hidden pending verification. MerchantCircle lists 4310 St Charles; a current bank directory identifies Providence Bank & Trust at that address. No reliable restaurant photograph found. Sources: https://www.merchantcircle.com/il-bellwood/food-and-dining and https://www.bankbranchlocator.com/providence-bank-trust-bellwood-branch.html
+- Donnie’s: retained in seed but hidden. January 29, 2026 reporting identifies Elements Restaurant at the same address, opened Labor Day weekend 2025. Source: https://ourculture.us/this-bellwood-restaurant-could-be-the-best-place-to-watch-the-super-bowl-in-the-west-suburbs/
+- Montego Bay and Captain B’s: location photos found, but aggregators flag possible closure while other directories continue listing them. Retained pending direct confirmation; new photos do not verify operating status or hours. Sources: https://restaurantguru.com/Montego-Bay-Chicago and https://restaurantguru.com/Captain-Bs-Shrimp-House-Bellwood-Illinois
+- Restaurantji contributed galleries were matched to the relevant location; they do not identify individual photographers consistently. Source links are provenance, not claims of a reuse license.

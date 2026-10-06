@@ -6,12 +6,12 @@ import { EMPTY_FILTERS } from "@/app/lib/discovery";
 import { useDiscovery } from "./DiscoveryContext";
 import { Close, Heart, Menu } from "./icons";
 
-const NAV = [{ label: "Explore kitchens", href: "#path" }];
+const NAV = [{ label: "Explore kitchens", href: "/#path" }];
 export function Header() {
   const [open, setOpen] = useState(false);
   const menu = useRef<HTMLButtonElement>(null);
   const { saved, updateFilters } = useDiscovery();
-  const showSaved = () => { setOpen(false); updateFilters({ ...EMPTY_FILTERS, saved: true }, true); };
+  const showSaved = () => { if (window.location.pathname !== "/") { window.location.assign("/?saved=1#path"); return; } setOpen(false); updateFilters({ ...EMPTY_FILTERS, saved: true }, true); };
   return <header className="discovery-header" onKeyDown={e => { if (e.key === "Escape") { setOpen(false); menu.current?.focus(); } }}>
     <div className="site-container header-inner">
       <a href="/" aria-label={`${SITE.name} — home`} className="brand-link">

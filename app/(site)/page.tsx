@@ -1,3 +1,4 @@
+import { DineVipProvider } from "@/app/components/DineVip";
 import { SITE } from "@/content/restaurants";
 import { getContent } from "@/app/lib/content-store";
 import { resolveStops } from "@/app/lib/live-status";
@@ -22,16 +23,16 @@ export default async function Home() {
     itemListElement: stops.map((r, i) => ({
       "@type": "ListItem", position: i + 1,
       item: { "@type": "Restaurant", name: r.name, url: r.site, servesCuisine: r.cuisine, telephone: r.phone || undefined,
-        address: { "@type": "PostalAddress", streetAddress: r.address.split(",")[0], addressLocality: "Chicago", addressRegion: "IL", addressCountry: "US" } },
+        address: { "@type": "PostalAddress", streetAddress: r.address.split(",")[0], addressLocality: "Bellwood", addressRegion: "IL", addressCountry: "US" } },
     })),
   };
   return (
-    <>
+    <DineVipProvider>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <Hero hero={hero} />
       <RestaurantMap stops={stops} />
       <FoodCollections stops={stops} />
       <PathExplorer stops={stops} />
-    </>
+    </DineVipProvider>
   );
 }

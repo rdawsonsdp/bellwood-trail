@@ -1,4 +1,4 @@
-/* ===== The Bellwood Culinary Path =====
+/* ===== Dine Bellwood =====
  * One entry per stop. This file is the SEED: the trail starts from it, and
  * once someone saves in /admin the live copy lives in the content store
  * (app/lib/content-store.ts) and this file is no longer read.
@@ -100,7 +100,8 @@ export const RESTAURANTS: Restaurant[] = [
     signature: ["Street Tacos", "Tortas", "Birria", "Huevos con Chorizo", "Aguas Frescas"],
     neighborhood: "Bellwood", address: "5003 St Charles Rd, Bellwood, IL 60104",
     phone: "(708) 401-5424", phoneHref: "tel:+17084015424",
-    site: "", liveDetails: false, image: "",
+    site: "", liveDetails: false, image: "/images/restaurants/mi-jerez-photo.jpg",
+    imageAlt: "Tostadas with rice and beans at Taqueria Mi Jerez",
     // VERIFIED: 9 AM – 6 PM every day (its map listing, checked 2026-09-22).
     // The village directory lists a second number, (708) 238-8534.
     schedule: Array.from({ length: 7 }, () => [h(9), h(18)] as const),
@@ -109,6 +110,7 @@ export const RESTAURANTS: Restaurant[] = [
   },
   {
     slug: "md-phats", name: "MD Phats",
+    hidden: true, // Address conflicts with a bank listing; current restaurant and photo unverified.
     tagline: "Comfort food on the downtown stretch.",
     cuisine: ["Southern", "Comfort Food", "Wings"],
     signature: ["Wings", "Catfish", "Mac & Cheese", "Greens"],
@@ -142,13 +144,15 @@ export const RESTAURANTS: Restaurant[] = [
     lat: 41.888757, lng: -87.882528, corridor: "st-charles",
   },
   {
-    slug: "varis", name: "Vari's Southern Cuisine",
+    hidden: true, // Opening not yet confirmed; retain in admin for activation.
+    slug: "varis", name: "VARI’S Southern Cuisine",
     tagline: "Fried ribs, oxtail and lamb — Nanetta's second dining room.",
     cuisine: ["Southern", "Soul Food", "Seafood"],
     signature: ["Fried Ribs", "Catfish Filet", "Oxtail", "Lamb", "Wings & Fries"],
     neighborhood: "Bellwood", address: "2712 St Charles Rd, Bellwood, IL 60104",
     phone: "", phoneHref: "",
-    site: "", liveDetails: false, image: "",
+    site: "", liveDetails: false, image: "/images/restaurants/varis-photo.jpg",
+    imageAlt: "Fried ribs pictured on the Vari’s Southern Cuisine website",
     // OPENING LATE OCTOBER 2026. Nanetta Dancy-Matthews is bringing her
     // Hillside restaurant's second location to downtown Bellwood. The hours
     // below are the ones she has published (noon–7 daily), so until the doors
@@ -165,7 +169,8 @@ export const RESTAURANTS: Restaurant[] = [
     signature: ["Burgers", "Wings", "Cold Beer"],
     neighborhood: "Bellwood", address: "2601 St Charles Rd, Bellwood, IL 60104",
     phone: "(708) 547-9320", phoneHref: "tel:+17085479320",
-    site: "", liveDetails: false, image: "",
+    site: "", liveDetails: false, image: "/images/restaurants/joes-hideaway-photo.jpg",
+    imageAlt: "Joe’s Hideaway exterior during a classic car gathering",
     // UNVERIFIED — it publishes no hours anywhere. Tavern hours assumed.
     schedule: Array.from({ length: 7 }, () => [h(15), h(24)] as const),
     dineIn: true, meals: ["dinner"],
@@ -178,7 +183,8 @@ export const RESTAURANTS: Restaurant[] = [
     signature: ["Catfish Fillet", "Ocean Perch", "Wing Dinner", "Jumbo Shrimp", "Frozen Lemonade"],
     neighborhood: "Bellwood", address: "2500 St Charles Rd, Bellwood, IL 60104",
     phone: "(708) 493-9300", phoneHref: "tel:+17084939300",
-    site: "", liveDetails: false, image: "",
+    site: "", liveDetails: false, image: "/images/restaurants/sharks-photo.jpg",
+    imageAlt: "Shark’s Fish & Chicken storefront on St. Charles Road",
     // VERIFIED: Sun 11–11, Mon–Thu 10–11, Fri–Sat 10 AM – 1 AM (its own
     // listings, agreeing across three sources, checked 2026-09-22).
     schedule: [[h(11), h(23)], [h(10), h(23)], [h(10), h(23)], [h(10), h(23)], [h(10), h(23)], [h(10), h(25)], [h(10), h(25)]],
@@ -196,7 +202,8 @@ export const RESTAURANTS: Restaurant[] = [
     signature: ["Pork Chops", "Steaks", "Homemade Soup", "Broiled Fish", "Full Bar"],
     neighborhood: "Bellwood", address: "845 Mannheim Rd, Bellwood, IL 60104",
     phone: "(708) 544-6636", phoneHref: "tel:+17085446636",
-    site: "", liveDetails: false, image: "",
+    site: "", liveDetails: false, image: "/images/restaurants/stacys-photo.jpg",
+    imageAlt: "Dining room at Stacy’s Cafe",
     // VERIFIED: closed Sunday, Mon–Thu 11–10, Fri 11–11, Sat 4–11 (its
     // listing, checked 2026-09-22). Saturday is dinner only.
     schedule: [null, [h(11), h(22)], [h(11), h(22)], [h(11), h(22)], [h(11), h(22)], [h(11), h(23)], [h(16), h(23)]],
@@ -230,8 +237,8 @@ export const RESTAURANTS: Restaurant[] = [
     site: "https://www.nickspizzabeef.com", liveDetails: false,
     // Its own logo mark. The only photographs on Nick's site are stock, so the
     // mark is the honest choice until someone shoots the storefront.
-    image: "/images/restaurants/nicks.png",
-    imageAlt: "The Original Nick's Pizza & Beef logo — a pizza wheel with a banner, Est. 1972",
+    image: "/images/restaurants/nicks-photo.jpg",
+    imageAlt: "Nick’s Pizza & Beef exterior with its red menu sign",
     // "EST. 1972" is lettered on the logo.
     since: "1972",
     // UNVERIFIED — placeholder. Pizzeria hours assumed.
@@ -248,7 +255,7 @@ export const RESTAURANTS: Restaurant[] = [
     signature: ["Famous Italian Beef", "Italian Sausage", "Meat Balls", "Hot Dogs", "Polish Sausage"],
     neighborhood: "Bellwood", address: "635 Mannheim Rd, Bellwood, IL 60104",
     phone: "(708) 547-7866", phoneHref: "tel:+17085477866",
-    site: "", liveDetails: false, image: "/images/restaurants/mickeys.jpg",
+    site: "https://mickeysdrivein.com", liveDetails: false, image: "/images/restaurants/mickeys.jpg",
     imageAlt: "Mickey's illuminated marquee above the roofline on Mannheim Road, lettered Famous Italian Beef, Sausage and Meat Balls, Hot Dogs, Polish Sausage, Est. 1959",
     since: "1959",
     // VERIFIED: closed Sunday, Mon–Thu 10:30–9, Fri–Sat 10:30–9:30 (its
@@ -264,7 +271,8 @@ export const RESTAURANTS: Restaurant[] = [
     signature: ["Shrimp Fried Rice", "Egg Foo Young", "Sweet & Sour Chicken", "Egg Rolls"],
     neighborhood: "Bellwood", address: "530 Mannheim Rd, Bellwood, IL 60104",
     phone: "(708) 544-7900", phoneHref: "tel:+17085447900",
-    site: "", liveDetails: false, image: "",
+    site: "", liveDetails: false, image: "/images/restaurants/first-chop-suey-photo.jpg",
+    imageAlt: "Illuminated First Chop Suey storefront at night",
     // UNVERIFIED — placeholder.
     schedule: [[h(12), h(21)], [h(11), h(21, 30)], [h(11), h(21, 30)], [h(11), h(21, 30)], [h(11), h(21, 30)], [h(11), h(22, 30)], [h(11), h(22, 30)]],
     dineIn: false, meals: ["lunch", "dinner"],
@@ -277,7 +285,8 @@ export const RESTAURANTS: Restaurant[] = [
     signature: ["Catfish Nuggets", "Whiting", "8-Piece Wings", "Shrimp Dinner", "Hush Puppies"],
     neighborhood: "Bellwood", address: "528 Mannheim Rd, Bellwood, IL 60104",
     phone: "(708) 544-0505", phoneHref: "tel:+17085440505",
-    site: "", liveDetails: false, image: "",
+    site: "", liveDetails: false, image: "/images/restaurants/jj-fish-photo.jpg",
+    imageAlt: "JJ Fish & Chicken storefront on Mannheim Road",
     // The village directory carries this address as "1st Choice Fish &
     // Chicken Inc" — the licence name behind the JJ sign.
     // UNVERIFIED — placeholder.
@@ -294,7 +303,8 @@ export const RESTAURANTS: Restaurant[] = [
     signature: ["Jerk Chicken", "Oxtails", "Curry Goat", "Rice & Peas", "Plantains"],
     neighborhood: "Bellwood", address: "700 Bellwood Ave, Bellwood, IL 60104",
     phone: "(708) 547-7911", phoneHref: "tel:+17085477911",
-    site: "", liveDetails: false, image: "",
+    site: "", liveDetails: false, image: "/images/restaurants/montego-bay-photo.jpg",
+    imageAlt: "Montego Bay Restaurant & Grill storefront on Bellwood Avenue",
     // VERIFIED: noon–10 PM Monday to Saturday, closed Sunday (its listing and
     // a regional visitor guide agree, checked 2026-09-22). One 2017 review
     // claims it also closes Mon–Tue; treat Monday as worth a phone call.
@@ -309,14 +319,15 @@ export const RESTAURANTS: Restaurant[] = [
     tagline: "Home of the original jerk chicken egg roll.",
     cuisine: ["Caribbean", "Asian Fusion", "Wings"],
     signature: ["Jerk Chicken Egg Roll", "Philly Chicken Egg Roll", "Jerk Chicken Dinner", "Wings"],
-    neighborhood: "Bellwood", address: "633 Bellwood Ave, Bellwood, IL 60104",
-    phone: "(773) 865-7526", phoneHref: "tel:+17738657526",
-    site: "https://www.tasteerolls.com/bellwood", liveDetails: false, image: "",
-    // UNVERIFIED — its delivery listings show roughly 10–7 weekdays and a
-    // shorter Sunday, which is what is below, but the shop publishes none.
-    schedule: [[h(11), h(17)], [h(10), h(19)], [h(10), h(19)], [h(10), h(19)], [h(10), h(19)], [h(10), h(19)], [h(10), h(19)]],
+    neighborhood: "Bellwood", address: "504 Mannheim Rd, Bellwood, IL 60104",
+    phone: "(708) 632-4646", phoneHref: "tel:+17086324646",
+    site: "https://www.tasteerolls.com/locations/bellwood", liveDetails: false, image: "/images/restaurants/tastee-rolls-photo.jpg",
+    imageAlt: "Philly steak egg rolls with dipping sauce from Tastee Rolls",
+    // Published on the restaurant’s Bellwood location page, checked 2026-10-05.
+    schedule: [[h(11), h(19)], null, [h(10), h(21)], [h(10), h(21)], [h(10), h(21)], [h(10), h(21)], [h(10), h(21)]],
     dineIn: false, meals: ["lunch", "dinner"],
-    lat: 41.881210, lng: -87.878229, corridor: "bellwood-ave",
+    // Census address-range geocode for the current Mannheim Road address.
+    lat: 41.883354306903, lng: -87.883361791701, corridor: "mannheim",
   },
   {
     slug: "bellwood-sweets", name: "Bellwood Sweets",
@@ -325,7 +336,8 @@ export const RESTAURANTS: Restaurant[] = [
     signature: ["Cupcakes", "Cobbler", "Banana Pudding", "Milkshakes"],
     neighborhood: "Bellwood", address: "706 Bellwood Ave, Bellwood, IL 60104",
     phone: "", phoneHref: "",
-    site: "", liveDetails: false, image: "",
+    site: "", liveDetails: false, image: "/images/restaurants/bellwood-sweets-photo.jpg",
+    imageAlt: "Loaded savory snacks from Bellwood Sweets Shop",
     // UNVERIFIED — placeholder, and the phone number is still unknown. This
     // is the thinnest entry on the trail; confirm it is still trading.
     schedule: [null, null, [h(12), h(19)], [h(12), h(19)], [h(12), h(19)], [h(12), h(20)], [h(12), h(20)]],
@@ -341,7 +353,8 @@ export const RESTAURANTS: Restaurant[] = [
     signature: ["Fried Shrimp", "Catfish", "Perch Dinner", "Shrimp Basket"],
     neighborhood: "Bellwood", address: "445 25th Ave, Bellwood, IL 60104",
     phone: "(708) 544-6900", phoneHref: "tel:+17085446900",
-    site: "", liveDetails: false, image: "",
+    site: "", liveDetails: false, image: "/images/restaurants/captain-bs-photo.jpg",
+    imageAlt: "Captain B’s Shrimp House II exterior in Bellwood",
     // UNVERIFIED — placeholder. Listed in the village directory and on
     // Tripadvisor as "Captain B's Shrimp House II".
     schedule: [[h(12), h(21)], [h(11), h(21)], [h(11), h(21)], [h(11), h(21)], [h(11), h(21)], [h(11), h(23)], [h(11), h(23)]],
@@ -350,6 +363,7 @@ export const RESTAURANTS: Restaurant[] = [
   },
   {
     slug: "donnies", name: "Donnie's Bar & Grill",
+    hidden: true, // Replaced by Elements Restaurant, reported January 2026; retained for editorial review.
     tagline: "A neighbourhood room at Randolph and 25th.",
     cuisine: ["Bar & Grill", "Burgers", "Wings"],
     signature: ["Wings", "Burgers", "Fish Fry", "Cold Beer"],
@@ -371,8 +385,8 @@ export const RESTAURANTS: Restaurant[] = [
     site: "https://tacopatio.com", liveDetails: false,
     // Its own logo. Taco Patio's site carries polished food photography that is
     // stock rather than its kitchen's, so the mark goes on the card instead.
-    image: "/images/restaurants/taco-patio.png",
-    imageAlt: "The Taco Patio logo",
+    image: "/images/restaurants/taco-patio-photo.jpg",
+    imageAlt: "Taco salad in a crisp shell at Taco Patio",
     // VERIFIED: 10 AM–midnight Sunday to Thursday, 10 AM–2 AM Friday and
     // Saturday (its listings, checked 2026-09-22).
     schedule: [[h(10), h(24)], [h(10), h(24)], [h(10), h(24)], [h(10), h(24)], [h(10), h(24)], [h(10), h(26)], [h(10), h(26)]],
@@ -386,7 +400,8 @@ export const RESTAURANTS: Restaurant[] = [
     signature: ["Italian Sub", "Steak Sub", "Turkey Sub", "Mr. Sub Special"],
     neighborhood: "Bellwood", address: "4019 Butterfield Rd, Bellwood, IL 60104",
     phone: "(708) 544-1007", phoneHref: "tel:+17085441007",
-    site: "", liveDetails: false, image: "",
+    site: "", liveDetails: false, image: "/images/restaurants/mr-submarine-photo.jpg",
+    imageAlt: "Mr. Submarine sandwiches with breaded sides",
     // UNVERIFIED — placeholder.
     schedule: [[h(11), h(20)], [h(10), h(21)], [h(10), h(21)], [h(10), h(21)], [h(10), h(21)], [h(10), h(22)], [h(10), h(22)]],
     dineIn: false, meals: ["lunch", "dinner"],
@@ -398,7 +413,7 @@ export const RESTAURANTS: Restaurant[] = [
 export const CORRIDORS: Record<Restaurant["corridor"], { label: string; blurb: string }> = {
   "st-charles":       { label: "St. Charles Road",          blurb: "Downtown Bellwood — Italian, Mexican, Southern and spumoni within a mile and a half." },
   "mannheim":         { label: "Mannheim Road",             blurb: "A supper club, a gyros counter, a beef stand and a pizzeria, all on one street." },
-  "bellwood-ave":     { label: "Bellwood Avenue",           blurb: "Jerk chicken, egg rolls and dessert, a short walk from Village Hall." },
+  "bellwood-ave":     { label: "Bellwood Avenue",           blurb: "Jerk chicken and dessert, a short walk from Village Hall." },
   "butterfield-25th": { label: "25th Avenue & Butterfield",  blurb: "Tacos past midnight, shrimp by the bag, and the corner bar." },
 };
 
@@ -419,11 +434,11 @@ export const FOOD_CATEGORIES: { key: string; label: string; cuisines: string[] }
 ];
 
 export const SITE = {
-  name: "Bellwood Culinary Path",
+  name: "Dine Bellwood",
   org: "Village of Bellwood",
   orgUrl: "https://www.vil.bellwood.il.us/",
-  tagline: "Twenty Bellwood kitchens, one path",
+  tagline: "Bellwood kitchens, one path",
   description:
-    "A trail through the kitchens of Bellwood, Illinois — gyros and ribs on Mannheim, jerk chicken off Washington, tacos on Butterfield, Italian and spumoni on St. Charles Road. Twenty locally owned restaurants in one village, thirteen miles west of the Loop.",
+    "A trail through the kitchens of Bellwood, Illinois — gyros and ribs on Mannheim, jerk chicken off Washington, tacos on Butterfield, Italian and spumoni on St. Charles Road. Local restaurants in one village, thirteen miles west of the Loop.",
   instagram: "https://www.instagram.com/mayorandrefharvey/",
 };

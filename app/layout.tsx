@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   description: SITE.description,
   alternates: { canonical: "/" },
   openGraph: { type: "website", siteName: SITE.name, locale: "en_US", url: SITE_URL, title: TITLE, description: SITE.description,
-    images: [{ url: "/icons/bellwood-1024.png", width: 1024, height: 1024, alt: "The Bellwood Culinary Path mark — a gold trail on the village blue" }] },
+    images: [{ url: "/icons/bellwood-1024.png", width: 1024, height: 1024, alt: "Dine Bellwood mark — a gold trail on the village blue" }] },
   twitter: { card: "summary", title: TITLE, description: SITE.description, images: ["/icons/bellwood-1024.png"] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
   manifest: "/manifest.webmanifest",

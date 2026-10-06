@@ -12,7 +12,11 @@ test('invalid or missing coordinates are excluded without dropping valid zero co
   assert.equal(hasCoordinates({lat:0,lng:0}), true);
 });
 test('all Bellwood stops fit within a phone map with room for the pins', () => {
-  const points = [project(41.7594,-87.6382),project(41.7377,-87.5897)];
+  const source = ts.transpileModule(fs.readFileSync(require.resolve("../content/restaurants.ts"), "utf8"), { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText;
+  const restaurants = { exports: {} };
+  new Function("exports", "module", source)(restaurants.exports, restaurants);
+  const points = restaurants.exports.RESTAURANTS.filter(s => !s.hidden && hasCoordinates(s)).map(s => project(s.lat, s.lng));
+  assert.ok(points.length > 10);
   const width = 390, height = 260, view = fitMap(points,width,height), scale = 256 * 2 ** view.zoom;
   for (const p of points) {
     assert.ok(Math.abs(p.x-view.x)*scale <= width/2-55);

@@ -3,7 +3,7 @@ export const metadata: Metadata = { title: "Cookies and storage" };
 export default function CookieInformation() {
   return <article className="site-container cookie-information">
     <h1>Cookies and storage</h1>
-    <p>The Bellwood Culinary Path uses the following browser storage. You can change your choice using Cookie settings in the footer.</p>
+    <p>Dine Bellwood uses the following browser storage. You can change your choice using Cookie settings in the footer.</p>
     <h2>Necessary cookies</h2>
     <p>The bellwood_cookie_preferences cookie records your cookie choice for up to 180 days. It does not contain your name or a visitor identifier. Administrators who sign in receive a separate authentication cookie lasting up to 12 hours.</p>
     <h2>Optional favorites storage</h2>

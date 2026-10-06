@@ -22,6 +22,7 @@ export function MobileNavigation({ onMap, mapActive = false, onNavigate }: {
   }, []);
   const destination = mapActive ? "map" : filters.saved ? "favorites" : homeVisible && !filters.q ? "home" : "search";
   const goHome = () => {
+    if (window.location.pathname !== "/") { window.location.assign("/"); return; }
     window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
     flushSync(() => { onNavigate?.(); updateFilters(EMPTY_FILTERS); });
     document.getElementById("hero-heading")?.focus({ preventScroll: true });
@@ -30,6 +31,7 @@ export function MobileNavigation({ onMap, mapActive = false, onNavigate }: {
     requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "instant" }));
   };
   const navigate = (favorites: boolean) => {
+    if (window.location.pathname !== "/") { window.location.assign(favorites ? "/?saved=1#path" : "/#path"); return; }
     // Close the native map dialog before moving focus back to the directory.
     flushSync(() => {
       onNavigate?.();

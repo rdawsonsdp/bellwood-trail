@@ -1,7 +1,7 @@
 {
   "id": "/",
-  "name": "Bellwood Culinary Path",
-  "short_name": "Culinary Path",
+  "name": "Dine Bellwood",
+  "short_name": "Dine Bellwood",
   "description": "Explore the restaurants of Bellwood, Illinois.",
   "start_url": "/",
   "scope": "/",

@@ -33,6 +33,26 @@ against each business's site and listings. Sources are in
 
 ## Discovery experience
 
+### Bellwood Dine VIP and Restaurant Week
+
+The promotion immediately below the hero features Vari’s Southern Cuisine,
+coming to 2712 St. Charles Road. Its opening date remains to be announced.
+Restaurant Week news remains part of the planned Dine VIP updates.
+Its colors follow the supplied Bellwood references: gold `#fdb813`, cream
+`#fffbf2`, soft blue `#91b5d9`, and the site's deep blue.
+
+The homepage's Bellwood Dine VIP dialog opens at two-thirds of the scrollable
+page distance, once per browser-tab session. It waits while another dialog is
+open. Visitors can also open it from the promotion, close with Escape or the
+close button, and return to browsing with their focus restored.
+
+**The signup is intentionally a placeholder.** Name and email receive native
+form validation, but submission makes no network request and stores no contact
+details. A preview confirmation explicitly says no subscription was created.
+Only a non-personal popup-shown flag is kept in sessionStorage. A future database
+integration belongs at the form's submit handler in `app/components/DineVip.tsx`;
+replace the preview result only after the server confirms a successful save.
+
 - Structured hero search for a dish, cuisine, kitchen, or street.
 - Food collections and four corridor choices.
 - Kitchen cards with open status, location, save actions, and in-page details.
@@ -75,11 +95,22 @@ Family Is Our Future*.
 
 ### Art
 
-**The hero is Mickey's marquee at 635 Mannheim Road** — a real Bellwood
-storefront, and a stop on the trail. The source photograph is portrait, so it
-is baked into a 16:9 frame against a blurred backdrop taken from the same
-image; the hero slot is `object-fit: cover`, and cropping a portrait into it
-would cut the sign in half.
+**The hero is the user-supplied Bellwood Gateway photograph**, saved at
+`public/images/brand/bellwood-gateway-hero-v2.avif`. The layout follows the Chatham reference: a full-width 16:9 hero on desktop,
+a tall crop on phones, and a centered script title beneath it. Responsive
+cropping keeps the entrance visible. The source project page credits Angie McMonigal / DESIGNBRIDGE.
+
+Three menu-inspired illustrations for Mickey’s, Gioacchino’s and Tastee
+Rolls remain available as project assets. The food-category navigation now
+uses compact text pills on desktop and mobile, with a visible selected state. They are explicitly labeled AI illustrations and do not replace real
+restaurant photos. Final prompts and asset paths are in
+`docs/landing-page-images.json`. The homepage uses the Chatham-style compact map preview and full-screen
+explorer, followed by food-category pills and a tighter restaurant grid. The full map
+also remains available at `/map`, with search, corridor filters and directions.
+
+The seed now shows 19 restaurants: Vari’s stays hidden pending a confirmed
+opening. Tastee Rolls has moved to the Mannheim corridor in the seed. Read the
+October update in `docs/bellwood-stops.md` before using the older roster below.
 
 Six of the twenty stops carry a card photo. Five came off the businesses' own
 websites, the way the admin photo picker works; the sixth is Mickey's. The

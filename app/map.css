@@ -1,4 +1,24 @@
 /* Village blue and gold, with the Figtree face and discovery ink. */
+.embedded-restaurant-map { display:flex; flex-direction:column; height:680px; max-height:85dvh; min-height:540px; margin-block:36px; border:1px solid #dfe4e9; border-radius:18px; overflow:hidden; background:#fff; scroll-margin-top:100px; }
+.embedded-restaurant-map .map-dialog-header { background:#0055a5; color:white; padding:22px; }
+.embedded-restaurant-map .map-dialog-header p { color:#fff; opacity:.85; margin-top:5px; }
+.embedded-restaurant-map .map-dialog-header a { background:white; white-space:nowrap; }
+.map-corridor-filter { max-width:240px; }
+.map-corridor-filter select { min-height:44px; width:100%; border:1px solid #b7c1cc; border-radius:8px; padding:10px; background:white; font-size:14px; }
+.map-page-title { padding-top:32px; }
+.map-page-title > a { color:#0055a5; font-weight:700; }
+.map-page-title h1 { font-size:clamp(32px,5vw,56px); font-weight:800; letter-spacing:-1.5px; margin-top:20px; }
+.map-page-title p { color:#566273; margin-top:8px; }
+.map-page .embedded-restaurant-map { margin-top:24px; }
+@media(max-width:700px) {
+  .embedded-restaurant-map { height:780px; max-height:none; margin-block:22px; border-radius:12px; }
+  .embedded-restaurant-map .map-dialog-header { padding:16px; }
+  .embedded-restaurant-map .map-dialog-header h2 { font-size:20px; }
+  .embedded-restaurant-map .map-dialog-header a { font-size:12px; padding:8px; }
+  .embedded-restaurant-map .map-filter-bar { flex-wrap:wrap; }
+  .embedded-restaurant-map .map-filter-bar > label { flex-basis:100%; max-width:none; }
+  .embedded-restaurant-map .map-explorer-body { grid-template-rows:300px minmax(0,1fr); }
+}
 .map-intro { display:grid; grid-template-columns: .85fr 1.3fr; margin-block:24px 32px; border:1px solid #dfe4e9; border-radius:16px; overflow:hidden; }
 .map-intro-copy { padding:36px; display:flex; flex-direction:column; align-items:flex-start; gap:16px; background:#fff; }
 .map-location { display:flex; align-items:center; gap:6px; color:#003f7d; font-size:14px; font-weight:700; }

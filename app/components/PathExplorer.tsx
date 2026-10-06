@@ -63,7 +63,7 @@ export function PathExplorer({ stops }: { stops: Stop[] }) {
     </DiscoveryDialog>
     <DiscoveryDialog title={selected?.name ?? "Kitchen details"} open={!!selected} onClose={() => setSelected(null)}>
       {selected && <div className="kitchen-detail">
-        {selected.imageSrc && <div className="detail-photo"><Image src={selected.imageSrc} alt={selected.imageAlt || `${selected.name}: ${selected.signature[0] ?? "on the Culinary Path"}`} fill sizes="600px" /></div>}
+        {selected.imageSrc && <div className="detail-photo"><Image src={selected.imageSrc} alt={selected.imageAlt || `${selected.name}: ${selected.signature[0] ?? "in Bellwood"}`} fill sizes="600px" /></div>}
         <div className="detail-body"><div className="detail-status"><p className={`kitchen-status ${selected.status.open ? "is-open" : ""}`}><span aria-hidden />{selected.status.headline.replace("Now open till", "Open until")}</p><button className="filter-button" aria-pressed={saved.includes(selected.slug)} onClick={() => toggleSaved(selected.slug, selected.name)}><Heart filled={saved.includes(selected.slug)} />{saved.includes(selected.slug) ? "Saved" : "Save"}</button></div>
           <p>{selected.tagline}</p><div className="detail-facts">{selected.cuisine.map(c => <span key={c}>{c}</span>)}{selected.since && <span>Since {selected.since}</span>}{selected.dineIn !== undefined && <span>{selected.dineIn ? "Dine in" : "Carryout only"}</span>}</div>
           <h3>Come hungry for</h3><p>{selected.signature.join(", ")}</p>
