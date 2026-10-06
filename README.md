@@ -219,4 +219,4 @@ unchanged in shape. What is Bellwood's:
 
 ### Desktop hero video
 
-The user-supplied `Dine_Bellwood_Flyin.mp4` is served unchanged from `public/videos/dine-bellwood-flyin.mp4`. It mounts above 700px, plays muted with looping and a pause/play button, and uses its embedded title. Mobile and reduced-motion visitors retain the existing photo and title without downloading the video. The photo also remains as a loading/error/autoplay fallback.
+The user-supplied `Dine_Bellwood_Flyin.mp4` is served unchanged from `public/videos/dine-bellwood-flyin.mp4`. It mounts above 700px, plays muted once and holds the final frame, with pause/play and manual replay controls, and uses its embedded title. Mobile and reduced-motion visitors retain the existing photo and title without downloading the video. The photo also remains as a loading/error/autoplay fallback.

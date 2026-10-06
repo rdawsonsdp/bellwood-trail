@@ -14,9 +14,10 @@ export function Hero({ hero = DEFAULT_HERO }: { hero?: HeroContent }) {
   const [desktopMotion, setDesktopMotion] = useState(false);
   const [videoVisible, setVideoVisible] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [ended, setEnded] = useState(false);
   useEffect(() => {
     const media = window.matchMedia("(min-width: 701px) and (prefers-reduced-motion: no-preference)");
-    const sync = () => { setDesktopMotion(media.matches); setVideoVisible(false); setPaused(false); };
+    const sync = () => { setDesktopMotion(media.matches); setVideoVisible(false); setPaused(false); setEnded(false); };
     sync();
     media.addEventListener("change", sync);
     return () => media.removeEventListener("change", sync);
@@ -34,8 +35,8 @@ export function Hero({ hero = DEFAULT_HERO }: { hero?: HeroContent }) {
     <section className="discovery-hero trail-hero" aria-labelledby="hero-heading">
       <div className={`trail-hero-scene${videoVisible ? " has-desktop-video" : ""}`}>
         <Image src={hero.image} alt={hero.imageAlt} fill priority sizes="100vw" className="trail-hero-photo" />
-        {desktopMotion && <video ref={video} className="trail-hero-video" src="/videos/dine-bellwood-flyin.mp4" autoPlay muted loop playsInline preload="metadata" aria-hidden="true" onPlaying={() => { setVideoVisible(true); setPaused(false); }} onPause={() => setPaused(true)} onError={() => setVideoVisible(false)} />}
-        {videoVisible && <button type="button" className="hero-video-toggle" onClick={toggleVideo} aria-label={paused ? "Play hero video" : "Pause hero video"}>{paused ? "Play video" : "Pause video"}</button>}
+        {desktopMotion && <video ref={video} className="trail-hero-video" src="/videos/dine-bellwood-flyin.mp4" autoPlay muted playsInline preload="metadata" aria-hidden="true" onPlaying={() => { setVideoVisible(true); setPaused(false); setEnded(false); }} onPause={() => setPaused(true)} onEnded={() => { setEnded(true); setPaused(true); }} onError={() => setVideoVisible(false)} />}
+        {videoVisible && <button type="button" className="hero-video-toggle" onClick={toggleVideo} aria-label={ended ? "Replay hero video" : paused ? "Play hero video" : "Pause hero video"}>{ended ? "Replay video" : paused ? "Play video" : "Pause video"}</button>}
         <div className="trail-hero-title"><h1 id="hero-heading" tabIndex={-1}>Dine Bellwood</h1></div>
         {hero.image === DEFAULT_HERO.image && <a className="hero-photo-credit" href="https://www.designbridgeltd.com/projects/bellwood-gateway" target="_blank" rel="noopener noreferrer">Bellwood Gateway · DESIGNBRIDGE · Photo: Angie McMonigal</a>}
       </div>
