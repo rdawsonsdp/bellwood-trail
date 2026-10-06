@@ -28,3 +28,36 @@ export function zoomAt(view: MapView, zoom: number, anchor: MapPoint = { x: 0, y
   const oldScale = 256 * 2 ** view.zoom, scale = 256 * 2 ** next;
   return { x: view.x + anchor.x / oldScale - anchor.x / scale, y: view.y + anchor.y / oldScale - anchor.y / scale, zoom: next };
 }
+
+/** Keep one independently selectable marker per restaurant, including neighbors. */
+export function separateMapPins(points: MapPoint[], width: number, height: number): MapPoint[] {
+  const placed: MapPoint[] = [];
+  for (const point of points) {
+    let chosen: MapPoint | undefined;
+    for (let radius = 0; radius <= Math.max(width, height) && !chosen; radius += 12) {
+      const steps = radius ? Math.ceil(2 * Math.PI * radius / 12) : 1;
+      for (let i = 0; i < steps; i++) {
+        const candidate = { x: point.x + radius * Math.cos(i * 2 * Math.PI / steps), y: point.y + radius * Math.sin(i * 2 * Math.PI / steps) };
+        if (candidate.x < 25 || candidate.x > width - 25 || candidate.y < 25 || candidate.y > height - 50) continue;
+        if (placed.every(p => Math.hypot(p.x - candidate.x, p.y - candidate.y) >= 46)) { chosen = candidate; break; }
+      }
+    }
+    placed.push(chosen ?? point);
+  }
+  return placed;
+}
+
+export const MAP_CUISINES = [
+  { label: "Pizza & Italian", color: "#a83232", cuisines: ["Pizza", "Italian"] },
+  { label: "Mexican", color: "#9a4b0b", cuisines: ["Mexican"] },
+  { label: "Sweets & Bakery", color: "#a52c74", cuisines: ["Desserts", "Bakery", "Ice Cream"] },
+  { label: "Asian & Fusion", color: "#6553a4", cuisines: ["Chinese", "Asian Fusion"] },
+  { label: "Caribbean & Southern", color: "#276638", cuisines: ["Caribbean", "Jamaican", "Southern"] },
+  { label: "Fish & Chicken", color: "#087681", cuisines: ["Seafood", "Fried Fish", "Wings"] },
+  { label: "Greek & Gyros", color: "#1857a0", cuisines: ["Greek", "Gyros"] },
+  { label: "Beef & Sandwiches", color: "#795334", cuisines: ["Italian Beef", "Sandwiches", "Hot Dogs", "Subs"] },
+  { label: "American & Grill", color: "#475569", cuisines: ["American", "Bar & Grill", "Steakhouse"] },
+];
+export function mapCuisine(cuisines: string[]) {
+  return MAP_CUISINES.find(type => type.cuisines.some(c => cuisines.includes(c))) ?? MAP_CUISINES[MAP_CUISINES.length - 1];
+}

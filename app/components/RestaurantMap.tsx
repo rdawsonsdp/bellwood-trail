@@ -4,7 +4,7 @@ import Image from "next/image";
 import { CORRIDORS, type Restaurant } from "@/content/restaurants";
 import { useEffect, useRef, useState } from "react";
 import type { Stop } from "@/app/lib/live-status";
-import { BELLWOOD_CENTER, BELLWOOD_ZOOM, fitMap, hasCoordinates, MAX_ZOOM, MIN_ZOOM, project, zoomAt, type MapView } from "@/app/lib/map";
+import { BELLWOOD_CENTER, BELLWOOD_ZOOM, fitMap, hasCoordinates, separateMapPins, mapCuisine, MAP_CUISINES, MAX_ZOOM, MIN_ZOOM, project, zoomAt, type MapView } from "@/app/lib/map";
 import { useDiscovery } from "./DiscoveryContext";
 import { Close, Heart, MapPin } from "./icons";
 import { MobileNavigation } from "./MobileNavigation";
@@ -73,14 +73,11 @@ function StreetMap({ stops, active, interactive = false, onSelect }: { stops: Lo
       tiles.push(<img key={`${z}/${x}/${y}`} src={tileTemplate.replace("{z}", String(z)).replace("{x}", String(x)).replace("{y}", String(y))} alt="" draggable={false} referrerPolicy="strict-origin-when-cross-origin" onError={() => setFailed(true)} style={{ left: x * tileSize - left, top: y * tileSize - top, width: tileSize + .5, height: tileSize + .5 }} />);
     }
   }
-  // Group nearby pins so densely packed kitchens remain individually reachable.
-  const groups: { x: number; y: number; stops: LocatedStop[] }[] = [];
-  for (const stop of [...stops].sort((a, b) => Number(b.slug === active) - Number(a.slug === active))) {
-    const p = project(stop.lat, stop.lng), x = p.x * scale - left, y = p.y * scale - top;
-    if (x < -44 || y < -44 || x > size.width + 44 || y > size.height + 44) continue;
-    const group = groups.find(g => Math.hypot(g.x - x, g.y - y) < 48);
-    if (group) group.stops.push(stop); else groups.push({ x, y, stops: [stop] });
-  }
+  const pins = stops.map(stop => {
+    const point = project(stop.lat, stop.lng);
+    return { stop, x: point.x * scale - left, y: point.y * scale - top };
+  }).filter(p => p.x >= 0 && p.y >= 0 && p.x <= size.width && p.y <= size.height);
+  const positions = separateMapPins(pins, size.width, size.height);
   return <div className={`street-map ${interactive ? "is-interactive" : ""}`} ref={ref}>
     <div className="map-gesture" tabIndex={interactive ? 0 : undefined} role={interactive ? "group" : undefined} aria-label={interactive ? "Restaurant map. Arrow keys pan, plus and minus zoom. Use the restaurant list to choose a kitchen." : undefined}
       onKeyDown={e => {
@@ -108,14 +105,11 @@ function StreetMap({ stops, active, interactive = false, onSelect }: { stops: Lo
       onPointerUp={e => pointers.current.delete(e.pointerId)} onPointerCancel={e => pointers.current.delete(e.pointerId)} onLostPointerCapture={e => pointers.current.delete(e.pointerId)}>
       <div className="map-tiles" aria-hidden="true">{tiles}</div>
     </div>
-    {groups.map(group => {
-      const selected = group.stops.some(s => s.slug === active), single = group.stops.length === 1;
-      const label = single ? group.stops[0].name : `${group.stops.length} kitchens: ${group.stops.map(s => s.name).join(", ")}`;
-      return <button key={group.stops.map(s => s.slug).join("-")} type="button" className={`map-pin ${selected ? "is-selected" : ""} ${single ? "" : "is-cluster"}`} style={{ left: group.x, top: group.y }} disabled={!interactive} aria-label={label} aria-pressed={selected} title={label}
-        onClick={() => {
-          if (single || selected || view.zoom >= 18) onSelect?.(group.stops[(group.stops.findIndex(s => s.slug === active) + 1) % group.stops.length]);
-          else { cancelAnimationFrame(animation.current); const p = project(group.stops[0].lat, group.stops[0].lng); setView({ ...p, zoom: Math.min(MAX_ZOOM, view.zoom + 2) }); }
-        }}>{single ? <MapPin /> : group.stops.length}<span className="map-pin-label">{selected ? group.stops.find(s => s.slug === active)?.name : single ? group.stops[0].name : `${group.stops.length} kitchens`}</span></button>;
+    <svg className="map-pin-connectors" aria-hidden="true">{pins.map((pin, i) => <g key={pin.stop.slug}><line x1={pin.x} y1={pin.y} x2={positions[i].x} y2={positions[i].y} stroke={mapCuisine(pin.stop.cuisine).color} /><circle cx={pin.x} cy={pin.y} r="3" fill={mapCuisine(pin.stop.cuisine).color} /></g>)}</svg>
+    {pins.map((pin, i) => {
+      const selected = pin.stop.slug === active, type = mapCuisine(pin.stop.cuisine);
+      const label = `${pin.stop.name} · ${type.label}`;
+      return <button key={pin.stop.slug} type="button" className={`map-pin ${selected ? "is-selected" : ""}`} style={{ left: positions[i].x, top: positions[i].y, background: type.color, color: "white" }} disabled={!interactive} aria-label={label} aria-pressed={selected} title={label} onClick={() => onSelect?.(pin.stop)}><MapPin /><span className="map-pin-label">{pin.stop.name}</span></button>;
     })}
     {interactive && <div className="map-controls"><button type="button" aria-label="Zoom in" disabled={view.zoom >= MAX_ZOOM} onClick={() => changeZoom(1)}>+</button><button type="button" aria-label="Zoom out" disabled={view.zoom <= MIN_ZOOM} onClick={() => changeZoom(-1)}>−</button><button type="button" className="map-reset" onClick={reset}>Show all</button></div>}
     {failed && <p className="map-error" role="status">Street tiles couldn’t load. You can still choose any kitchen from the list.</p>}
@@ -147,9 +141,11 @@ export function RestaurantMap({ stops, embedded = false }: { stops: Stop[]; embe
     const old = document.body.style.overflow; document.body.style.overflow = "hidden";
     return () => { dialog.current?.close(); document.body.style.overflow = old; previousFocus?.focus({ preventScroll: true }); };
   }, [open]);
+  const legend = <ul className="map-cuisine-legend" aria-label="Restaurant types">{MAP_CUISINES.filter(type => located.some(stop => mapCuisine(stop.cuisine) === type)).map(type => <li key={type.label}><span style={{ background: type.color }} aria-hidden="true" />{type.label}</li>)}</ul>;
   const explorer = <><header className="map-dialog-header"><div><h2 id="map-dialog-title" >Bellwood restaurant map</h2><p>{located.length} local kitchens · Four food corridors</p></div>{!embedded && <button autoFocus className="icon-button" aria-label="Close map" onClick={() => setOpen(false)}><Close /></button>}{embedded && <a className="filter-button" href="/map">Full map ↗</a>}</header>
         <div className="map-filter-bar"><label><span className="sr-only">Search restaurants on the map</span><input type="search" placeholder="Try rib tips, vegan, or a kitchen…" value={query} onChange={e => { setQuery(e.target.value); setSelected(undefined); }} /></label><label className="map-corridor-filter"><span className="sr-only">Filter map by corridor</span><select value={corridor} onChange={e => { setCorridor(e.target.value as typeof corridor); setSelected(undefined); }}><option value="">All corridors</option>{Object.entries(CORRIDORS).map(([key, value]) => <option key={key} value={key}>{value.label}</option>)}</select></label></div>
-        <div className="map-explorer-body"><div className="map-canvas"><StreetMap stops={mapped} active={active?.slug} interactive onSelect={s => { setSelected(s.slug); (embedded ? embeddedRef.current : dialog.current)?.querySelector(".map-kitchens")?.scrollTo({ top: 0, behavior: "instant" }); }} /><p className="map-instructions">Drag to explore. Pinch or use + / − to zoom.</p></div>
+        {legend}
+        <div className="map-explorer-body"><div className="map-canvas"><StreetMap stops={mapped} active={active?.slug} interactive onSelect={s => { setSelected(s.slug); (embedded ? embeddedRef.current : dialog.current)?.querySelector(".map-kitchens")?.scrollTo({ top: 0, behavior: "instant" }); }} /><p className="map-instructions">One pin per kitchen. Lines connect nearby pins to their locations. Drag or zoom to explore.</p></div>
           <aside className="map-kitchens" aria-label="Restaurants on the map">
             {active && <article className="map-detail" aria-label={active.name}>
               <div className="map-detail-heading"><p>Selected kitchen</p><button className="icon-button" aria-label="Back to all map results" onClick={() => setSelected(undefined)}><Close /></button></div>
@@ -161,13 +157,13 @@ export function RestaurantMap({ stops, embedded = false }: { stops: Stop[]; embe
             <div className="map-results-heading"><h3>{matches.length} {matches.length === 1 ? "kitchen" : "kitchens"} to explore</h3><p role="status">{active ? `${active.name} selected. Details above.` : "Select a kitchen to take a closer look."}</p></div>
             {!matches.length && <div className="map-empty"><p>No kitchens match that search.</p><button className="filter-button" onClick={() => { setQuery(""); setCorridor(""); }}>Clear filters</button></div>}
             <div className="map-results">{matches.map(stop => <button key={stop.slug} type="button" className="map-result" aria-pressed={stop.slug === active?.slug} onClick={() => { setSelected(stop.slug); (embedded ? embeddedRef.current : dialog.current)?.querySelector(".map-kitchens")?.scrollTo({ top: 0, behavior: "instant" }); }}>
-              {stop.imageSrc ? <Image src={stop.imageSrc} alt="" width={64} height={64} /> : <MapPin />}<span><strong>{stop.name}</strong><span>{stop.address.split(",")[0]}</span><small>{stop.cuisine.slice(0, 2).join(" · ")}{!hasCoordinates(stop) ? " · Not mapped yet" : ""}</small></span><MapPin /></button>)}</div>
+              {stop.imageSrc ? <Image src={stop.imageSrc} alt="" width={64} height={64} /> : <MapPin />}<span><strong>{stop.name}</strong><span>{stop.address.split(",")[0]}</span><small><i className="map-type-dot" style={{ background: mapCuisine(stop.cuisine).color }} aria-hidden="true" />{mapCuisine(stop.cuisine).label}{!hasCoordinates(stop) ? " · Not mapped yet" : ""}</small></span><MapPin /></button>)}</div>
           </aside>
         </div>{!embedded && <MobileNavigation mapActive onMap={() => {}} onNavigate={() => setOpen(false)} />}</>;
   if (embedded) return <><section ref={embeddedRef} id="restaurant-map" className="embedded-restaurant-map site-container" aria-labelledby="map-dialog-title">{explorer}</section><MobileNavigation onMap={() => document.getElementById("restaurant-map")?.scrollIntoView({ behavior: "smooth" })} /></>;
   return <>
     <section id="restaurant-map" className="map-intro site-container" aria-labelledby="map-intro-title">
-      <div className="map-intro-copy"><p className="map-location"><MapPin />Bellwood, Illinois</p><h2 id="map-intro-title">Find your next great meal.</h2><p>From St. Charles Road to Butterfield. Explore the kitchens, see what’s nearby, and pick your next stop.</p><button ref={opener} className="primary-button" type="button" aria-haspopup="dialog" onClick={() => setOpen(true)}><MapPin />Explore the map</button><span>{located.length} kitchens on the map</span></div>
+      <div className="map-intro-copy"><p className="map-location"><MapPin />Bellwood, Illinois</p><h2 id="map-intro-title">Find your next great meal.</h2><p>From St. Charles Road to Butterfield. Explore the kitchens, see what’s nearby, and pick your next stop.</p><button ref={opener} className="primary-button" type="button" aria-haspopup="dialog" onClick={() => setOpen(true)}><MapPin />Explore the map</button><span>{located.length} kitchens on the map</span>{legend}</div>
       <div className="map-preview"><StreetMap stops={located} /><button className="map-preview-open" type="button" aria-label="Open interactive restaurant map" aria-haspopup="dialog" onClick={() => setOpen(true)}><span>Tap to explore the neighborhood ↗</span></button></div>
     </section>
     <dialog className="restaurant-map-dialog" ref={dialog} aria-labelledby="map-dialog-title" onCancel={e => { e.preventDefault(); setOpen(false); }} onKeyDown={e => {

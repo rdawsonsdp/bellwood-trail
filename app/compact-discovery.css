@@ -28,3 +28,14 @@
   .explorer-section { padding-block:10px 20px; }
   .results-summary { padding-block:2px; }
 }
+.card-google-review { margin-top:4px; padding:10px 0; border-top:1px solid #e4e9ed; border-bottom:1px solid #e4e9ed; font-size:12px; }
+.card-google-rating { display:flex; align-items:center; flex-wrap:wrap; gap:4px; min-height:32px; color:#334155; }
+.card-google-rating > span:first-child { color:#8a5a00; font-size:17px; }
+.card-google-rating strong { font-size:15px; }
+.card-google-rating .google-attribution { margin-left:3px; font-size:12px; }
+.card-google-review figure { margin:8px 0 0; }
+.card-google-review blockquote { margin:0; font-family:Georgia,serif; font-size:14px; line-height:1.5; color:#334155; overflow-wrap:anywhere; }
+.card-google-review figcaption { margin-top:7px; color:#566273; font-size:11px; line-height:1.5; }
+.card-google-review figcaption a { text-decoration:underline; }
+.card-google-source, .card-review-info, .card-google-link { display:inline-flex; align-items:center; min-height:44px; color:#0055a5; text-decoration:underline; font-size:11px; }
+.card-review-info { display:flex; min-height:28px; color:#566273; }

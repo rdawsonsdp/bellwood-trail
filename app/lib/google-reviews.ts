@@ -77,7 +77,7 @@ export function reviewSelection(place: Place, fallbackUrl: string): RestaurantRe
 
 export async function fetchRestaurantReviews(restaurant: { name: string; address: string }, key: string): Promise<RestaurantReviews> {
   const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${restaurant.name} ${restaurant.address}`)}`;
-  // Fetch only when a visitor opens details. Never persist or cache review content.
+  // Fetch when a card enters view or details open. Never persist or cache review content.
   const response = await fetch("https://places.googleapis.com/v1/places:searchText", {
     method: "POST", cache: "no-store", signal: AbortSignal.timeout(8000),
     headers: { "Content-Type": "application/json", "X-Goog-Api-Key": key,

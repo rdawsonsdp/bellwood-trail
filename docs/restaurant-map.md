@@ -21,3 +21,7 @@ Restaurant data comes from the same resolved live content as the directory. Only
 Street tiles load directly from OpenStreetMap, only for visible viewports, using normal browser caching and visible attribution. No map library or API key is required. The base tile template can be changed with NEXT_PUBLIC_MAP_TILE_URL; attribution must also be updated if changing providers. Follow https://operations.osmfoundation.org/policies/tiles/. Tile failures leave restaurant search, selection and directions available. Automated browser checks should mock tile requests to avoid synthetic map browsing against community servers.
 
 Validation: npm test covers coordinate eligibility, mobile bounds, zoom anchoring, zoom limits and empty maps. Browser checks cover responsive overflow, open/close and focus, selection, filters, controls, tile errors and reduced motion.
+
+## Individual cuisine pins
+
+All 17 published restaurants have coordinates and individual pins. Nearby pins are separated on screen with leader lines to their geographic points; no count clusters hide restaurants. The legend and result-list dots use the same cuisine classification. The test suite verifies all 17 remain distinct at 320px, 390px and desktop map widths.

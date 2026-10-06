@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { CardGoogleReview } from "./CardGoogleReview";
 import { CORRIDORS } from "@/content/restaurants";
 import type { Stop } from "@/app/lib/live-status";
 import { useDiscovery } from "./DiscoveryContext";
@@ -20,6 +21,7 @@ export function StopCard({ stop, onDetails }: { stop: Stop; onDetails: () => voi
       <p className={`kitchen-status ${stop.status.open ? "is-open" : ""}`}><span aria-hidden />{stop.status.headline.replace("Now open till", "Open until")}</p>
       <h3><button onClick={onDetails}>{stop.name}</button></h3>
       <p className="kitchen-cuisine">{stop.cuisine.slice(0, 2).join(" · ")}{stop.dineIn === true ? " · Dine in" : stop.dineIn === false ? " · Carryout" : ""}</p>
+      <CardGoogleReview slug={stop.slug} name={stop.name} address={stop.address} />
       <a className="kitchen-address" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(stop.address)}`} target="_blank" rel="noopener noreferrer"><MapPin /><span>{stop.address.split(",")[0]}</span><span className="sr-only"> (directions, opens in a new tab)</span></a>
       <div className="kitchen-actions"><button className="details-button" onClick={onDetails}>Explore kitchen</button></div>
     </div>

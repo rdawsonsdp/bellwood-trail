@@ -220,3 +220,7 @@ unchanged in shape. What is Bellwood's:
 ### Desktop hero video
 
 The user-supplied `Dine_Bellwood_Flyin.mp4` is served unchanged from `public/videos/dine-bellwood-flyin.mp4`. It mounts above 700px, plays muted once and holds the final frame, with pause/play and manual replay controls, and uses its embedded title. Mobile and reduced-motion visitors retain the existing photo and title without downloading the video. The photo also remains as a loading/error/autoplay fallback.
+
+### Main-page Google reviews
+
+Restaurant cards fetch `/api/restaurants/[slug]/reviews` as they enter view. Configure the server-only `GOOGLE_PLACES_API_KEY` in Vercel (Places API New enabled) and redeploy. The cards show Google’s aggregate rating and count, plus an attributed excerpt of the first written review returned in relevance order. No rating-based selection, sample quotes, or substitute ratings are used. Until configured, or when a restaurant cannot be confidently matched, the cards show a link to Google Maps reviews.
