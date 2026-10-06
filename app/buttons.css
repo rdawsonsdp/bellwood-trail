@@ -1,0 +1,62 @@
+/* Crisp controls with a restrained shadow in the village's Bellwood blue. */
+.culinary-site {
+  --button-shadow: 0 2px 4px #0055a50a, 0 5px 12px #0055a51a;
+  --button-shadow-hover: 0 3px 6px #0055a514, 0 7px 16px #0055a526;
+}
+.culinary-site :is(
+  .primary-button, .secondary-button, .details-button, .card-directions,
+  .saved-navigation, .icon-button, .filter-button, .hero-video-toggle,
+  .google-map-reset, .craving-pills button, .mobile-discovery-pills button,
+  .active-filters button:not(.clear-filters), .map-controls button,
+  .cookie-actions button, .map-preview-open > span
+) {
+  border-radius: 0;
+  box-shadow: var(--button-shadow);
+  transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+@media (hover: hover) {
+  .culinary-site :is(
+    .primary-button, .secondary-button, .details-button, .card-directions,
+    .saved-navigation, .icon-button, .filter-button, .hero-video-toggle,
+    .google-map-reset, .craving-pills button, .mobile-discovery-pills button,
+    .active-filters button:not(.clear-filters), .map-controls button,
+    .cookie-actions button
+  ):not(:disabled):hover { box-shadow: var(--button-shadow-hover); }
+}
+.culinary-site :is(
+  .primary-button, .secondary-button, .details-button, .card-directions,
+  .saved-navigation, .icon-button, .filter-button, .hero-video-toggle,
+  .google-map-reset, .craving-pills button, .mobile-discovery-pills button,
+  .active-filters button:not(.clear-filters), .map-controls button,
+  .cookie-actions button
+):not(:disabled):active { box-shadow: 0 1px 3px #0055a51f; }
+
+@media (max-width: 700px) {
+  .culinary-site .mobile-bottom-navigation { gap: 8px; background: #fffbf2; }
+  .culinary-site .mobile-bottom-navigation > button {
+    border: 1px solid #0055a529;
+    border-radius: 0;
+    background: #fff;
+    color: #0055a5;
+    box-shadow: var(--button-shadow);
+    transition: background-color 160ms ease, box-shadow 160ms ease;
+  }
+  .culinary-site .mobile-bottom-navigation > button[aria-current="page"] {
+    background: #0055a5;
+    border-color: #0055a5;
+    color: #fff;
+  }
+  .culinary-site .mobile-bottom-navigation > button .mobile-nav-icon,
+  .culinary-site .mobile-bottom-navigation > .mobile-home-button[aria-current="page"] .mobile-nav-icon {
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+  }
+  .culinary-site .mobile-favorites-count { background: #fdb813; color: #003f7d; }
+  .culinary-site .mobile-bottom-navigation > button:active { box-shadow: 0 1px 3px #0055a51f; }
+  .culinary-site .mobile-bottom-navigation > button:focus-visible { outline-offset: -4px; outline-color: #fdb813; }
+  .culinary-site .mobile-discovery-pills { padding-block: 6px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .culinary-site :is(button, .primary-button, .secondary-button, .card-directions) { transition: none; }
+}
