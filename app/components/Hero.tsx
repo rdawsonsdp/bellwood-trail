@@ -39,7 +39,7 @@ export function Hero({ hero = DEFAULT_HERO }: { hero?: HeroContent }) {
         <Image src={hero.image} alt={hero.imageAlt} fill priority sizes="100vw" className="trail-hero-photo" />
         {desktopMotion && <video ref={video} className="trail-hero-video" src="/videos/dine-bellwood-flyin.mp4" autoPlay muted playsInline preload="auto" poster="/images/brand/dine-bellwood-video-poster.jpg" aria-hidden="true" onPlaying={() => { setVideoVisible(true); setPaused(false); setEnded(false); }} onPause={() => setPaused(true)} onEnded={() => { setEnded(true); setPaused(true); }} onError={() => { setVideoVisible(false); setVideoFailed(true); }} />}
         {videoVisible && !ended && <button type="button" className="hero-video-toggle" onClick={toggleVideo} aria-label={paused ? "Resume hero video" : "Pause hero video"}>{paused ? "Resume video" : "Pause video"}</button>}
-        <div className="trail-hero-title"><h1 id="hero-heading" tabIndex={-1}>Dine Bellwood</h1></div>
+        <div className="trail-hero-title"><h1 id="hero-heading" tabIndex={-1}>Dine Bellwood</h1><button type="button" className="primary-button mobile-find-food" onClick={() => updateFilters(EMPTY_FILTERS, true)}><Search />Find food</button></div>
         {hero.image === DEFAULT_HERO.image && <a className="hero-photo-credit" href="https://www.designbridgeltd.com/projects/bellwood-gateway" target="_blank" rel="noopener noreferrer">Bellwood Gateway · DESIGNBRIDGE · Photo: Angie McMonigal</a>}
       </div>
       <BellwoodPromotion />

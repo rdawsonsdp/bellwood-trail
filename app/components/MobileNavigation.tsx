@@ -15,7 +15,7 @@ export function MobileNavigation({ onMap, mapActive = false, onNavigate }: {
   const { filters, saved, updateFilters } = useDiscovery();
   const [homeVisible, setHomeVisible] = useState(true);
   useEffect(() => {
-    const hero = document.querySelector(".discovery-hero");
+    const hero = document.querySelector(".trail-hero-scene");
     if (!hero) return;
     const observer = new IntersectionObserver(([entry]) => setHomeVisible(entry.isIntersecting), { rootMargin: "-60px 0px 0px 0px" });
     observer.observe(hero);

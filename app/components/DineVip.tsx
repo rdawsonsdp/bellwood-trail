@@ -28,7 +28,7 @@ export function DineVipProvider({ children }: { children: ReactNode }) {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const distance = document.documentElement.scrollHeight - window.innerHeight;
-        if (!shown.current && distance > 0 && window.scrollY / distance >= 2 / 3 && !document.querySelector("dialog[open]")) showRef.current();
+        if (!shown.current && distance > 0 && window.scrollY / distance >= 2 / 3 && !document.activeElement?.matches("input, select, textarea, [contenteditable=true]") && !document.querySelector("dialog[open]")) showRef.current();
       });
     };
     window.addEventListener("scroll", check, { passive: true });

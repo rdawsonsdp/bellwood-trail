@@ -1,0 +1,38 @@
+.mobile-full-filters, .mobile-find-food { display: none; }
+@media (max-width: 700px) {
+  .culinary-site:has(.mobile-bottom-navigation) { padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+  .culinary-site .mobile-bottom-navigation > button { min-height: 64px; font-size: 11px; }
+  .culinary-site .restaurant-map-dialog { padding-bottom: calc(82px + env(safe-area-inset-bottom)); }
+  .culinary-site .save-notice { bottom: calc(92px + env(safe-area-inset-bottom)); }
+  .culinary-site .mobile-find-food { display: inline-flex; margin-top: 20px; background: #fffbf2; border-color: #fffbf2; color: #0055a5; min-height: 48px; }
+  .culinary-site .explorer-toolbar { flex-wrap: nowrap; gap: 8px; }
+  .culinary-site .directory-search { flex: 1; border-radius: 0; }
+  .culinary-site .directory-search:focus-within { outline: 2px solid #0055a5; outline-offset: 2px; }
+  .culinary-site .directory-search input:focus-visible { outline: none; }
+  .culinary-site .mobile-full-filters { display: inline-flex; flex-shrink: 0; min-height: 46px; padding-inline: 10px; }
+  .culinary-site .mobile-hide-heading { position: static; width: auto; height: auto; margin: 0 0 14px; overflow: visible; clip-path: none; white-space: normal; }
+  .culinary-site .results-summary { flex-wrap: wrap; gap: 4px 12px; padding-block: 8px; font-size: 13px; }
+  .culinary-site select { font-size: 16px; }
+  .culinary-site .card-google-link, .culinary-site .card-google-source { min-height: 44px; font-size: 12px; }
+  .culinary-site .promotion-ticket { grid-template-columns: 1fr; }
+  .culinary-site .promotion-ticket-date { display: none; }
+  .culinary-site .promotion-varis-logo { width: min(100%, 250px); }
+  .culinary-site .promotion-ticket-copy { padding: 20px; }
+  .culinary-site .promotion-ticket-copy .primary-button { width: 100%; }
+  .culinary-site .dialog-field-pair { grid-template-columns: 1fr; }
+  .culinary-site .dialog-actions { flex-wrap: wrap; gap: 12px; }
+  .culinary-site .detail-actions { flex-wrap: wrap; }
+}
+@media (max-width: 480px) {
+  .culinary-site .kitchen-grid { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .culinary-site .kitchen-photo { aspect-ratio: 1.9; }
+  .culinary-site .kitchen-body { padding: 14px; gap: 7px; }
+  .culinary-site .kitchen-body h3 { font-size: 20px; line-height: 1.3; overflow-wrap: normal; }
+  .culinary-site .kitchen-status { font-size: 13px; }
+  .culinary-site .kitchen-cuisine, .culinary-site .kitchen-address { font-size: 14px; }
+  .culinary-site .kitchen-area { font-size: 12px; padding: 6px 9px; }
+  .culinary-site .kitchen-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .culinary-site .kitchen-actions > :is(button, a) { width: 100%; min-height: 48px; font-size: 13px; }
+  .culinary-site .mayor-welcome-inner { display: grid; grid-template-columns: 72px 1fr; gap: 14px; }
+  .culinary-site .mayor-welcome-photo { width: 72px; height: 90px; }
+}
