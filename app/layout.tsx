@@ -9,10 +9,10 @@ const figtree = Figtree({ subsets: ["latin"], weight: ["400", "600", "700", "800
 
 const script = Kaushan_Script({ subsets: ["latin"], weight: "400", variable: "--font-logo-script", display: "swap" });
 
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://bellwood-culinary-path.vercel.app").replace(/\/+$/, "");
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://bellwood-trail.vercel.app").replace(/\/+$/, "");
 const TITLE = SITE.name;
 
-export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#0055a5" };
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -20,19 +20,19 @@ export const metadata: Metadata = {
   description: SITE.description,
   alternates: { canonical: "/" },
   openGraph: { type: "website", siteName: SITE.name, locale: "en_US", url: SITE_URL, title: TITLE, description: SITE.description,
-    images: [{ url: "/icons/bellwood-1024.png", width: 1024, height: 1024, alt: "Dine Bellwood mark — a gold trail on the village blue" }] },
-  twitter: { card: "summary", title: TITLE, description: SITE.description, images: ["/icons/bellwood-1024.png"] },
+    images: [{ url: "/icons/dine-bellwood-1024.png", width: 1024, height: 1024, alt: "Dine Bellwood in village blue and gold" }] },
+  twitter: { card: "summary", title: TITLE, description: SITE.description, images: ["/icons/dine-bellwood-1024.png"] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, title: SITE.name, statusBarStyle: "default" },
   icons: {
     icon: [
-      { url: "/icons/bellwood-32.png", type: "image/png", sizes: "32x32" },
-      { url: "/icons/bellwood-48.png", type: "image/png", sizes: "48x48" },
-      { url: "/icons/bellwood-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icons/dine-bellwood-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/icons/dine-bellwood-48.png", type: "image/png", sizes: "48x48" },
+      { url: "/icons/dine-bellwood-192.png", type: "image/png", sizes: "192x192" },
     ],
-    shortcut: "/favicon.ico?v=bellwood",
-    apple: [{ url: "/icons/bellwood-180.png", sizes: "180x180", type: "image/png" }],
+    shortcut: "/favicon.ico?v=dine-bellwood-2",
+    apple: [{ url: "/icons/dine-bellwood-180.png", sizes: "180x180", type: "image/png" }],
   },
 };
 

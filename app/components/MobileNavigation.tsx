@@ -41,9 +41,9 @@ export function MobileNavigation({ onMap, mapActive = false, onNavigate }: {
     target?.focus({ preventScroll: true });
   };
   return <nav className="mobile-bottom-navigation" aria-label="Restaurant navigation">
-    <button type="button" aria-current={destination === "map" ? "page" : undefined} aria-haspopup="dialog" onClick={onMap}><span className="mobile-nav-icon"><MapPin /></span><span>Map</span></button>
-    <button type="button" aria-current={destination === "search" ? "page" : undefined} onClick={() => navigate(false)}><span className="mobile-nav-icon"><Search /></span><span>Search</span></button>
     <button type="button" className="mobile-home-button" aria-current={destination === "home" ? "page" : undefined} onClick={goHome}><span className="mobile-nav-icon"><Home /></span><span>Home</span></button>
+    <button type="button" aria-current={destination === "search" ? "page" : undefined} onClick={() => navigate(false)}><span className="mobile-nav-icon"><Search /></span><span>Search</span></button>
+    <button type="button" aria-current={destination === "map" ? "page" : undefined} aria-haspopup="dialog" onClick={onMap}><span className="mobile-nav-icon"><MapPin /></span><span>Map</span></button>
     <button type="button" className="mobile-favorites-button" aria-current={destination === "favorites" ? "page" : undefined} onClick={() => navigate(true)}><span className="mobile-nav-icon"><Heart filled={destination === "favorites"} />{saved.length > 0 && <span className="mobile-favorites-count">{saved.length}</span>}</span><span>Favorites<span className="sr-only">, {saved.length} saved restaurants</span></span></button>
   </nav>;
 }

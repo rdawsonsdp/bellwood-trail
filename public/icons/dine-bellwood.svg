@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#0055A5"/>
+  <circle cx="256" cy="256" r="189" fill="none" stroke="#FDB813" stroke-width="6"/>
+  <path d="M214 140h84M214 367h84" stroke="#FDB813" stroke-width="7" stroke-linecap="round"/>
+  <text x="256" y="255" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="110" fill="#FDB813">Dine</text>
+  <text x="256" y="321" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="66" fill="#FFFBF2">Bellwood</text>
+</svg>
