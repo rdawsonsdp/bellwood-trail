@@ -1,3 +1,4 @@
+import { PhoneInstallProvider } from "@/app/components/PhoneInstall";
 import { DiscoveryProvider } from "@/app/components/DiscoveryContext";
 import { Header } from "@/app/components/Header";
 import { Footer } from "@/app/components/Footer";
@@ -8,9 +9,11 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
     <DiscoveryProvider>
     <div className="culinary-site">
       <a className="skip-link" href="#main-content">Skip to content</a>
+      <PhoneInstallProvider>
       <Header />
       <main id="main-content">{children}</main>
       <Footer />
+      </PhoneInstallProvider>
     </div>
     </DiscoveryProvider>
   );

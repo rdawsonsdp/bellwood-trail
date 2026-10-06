@@ -1,0 +1,17 @@
+.phone-install-dialog { position: fixed; inset: 0; width: min(420px, calc(100% - 32px)); max-height: calc(100dvh - 40px); margin: auto; overflow: auto; padding: 28px; border: 1px solid #0055a526; border-top: 3px solid #fdb813; border-radius: 0; background: #fffbf2; color: #003f7d; box-shadow: 0 16px 50px #0055a533; }
+.phone-install-dialog::backdrop { background: #002b5870; }
+.phone-install-dialog > img { margin-bottom: 18px; }
+.phone-install-eyebrow { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.phone-install-dialog h2 { margin-block: 6px 12px; font-size: 28px; font-weight: 700; line-height: 1.2; }
+.phone-install-dialog p, .phone-install-dialog li { line-height: 1.6; }
+.phone-install-dialog > p:not(.phone-install-eyebrow) { font-size: 14px; }
+.phone-install-dialog ol { list-style: decimal; padding-left: 22px; margin-block: 20px; font-size: 14px; }
+.phone-install-dialog li + li { margin-top: 10px; }
+.phone-install-dialog .phone-install-note { color: #526a80; font-size: 12px; margin-bottom: 20px; }
+.phone-install-dialog .primary-button { width: 100%; }
+@media (max-width: 700px) {
+  .culinary-site .mobile-bottom-navigation { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; }
+  .culinary-site .mobile-bottom-navigation > button { min-width: 0; font-size: 10px; line-height: 1.2; padding-inline: 2px; }
+  .culinary-site .mobile-bottom-navigation > button > span:last-child { min-height: 24px; display: flex; align-items: center; justify-content: center; }
+  .culinary-site .save-to-phone-button:disabled { color: #526a80; background: #edf4fb; cursor: default; }
+}
