@@ -25,13 +25,11 @@ export function CardGoogleReview({ slug, name, address }: { slug: string; name: 
   const excerpt = review && (review.text.length > 180 ? `${review.text.slice(0, 180).replace(/\s+\S*$/, "")}…` : review.text);
   return <div ref={ref} className="card-google-review" aria-label={`Google reviews for ${name}`}>
     {result?.available && result.rating !== undefined ? <a className="card-google-rating" href={url} target="_blank" rel="noopener noreferrer" aria-label={`${name}: average ${result.rating.toFixed(1)} out of 5 on Google Maps${result.count !== undefined ? `, ${result.count} ratings` : ""}`}>
-      <span aria-hidden="true">★</span> <strong>{result.rating.toFixed(1)}</strong><span>/ 5</span><span className="google-attribution" translate="no">Google Maps</span>{result.count !== undefined && <small>({result.count.toLocaleString()})</small>}
-    </a> : <a className="card-google-link" href={url} target="_blank" rel="noopener noreferrer">See reviews on Google Maps ↗</a>}
+      <span className="card-star-meter" aria-hidden="true"><span>★★★★★</span><span className="card-star-fill" style={{ width: `${result.rating / 5 * 100}%` }}>★★★★★</span></span><strong>{result.rating.toFixed(1)}</strong><span className="google-attribution" translate="no">Google Maps</span>{result.count !== undefined && <small>({result.count.toLocaleString()})</small>}
+    </a> : <a className="card-google-link" href={url} target="_blank" rel="noopener noreferrer">Google reviews ↗</a>}
     {review && <figure>
-      <blockquote>“{excerpt}”</blockquote>
-      <figcaption>{review.avatar && <img src={review.avatar} alt="" width={24} height={24} loading="lazy" referrerPolicy="no-referrer" />}{review.authorUrl ? <a href={review.authorUrl} target="_blank" rel="noopener noreferrer">{review.author}</a> : review.author}<span> · {review.rating}/5{review.date ? ` · ${review.date}` : ""}</span></figcaption>
-      <a className="card-google-source" href={review.url} target="_blank" rel="noopener noreferrer">Read full review on Google ↗</a>
+      <blockquote><a href={review.url} target="_blank" rel="noopener noreferrer" aria-label={`Read the full Google review by ${review.author}`} title="Excerpt from the first written review in Google relevance order">“{excerpt}”</a></blockquote>
+      <figcaption>{review.avatar && <img src={review.avatar} alt="" width={24} height={24} loading="lazy" referrerPolicy="no-referrer" />}{review.authorUrl ? <a href={review.authorUrl} target="_blank" rel="noopener noreferrer">{review.author}</a> : review.author}</figcaption>
     </figure>}
-    {result?.available && <a className="card-review-info" href="/review-information">About Google reviews</a>}
   </div>;
 }

@@ -28,12 +28,12 @@
   .explorer-section { padding-block:10px 20px; }
   .results-summary { padding-block:2px; }
 }
-.card-google-review { margin-top:4px; padding:10px 0; border-top:1px solid #e4e9ed; border-bottom:1px solid #e4e9ed; font-size:12px; }
-.card-google-rating { display:flex; align-items:center; flex-wrap:wrap; gap:4px; min-height:32px; color:#334155; }
+.card-google-review { margin-top:4px; padding:6px 0; font-size:12px; }
+.card-google-rating { display:flex; align-items:center; flex-wrap:wrap; gap:4px; min-height:24px; color:#334155; }
 .card-google-rating > span:first-child { color:#8a5a00; font-size:17px; }
 .card-google-rating strong { font-size:15px; }
 .card-google-rating .google-attribution { margin-left:3px; font-size:12px; }
-.card-google-review figure { margin:8px 0 0; }
+.card-google-review figure { margin:5px 0 0; }
 .card-google-review blockquote { margin:0; font-family:Georgia,serif; font-size:14px; line-height:1.5; color:#334155; overflow-wrap:anywhere; }
 .card-google-review figcaption { margin-top:7px; color:#566273; font-size:11px; line-height:1.5; }
 .card-google-review figcaption a { text-decoration:underline; }
@@ -47,3 +47,11 @@
 .card-directions { display:inline-flex; align-items:center; justify-content:center; gap:5px; width:100%; min-height:44px; padding:8px; background:#0055a5; color:white; font-size:12px; font-weight:700; text-decoration:none; }
 .card-directions svg { width:16px; height:16px; flex-shrink:0; }
 .card-directions:hover { background:#003f7d; }
+
+.card-star-meter { position:relative; display:inline-block; flex-shrink:0; color:#cbd5e1 !important; font-size:15px !important; letter-spacing:1px; line-height:1; white-space:nowrap; }
+.card-star-fill { position:absolute; left:0; top:0; overflow:hidden; color:#a56300; }
+.card-google-review blockquote { display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden; font-family:inherit; font-size:13px; line-height:1.45; }
+.card-google-review blockquote a { color:inherit; text-decoration:none; }
+.card-google-review blockquote a:hover { text-decoration:underline; }
+.card-google-review figcaption { margin-top:4px; }
+.card-google-link { min-height:28px; }
