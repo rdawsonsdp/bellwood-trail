@@ -23,7 +23,7 @@ export function StopCard({ stop, onDetails }: { stop: Stop; onDetails: () => voi
       <p className="kitchen-cuisine">{stop.cuisine.slice(0, 2).join(" · ")}{stop.dineIn === true ? " · Dine in" : stop.dineIn === false ? " · Carryout" : ""}</p>
       <CardGoogleReview slug={stop.slug} name={stop.name} address={stop.address} />
       <a className="kitchen-address" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(stop.address)}`} target="_blank" rel="noopener noreferrer"><MapPin /><span>{stop.address.split(",")[0]}</span><span className="sr-only"> (directions, opens in a new tab)</span></a>
-      <div className="kitchen-actions"><button className="details-button" onClick={onDetails}>Explore kitchen</button></div>
+      <div className="kitchen-actions"><button className="details-button" onClick={onDetails}>Explore kitchen</button><a className="card-directions" href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${stop.name}, ${stop.address}`)}`} target="_blank" rel="noopener noreferrer" aria-label={`Get directions to ${stop.name} in Google Maps (opens in a new tab)`}><MapPin />Get directions ↗</a></div>
     </div>
   </article>;
 }

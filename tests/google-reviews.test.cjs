@@ -77,3 +77,9 @@ test('fold spelled-out street types so St. Charles Road matches Saint Charles Rd
   // A different house number on the right street is still the wrong place.
   assert.equal(on('125 Saint Charles Road, Bellwood, IL 60104'), false);
 });
+
+test('recognize verified local naming variants without relaxing address checks', () => {
+  assert.equal(matchesRestaurant({displayName:{text:"Gioacchino's Pizza & Restaurant"},formattedAddress:'5201 St Charles Rd, Bellwood, IL 60104'}, {name:"Gioacchino's Ristorante & Pizzeria",address:'5201 St Charles Rd, Bellwood, IL 60104'}),true);
+  assert.equal(matchesRestaurant({displayName:{text:'Montego Bay'},formattedAddress:'700 Bellwood Ave, Bellwood, IL 60104'}, {name:'Montego Bay Restaurant & Grill',address:'700 Bellwood Ave, Bellwood, IL 60104'}),true);
+  assert.equal(matchesRestaurant({displayName:{text:'Montego Bay'},formattedAddress:'701 Bellwood Ave, Bellwood, IL 60104'}, {name:'Montego Bay Restaurant & Grill',address:'700 Bellwood Ave, Bellwood, IL 60104'}),false);
+});

@@ -50,13 +50,13 @@ const STREET_WORDS: Record<string, string> = {
   highway: "hwy", terrace: "ter",
   east: "e", west: "w", south: "s", north: "n",
 };
-const normalized = (value: string) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9 ]/g, " ").replace(new RegExp(`\\b(${Object.keys(STREET_WORDS).join("|")})\\b`, "g"), word => STREET_WORDS[word]).replace(/\b(barbecue|barbeque|bar b q)\b/g, "bbq").replace(/\bcafes\b/g, "cafe").replace(/\s+/g, " ").trim();
+const normalized = (value: string) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9 ]/g, " ").replace(new RegExp(`\\b(${Object.keys(STREET_WORDS).join("|")})\\b`, "g"), word => STREET_WORDS[word]).replace(/\b(barbecue|barbeque|bar b q)\b/g, "bbq").replace(/\bcafes\b/g, "cafe").replace(/\bristorante\b/g, "restaurant").replace(/\bpizzeria\b/g, "pizza").replace(/\s+/g, " ").trim();
 /** A search result is not enough: require the same street and business name. */
 export function matchesRestaurant(place: Place, restaurant: { name: string; address: string }) {
   const street = normalized(restaurant.address.split(",")[0]);
   const resultStreet = normalized((place.formattedAddress ?? "").split(",")[0]);
   const postcode = restaurant.address.match(/\b\d{5}\b/)?.[0];
-  const expected = normalized(restaurant.name).split(" ").filter(word => word.length > 1 && !["the", "and"].includes(word));
+  const expected = normalized(restaurant.name).split(" ").filter(word => word.length > 1 && !["the", "and", "restaurant", "grill"].includes(word));
   const found = normalized(place.displayName?.text ?? "").split(" ");
   return street === resultStreet && !!postcode && (place.formattedAddress ?? "").includes(postcode) && expected.length > 0 && expected.filter(word => found.includes(word)).length / expected.length >= 0.75;
 }

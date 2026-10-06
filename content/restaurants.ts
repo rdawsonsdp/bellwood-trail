@@ -253,7 +253,7 @@ export const RESTAURANTS: Restaurant[] = [
     // HOT DOGS / Polish Sausage, and EST. 1959 along the bottom.
     cuisine: ["Italian Beef", "Hot Dogs", "Sausage"],
     signature: ["Famous Italian Beef", "Italian Sausage", "Meat Balls", "Hot Dogs", "Polish Sausage"],
-    neighborhood: "Bellwood", address: "635 Mannheim Rd, Bellwood, IL 60104",
+    neighborhood: "Bellwood", address: "635 N Mannheim Rd, Bellwood, IL 60104",
     phone: "(708) 547-7866", phoneHref: "tel:+17085477866",
     site: "https://mickeysdrivein.com", liveDetails: false, image: "/images/restaurants/mickeys.jpg",
     imageAlt: "Mickey's illuminated marquee above the roofline on Mannheim Road, lettered Famous Italian Beef, Sausage and Meat Balls, Hot Dogs, Polish Sausage, Est. 1959",
