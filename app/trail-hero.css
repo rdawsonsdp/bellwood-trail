@@ -13,3 +13,13 @@
  .trail-hero-title { padding-block:14px 12px; }
  .culinary-site .trail-hero-title h1 { font-size:clamp(48px,12vw,84px); text-shadow:3px 5px 0 rgba(0,35,68,.85),0 8px 20px rgba(0,0,0,.55); letter-spacing:-.3px; }
 }
+
+/* Mount video only on desktop; the existing photo is the loading/error fallback. */
+.trail-hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; pointer-events:none; }
+.hero-video-toggle { position:absolute; right:20px; bottom:20px; z-index:2; min-height:44px; padding:10px 18px; border:1px solid #ffffff80; border-radius:24px; background:#002344d9; color:#fff; font-size:13px; font-weight:600; }
+@media(min-width:701px) {
+ .has-desktop-video .trail-hero-video { opacity:1; }
+ .has-desktop-video::after, .has-desktop-video .hero-photo-credit { display:none; }
+ .has-desktop-video .trail-hero-title { position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+}
+@media(max-width:700px) { .trail-hero-video, .hero-video-toggle { display:none; } }

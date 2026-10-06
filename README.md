@@ -216,3 +216,7 @@ unchanged in shape. What is Bellwood's:
 4. **Deploy.** `vercel deploy --yes` from this directory.
 5. **Connect a Blob store and set `ADMIN_PASSWORD`** (see *Admin*).
 6. Set `NEXT_PUBLIC_SITE_URL` when a domain is chosen.
+
+### Desktop hero video
+
+The user-supplied `Dine_Bellwood_Flyin.mp4` is served unchanged from `public/videos/dine-bellwood-flyin.mp4`. It mounts above 700px, plays muted with looping and a pause/play button, and uses its embedded title. Mobile and reduced-motion visitors retain the existing photo and title without downloading the video. The photo also remains as a loading/error/autoplay fallback.
