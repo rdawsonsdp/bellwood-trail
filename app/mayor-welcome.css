@@ -1,0 +1,22 @@
+.mayor-welcome { background: #fffbf2; border-bottom: 1px solid #0055a514; padding-block: 32px; }
+.mayor-welcome-inner { display: flex; align-items: center; justify-content: center; gap: 32px; }
+.mayor-welcome-photo { width: 128px; height: 160px; flex-shrink: 0; object-fit: cover; border-bottom: 3px solid #fdb813; box-shadow: 0 4px 14px #0055a512; }
+.mayor-welcome-copy { max-width: 680px; min-width: 0; }
+.mayor-welcome-eyebrow { margin-bottom: 7px; color: #0055a5; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+.mayor-welcome h2 { margin-bottom: 10px; color: #003f7d; font-family: Georgia, serif; font-size: clamp(25px, 2.4vw, 32px); font-weight: 400; line-height: 1.2; }
+.mayor-welcome-message { color: #365675; font-size: 14px; line-height: 1.75; }
+.mayor-welcome-signature { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-top: 14px; font-size: 12px; line-height: 1.6; }
+.mayor-welcome-signature a { color: #003f7d; font-weight: 700; }
+.mayor-welcome-signature a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.mayor-welcome-signature span { color: #526a80; }
+@media (max-width: 540px) {
+  .mayor-welcome { padding-block: 24px; }
+  .mayor-welcome-inner { align-items: flex-start; gap: 16px; }
+  .mayor-welcome-photo { width: 88px; height: 110px; }
+  .mayor-welcome-eyebrow { font-size: 9px; letter-spacing: 1px; }
+  .mayor-welcome-message { font-size: 13px; line-height: 1.65; }
+  .mayor-welcome-signature { display: grid; gap: 0; }
+}
+@media (max-width: 360px) {
+  .mayor-welcome-inner { flex-direction: column; }
+}

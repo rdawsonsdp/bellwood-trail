@@ -6,6 +6,7 @@ import { CORRIDORS, type Restaurant } from "@/content/restaurants";
 import { EMPTY_FILTERS } from "@/app/lib/discovery";
 import { useDiscovery } from "./DiscoveryContext";
 import { Clock, Heart, MapPin, Search, Store } from "./icons";
+import { MayorWelcome } from "./MayorWelcome";
 import { BellwoodPromotion } from "./DineVip";
 
 export function Hero({ hero = DEFAULT_HERO }: { hero?: HeroContent }) {
@@ -42,6 +43,7 @@ export function Hero({ hero = DEFAULT_HERO }: { hero?: HeroContent }) {
         {hero.image === DEFAULT_HERO.image && <a className="hero-photo-credit" href="https://www.designbridgeltd.com/projects/bellwood-gateway" target="_blank" rel="noopener noreferrer">Bellwood Gateway · DESIGNBRIDGE · Photo: Angie McMonigal</a>}
       </div>
       <BellwoodPromotion />
+      <MayorWelcome />
       <form id="discover-search" className="discovery-search" role="search" onSubmit={e => { e.preventDefault(); updateFilters({ ...EMPTY_FILTERS, q: query, area }, true); }}>
         <label className="search-segment query-segment"><Search /><span><strong>What sounds good?</strong><input type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder="A dish, a cuisine, a kitchen" maxLength={200} aria-label="Search a dish, cuisine, or kitchen" /></span></label>
         <label className="search-segment area-segment"><MapPin /><span><strong>Where on the path?</strong><select value={area} onChange={e => setArea(e.target.value as typeof area)} aria-label="Search area"><option value="">All of Bellwood</option>{Object.entries(CORRIDORS).map(([key, value]) => <option key={key} value={key}>{value.label}</option>)}</select></span></label>
