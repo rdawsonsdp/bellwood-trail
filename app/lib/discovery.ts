@@ -1,5 +1,6 @@
 import { CORRIDORS, FOOD_CATEGORIES, type Meal, type Restaurant } from "@/content/restaurants";
 import type { Stop } from "./live-status";
+import { fold, menuText, searchWords } from "@/app/lib/menu";
 
 export type DiscoveryFilters = {
   q: string;
@@ -50,7 +51,7 @@ export function inCategory(stop: Restaurant, key: string) {
 }
 
 export function filterStops(stops: Stop[], filters: DiscoveryFilters, saved: string[]) {
-  const words = filters.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const words = searchWords(filters.q);
   const matches = stops.filter(s => {
     if (filters.open && !s.status.open) return false;
     if (filters.saved && !saved.includes(s.slug)) return false;
@@ -59,7 +60,8 @@ export function filterStops(stops: Stop[], filters: DiscoveryFilters, saved: str
     // Stops with no listed meals (dessert shops, bars) suit any time of day.
     if (filters.meal && s.meals.length && !s.meals.includes(filters.meal)) return false;
     if (filters.dining && s.dineIn !== (filters.dining === "dine-in")) return false;
-    const text = [s.name, s.tagline, s.address, s.neighborhood, CORRIDORS[s.corridor]?.label, ...s.cuisine, ...s.signature].join(" ").toLowerCase();
+    // Every dish on the menu counts, so "rib tips" finds each kitchen that serves them.
+    const text = fold([s.name, s.tagline, s.address, s.neighborhood, CORRIDORS[s.corridor]?.label, ...s.cuisine, ...s.signature, menuText(s)].join(" "));
     return words.every(word => text.includes(word));
   });
   // In a meal view, kitchens serving that meal come before the anytime stops.

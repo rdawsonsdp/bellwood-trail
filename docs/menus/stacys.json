@@ -1,0 +1,213 @@
+{
+  "slug": "stacys",
+  "source": {
+    "label": "Stacy’s Cafe’s website",
+    "url": "https://www.stacyscafe.com/menu/"
+  },
+  "sourceKind": "own-site",
+  "checked": "2026-11-10",
+  "sections": [
+    {
+      "name": "Appetizers",
+      "items": [
+        {
+          "name": "Batter Fried or Sautéed Mushrooms",
+          "description": "",
+          "price": "$10.95"
+        },
+        {
+          "name": "Jumbo Shrimp Cocktail",
+          "description": "With the house tangy cocktail sauce",
+          "price": "$15.95"
+        },
+        {
+          "name": "Shrimp Diablo",
+          "description": "Baked in a spicy tomato basil sauce",
+          "price": "$16.95"
+        },
+        {
+          "name": "Coconut Shrimp",
+          "description": "With sweet & sour sauce",
+          "price": "$16.95"
+        },
+        {
+          "name": "Grilled Shrimp on a Skewer",
+          "description": "Char-broiled and basted with butter",
+          "price": "$16.95"
+        },
+        {
+          "name": "Bar-B-Que Baby Back Ribs",
+          "description": "Individual riblets",
+          "price": "$15.95"
+        },
+        {
+          "name": "Baked Shrimp DeJonghe",
+          "description": "In garlic butter, topped with breadcrumbs",
+          "price": "$16.95"
+        },
+        {
+          "name": "Baked Onion Soup",
+          "description": "With seasoned croutons and imported cheese",
+          "price": "$6.95"
+        }
+      ]
+    },
+    {
+      "name": "Charbroiled and Hand Carved Sandwiches",
+      "items": [
+        {
+          "name": "Our Famous Stacy Burger",
+          "description": "1/2 lb prime ground sirloin on a fresh-baked bun, hand-cut fries and coleslaw",
+          "price": "$12.50"
+        },
+        {
+          "name": "Slim Plate",
+          "description": "The burger served open faced with cottage cheese and fruit",
+          "price": "$15.95"
+        },
+        {
+          "name": "French Dip",
+          "description": "Sliced prime roast beef on a French roll with au jus",
+          "price": "$14.95"
+        },
+        {
+          "name": "Hot Beef",
+          "description": "Open faced with gravy and mashed potatoes",
+          "price": "$14.95"
+        },
+        {
+          "name": "Barbecue Beef",
+          "description": "With the house special sauce",
+          "price": "$14.95"
+        },
+        {
+          "name": "Chicken Breast Sandwich",
+          "description": "Char-grilled or barbecued",
+          "price": "$14.95"
+        },
+        {
+          "name": "Steak & Cheese",
+          "description": "Ribeye with melted cheese, mushrooms and onions on garlic bread",
+          "price": "$18.95"
+        },
+        {
+          "name": "Prime Filet Steak Sandwich",
+          "description": "Served open faced",
+          "price": "$26.95"
+        }
+      ]
+    },
+    {
+      "name": "Entrees",
+      "items": [
+        {
+          "name": "Prime Top Sirloin Butt Steak",
+          "description": "A house favorite, known for its flavor",
+          "price": "$34.95"
+        },
+        {
+          "name": "Prime Filet Mignon",
+          "description": "",
+          "price": "$38.95"
+        },
+        {
+          "name": "Ladies Prime New York Sirloin Steak 12 oz.",
+          "description": "",
+          "price": "$32.95"
+        },
+        {
+          "name": "Pepper Corn Steak",
+          "description": "Made with the butt steak",
+          "price": "$37.95"
+        },
+        {
+          "name": "Grecian Steak",
+          "description": "Made with filet mignon",
+          "price": "$38.95"
+        },
+        {
+          "name": "Pork Chops",
+          "description": "Broiled, Grecian or barbecue",
+          "price": "$29.95"
+        },
+        {
+          "name": "Barbecue Canadian Baby Back Ribs",
+          "description": "With the house special sauce",
+          "price": "$30.95"
+        },
+        {
+          "name": "Shrimp DeJonghe",
+          "description": "In garlic butter with a fresh crumb topping",
+          "price": "$30.95"
+        }
+      ]
+    },
+    {
+      "name": "Stacy’s Specials",
+      "items": [
+        {
+          "name": "Prime Rib Queen Cut",
+          "description": "Friday and Saturday only",
+          "price": "$38.95"
+        },
+        {
+          "name": "Prime Rib King Cut",
+          "description": "Friday and Saturday only",
+          "price": "$41.95"
+        },
+        {
+          "name": "T-Bone Steak",
+          "description": "With mushrooms",
+          "price": "$40.95"
+        },
+        {
+          "name": "20 oz. Bone-In Ribeye",
+          "description": "",
+          "price": "$51.95"
+        },
+        {
+          "name": "24 oz. Porterhouse",
+          "description": "With mushrooms",
+          "price": "$51.95"
+        },
+        {
+          "name": "Surf & Turf",
+          "description": "6 oz. filet mignon and 6 oz. lobster tail",
+          "price": "$60.45"
+        },
+        {
+          "name": "Twin Lobster Tails",
+          "description": "6 oz. tails",
+          "price": "$65.55"
+        },
+        {
+          "name": "6 oz. Butt Steak & Skewer of Shrimp",
+          "description": "",
+          "price": "$38.95"
+        }
+      ]
+    },
+    {
+      "name": "Beverages",
+      "items": [
+        {
+          "name": "Coffee, Tea or Iced Tea",
+          "description": "",
+          "price": "$3.00"
+        },
+        {
+          "name": "Milk",
+          "description": "",
+          "price": "$4.00"
+        },
+        {
+          "name": "Soft Drinks",
+          "description": "",
+          "price": "$3.00"
+        }
+      ]
+    }
+  ],
+  "notes": "Address confirmed: the page footer shows 845 Mannheim Rd, Bellwood, IL 60104. Prices read from the raw HTML of the restaurant's own menu page on 2026-11-10 (the menu is printed twice on the page, identically). In-house prices, not marketplace. The page has 5 sections in total; all are represented, each trimmed to the first/lead items (Appetizers lists 23 lines, Entrees 18). Page states: Entrees include soup, salad and choice of potato, rice or vegetable; Stacy's Specials include soup & salad; sandwiches come with coleslaw and homemade fries. Burger cheese add-ons are listed as separate prices ($13.95 with American/Cheddar/Swiss, $15.95 with blue cheese); Prime Filet Steak Sandwich is $27.95 with soup du jour or salad; Pork Chops 'Thick Cut' is $32.95; NY Sirloin 'King Size 18 oz.' is $37.95. Page also states a 20% gratuity for parties of 3 or more and a 3% fee on credit card transactions. No publication date on the menu.",
+  "sourceDetail": "Stacy's Cafe website menu"
+}

@@ -1,0 +1,208 @@
+{
+  "slug": "nicks",
+  "source": {
+    "label": "Nick’s Pizza & Beef’s menu",
+    "url": "https://c9fc192b-f139-4ae6-a386-351df4b2ea00.usrfiles.com/ugd/c9fc19_60d9cfeb5e544bf2ad41639654846881.pdf"
+  },
+  "sourceKind": "own-site",
+  "checked": "2026-11-10",
+  "sections": [
+    {
+      "name": "Our Famous Pizza",
+      "items": [
+        {
+          "name": "Cheese",
+          "description": "Six sizes from 12\" to 18x26 Stadium",
+          "price": "$13.00 – $32.00"
+        },
+        {
+          "name": "One Ingredient",
+          "description": "Six sizes from 12\" to 18x26 Stadium",
+          "price": "$14.25 – $34.75"
+        },
+        {
+          "name": "Each Extra Ingredient",
+          "description": "Per added ingredient, by pizza size",
+          "price": "$2.00 – $3.00"
+        }
+      ]
+    },
+    {
+      "name": "Our Specialty Pizza",
+      "items": [
+        {
+          "name": "Nicks Special",
+          "description": "Sausage, mushroom, green pepper and onion",
+          "price": "$20.50 – $43.75"
+        },
+        {
+          "name": "Sicilian",
+          "description": "Sliced tomatoes, fresh garlic, basil and Romano cheese",
+          "price": "$20.50 – $43.75"
+        },
+        {
+          "name": "Vegetarian",
+          "description": "Mushrooms, green pepper, onion and spinach",
+          "price": "$20.50 – $43.75"
+        },
+        {
+          "name": "Meat Lovers",
+          "description": "Sausage, pepperoni and ground beef",
+          "price": "$20.50 – $43.75"
+        },
+        {
+          "name": "Hawaiian",
+          "description": "Ham, pineapple and BBQ sauce",
+          "price": "$20.50 – $43.75"
+        },
+        {
+          "name": "Italian Beef",
+          "description": "Italian beef, hot peppers and fresh garlic",
+          "price": "$20.50 – $43.75"
+        },
+        {
+          "name": "Gyro",
+          "description": "Gyro, onions, tomatoes and tzatziki sauce",
+          "price": "$20.50 – $43.75"
+        },
+        {
+          "name": "B.L.T",
+          "description": "Bacon, lettuce, tomatoes and mayo",
+          "price": "$20.50 – $43.75"
+        }
+      ]
+    },
+    {
+      "name": "Sandwiches",
+      "items": [
+        {
+          "name": "Italian Beef",
+          "description": "",
+          "price": "$9.95"
+        },
+        {
+          "name": "Cheesy Italian Beef",
+          "description": "",
+          "price": "$10.95"
+        },
+        {
+          "name": "Combo - Italian Beef & Sausage",
+          "description": "",
+          "price": "$10.50"
+        },
+        {
+          "name": "Gyro",
+          "description": "",
+          "price": "$7.95"
+        },
+        {
+          "name": "Gyro & Italian Beef",
+          "description": "",
+          "price": "$10.50"
+        },
+        {
+          "name": "Gyro Platter for 2",
+          "description": "",
+          "price": "$14.95"
+        },
+        {
+          "name": "Italian Meatball",
+          "description": "",
+          "price": "$6.95"
+        },
+        {
+          "name": "Maxwell Street Polish",
+          "description": "",
+          "price": "$6.95"
+        }
+      ]
+    },
+    {
+      "name": "Smash Burgers",
+      "items": [
+        {
+          "name": "Single",
+          "description": "",
+          "price": "$4.95"
+        },
+        {
+          "name": "Double",
+          "description": "",
+          "price": "$5.95"
+        },
+        {
+          "name": "Triple",
+          "description": "",
+          "price": "$6.95"
+        },
+        {
+          "name": "Single W/Cheese",
+          "description": "",
+          "price": "$5.45"
+        },
+        {
+          "name": "Double W/Cheese",
+          "description": "",
+          "price": "$6.95"
+        },
+        {
+          "name": "Tripple W/Cheese",
+          "description": "",
+          "price": "$7.95"
+        }
+      ]
+    },
+    {
+      "name": "Bar-B-Q RibTips",
+      "items": [
+        {
+          "name": "Small",
+          "description": "Includes fries and garlic bread",
+          "price": "$8.95"
+        },
+        {
+          "name": "Large",
+          "description": "Includes fries and garlic bread",
+          "price": "$12.95"
+        }
+      ]
+    },
+    {
+      "name": "Wings & Shrimp",
+      "items": [
+        {
+          "name": "5 Piece Wings",
+          "description": "",
+          "price": "$9.50"
+        },
+        {
+          "name": "10 Piece Wings",
+          "description": "",
+          "price": "$12.50"
+        },
+        {
+          "name": "5 Piece Chicken Tender",
+          "description": "",
+          "price": "$9.50"
+        },
+        {
+          "name": "8 Piece Chicken Tender",
+          "description": "",
+          "price": "$12.50"
+        },
+        {
+          "name": "21 Piece Shrimp Basket",
+          "description": "",
+          "price": "$7.99"
+        },
+        {
+          "name": "6 Piece Jumbo Shrimp",
+          "description": "",
+          "price": "$10.99"
+        }
+      ]
+    }
+  ],
+  "notes": "Source is a 2-page menu PDF (Nick's logo, no street address printed on it) stored on the Wix file host for nickspizzabeef.com (same c9fc19 site-file prefix as the site's catering PDF, which does print '815 Mannheim Rd. • Bellwood, 708-493-2200'). Nick's has a single location, so address confidence is high, but it rests on the hosting, not on the PDF itself. DOUBT: https://www.nickspizzabeef.com/menu currently renders only section headings (Pizza, Sandwiches, Smash burgers, Wings, Salads, Appetizers, Italian ice, Beverages) plus 'Application is no longer available.' in its static HTML; the menu content is loaded by Wix apps, so I could not confirm that this exact PDF is what the live menu page displays today, and the PDF carries no date. Its sections do match the page's headings. Prices are in-house, read directly from the PDF. Pizza prices are size ranges (12\", 14\", 16\", 18\", 20\", 18x26 Stadium): Cheese $13.00/$14.75/$17.00/$20.50/$23.00/$32.00; One Ingredient $14.25/$17.50/$19.75/$23.25/$25.75/$34.75; Specialty $20.50/$23.50/$27.25/$30.75/$34.75/$43.75 (one price row for all eight specialty pizzas). Stuffed cheese crust add $2.50; extra garlic crust add $1.00. PDF states sandwiches are served with free fries, burgers come with ketchup, mustard & pickles, wings & shrimp include fries & garlic bread (sauces BBQ, mild or hot). 'Tripple W/Cheese' is the PDF's own spelling. Sections left out for the 6-section cap: Our Famous Pizza Slices ($6.99–$8.99), Calzone, Panzerotti, Salads, Appetizers, Italian Ice (Small $3.25, Medium $4.25, Quart $6.25; lemon, strawberry or watermelon), Beverages. The separate catering PDF (https://www.nickspizzabeef.com/_files/ugd/c9fc19_d2f12a0d2049474e807ca59ecf71df9c.pdf) was not used for this card.",
+  "sourceDetail": "Nick's Pizza & Beef menu PDF (hosted on its own website's file storage)"
+}

@@ -10,6 +10,9 @@ import { BELLWOOD_CENTER, BELLWOOD_ZOOM, fitMap, hasCoordinates, separateMapPins
 import { useDiscovery } from "./DiscoveryContext";
 import { Close, Heart, MapPin } from "./icons";
 import { MobileNavigation } from "./MobileNavigation";
+import { useKitchenSheet } from "./KitchenSheet";
+import { EMPTY_FILTERS } from "@/app/lib/discovery";
+import { hasPublishedMenu } from "@/app/lib/menu";
 
 type LocatedStop = Stop & { lat: number; lng: number };
 type Size = { width: number; height: number };
@@ -129,7 +132,8 @@ export function RestaurantMap({ stops, embedded = false }: { stops: Stop[]; embe
   const [selected, setSelected] = useState<string>();
   const dialog = useRef<HTMLDialogElement>(null);
   const opener = useRef<HTMLButtonElement>(null);
-  const { saved, toggleSaved } = useDiscovery();
+  const { saved, toggleSaved, updateFilters } = useDiscovery();
+  const openSheet = useKitchenSheet();
   const located = stops.filter(hasCoordinates);
   const matches = stops.filter(s => (!corridor || s.corridor === corridor) && `${s.name} ${s.cuisine.join(" ")} ${s.signature.join(" ")} ${s.address}`.toLowerCase().includes(query.trim().toLowerCase()));
   const mapped = matches.filter(hasCoordinates);
@@ -156,7 +160,7 @@ export function RestaurantMap({ stops, embedded = false }: { stops: Stop[]; embe
               {active.imageSrc && <div className="map-detail-photo"><Image src={active.imageSrc} alt={active.imageAlt || active.name} fill sizes="(max-width: 700px) 100vw, 350px" /></div>}
               <h3>{active.name}</h3><p>{active.cuisine.join(" · ")}</p><p className="map-hours">Check hours with the restaurant before visiting.</p><p><DirectionsLink className="map-detail-address" name={active.name} address={active.address} label={`${active.address}: drive there with Google Maps`}><MapPin />{active.address}</DirectionsLink></p><p>{active.tagline}</p>
               {!hasCoordinates(active) && <p>Map location isn’t available yet. Use directions to find this kitchen.</p>}
-              <div className="map-detail-actions"><DirectionsLink className="primary-button" name={active.name} address={active.address}>Drive here</DirectionsLink>{active.site && <a className="filter-button" href={active.site} target="_blank" rel="noopener noreferrer">Visit website<span className="sr-only"> (opens a new tab)</span></a>}{active.phoneHref && <a className="filter-button" href={active.phoneHref}>Call</a>}<button className="filter-button" aria-pressed={saved.includes(active.slug)} onClick={() => toggleSaved(active.slug, active.name)}><Heart filled={saved.includes(active.slug)} />{saved.includes(active.slug) ? "Saved" : "Save kitchen"}</button></div>
+              <div className="map-detail-actions">{openSheet && <button type="button" className="primary-button" onClick={() => { const slug = active.slug; setOpen(false); openSheet(slug); }}>{hasPublishedMenu(active) ? "See the menu" : "See details"}</button>}<DirectionsLink className={openSheet ? "filter-button" : "primary-button"} name={active.name} address={active.address}>Drive here</DirectionsLink>{active.site && <a className="filter-button" href={active.site} target="_blank" rel="noopener noreferrer">Visit website<span className="sr-only"> (opens a new tab)</span></a>}{active.phoneHref && <a className="filter-button" href={active.phoneHref}>Call</a>}<button className="filter-button" aria-pressed={saved.includes(active.slug)} onClick={() => toggleSaved(active.slug, active.name)}><Heart filled={saved.includes(active.slug)} />{saved.includes(active.slug) ? "Saved" : "Save kitchen"}</button></div>
             </article>}
             <div className="map-results-heading"><h3>{matches.length} {matches.length === 1 ? "kitchen" : "kitchens"} to explore</h3><p role="status">{active ? `${active.name} selected. Details above.` : "Select a kitchen to take a closer look."}</p></div>
             {!matches.length && <div className="map-empty"><p>No kitchens match that search.</p><button className="filter-button" onClick={() => { setQuery(""); setCorridor(""); }}>Clear filters</button></div>}
@@ -166,9 +170,21 @@ export function RestaurantMap({ stops, embedded = false }: { stops: Stop[]; embe
         </div>{!embedded && <MobileNavigation mapActive onMap={() => {}} onNavigate={() => setOpen(false)} />}</>;
   if (embedded) return <><section ref={embeddedRef} id="restaurant-map" className="embedded-restaurant-map site-container" aria-labelledby="map-dialog-title">{explorer}</section><MobileNavigation mapActive onMap={() => document.getElementById("restaurant-map")?.scrollIntoView({ behavior: "smooth" })} /></>;
   return <>
-    <section id="restaurant-map" className="map-intro site-container" aria-labelledby="map-intro-title">
-      <div className="map-intro-copy"><p className="map-location"><MapPin />Bellwood, Illinois</p><h2 id="map-intro-title">Find your next great meal.</h2><p>From St. Charles Road to Butterfield. Explore the kitchens, see what’s nearby, and pick your next stop.</p><button ref={opener} className="primary-button" type="button" aria-haspopup="dialog" onClick={() => setOpen(true)}><MapPin />Explore the map</button><span>{located.length} kitchens on the map</span>{legend}</div>
-      <div className="map-preview"><RestaurantStreetMap stops={located} /><button className="map-preview-open" type="button" aria-label="Open interactive restaurant map" aria-haspopup="dialog" onClick={() => setOpen(true)}><span>Tap to explore the neighborhood ↗</span></button></div>
+    <section id="restaurant-map" className="roads site-container" aria-labelledby="map-intro-title">
+      <div className="roads-copy">
+        <h2 id="map-intro-title" className="sign-heading">Four roads, {stops.length} kitchens</h2>
+        <p>Bellwood’s restaurants line four streets. Pick one to see who’s cooking there, or open the map.</p>
+        <ul className="road-signs">{Object.entries(CORRIDORS).map(([key, road]) => {
+          const on = stops.filter(s => s.corridor === key);
+          if (!on.length) return null;
+          return <li key={key}><button type="button" className="road-sign" onClick={() => updateFilters({ ...EMPTY_FILTERS, area: key as Restaurant["corridor"] }, true)}>
+            <span className="road-sign-name">{road.label}</span><span className="road-sign-count">{on.length}<span className="sr-only"> {on.length === 1 ? "kitchen" : "kitchens"}</span></span>
+            <span className="road-sign-kitchens">{on.map(s => s.name).join(", ")}</span>
+          </button></li>;
+        })}</ul>
+        <button ref={opener} className="primary-button" type="button" aria-haspopup="dialog" onClick={() => setOpen(true)}><MapPin />Open the map</button>
+      </div>
+      <div className="map-preview"><RestaurantStreetMap stops={located} /><button className="map-preview-open" type="button" aria-label="Open interactive restaurant map" aria-haspopup="dialog" onClick={() => setOpen(true)}><span>Open the map</span></button></div>
     </section>
     <dialog className="restaurant-map-dialog" ref={dialog} aria-labelledby="map-dialog-title" onCancel={e => { e.preventDefault(); setOpen(false); }} onKeyDown={e => {
       if (e.key !== "Tab") return;

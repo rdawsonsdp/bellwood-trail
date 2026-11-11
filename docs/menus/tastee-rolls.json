@@ -1,0 +1,253 @@
+{
+  "slug": "tastee-rolls",
+  "source": {
+    "label": "Tastee Rolls’ website",
+    "url": "https://www.tasteerolls.com/popmenu-order/bellwood/menus/menu-synced"
+  },
+  "sourceKind": "own-site",
+  "checked": "2026-11-10",
+  "sections": [
+    {
+      "name": "Egg Rolls",
+      "items": [
+        {
+          "name": "Jerk Chicken Egg Roll",
+          "description": "Chicken breast marinated in spicy jerk sauce, rolled with cabbage and cheese",
+          "price": "$4.68"
+        },
+        {
+          "name": "Italian Beef Egg Roll",
+          "description": "Thin-sliced roast beef in au jus with giardiniera and cheese",
+          "price": "$5.20"
+        },
+        {
+          "name": "Garlic Parmesan Chicken Egg Roll",
+          "description": "Chicken breast marinated in garlic parmesan sauce, with cheese",
+          "price": "$4.68"
+        },
+        {
+          "name": "Philly Steak Egg Roll",
+          "description": "",
+          "price": "$5.20"
+        },
+        {
+          "name": "Obama Egg Roll",
+          "description": "Jerk chicken and jerk steak with cheese, lettuce and spicy giardiniera",
+          "price": "$8.84"
+        },
+        {
+          "name": "Soul Food Roll",
+          "description": "",
+          "price": "$8.84"
+        },
+        {
+          "name": "Salmon Egg Roll",
+          "description": "",
+          "price": "$10.40"
+        },
+        {
+          "name": "Peach Cobbler Egg Roll",
+          "description": "",
+          "price": "$6.24"
+        }
+      ]
+    },
+    {
+      "name": "Foot Long 12 Inch Egg Rolls",
+      "items": [
+        {
+          "name": "12 inch Jerk Chicken Egg Roll",
+          "description": "Chicken breast marinated in spicy jerk sauce, rolled with cabbage and cheese",
+          "price": "$9.36"
+        },
+        {
+          "name": "12 inch BBQ Chicken Egg Roll",
+          "description": "Chopped fried chicken breast tossed in BBQ sauce, with cheese",
+          "price": "$9.36"
+        },
+        {
+          "name": "12 inch Italian Beef Egg Roll",
+          "description": "Thin-sliced roast beef in au jus with giardiniera and cheese",
+          "price": "$10.40"
+        },
+        {
+          "name": "12 inch Philly Cheese Steak Egg Roll",
+          "description": "Marinated steak with bell pepper, onion and cheese",
+          "price": "$10.40"
+        },
+        {
+          "name": "12 inch Obama",
+          "description": "Jerk chicken and jerk steak with cheese, lettuce and spicy giardiniera",
+          "price": "$12.48"
+        },
+        {
+          "name": "12 inch Soul Roll",
+          "description": "",
+          "price": "$12.48"
+        },
+        {
+          "name": "Twisted Ft Long",
+          "description": "",
+          "price": "$13.52"
+        }
+      ]
+    },
+    {
+      "name": "Rice Bowls",
+      "items": [
+        {
+          "name": "Grill Chicken Rice Bowl",
+          "description": "Seasoned yellow rice with bell pepper, onion and grilled chicken, topped with cheese",
+          "price": "$14.04"
+        },
+        {
+          "name": "Jerk Chicken Rice Bowl",
+          "description": "Seasoned yellow rice with bell pepper, onion and jerk chicken, topped with cheese",
+          "price": "$14.04"
+        },
+        {
+          "name": "Steak Rice Bowl",
+          "description": "Seasoned yellow rice with bell pepper, onion and steak, topped with cheese",
+          "price": "$15.60"
+        },
+        {
+          "name": "Shrimp Rice Bowl",
+          "description": "Seasoned yellow rice with bell pepper, onion and sauteed shrimp, topped with cheese",
+          "price": "$15.60"
+        },
+        {
+          "name": "Gyro Rice Bowl",
+          "description": "",
+          "price": "$16.64"
+        },
+        {
+          "name": "Veggie Rice Bowl",
+          "description": "Seasoned yellow rice with bell pepper, onion and fresh vegetables",
+          "price": "$13.00"
+        },
+        {
+          "name": "Two (2) Meat Rice Bowl",
+          "description": "Seasoned yellow rice with bell pepper, onion and cheese, with a choice of meats",
+          "price": "$18.20"
+        },
+        {
+          "name": "Three (3) Meat Rice Bowl",
+          "description": "Seasoned yellow rice with bell pepper, onion and cheese, with a choice of meats",
+          "price": "$20.28"
+        }
+      ]
+    },
+    {
+      "name": "Chicken Wings",
+      "items": [
+        {
+          "name": "5 Wings with Hand cut Fries",
+          "description": "",
+          "price": "$10.40"
+        },
+        {
+          "name": "10 Wings with Hand cut Fries",
+          "description": "",
+          "price": "$20.80"
+        },
+        {
+          "name": "15 Wings with Hand cut Fries",
+          "description": "",
+          "price": "$23.92"
+        },
+        {
+          "name": "20 Wings with Hand cut Fries",
+          "description": "",
+          "price": "$41.60"
+        },
+        {
+          "name": "35 Wings with Hand cut Fries",
+          "description": "",
+          "price": "$62.40"
+        },
+        {
+          "name": "50 Wings with Hand cut Fries",
+          "description": "",
+          "price": "$78.00"
+        }
+      ]
+    },
+    {
+      "name": "Tacos",
+      "items": [
+        {
+          "name": "Jerk Chicken Taco",
+          "description": "Spicy jerk chicken with cheese, lettuce and tomato in a corn tortilla shell",
+          "price": "$4.16"
+        },
+        {
+          "name": "Jerk Steak Taco",
+          "description": "Jerk steak with cheese, lettuce, onion and sour cream in a corn tortilla shell",
+          "price": "$4.16"
+        },
+        {
+          "name": "Jerk Shrimp Taco",
+          "description": "Jerk shrimp with cheese, lettuce, onion and sour cream in a corn tortilla",
+          "price": "$4.16"
+        },
+        {
+          "name": "Ground Beef Taco",
+          "description": "Seasoned ground beef with cheese, lettuce and tomato in a corn tortilla",
+          "price": "$4.16"
+        },
+        {
+          "name": "Grilled Chicken Taco",
+          "description": "Seasoned grilled chicken with cheese, lettuce and tomato in a corn tortilla",
+          "price": "$4.16"
+        },
+        {
+          "name": "Grilled Steak Taco",
+          "description": "Seasoned grilled steak with cheese, lettuce and tomato in a corn tortilla",
+          "price": "$4.16"
+        }
+      ]
+    },
+    {
+      "name": "Fries",
+      "items": [
+        {
+          "name": "Regular Fry Small (SM)",
+          "description": "Hand-cut fries, fried fresh",
+          "price": "$3.64"
+        },
+        {
+          "name": "Regular Fry Large (LG)",
+          "description": "Hand-cut fries, fried fresh",
+          "price": "$5.72"
+        },
+        {
+          "name": "Cheese Fry Small (SM)",
+          "description": "",
+          "price": "$6.24"
+        },
+        {
+          "name": "Jerk Chicken Fries Small (SM)",
+          "description": "Hand-cut fries covered with jerk chicken and cheese",
+          "price": "$7.28"
+        },
+        {
+          "name": "Jerk Steak Fries Small (SM)",
+          "description": "",
+          "price": "$8.32"
+        },
+        {
+          "name": "Gyro Fries Small (SM)",
+          "description": "",
+          "price": "$8.32"
+        },
+        {
+          "name": "Italian Beef Fries Small (SM)",
+          "description": "",
+          "price": "$8.32"
+        }
+      ]
+    }
+  ],
+  "notes": "Address match: the ordering page states 'Pickup at Bellwood, 504 Mannheim Road, Bellwood, IL 60104'. Data read on 2026-11-10 from the restaurant's own Popmenu ordering menu (same domain; the page data, not a screenshot). The site blocks plain HTTP fetches (403), so it was read in a real browser. Prices are the online-ordering prices shown on the restaurant's own site; they are odd amounts (e.g. $4.68, $5.20), which suggests an online-ordering uplift over in-store prices - in-store prices were not verified. The public menu page https://www.tasteerolls.com/menu-bellwood shows the same price for the one item spot-checked (Apple Pie Egg Roll $6.76). Whole numbers in the data were written with two decimals as the site displays them (5.2 -> $5.20). Full menu has 10 sections (also Other, Drinks, Roll'd & Ready Combos, Desserts) and about 110 items; this is a selection. Section name 'FOOT LONG 12 inch Egg Rolls', and item names '12 inch OBAMA', 'TWISTED FT LONG', 'TWO (2) Meat Rice Bowl', 'THREE (3) Meat Rice Bowl', 'CHEESE Fry Small (SM)' were title-cased. One listed foot-long ('12 inch Mango Habanero Chicken' at $7.00) looked out of line with the others and was left out. Descriptions are '' where the menu gives none; the menu spells giardiniera 'giardiana' on the Obama roll.",
+  "sourceDetail": "Tastee Rolls website, Bellwood online ordering menu"
+}

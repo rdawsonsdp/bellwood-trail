@@ -38,18 +38,18 @@ test('empty and single-stop maps have finite useful views', () => {
   }
 });
 
-test('all 16 published restaurants have distinct, color-coded pins on desktop and mobile', () => {
+test('all 17 published restaurants have distinct, color-coded pins on desktop and mobile', () => {
   const source = ts.transpileModule(fs.readFileSync(require.resolve('../content/restaurants.ts'), 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText;
   const data = { exports: {} };
   new Function('exports', 'module', source)(data.exports, data);
   const stops = data.exports.RESTAURANTS.filter(s => !s.hidden);
-  assert.equal(stops.length, 16);
+  assert.equal(stops.length, 17);
   assert.ok(stops.every(hasCoordinates));
   for (const [width, height] of [[320,300], [390,300], [800,500]]) {
     const view = fitMap(stops.map(s => project(s.lat,s.lng)),width,height), scale = 256*2**view.zoom;
     const points = stops.map(s => {const p=project(s.lat,s.lng); return {x:(p.x-view.x)*scale+width/2,y:(p.y-view.y)*scale+height/2};});
     const pins = compiled.exports.separateMapPins(points,width,height);
-    assert.equal(pins.length,16);
+    assert.equal(pins.length,17);
     pins.forEach((pin,i) => {
       assert.ok(pin.x>=25 && pin.x<=width-25 && pin.y>=25 && pin.y<=height-50);
       for (const other of pins.slice(0,i)) assert.ok(Math.hypot(pin.x-other.x,pin.y-other.y)>=46);

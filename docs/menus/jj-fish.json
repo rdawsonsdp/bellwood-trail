@@ -1,0 +1,223 @@
+{
+  "slug": "jj-fish",
+  "source": {
+    "label": "JJ Fish & Chicken’s online ordering page",
+    "url": "https://order.online/store/jj-fish-chicken-bellwood-179329"
+  },
+  "sourceKind": "first-party-ordering",
+  "checked": "2026-11-10",
+  "sections": [
+    {
+      "name": "Chicken Wings",
+      "items": [
+        {
+          "name": "Wings (3)",
+          "description": "With fries.",
+          "price": "$7.75"
+        },
+        {
+          "name": "Wings (4)",
+          "description": "With fries.",
+          "price": "$8.99"
+        },
+        {
+          "name": "Wings (6)",
+          "description": "",
+          "price": "$12.99"
+        },
+        {
+          "name": "Wings (10)",
+          "description": "",
+          "price": "$22.49"
+        },
+        {
+          "name": "Wings (20)",
+          "description": "",
+          "price": "$38.99"
+        },
+        {
+          "name": "Wings (30)",
+          "description": "",
+          "price": "$58.99"
+        },
+        {
+          "name": "Wings (40)",
+          "description": "",
+          "price": "$75.99"
+        },
+        {
+          "name": "Wings (50)",
+          "description": "",
+          "price": "$97.99"
+        }
+      ]
+    },
+    {
+      "name": "Fish for the Family",
+      "items": [
+        {
+          "name": "Tilapia Fish Fillet (21pc)",
+          "description": "",
+          "price": "$64.99"
+        },
+        {
+          "name": "Ocean Perch (12pc)",
+          "description": "",
+          "price": "$29.88"
+        },
+        {
+          "name": "Ocean Perch (21pc)",
+          "description": "",
+          "price": "$49.99"
+        },
+        {
+          "name": "Mixed (12pc)",
+          "description": "",
+          "price": "$29.88"
+        },
+        {
+          "name": "Mixed (21pc)",
+          "description": "",
+          "price": "$49.99"
+        },
+        {
+          "name": "Fillet Cut (30pc)",
+          "description": "",
+          "price": "$49.99"
+        },
+        {
+          "name": "Fillet Cut (16pc)",
+          "description": "",
+          "price": "$25.99"
+        }
+      ]
+    },
+    {
+      "name": "Fish Combo",
+      "items": [
+        {
+          "name": "Fish Combo",
+          "description": "Choice of two: catfish, perch, jack, buffalo or shrimp.",
+          "price": "$15.49"
+        }
+      ]
+    },
+    {
+      "name": "Legs & Thighs",
+      "items": [
+        {
+          "name": "Legs & Thighs (4pc)",
+          "description": "",
+          "price": "$7.99"
+        },
+        {
+          "name": "Legs & Thighs (10pc)",
+          "description": "",
+          "price": "$12.99"
+        },
+        {
+          "name": "Legs & Thighs (16pc)",
+          "description": "",
+          "price": "$24.99"
+        },
+        {
+          "name": "Legs & Thighs (24pc)",
+          "description": "",
+          "price": "$29.99"
+        },
+        {
+          "name": "Legs & Thighs (50pc)",
+          "description": "",
+          "price": "$59.99"
+        }
+      ]
+    },
+    {
+      "name": "Menu",
+      "items": [
+        {
+          "name": "1. Chicken Tender (2pc)",
+          "description": "",
+          "price": "$6.79"
+        },
+        {
+          "name": "2. Legs & Thighs (2pc)",
+          "description": "",
+          "price": "$6.79"
+        },
+        {
+          "name": "3. Tender & Nuggets (4pc)",
+          "description": "",
+          "price": "$6.79"
+        },
+        {
+          "name": "4. 2 Pc Wings & 4 Pc Nuggets",
+          "description": "",
+          "price": "$6.79"
+        },
+        {
+          "name": "5. Filet & Shrimp",
+          "description": "",
+          "price": "$11.99"
+        },
+        {
+          "name": "6. Gizzards & Wings",
+          "description": "",
+          "price": "$10.79"
+        },
+        {
+          "name": "7. Tender & Perch",
+          "description": "",
+          "price": "$12.49"
+        },
+        {
+          "name": "8. Nuggets & Wings",
+          "description": "",
+          "price": "$10.79"
+        }
+      ]
+    },
+    {
+      "name": "Side Orders",
+      "items": [
+        {
+          "name": "Hush Puppies",
+          "description": "",
+          "price": "$3.99"
+        },
+        {
+          "name": "Large French Fries",
+          "description": "",
+          "price": "$2.99"
+        },
+        {
+          "name": "Box French Fries",
+          "description": "",
+          "price": "$5.49"
+        },
+        {
+          "name": "Onion Rings",
+          "description": "12 pieces.",
+          "price": "$3.99"
+        },
+        {
+          "name": "Mushroom",
+          "description": "",
+          "price": "$3.99"
+        },
+        {
+          "name": "Pizza Puff",
+          "description": "With fries.",
+          "price": "$5.49"
+        },
+        {
+          "name": "Cheese Sticks",
+          "description": "With fries.",
+          "price": "$5.49"
+        }
+      ]
+    }
+  ],
+  "notes": "Address match confirmed: the page header reads 'JJ Fish & Chicken, 528 Mannheim Road, Bellwood, IL'. order.online is DoorDash's Storefront product (page footer: 'Powered by DoorDash Commerce Platform') - the store's own direct-ordering page rather than the DoorDash marketplace listing, so classed first-party-ordering; prices are online-ordering prices and may differ from the in-store menu board. The page blocks plain HTTP fetches (403 / bot check); it was read by loading it in a normal browser session, with no challenge to solve. Descriptions: most item descriptions on the page read like platform-generated filler ('typically seasoned and breaded...'), so they were left blank; only short factual ones ('With fries.', the combo choices, '12 pcs') were kept. Sections shown are 6 of 10; the page's Side Orders section may contain a few more items than the 7 captured (the first items of that section were not all read). Not shown: Buffalo Wings (10pc $19.99 to 75pc $75.99), Chicken Combo ($19.99), Party Wings, Dessert (Cheesecake $4.49, Peach Cobbler $3.59, Banana Pudding $3.59, Cake $3.99, Old Fashion Butter Cookies $2.99), Beverages. The numbered section is titled 'Menu' on the page and runs to at least item 12; Chicken Wings also lists 75 and 100 counts. No phone number on the page.",
+  "sourceDetail": "JJ Fish & Chicken Bellwood online ordering page (order.online, DoorDash Storefront)"
+}

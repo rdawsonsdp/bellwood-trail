@@ -1,0 +1,173 @@
+{
+  "slug": "mi-jerez",
+  "source": {
+    "label": "a photo of its printed takeout menu",
+    "url": "https://cdn10.localdatacdn.com/il/bellwood/5579089/original/ObB8dfA0uf.jpeg"
+  },
+  "sourceKind": "directory",
+  "checked": "2026-11-10",
+  "sections": [
+    {
+      "name": "Tortas",
+      "items": [
+        {
+          "name": "Steak",
+          "description": "Served with lettuce, tomato, cheese, cream, avocado and beans.",
+          "price": "$6.99"
+        },
+        {
+          "name": "Chicken",
+          "description": "Served with lettuce, tomato, cheese, cream, avocado and beans.",
+          "price": "$6.99"
+        },
+        {
+          "name": "Marinated Pork",
+          "description": "Served with lettuce, tomato, cheese, cream, avocado and beans.",
+          "price": "$6.99"
+        },
+        {
+          "name": "Ham",
+          "description": "Served with lettuce, tomato, cheese, cream, avocado and beans.",
+          "price": "$6.99"
+        },
+        {
+          "name": "Mex Sausage",
+          "description": "Served with lettuce, tomato, cheese, cream, avocado and beans.",
+          "price": "$6.99"
+        },
+        {
+          "name": "Dried Thin Steak",
+          "description": "Served with lettuce, tomato, cheese, cream, avocado and beans.",
+          "price": "$7.50"
+        },
+        {
+          "name": "Pork Loin",
+          "description": "Served with lettuce, tomato, cheese, cream, avocado and beans.",
+          "price": "$7.50"
+        },
+        {
+          "name": "Especial con papas y soda de lata",
+          "description": "Includes fries and a can of pop.",
+          "price": "$8.99"
+        }
+      ]
+    },
+    {
+      "name": "Burritos",
+      "items": [
+        {
+          "name": "Burrito",
+          "description": "Steak, chicken, al pastor (marinated pork) or vegetarian, with lettuce, tomato, cheese, cream.",
+          "price": "$7.50"
+        },
+        {
+          "name": "Especial con papas y soda de lata",
+          "description": "Includes fries and a can of pop.",
+          "price": "$9.99"
+        },
+        {
+          "name": "Con arroz, frijoles y soda de lata",
+          "description": "With rice, beans and a can of pop.",
+          "price": "$9.99"
+        }
+      ]
+    },
+    {
+      "name": "Caldos / Soups",
+      "items": [
+        {
+          "name": "Res / Beef",
+          "description": "",
+          "price": "$10.99"
+        },
+        {
+          "name": "Camaron / Shrimp",
+          "description": "",
+          "price": "$11.99"
+        },
+        {
+          "name": "Pescado / Fish",
+          "description": "",
+          "price": "$11.99"
+        },
+        {
+          "name": "Coctel de Camaron / Shrimp Cocktail",
+          "description": "",
+          "price": "$11.99"
+        },
+        {
+          "name": "Carne en su Jugo / Beef in Its Own Juice",
+          "description": "",
+          "price": "$11.99"
+        }
+      ]
+    },
+    {
+      "name": "Especial Fin de Semana",
+      "items": [
+        {
+          "name": "Menudo y Pozole",
+          "description": "Weekend special. Plate $9.99, half gallon 12.99, gallon $20.99.",
+          "price": "$9.99 – $20.99"
+        }
+      ]
+    },
+    {
+      "name": "Sides / Extras",
+      "items": [
+        {
+          "name": "Arroz / Rice",
+          "description": "",
+          "price": "$2.99"
+        },
+        {
+          "name": "Frijoles / Beans",
+          "description": "",
+          "price": "$2.99"
+        },
+        {
+          "name": "Papas Fritas / Fries",
+          "description": "",
+          "price": "$2.99"
+        },
+        {
+          "name": "Quesadilla a Mano",
+          "description": "",
+          "price": "$7.50"
+        }
+      ]
+    },
+    {
+      "name": "Bebidas / Drinks",
+      "items": [
+        {
+          "name": "Soda Can / Soda de Lata",
+          "description": "",
+          "price": "$1.25"
+        },
+        {
+          "name": "Bottled Soda Jarritos / Refresco de Botella",
+          "description": "",
+          "price": "$2.50"
+        },
+        {
+          "name": "Coca Cola Mexicana / Mexican Coca Cola",
+          "description": "",
+          "price": "$2.75"
+        },
+        {
+          "name": "Aguas Frescas",
+          "description": "Horchata, jamaica or tamarindo. Medium or large.",
+          "price": "$2.49 – $3.99"
+        },
+        {
+          "name": "Licuados / Milkshakes",
+          "description": "Strawberry, banana or chocolate. Medium or large.",
+          "price": "$2.49 – $3.99"
+        }
+      ]
+    }
+  ],
+  "notes": "LAST-RESORT SOURCE, PRICES LIKELY STALE. No website, no first-party ordering page and no DoorDash/Uber Eats/Grubhub store page was found for this address (searched; Toast 'Jerez' results are a different restaurant in Palos Heights and were not used). The only menu found is an undated photo of the restaurant's own printed tri-fold takeout menu, shown in the Restaurantji gallery (https://www.restaurantji.com/il/bellwood/mi-jerez-taquieria-/gallery/) and credited there to Google. Address match: the printed menu itself reads 'Taqueria Mi Jerez Mexican Food, 5003 St Charles Rd, Bellwood', phone (708) 401-54xx, matching the listing. Everything above was transcribed by eye from that photo. The photo has no date, so prices cannot be confirmed as current; recommend confirming by phone, (708) 401-5424, before publishing prices, or publishing item names only. The photo shows only one side of the menu and its left edge is cut off: tacos, dinners/plates and any other panels are not visible and are NOT included. Because of the cut-off, the Spanish names of the tortas are not readable, so the menu's own English names are used for tortas; the '$6.99' price is printed once beside the first group of tortas (steak, chicken, marinated pork, ham, mex sausage, breaded beef) and is applied to each here. Two torta lines were left out because their names are partly cut off: '...eyna / with ham and hotdog' $7.50, and the torta dinner 'with rice, beans and a can pop' $8.99. Also omitted: 'Breaded Beef' torta ($6.99 group). The Burritos header prints '$7.50' for the section; the first two burrito fillings are cut off but read as '...eak' and '...icken' (steak, chicken). Aguas frescas and licuados are printed as 'md $2.49 Lg $3.99'. Restaurantji's /menu/ page returned HTTP 403 and could not be read. A separate handwritten in-store sign in the same gallery (credited to Facebook) advertises a Monday-Friday breakfast special 9-11:30am at $5.49 (eggs with ham, eggs with Mexican sausage, eggs a la Mexicana, eggs rancheros); undated, not included above.",
+  "sourceDetail": "Photo of Taqueria Mi Jerez printed takeout menu (Restaurantji gallery, credited to Google)"
+}

@@ -15,7 +15,7 @@ export function MobileNavigation({ onMap, mapActive = false, onNavigate }: {
   const { filters, saved, updateFilters } = useDiscovery();
   const [homeVisible, setHomeVisible] = useState(true);
   useEffect(() => {
-    const hero = document.querySelector(".trail-hero-scene");
+    const hero = document.querySelector(".board");
     if (!hero) return;
     const observer = new IntersectionObserver(([entry]) => setHomeVisible(entry.isIntersecting), { rootMargin: "-60px 0px 0px 0px" });
     observer.observe(hero);
@@ -38,7 +38,7 @@ export function MobileNavigation({ onMap, mapActive = false, onNavigate }: {
       onNavigate?.();
       updateFilters(favorites ? { ...EMPTY_FILTERS, saved: true } : { saved: false }, true);
     });
-    const target = document.querySelector<HTMLElement>(favorites ? "#path-heading" : ".directory-search input");
+    const target = document.querySelector<HTMLElement>(favorites ? "#path-heading" : "#kitchen-search");
     target?.focus({ preventScroll: true });
   };
   return <nav className="mobile-bottom-navigation" aria-label="Restaurant navigation">

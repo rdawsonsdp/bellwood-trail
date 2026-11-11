@@ -1,0 +1,274 @@
+/* The Menu Board: Dine Bellwood's public face.
+ *
+ * Two voices. Big Shoulders, Chicago's civic sign face, sets kitchen names and
+ * headlines the way a Mannheim Road drive-in sets its board. Figtree sets
+ * everything you read. The one recurring device is the carryout-menu line:
+ * dish, dot leader, price.
+ *
+ * Colours are the village's two (blue #0055a5, gold #fdb813) plus a night
+ * blue for the board itself. Corners are square from tablet up and soften on
+ * phones, matching the buttons. Every class here is new, so none of the older
+ * discovery styles reach in. */
+.culinary-site {
+  --night: #052a52;
+  --night-line: #ffffff2e;
+  --sign: var(--font-sign), "Arial Narrow", "Helvetica Neue", sans-serif;
+  --soft: 0px;
+  --lift: 0 2px 4px #0055a50a, 0 8px 20px #0055a514;
+}
+@media (max-width: 700px) { .culinary-site { --soft: 12px; } }
+
+.sign-heading { font-family: var(--sign); font-size: clamp(34px, 4.2vw, 58px); font-weight: 800; line-height: .98; letter-spacing: .005em; text-transform: uppercase; text-wrap: balance; color: var(--color-blue); }
+.status-dot { display: inline-block; width: 8px; height: 8px; flex-shrink: 0; border-radius: 50%; background: #8a96a4; }
+.status-dot.is-open { background: var(--color-open); }
+.kitchen-open { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 700; color: var(--color-muted); }
+.kitchen-open.is-open { color: #1f6a3f; }
+
+/* ——— Header ——— */
+.site-header { position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 3px solid var(--color-gold); }
+.site-header-inner { display: flex; align-items: center; gap: 28px; height: 68px; }
+.site-brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.site-brand img { width: auto; height: 42px; flex-shrink: 0; }
+.site-brand > span { display: grid; gap: 1px; min-width: 0; }
+.site-brand strong { font-family: var(--sign); font-size: 27px; font-weight: 800; line-height: 1; letter-spacing: .02em; text-transform: uppercase; color: var(--color-blue); }
+.site-brand > span > span { font-size: 11.5px; color: var(--color-muted); }
+.site-nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
+.site-nav a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 12px; font-size: 15px; font-weight: 700; color: var(--color-ink); }
+.site-nav a:hover { color: var(--color-blue); text-decoration: underline; text-decoration-color: var(--color-gold); text-decoration-thickness: 3px; text-underline-offset: 7px; }
+.site-saved { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 14px; border: 1px solid var(--color-line); background: #fff; box-shadow: var(--button-shadow); font-size: 14px; font-weight: 700; color: var(--color-blue); }
+.site-saved:hover { border-color: var(--color-blue); }
+.site-saved svg { width: 18px; height: 18px; }
+.rail-count { display: inline-grid; min-width: 20px; height: 20px; padding-inline: 5px; place-items: center; border-radius: 10px; background: var(--color-gold); color: var(--color-ink); font-size: 11px; font-weight: 800; font-variant-numeric: tabular-nums; }
+@media (max-width: 900px) { .site-nav a:last-child { display: none; } }
+@media (max-width: 700px) {
+  .site-header { position: static; }
+  .site-header-inner { height: 56px; }
+  .site-brand img { height: 34px; }
+  .site-brand strong { font-size: 23px; }
+  .site-nav, .site-saved { display: none; }
+}
+
+/* ——— The board ——— */
+.board { display: grid; grid-template-columns: minmax(440px, 5fr) minmax(0, 7fr); background: var(--night); color: #fff; }
+.board-panel { display: flex; flex-direction: column; justify-content: center; gap: 18px; padding: clamp(28px, 4vw, 56px); padding-left: max(32px, calc((100vw - 1280px) / 2)); }
+.board-greeting { font-size: 16px; font-weight: 700; color: var(--color-gold); }
+.board h1 { font-family: var(--sign); font-size: clamp(44px, 5.4vw, 86px); font-weight: 900; line-height: .92; letter-spacing: .005em; text-transform: uppercase; text-wrap: balance; }
+.board h1:focus-visible { outline: 3px solid var(--color-gold); outline-offset: 6px; }
+.board-search { position: relative; }
+.board-search form { display: flex; align-items: center; gap: 10px; padding: 6px 6px 6px 16px; border-radius: var(--soft); background: #fff; color: var(--color-ink); box-shadow: 0 0 0 3px var(--color-gold); }
+.board-search form > svg { width: 22px; height: 22px; flex-shrink: 0; color: var(--color-blue); }
+.board-search input { flex: 1; min-width: 0; min-height: 52px; border: 0; background: transparent; font-size: 18px; font-weight: 600; outline: none; }
+.board-search input::placeholder { color: #5f6b7a; font-weight: 400; }
+.culinary-site .board-search input:focus-visible { outline: none; }
+.board-search form:focus-within { box-shadow: 0 0 0 3px var(--color-gold), 0 0 0 6px #ffffff66; }
+.board-search form button { min-height: 52px; padding-inline: 20px; border-radius: var(--soft); background: var(--color-gold); color: var(--color-ink); font-size: 15px; font-weight: 800; white-space: nowrap; }
+.board-search form button:hover { background: #ffc93f; }
+.board-results { position: absolute; inset: calc(100% + 10px) 0 auto; z-index: 36; max-height: min(64vh, 520px); overflow: auto; overscroll-behavior: contain; border-radius: var(--soft); background: #fff; color: var(--color-ink); box-shadow: 0 18px 44px #000a; }
+.board-results[hidden] { display: none; }
+.board-results-count { padding: 12px 16px; border-bottom: 1px solid var(--color-line); font-size: 13px; font-weight: 700; color: var(--color-muted); }
+.board-results li + li { border-top: 1px solid #edf1f5; }
+.board-results li button { display: grid; gap: 3px; width: 100%; padding: 11px 16px; text-align: left; }
+.board-results li button:hover, .board-results li button:focus-visible { background: var(--color-mist); }
+.culinary-site .board-results button:focus-visible { outline-offset: -3px; }
+.board-hit-line { display: flex; align-items: baseline; gap: 8px; }
+.board-hit-where { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--color-muted); }
+.board-hit-section { padding-left: 8px; border-left: 1px solid #c3cfdb; }
+.board-results-all { display: block; width: 100%; min-height: 48px; padding: 12px 16px; border-top: 1px solid var(--color-line); background: var(--color-mist); color: var(--color-blue); font-size: 14px; font-weight: 800; text-align: left; }
+.board-results-all:hover { text-decoration: underline; }
+.board-ideas { display: flex; flex-wrap: wrap; gap: 8px; }
+.board-ideas button { min-height: 40px; padding: 6px 14px; border: 1px solid var(--night-line); border-radius: var(--soft); color: #fff; font-size: 14px; font-weight: 600; }
+.board-ideas button:hover { border-color: var(--color-gold); color: var(--color-gold); }
+.culinary-site .board :is(.board-ideas button, .board-video-toggle, .board-credit):focus-visible { outline-color: var(--color-gold); }
+.board-count { display: flex; align-items: baseline; gap: 9px; font-size: 14px; line-height: 1.5; color: #d5e2f0; }
+.board-count .status-dot { translate: 0 -1px; background: #8fa3b8; }
+.board-count .status-dot.is-open { background: var(--color-open-bright); }
+.board-scene { position: relative; min-height: 460px; overflow: hidden; background: #003f7d; }
+.board-photo { object-fit: cover; object-position: center 68%; }
+.board-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+.has-video .board-video { opacity: 1; }
+.board-video-toggle { position: absolute; right: 16px; bottom: 16px; min-height: 44px; padding: 10px 16px; border: 1px solid #ffffff80; background: #052a52d9; color: #fff; font-size: 13px; font-weight: 700; }
+.board-credit { position: absolute; right: 12px; bottom: 12px; padding: 6px 10px; background: #052a52cc; color: #fff; font-size: 11px; }
+.board-credit:hover { text-decoration: underline; }
+@media (max-width: 1000px) {
+  .board { grid-template-columns: minmax(0, 1fr); }
+  .board-scene { order: -1; min-height: 0; aspect-ratio: 16 / 8; }
+  .board-panel { padding: 28px 32px 36px; }
+}
+@media (max-width: 700px) {
+  .board-scene { aspect-ratio: 16 / 10; }
+  .board-panel { gap: 14px; padding: 20px 12px 26px; }
+  .board h1 { font-size: clamp(40px, 12.5vw, 60px); }
+  .board-search form { padding-left: 12px; gap: 8px; }
+  .board-search input { font-size: 16px; min-height: 48px; }
+  .board-search form button { min-height: 48px; padding-inline: 14px; }
+  .board-ideas { flex-wrap: nowrap; overflow-x: auto; margin-inline: -12px; padding-inline: 12px; scrollbar-width: none; }
+  .board-ideas::-webkit-scrollbar { display: none; }
+  .board-ideas button { flex: 0 0 auto; }
+  .board-credit { font-size: 10px; }
+}
+
+/* ——— Menu lines: dish, dot leader, price ——— */
+.menu-rows { display: grid; }
+.menu-row, .board-hit-line { min-width: 0; }
+.menu-row { display: flex; align-items: baseline; gap: 8px; padding-block: 7px; }
+.menu-dish { min-width: 0; font-size: 15px; font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; }
+.menu-dish mark { background: #ffe9b0; color: inherit; padding-inline: 1px; }
+.menu-leader { flex: 1; min-width: 14px; border-bottom: 2px dotted #b4c2d1; translate: 0 -4px; }
+.menu-price { flex-shrink: 0; font-size: 15px; font-weight: 800; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--color-blue-dark); }
+.menu-desc { max-width: 56ch; margin-top: -3px; padding-bottom: 7px; font-size: 13.5px; line-height: 1.5; color: var(--color-muted); }
+
+/* ——— The kitchens ——— */
+.kitchens { padding-block: 56px 48px; background: linear-gradient(var(--color-mist), #fff 620px); }
+.kitchens-head { display: grid; gap: 10px; margin-bottom: 26px; }
+.kitchens-head p { max-width: 62ch; font-size: 17px; line-height: 1.55; color: var(--color-muted); }
+.rail { position: sticky; top: 71px; z-index: 30; display: grid; grid-template-columns: minmax(200px, 280px) minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 10px; border: 1px solid var(--color-line); border-radius: var(--soft); background: #fff; box-shadow: var(--lift); }
+.rail-search { display: flex; align-items: center; gap: 9px; min-width: 0; padding-inline: 10px; border: 1px solid #b9c6d3; border-radius: var(--soft); }
+.rail-search:focus-within { outline: 3px solid var(--color-blue); outline-offset: 1px; }
+.rail-search svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--color-blue); }
+.rail-search input { width: 100%; min-width: 0; min-height: 42px; border: 0; background: transparent; font-size: 16px; }
+.culinary-site .rail-search input:focus-visible { outline: none; }
+.rail-chips { display: flex; align-items: center; gap: 6px; min-width: 0; overflow-x: auto; padding-block: 4px; padding-right: 28px; scrollbar-width: none; mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); }
+.rail-chips::-webkit-scrollbar { display: none; }
+.rail-chips button, .rail-more { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 7px; min-height: 42px; padding: 6px 13px; border: 1px solid var(--color-line); border-radius: var(--soft); background: #fff; font-size: 14px; font-weight: 700; white-space: nowrap; color: var(--color-ink); }
+.rail-chips button:hover, .rail-more:hover { border-color: var(--color-blue); }
+.rail-chips button[aria-pressed="true"] { border-color: var(--color-blue); background: var(--color-blue); color: #fff; }
+.rail-chips button[aria-pressed="true"] .status-dot { background: var(--color-open-bright); }
+.culinary-site .rail-chips button:focus-visible { outline-offset: -3px; }
+.culinary-site .rail-chips button[aria-pressed="true"]:focus-visible { outline-color: var(--color-gold); }
+.rail-chips svg, .rail-more svg { width: 16px; height: 16px; flex-shrink: 0; }
+.rail-gap { flex: 0 0 1px; align-self: stretch; margin: 6px 4px; background: var(--color-line); }
+.rail-now { padding: 1px 6px; border-radius: 9px; background: var(--color-gold); color: var(--color-ink); font-size: 11px; font-weight: 800; }
+.rail-more { color: var(--color-blue); }
+.kitchens-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding-block: 18px; font-size: 14px; color: var(--color-muted); }
+.kitchens-summary > p { font-weight: 700; color: var(--color-ink); }
+.kitchens-active { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.kitchens-active button { display: inline-flex; align-items: center; gap: 7px; min-height: 36px; max-width: 100%; padding: 4px 10px; background: #e7f0f9; color: var(--color-blue-dark); font-size: 13px; font-weight: 600; overflow-wrap: anywhere; text-align: left; }
+.kitchens-active svg { width: 12px; height: 12px; flex-shrink: 0; }
+.kitchens-active .kitchens-clear { background: transparent; color: var(--color-blue); text-decoration: underline; text-underline-offset: 3px; }
+.kitchens-sort { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+.kitchens-sort select { min-height: 40px; background: transparent; font-weight: 700; color: var(--color-ink); }
+.kitchens-note { max-width: 78ch; margin-top: 28px; font-size: 13px; line-height: 1.6; color: var(--color-muted); }
+.kitchens-empty { display: grid; justify-items: center; gap: 12px; padding: 56px 24px; border: 1px solid var(--color-line); background: #fff; text-align: center; }
+.kitchens-empty > svg { width: 34px; height: 34px; color: var(--color-blue); }
+.kitchens-empty h3 { font-family: var(--sign); font-size: 30px; font-weight: 800; text-transform: uppercase; color: var(--color-blue-dark); }
+.kitchens-empty p { color: var(--color-muted); }
+@media (max-width: 1000px) {
+  .rail { grid-template-columns: minmax(0, 1fr) auto; }
+  .rail-chips { grid-column: 1 / -1; grid-row: 2; }
+}
+@media (max-width: 700px) {
+  .kitchens { padding-block: 30px 28px; }
+  .kitchens-head { margin-bottom: 16px; }
+  .kitchens-head p { font-size: 15px; }
+  .rail { top: 0; margin-inline: -12px; padding: 8px 12px 4px; border-width: 0 0 1px; border-radius: 0; gap: 6px 8px; }
+  .rail-chips { margin-inline: -12px; padding-inline: 12px; scrollbar-width: none; }
+  .rail-chips::-webkit-scrollbar { display: none; }
+  .rail-more { padding-inline: 11px; }
+  .kitchens-summary { padding-block: 12px; font-size: 13px; }
+}
+
+/* ——— Menu cards ——— */
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 28px 24px; }
+.menu-card { display: flex; min-width: 0; flex-direction: column; overflow: hidden; border: 1px solid var(--color-line); border-top: 4px solid var(--color-blue); border-radius: var(--soft); background: #fff; box-shadow: var(--lift); }
+.menu-card-photo { position: relative; aspect-ratio: 16 / 9; background: var(--night); }
+.menu-card-photo-button { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.menu-card-photo img { object-fit: cover; }
+.culinary-site .menu-card-photo-button:focus-visible { outline-offset: -4px; outline-color: var(--color-gold); }
+.menu-card-nophoto { display: grid; width: 100%; height: 100%; place-items: center; padding: 20px 20px 44px; font-family: var(--sign); font-size: 34px; font-weight: 800; line-height: 1; text-transform: uppercase; text-wrap: balance; text-align: center; color: var(--color-gold); }
+.menu-card-save { position: absolute; top: 10px; right: 10px; display: grid; width: 44px; height: 44px; place-items: center; border-radius: 50%; background: #fff; color: var(--color-ink); box-shadow: 0 2px 8px #0003; }
+.menu-card-save svg { width: 21px; height: 21px; }
+.menu-card-save.is-saved { color: var(--color-blue); }
+.menu-card-tags { position: absolute; left: 10px; bottom: 10px; display: flex; flex-wrap: wrap; gap: 6px; max-width: calc(100% - 76px); pointer-events: none; }
+.menu-card-tags span { padding: 4px 9px; background: #fff; color: var(--color-ink); font-size: 12px; font-weight: 700; }
+.menu-card-tags .is-since { background: var(--color-gold); }
+.menu-card-tags .is-featured-tag { background: var(--color-blue); color: #fff; }
+.menu-card.is-featured { border-top-color: var(--color-gold); }
+.menu-card-photos { position: absolute; right: 10px; bottom: 10px; display: inline-flex; align-items: center; gap: 4px; padding: 4px 8px; background: #000a; color: #fff; font-size: 12px; font-weight: 700; pointer-events: none; }
+.menu-card-photos svg { width: 13px; height: 13px; }
+.menu-card-head { display: grid; gap: 5px; padding: 16px 18px 12px; }
+.menu-card-head h3 { font-family: var(--sign); font-size: 30px; font-weight: 800; line-height: 1; letter-spacing: .005em; text-wrap: balance; color: var(--color-blue-dark); }
+.menu-card-head h3 button { text-align: left; }
+.menu-card-head h3 button:hover { color: var(--color-blue); }
+.menu-card-kind { font-size: 13px; color: var(--color-muted); }
+.menu-card .card-google-review { margin: 0; padding: 0; }
+.menu-card .card-google-link { min-height: 28px; font-size: 12px; }
+.menu-card-menu { display: flex; flex: 1; flex-direction: column; padding: 0 18px 4px; border-top: 1px solid var(--color-line); }
+.menu-tabs { display: flex; gap: 2px; margin-inline: -18px; padding-inline: 12px; overflow-x: auto; border-bottom: 1px solid var(--color-line); background: var(--color-mist); scrollbar-width: none; }
+.menu-tabs::-webkit-scrollbar { display: none; }
+.menu-tabs button { flex: 0 0 auto; min-height: 44px; padding: 8px 9px 5px; border-bottom: 3px solid transparent; font-size: 13.5px; font-weight: 700; white-space: nowrap; color: var(--color-muted); }
+.menu-tabs button:hover { color: var(--color-ink); }
+.menu-tabs button[aria-pressed="true"] { border-bottom-color: var(--color-gold); color: var(--color-blue-dark); }
+.culinary-site .menu-tabs button:focus-visible { outline-offset: -3px; }
+.menu-tabs-single { padding-block: 12px 2px; font-size: 13.5px; font-weight: 700; color: var(--color-muted); }
+.menu-card-menu .menu-rows { padding-top: 6px; }
+.menu-card-more { align-self: flex-start; min-height: 40px; margin-top: auto; color: var(--color-blue); font-size: 13.5px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.menu-card-foot { display: grid; gap: 12px; padding: 10px 18px 18px; }
+.menu-card-source { font-size: 12.5px; line-height: 1.5; color: var(--color-muted); }
+.menu-card-source a { color: var(--color-blue); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+.menu-card-actions { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 8px; }
+.menu-card-actions > * { min-height: 46px; padding: 8px 10px; font-size: 14px; }
+@media (max-width: 700px) {
+  .menu-grid { gap: 18px; }
+  .menu-card-head h3 { font-size: 28px; }
+}
+
+/* ——— Kitchen sheet ——— */
+.discovery-dialog.kitchen-sheet { width: min(720px, calc(100% - 32px)); }
+.sheet-menu { margin-top: 26px; padding-top: 4px; border-top: 4px solid var(--color-gold); }
+.detail-body .sheet-menu > h3 { margin-top: 16px; font-family: var(--sign); font-size: 34px; font-weight: 800; line-height: 1; text-transform: uppercase; color: var(--color-blue-dark); }
+.sheet-menu-jump { display: flex; flex-wrap: wrap; gap: 6px; margin-block: 6px 4px; }
+.sheet-menu-jump button { min-height: 36px; padding: 4px 11px; border: 1px solid var(--color-line); border-radius: var(--soft); font-size: 13px; font-weight: 700; color: var(--color-blue); }
+.sheet-menu-jump button:hover { border-color: var(--color-blue); }
+.sheet-menu-section { padding-top: 18px; scroll-margin-top: 84px; }
+.sheet-menu-section h4 { padding-bottom: 6px; border-bottom: 1px solid var(--color-line); font-family: var(--sign); font-size: 23px; font-weight: 800; line-height: 1.1; color: var(--color-blue); }
+.sheet-menu .menu-rows li { scroll-margin-block: 120px; }
+.sheet-menu .menu-rows li.is-focus { margin-inline: -10px; padding-inline: 10px; background: #fff4d1; box-shadow: inset 4px 0 var(--color-gold); }
+.detail-body .sheet-menu-source { margin-top: 18px; padding: 12px 14px; background: var(--color-mist); font-size: 13px; line-height: 1.6; color: var(--color-muted); }
+.sheet-menu-source a { color: var(--color-blue); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+/* ——— Four roads ——— */
+.roads { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); margin-block: 72px; border: 1px solid var(--color-line); border-radius: var(--soft); overflow: hidden; background: #fff; box-shadow: var(--lift); }
+.roads-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; padding: clamp(22px, 3.4vw, 44px); }
+.roads-copy > p { max-width: 46ch; line-height: 1.6; color: var(--color-muted); }
+.road-signs { display: grid; gap: 10px; width: 100%; }
+/* Street-sign blades: village blue, white keyline, the road's name in the sign face. */
+.road-sign { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2px 14px; width: 100%; padding: 11px 16px 12px; border: 2px solid #fff; border-radius: 4px; outline: 2px solid var(--color-blue); background: var(--color-blue); color: #fff; text-align: left; }
+.road-sign:hover { background: var(--color-blue-dark); outline-color: var(--color-blue-dark); }
+.culinary-site .road-sign:focus-visible { outline: 3px solid var(--color-gold); outline-offset: 2px; }
+.road-sign-name { font-family: var(--sign); font-size: 27px; font-weight: 800; line-height: 1.05; letter-spacing: .02em; text-transform: uppercase; }
+.road-sign-count { grid-row: span 2; display: grid; min-width: 40px; height: 40px; place-items: center; border-radius: 50%; background: var(--color-gold); color: var(--color-ink); font-family: var(--sign); font-size: 24px; font-weight: 800; }
+.road-sign-kitchens { font-size: 13px; line-height: 1.45; color: #dbe8f5; }
+.roads .map-preview { min-height: 420px; }
+@media (max-width: 900px) {
+  .roads { grid-template-columns: minmax(0, 1fr); margin-block: 40px; }
+  .roads .map-preview { height: 260px; min-height: 260px; }
+}
+@media (max-width: 700px) { .road-sign-name { font-size: 24px; } }
+
+/* ——— Since 1905 ——— */
+.since { padding-block: 64px; background: var(--night); color: #fff; }
+.since .sign-heading { color: #fff; }
+.since-lede { max-width: 60ch; margin-top: 12px; font-size: 17px; line-height: 1.55; color: #d5e2f0; }
+.since-line { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(128px, 1fr); margin-top: 34px; overflow-x: auto; border-top: 3px solid var(--color-gold); scrollbar-width: thin; scrollbar-color: #ffffff55 transparent; }
+.since-line li { position: relative; }
+.since-line li::before { content: ""; position: absolute; top: -8px; left: 0; width: 13px; height: 13px; border-radius: 50%; background: var(--color-gold); }
+.since-line button { display: grid; gap: 4px; width: 100%; height: 100%; align-content: start; padding: 20px 18px 14px 0; text-align: left; }
+.since-year { font-family: var(--sign); font-size: 52px; font-weight: 900; line-height: .9; color: var(--color-gold); font-variant-numeric: tabular-nums; }
+.since-name { margin-top: 6px; font-size: 16px; font-weight: 700; line-height: 1.3; }
+.since-road { font-size: 13px; color: #b9cbe0; }
+.since-line button:hover .since-name { text-decoration: underline; text-underline-offset: 3px; }
+.culinary-site .since-line button:focus-visible { outline-color: var(--color-gold); outline-offset: -3px; }
+@media (max-width: 700px) {
+  .since { padding-block: 40px; }
+  .since-lede { font-size: 15px; }
+  .since-line { margin-inline: -12px; padding-inline: 12px; grid-auto-columns: 150px; }
+  .since-year { font-size: 44px; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rail-chips button, .board-ideas button, .road-sign, .menu-tabs button { transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease; }
+}
+
+/* The board and the promotion below it are both dark; keep them apart. */
+.board + .bellwood-promotion { margin-top: 48px; }
+@media (max-width: 700px) { .board + .bellwood-promotion { margin-top: 28px; } }

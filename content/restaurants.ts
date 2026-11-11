@@ -143,7 +143,7 @@ export const RESTAURANTS: Restaurant[] = [
     lat: 41.888757, lng: -87.882528, corridor: "st-charles",
   },
   {
-    hidden: true, // Opening not yet confirmed; retain in admin for activation.
+    // Featured, and marked as opening soon, in content/featured.ts.
     slug: "varis", name: "VARI’S Southern Cuisine",
     tagline: "Fried ribs, oxtail and lamb — Nanetta's second dining room.",
     cuisine: ["Southern", "Soul Food", "Seafood"],
@@ -155,8 +155,8 @@ export const RESTAURANTS: Restaurant[] = [
     // OPENING LATE OCTOBER 2026. Nanetta Dancy-Matthews is bringing her
     // Hillside restaurant's second location to downtown Bellwood. The hours
     // below are the ones she has published (noon–7 daily), so until the doors
-    // open the card's open/closed chip will be optimistic. Either hide this
-    // stop or add an opening-day note before the demo.
+    // open, content/featured.ts marks it comingSoon and the card says
+    // "Opening soon" rather than reading open or closed from these hours.
     schedule: Array.from({ length: 7 }, () => [h(12), h(19)] as const),
     dineIn: true, meals: ["lunch", "dinner"],
     lat: 41.887610, lng: -87.866539, corridor: "st-charles",

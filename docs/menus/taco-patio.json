@@ -1,0 +1,223 @@
+{
+  "slug": "taco-patio",
+  "source": {
+    "label": "Taco Patio’s online ordering page",
+    "url": "https://tacopatio.hrpos.heartland.us/menu"
+  },
+  "sourceKind": "first-party-ordering",
+  "checked": "2026-11-10",
+  "sections": [
+    {
+      "name": "Tacos",
+      "items": [
+        {
+          "name": "Steak Taco",
+          "description": "Double soft corn tortilla with cheese, lettuce and tomatoes",
+          "price": "$3.79"
+        },
+        {
+          "name": "Chicken Taco",
+          "description": "Double soft corn tortilla with cheese, lettuce and tomatoes",
+          "price": "$3.79"
+        },
+        {
+          "name": "Ground Beef Taco",
+          "description": "Double soft corn tortilla with cheese, lettuce and tomatoes",
+          "price": "$3.79"
+        },
+        {
+          "name": "Pork Taco",
+          "description": "Double soft corn tortilla with cheese, lettuce and tomatoes",
+          "price": "$3.79"
+        },
+        {
+          "name": "Shrimp Taco",
+          "description": "Double soft corn tortilla with cheese, lettuce and homemade shrimp sauce",
+          "price": "$4.39"
+        },
+        {
+          "name": "Fish Taco",
+          "description": "Double soft corn tortilla with cheese, cabbage and chipotle mayonnaise",
+          "price": "$4.39"
+        }
+      ]
+    },
+    {
+      "name": "Burritos",
+      "items": [
+        {
+          "name": "Steak Burrito",
+          "description": "Served with beans, cheese, lettuce and tomatoes",
+          "price": "$9.59"
+        },
+        {
+          "name": "Chicken Burrito",
+          "description": "Served with beans, cheese, lettuce and tomatoes",
+          "price": "$9.59"
+        },
+        {
+          "name": "Ground Beef Burrito",
+          "description": "Served with beans, cheese, lettuce and tomatoes",
+          "price": "$9.59"
+        },
+        {
+          "name": "Pork Burrito",
+          "description": "Served with beans, cheese, lettuce and tomatoes",
+          "price": "$9.59"
+        },
+        {
+          "name": "Chorizo Burrito",
+          "description": "Served with beans, cheese, lettuce and tomatoes",
+          "price": "$9.69"
+        },
+        {
+          "name": "Burrito Bowl",
+          "description": "Served with rice, beans, cheese, lettuce and tomatoes",
+          "price": "$9.89"
+        },
+        {
+          "name": "El Gigante Burrito with Extra Meat",
+          "description": "Served with beans, cheese, lettuce and tomatoes",
+          "price": "$11.69"
+        },
+        {
+          "name": "Burrito Suizo",
+          "description": "Beans, cheese, lettuce and tomatoes, topped with melted cheese",
+          "price": "$10.59"
+        }
+      ]
+    },
+    {
+      "name": "Meal Deals",
+      "items": [
+        {
+          "name": "Meal Deal #1 (Two Tacos)",
+          "description": "With rice, beans and a regular drink; fries can replace rice and beans",
+          "price": "$11.09"
+        },
+        {
+          "name": "Meal Deal #2 (1 Taco Of Your Choice And 1 Tamale)",
+          "description": "With rice, beans and a regular drink; fries can replace rice and beans",
+          "price": "$11.09"
+        },
+        {
+          "name": "Meal Deal #3 (1 Taco Of Your Choice And 1 Quesadilla)",
+          "description": "With rice, beans and a regular drink; fries can replace rice and beans",
+          "price": "$11.09"
+        }
+      ]
+    },
+    {
+      "name": "Dinners",
+      "items": [
+        {
+          "name": "A Burrito Served Suizo Style",
+          "description": "Served with rice, beans, and chips with guacamole",
+          "price": "$13.99"
+        },
+        {
+          "name": "B 3 Tacos",
+          "description": "",
+          "price": "$13.89"
+        },
+        {
+          "name": "C Fajita Dinner",
+          "description": "Served with rice, beans, and chips with guacamole. Price shown is for steak",
+          "price": "$13.39"
+        },
+        {
+          "name": "D 3 Enchiladas",
+          "description": "Served with rice, beans, and chips with guacamole. Price shown is for steak",
+          "price": "$12.39"
+        },
+        {
+          "name": "E Combo 2 Tacos and 1 Stuffed Pepper",
+          "description": "Served with rice, beans, and chips with guacamole",
+          "price": "$13.89"
+        },
+        {
+          "name": "F 1 Taco, 1 Quesadilla, and 1 Tamale",
+          "description": "Served with rice, beans, and chips with guacamole",
+          "price": "$13.89"
+        },
+        {
+          "name": "G Quesadilla Dinner",
+          "description": "Served with rice, beans, and chips with guacamole. Price shown is for cheese",
+          "price": "$13.99"
+        }
+      ]
+    },
+    {
+      "name": "Tortas",
+      "items": [
+        {
+          "name": "Steak Torta",
+          "description": "Served with cheese, lettuce, tomatoes, sour cream and guacamole",
+          "price": "$8.99"
+        },
+        {
+          "name": "Milanesa Torta",
+          "description": "Served with cheese, lettuce, tomatoes, sour cream and guacamole",
+          "price": "$8.99"
+        },
+        {
+          "name": "Chicken Torta",
+          "description": "Served with cheese, lettuce, tomatoes, sour cream and guacamole",
+          "price": "$8.99"
+        },
+        {
+          "name": "Pork Torta",
+          "description": "Served with cheese, lettuce, tomatoes, sour cream and guacamole",
+          "price": "$8.99"
+        }
+      ]
+    },
+    {
+      "name": "A la Carte",
+      "items": [
+        {
+          "name": "Nacho Chips",
+          "description": "With cheese or salsa, chili and cheese, or guacamole. Price shown is for cheese",
+          "price": "$4.89"
+        },
+        {
+          "name": "Nacho Supreme",
+          "description": "Cheese, beans, tomatoes, green onions, olives, sour cream, guacamole. Veggie price shown",
+          "price": "$8.75"
+        },
+        {
+          "name": "Taco Salad",
+          "description": "Crispy flour shell with beans, lettuce, cheese, tomatoes, onions, olives, sour cream",
+          "price": "$10.09"
+        },
+        {
+          "name": "Steak Fajita",
+          "description": "Flour tortilla with cheese, grilled onions, grilled peppers and tomatoes",
+          "price": "$5.65"
+        },
+        {
+          "name": "Steak Tostada",
+          "description": "Served with beans, cheese, lettuce and tomatoes",
+          "price": "$4.89"
+        },
+        {
+          "name": "Steak Super Taco",
+          "description": "Served with cheese, lettuce and tomatoes",
+          "price": "$6.29"
+        },
+        {
+          "name": "Steak Chimichanga",
+          "description": "Fried flour tortilla with beans and cheese; lettuce, tomatoes, sour cream, guacamole",
+          "price": "$10.59"
+        },
+        {
+          "name": "Three Taquitos (Steak)",
+          "description": "Served with cheese, lettuce, tomatoes, sour cream and guacamole",
+          "price": "$9.99"
+        }
+      ]
+    }
+  ],
+  "notes": "Address match: the ordering store header reads 'Taco Patio, 4018 Butterfield Rd, Bellwood, IL 60104, Phone: (708) 544-1112'. This Heartland ('Online Ordering by Genius') store is the Bellwood ordering link from the existing research notes; tacopatio.com's own /menu/ page is an image menu labeled Lockport (Aug 2025) and was NOT used. The page is a JavaScript app, read in a real browser on 2026-11-10. Prices are the online-ordering prices; whether they equal in-store prices was not verified. Several items publish a starting price tied to a variant ('$13.39 for Steak', '$4.89 for Cheese', '$8.75 for Veggie'); the price field holds the dollar amount and the variant is stated in the description. The site wraps names in hyphens ('-Steak Taco-'); hyphens removed. The description for 'B 3 Tacos' was not captured, so it is ''. Meal Deals runs #1-#10 ($10.89-$11.59); only the three whose descriptions were read are listed. Left out on purpose: 'Southwestern Taco Salad', whose published price is an obvious data error ('$1017009.00'). Other sections on the store: Side Orders, Kids, Quesadillas, Vegetarian, Favorites, Extras, Beverages, plus Late Night Menu / Drinks tabs.",
+  "sourceDetail": "Taco Patio Bellwood online ordering (Heartland)"
+}

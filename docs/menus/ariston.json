@@ -1,0 +1,258 @@
+{
+  "slug": "ariston",
+  "source": {
+    "label": "Ariston’s online ordering page",
+    "url": "https://www.onlinemenuorder.com/AristonRestaurant"
+  },
+  "sourceKind": "first-party-ordering",
+  "checked": "2026-11-10",
+  "sections": [
+    {
+      "name": "Hungry Men's Menu",
+      "items": [
+        {
+          "name": "#01 Football Gyro",
+          "description": "",
+          "price": "$18.69"
+        },
+        {
+          "name": "#02 Belly Buster Triple Cheeseburger",
+          "description": "",
+          "price": "$17.59"
+        },
+        {
+          "name": "#03 Big Italian Beef",
+          "description": "",
+          "price": "$16.49"
+        },
+        {
+          "name": "#04 Big Mannheim Steak Philly",
+          "description": "",
+          "price": "$17.59"
+        },
+        {
+          "name": "#05 Big Mannheim Chicken Philly",
+          "description": "",
+          "price": "$17.59"
+        },
+        {
+          "name": "#06 Ariston's Famous Chicken Wings (10)",
+          "description": "",
+          "price": "$18.69"
+        },
+        {
+          "name": "#07 1Lb. BBQ Rib Tips",
+          "description": "",
+          "price": "$16.49"
+        },
+        {
+          "name": "#08 Double Chopped Steak",
+          "description": "",
+          "price": "$17.59"
+        }
+      ]
+    },
+    {
+      "name": "Meal Deals",
+      "items": [
+        {
+          "name": "#01 1/2 Lb Cheese Burger",
+          "description": "Ketchup, mustard, lettuce, tomato and onion",
+          "price": "$13.19"
+        },
+        {
+          "name": "#02 Gyro Sandwich",
+          "description": "On pita with gyro sauce, onions and tomatoes",
+          "price": "$13.19"
+        },
+        {
+          "name": "#03 Italian Beef",
+          "description": "On French bread",
+          "price": "$13.19"
+        },
+        {
+          "name": "#04 Vienna Polish Sausage",
+          "description": "",
+          "price": "$9.89"
+        },
+        {
+          "name": "#05 Super Taco",
+          "description": "On a pita with cheddar, lettuce, tomato and hot sauce",
+          "price": "$10.99"
+        },
+        {
+          "name": "#06 Hoagie Steak",
+          "description": "",
+          "price": "$13.19"
+        },
+        {
+          "name": "#07 2 Hot Dogs",
+          "description": "Mustard, onion, relish, tomatoes, sport peppers, pickles, celery salt",
+          "price": "$10.99"
+        },
+        {
+          "name": "#08 Chopped Steak",
+          "description": "",
+          "price": "$13.19"
+        }
+      ]
+    },
+    {
+      "name": "Greek Specialties",
+      "items": [
+        {
+          "name": "Gyro Sandwich",
+          "description": "On pita with gyro sauce, onions and tomatoes",
+          "price": "$9.34"
+        },
+        {
+          "name": "Gyro Dinner",
+          "description": "Seasoned gyro meat, onions and tomatoes on pita, with fries and Greek salad",
+          "price": "$15.39"
+        },
+        {
+          "name": "Football Gyro Sandwich",
+          "description": "On pita with gyro sauce, onions and tomatoes",
+          "price": "$15.39"
+        },
+        {
+          "name": "Chicken Gyro Dinner",
+          "description": "Chicken gyro, lettuce, tomatoes, honey mustard on pita; fries and Greek salad",
+          "price": "$15.39"
+        },
+        {
+          "name": "Chicken Gyro Sandwich",
+          "description": "On pita with lettuce, tomatoes and honey mustard",
+          "price": "$9.34"
+        },
+        {
+          "name": "Football Chicken Gyro Sandwich",
+          "description": "On pita with lettuce, tomatoes and honey mustard",
+          "price": "$15.39"
+        },
+        {
+          "name": "Chicken Kabob Dinner",
+          "description": "On pita with lettuce, tomatoes and gyro sauce; fries and Greek salad",
+          "price": "$15.39"
+        },
+        {
+          "name": "Chicken Kabob Sandwich",
+          "description": "On a pita with lettuce, tomatoes and gyro sauce",
+          "price": "$8.79"
+        }
+      ]
+    },
+    {
+      "name": "Famous Ribs & Combos",
+      "items": [
+        {
+          "name": "Full Slab BBQ Baby Back Ribs",
+          "description": "With side salad or coleslaw, fries and garlic bread",
+          "price": "$21.99"
+        },
+        {
+          "name": "Half Slab BBQ Baby Back Ribs",
+          "description": "With side salad or coleslaw, fries and garlic bread",
+          "price": "$15.39"
+        },
+        {
+          "name": "Small BBQ Rib Tips",
+          "description": "10 oz rib tips with fries and garlic bread",
+          "price": "$12.09"
+        },
+        {
+          "name": "Large BBQ Rib Tips",
+          "description": "16 oz rib tips with fries and garlic bread",
+          "price": "$13.74"
+        },
+        {
+          "name": "Rib Tips & Gyros",
+          "description": "1/2 lb rib tips with slices of gyro, served with fries",
+          "price": "$13.74"
+        },
+        {
+          "name": "Rib Tips & Hot Links",
+          "description": "1/2 lb rib tips and hot links, with fries and garlic bread",
+          "price": "$13.19"
+        },
+        {
+          "name": "Rib Tips & Chicken Wings",
+          "description": "1/2 lb rib tips and 3 chicken wings, with fries and garlic bread",
+          "price": "$13.19"
+        },
+        {
+          "name": "Link Dinner (4)",
+          "description": "Hot or BBQ links with fries and garlic bread",
+          "price": "$13.19"
+        }
+      ]
+    },
+    {
+      "name": "Italian Sandwiches",
+      "items": [
+        {
+          "name": "Italian Beef Sandwich",
+          "description": "On French bread",
+          "price": "$8.24"
+        },
+        {
+          "name": "Italian Sausage Sandwich",
+          "description": "On French bread",
+          "price": "$6.59"
+        },
+        {
+          "name": "Double Sausage Sandwich",
+          "description": "On French bread",
+          "price": "$9.34"
+        },
+        {
+          "name": "Combo Beef & Sausage Sandwich",
+          "description": "On French bread",
+          "price": "$9.34"
+        },
+        {
+          "name": "BBQ Beef Sandwich",
+          "description": "On French bread",
+          "price": "$8.79"
+        },
+        {
+          "name": "Meatball Sandwich",
+          "description": "Marinara sauce and parmesan on French bread",
+          "price": "$8.24"
+        },
+        {
+          "name": "Italian Breaded Steak",
+          "description": "Marinara sauce and mozzarella on French bread",
+          "price": "$9.34"
+        }
+      ]
+    },
+    {
+      "name": "Ariston's Wings",
+      "items": [
+        {
+          "name": "3 pc Chicken Wings",
+          "description": "With fries and garlic bread",
+          "price": "$7.69"
+        },
+        {
+          "name": "5 pc Chicken Wings",
+          "description": "With fries and garlic bread",
+          "price": "$10.99"
+        },
+        {
+          "name": "7 pc Chicken Wings",
+          "description": "With fries and garlic bread",
+          "price": "$14.29"
+        },
+        {
+          "name": "8 pc Buffalo Wings (Spicy)",
+          "description": "With fries and garlic bread",
+          "price": "$14.29"
+        }
+      ]
+    }
+  ],
+  "notes": "Address confirmed: the ordering page's embedded store record reads 919 Mannheim Rd, Bellwood, IL 60104, tel 708-544-8766, and aristongyros.com/menu.html (which also prints that address) links to it as 'Order Now' / 'See Full Menu'. Ariston's own menu.html lists the Hungry Men's Menu and Meal Deals item names but publishes NO prices, so prices come from the linked ordering page (pickup service), read from the page's embedded menu data on 2026-11-10. These are online-ordering prices; they end in unusual cents (e.g. $18.69, $13.19, $9.89), which may mean an online markup over counter prices — not confirmed either way, and the counter menu board was not seen. The ordering menu has 25 categories; the six here are the two the restaurant leads with on its own site plus its gyro, rib, Italian beef and wings sections, each cut to the first 8 items in menu order. Category notes from the source: Hungry Men's Menu 'All Specials Include Large Fries & Large Drink'; Meal Deals 'All Specials Include Fries & Medium Drink'; Greek Specialties 'Choice of Our Own Signature Sauce or Cucumber Sauce (Tzatziki)'. Item numbers (#01…) are the restaurant's own. Categories not included: Garden Spot, Side Orders, Loaded Fries, Turkey Lovers, Frankly Yours, Char Broiled Burgers, Specialty Sandwiches, Croissants, Cold Sandwiches & Melts, Chicken / Poultry, Oven Baked Chicken, Seafood, Steak, South of The Border (4 categories), Kids Menu, Drinks & Desserts.",
+  "sourceDetail": "Ariston Restaurant online ordering (linked from aristongyros.com)"
+}

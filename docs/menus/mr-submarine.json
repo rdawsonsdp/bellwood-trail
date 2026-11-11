@@ -1,0 +1,263 @@
+{
+  "slug": "mr-submarine",
+  "source": {
+    "label": "Mr. Submarine’s Bellwood menu",
+    "url": "https://mrsubmarine.com/wp-content/uploads/2020/09/2018-Bellwood-Menu.pdf"
+  },
+  "sourceKind": "own-site",
+  "checked": "2026-11-10",
+  "sections": [
+    {
+      "name": "Cold Subs",
+      "items": [
+        {
+          "name": "Super Mr. Sub",
+          "description": "Ham, salami and spice ham",
+          "price": ""
+        },
+        {
+          "name": "Mr. Sub",
+          "description": "Ham, salami and spice ham",
+          "price": ""
+        },
+        {
+          "name": "Ham",
+          "description": "96% fat free",
+          "price": ""
+        },
+        {
+          "name": "Salami",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Turkey Breast",
+          "description": "99% fat free, with mayo",
+          "price": ""
+        },
+        {
+          "name": "Veggie & Cheese",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Tuna",
+          "description": "No cheese, no sauce",
+          "price": ""
+        },
+        {
+          "name": "Seafood with Crab",
+          "description": "No cheese, no sauce",
+          "price": ""
+        }
+      ]
+    },
+    {
+      "name": "Hot Subs",
+      "items": [
+        {
+          "name": "Roast Beef",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Corned Beef",
+          "description": "With mustard",
+          "price": ""
+        },
+        {
+          "name": "Combo",
+          "description": "With mustard",
+          "price": ""
+        },
+        {
+          "name": "Chicken",
+          "description": "With mayo; no cheese, no sauce",
+          "price": ""
+        },
+        {
+          "name": "Steak Burger",
+          "description": "With mustard; no sauce",
+          "price": ""
+        },
+        {
+          "name": "Gyro",
+          "description": "With gyro sauce; no cheese",
+          "price": ""
+        },
+        {
+          "name": "B.B.Q",
+          "description": "BBQ sauce only",
+          "price": ""
+        },
+        {
+          "name": "Fish Sub",
+          "description": "Cod with tartar sauce; no cheese",
+          "price": ""
+        }
+      ]
+    },
+    {
+      "name": "Specialty Sandwiches",
+      "items": [
+        {
+          "name": "Gyro Pita",
+          "description": "With fries",
+          "price": ""
+        },
+        {
+          "name": "Gyro Plate",
+          "description": "With fries",
+          "price": ""
+        },
+        {
+          "name": "Hot Dog",
+          "description": "With fries",
+          "price": ""
+        },
+        {
+          "name": "Polish Sausage",
+          "description": "With fries",
+          "price": ""
+        },
+        {
+          "name": "Italian Beef",
+          "description": "With fries",
+          "price": ""
+        },
+        {
+          "name": "Italian Beef & Sausage",
+          "description": "With fries",
+          "price": ""
+        },
+        {
+          "name": "Italian Sausage",
+          "description": "With fries",
+          "price": ""
+        },
+        {
+          "name": "Philly Steak",
+          "description": "With fries",
+          "price": ""
+        }
+      ]
+    },
+    {
+      "name": "Specials",
+      "items": [
+        {
+          "name": "Philly Steak",
+          "description": "With fries and a 16 oz drink",
+          "price": ""
+        },
+        {
+          "name": "Polish Sausage",
+          "description": "With fries and a 16 oz drink",
+          "price": ""
+        },
+        {
+          "name": "Pizza Puff & 2 Wings",
+          "description": "With fries and a 16 oz drink",
+          "price": ""
+        },
+        {
+          "name": "1/4 lb Cheeseburger",
+          "description": "With fries and a 16 oz drink",
+          "price": ""
+        },
+        {
+          "name": "Buy 3 King Subs",
+          "description": "Get one free",
+          "price": ""
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "items": [
+        {
+          "name": "Chicken Breast Salad",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Julienne Salad",
+          "description": "Ham, salami, turkey and cheese",
+          "price": ""
+        },
+        {
+          "name": "Turkey Breast Salad",
+          "description": "With cheese",
+          "price": ""
+        },
+        {
+          "name": "Ham Salad",
+          "description": "With cheese",
+          "price": ""
+        },
+        {
+          "name": "Tuna Salad",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Seafood Salad",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Plain Salad",
+          "description": "",
+          "price": ""
+        }
+      ]
+    },
+    {
+      "name": "Sides & Desserts",
+      "items": [
+        {
+          "name": "Loaded Fries",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Fries",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Pizza Puffs w/Fries",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Onion Rings",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Cheese Sticks",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Jalapeño Poppers",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Cake or Cheesecake",
+          "description": "",
+          "price": ""
+        },
+        {
+          "name": "Banana Pudding",
+          "description": "",
+          "price": ""
+        }
+      ]
+    }
+  ],
+  "notes": "NO PRICES PUBLISHED: the Bellwood menu on the chain's own site is a 2-page PDF (a photo of the printed menu) whose price columns are blank, so every price is ''. Address match: the PDF cover reads '4019 Butterfield Road (at Mannheim), Bellwood, IL 60104'; it is what https://mrsubmarine.com/bellwood/menu (the 'View Menu' link on the Bellwood store page and in the chain's store locator) redirects to. AGE WARNING: the file is named '2018-Bellwood-Menu.pdf' and sits in a 2020/09 upload folder, so the item list may be several years old even though it is still the menu the site links to today; the hours printed on it already differ from the store page. Cold and hot subs come in Reg and King sizes, and the menu says subs include lettuce, tomato, onion, cheese and special sauce unless noted; salads include a roll and choice of dressing. 'Specials' is on the PDF's second page. Also on the menu, not listed here: Family & Party Mix Deals, Drinks, more cold subs (Roast Beef, Corned Beef, Pastrami), more hot-sub lines and more sides. Prices might be obtainable from the delivery link on the store page (https://mrsubmarine.com/bellwood/delivery, which redirects to an Uber Eats 'Mr. Submarine' store); that page was NOT opened or address-checked, and marketplace prices are usually marked up. 'Jalapeno Poppers' is printed 'Jalapeño Poppers'.",
+  "sourceDetail": "Mr. Submarine Bellwood menu (PDF on mrsubmarine.com)"
+}

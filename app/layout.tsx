@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Figtree, Kaushan_Script } from "next/font/google";
+import { Big_Shoulders, Figtree } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/content/restaurants";
 
@@ -7,7 +7,9 @@ import { SITE } from "@/content/restaurants";
 // section heads, Regular for body — all one family, self-hosted by next/font.
 const figtree = Figtree({ subsets: ["latin"], weight: ["400", "600", "700", "800", "900"], variable: "--font-figtree", display: "swap" });
 
-const script = Kaushan_Script({ subsets: ["latin"], weight: "400", variable: "--font-logo-script", display: "swap" });
+// Big Shoulders is Chicago's own civic sign face. It sets kitchen names and
+// headlines, the way a Mannheim Road drive-in sets its board.
+const sign = Big_Shoulders({ subsets: ["latin"], weight: ["700", "800", "900"], variable: "--font-sign", display: "swap" });
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://bellwood-trail.vercel.app").replace(/\/+$/, "");
 const TITLE = SITE.name;
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${figtree.variable} ${script.variable} h-full antialiased`}>
+    <html lang="en" className={`${figtree.variable} ${sign.variable} h-full antialiased`}>
       <body className="min-h-full overflow-x-hidden bg-paper text-ink">{children}</body>
     </html>
   );

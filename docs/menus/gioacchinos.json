@@ -1,0 +1,168 @@
+{
+  "slug": "gioacchinos",
+  "source": {
+    "label": "Gioacchino’s website",
+    "url": "https://gioacchinosristorante.pizza/thin-crust"
+  },
+  "sourceKind": "own-site",
+  "checked": "2026-11-10",
+  "sections": [
+    {
+      "name": "Thin Crust Pizza",
+      "items": [
+        {
+          "name": "Cheese",
+          "description": "Five sizes: Small 10\", Medium 12\", Large 14\", Family 16\", Party 18\".",
+          "price": "$12.20 – $28.20"
+        },
+        {
+          "name": "Cheese & Toppings",
+          "description": "Same five sizes; toppings include sausage, mushroom, spinach, pepperoni, Italian beef.",
+          "price": "$13.80 – $35.30"
+        }
+      ]
+    },
+    {
+      "name": "Stuffed Pizza",
+      "items": [
+        {
+          "name": "Cheese",
+          "description": "Small, Medium, Large or Family.",
+          "price": "$22.60 – $35.30"
+        },
+        {
+          "name": "Cheese Spinach or Sausage",
+          "description": "Small, Medium, Large or Family.",
+          "price": "$23.70 – $39.70"
+        }
+      ]
+    },
+    {
+      "name": "Pan Pizza",
+      "items": [
+        {
+          "name": "Cheese",
+          "description": "Small, Medium, Large or Family.",
+          "price": "$17.00 – $30.40"
+        },
+        {
+          "name": "Cheese Spinach or Sausage",
+          "description": "Small, Medium, Large or Family.",
+          "price": "$21.00 – $35.30"
+        },
+        {
+          "name": "Fiesta",
+          "description": "Cheese, sausage and mushrooms. Small, Medium, Large or Family.",
+          "price": "$26.50 – $42.50"
+        }
+      ]
+    },
+    {
+      "name": "Panzarotti",
+      "items": [
+        {
+          "name": "Cheese",
+          "description": "Made to order, fried or baked (45 minute wait). Small or Large.",
+          "price": "$13.80 – $16.00"
+        },
+        {
+          "name": "Ricotta",
+          "description": "Made to order, fried or baked (45 minute wait). Small or Large.",
+          "price": "$13.80 – $16.00"
+        },
+        {
+          "name": "Sausage",
+          "description": "Made to order, fried or baked (45 minute wait). Small or Large.",
+          "price": "$13.80 – $16.00"
+        }
+      ]
+    },
+    {
+      "name": "Pastas",
+      "items": [
+        {
+          "name": "Spaghetti or Mostaccioli",
+          "description": "Served with bread, salad and cheese.",
+          "price": "$11.00"
+        },
+        {
+          "name": "Baked Mostaccioli",
+          "description": "Served with bread, salad and cheese.",
+          "price": "$16.50"
+        },
+        {
+          "name": "Our Special Lasagna",
+          "description": "Served with bread, salad and cheese.",
+          "price": "$18.70"
+        },
+        {
+          "name": "Homemade Meat or Cheese Ravioli",
+          "description": "Served with bread, salad and cheese.",
+          "price": "$18.70"
+        },
+        {
+          "name": "Baked Gnocchi",
+          "description": "Served with bread, salad and cheese.",
+          "price": "$18.20"
+        },
+        {
+          "name": "Eggplant Parmigiana",
+          "description": "Served with bread, salad and cheese.",
+          "price": "$15.80"
+        },
+        {
+          "name": "Fettuccini Alfredo",
+          "description": "Served with bread, salad and cheese.",
+          "price": "$18.70"
+        },
+        {
+          "name": "Linguini with Clams",
+          "description": "Served with bread, salad and cheese.",
+          "price": "$18.70"
+        }
+      ]
+    },
+    {
+      "name": "Special Dinners",
+      "items": [
+        {
+          "name": "BBQ Chicken Dinner",
+          "description": "Served with bread, salad and cheese.",
+          "price": "$15.40"
+        },
+        {
+          "name": "Chicken Dinner",
+          "description": "Served with bread, salad and cheese.",
+          "price": "$12.00"
+        },
+        {
+          "name": "Perch Dinner",
+          "description": "Served with bread, salad and cheese.",
+          "price": "$12.00"
+        },
+        {
+          "name": "Fried Shrimp Dinner",
+          "description": "Served with bread, salad and cheese.",
+          "price": "$16.50"
+        },
+        {
+          "name": "Half Slab Ribs",
+          "description": "Served with bread, salad and cheese.",
+          "price": "$19.90"
+        },
+        {
+          "name": "Full Slab Ribs",
+          "description": "Served with bread, salad and cheese.",
+          "price": "$26.50"
+        },
+        {
+          "name": "Rib Tip Dinner",
+          "description": "Small or Large. Served with bread, salad and cheese.",
+          "price": "$18.20 – $22.00"
+        }
+      ]
+    }
+  ],
+  "notes": "Address match: certain. The restaurant's own site shows 5201 St Charles Rd, Bellwood, IL 60104 and is single-location. Each section is its own page on the site: /thin-crust, /stuffed-%2F-pan-pizza (Stuffed and Pan are two headings on one page), /panzarotti, /pasta, /special-dinners. All prices were read from the raw page text on 2026-11-10. The Thin Crust, Pastas and Special Dinners pages print prices without a dollar sign (e.g. '12.20'); '$' was added here for consistency. Size ranges are lowest-to-highest of the published per-size prices. The 'Served with bread, salad & cheese' line is a section-level note on the site, repeated per item here. Thin crust toppings description lists only some of the 14 published toppings. Published extras not listed as items: stuffed/pan each extra ingredient $2.80–$5.00, thick crust $3.40–$5.00; panzarotti each extra ingredient $2.30; pasta add meatballs or sausage 5.00. Sections not captured here but present on the site: Thin Crust Combinations, Specialty Thin Crust, Sandwiches, Broasted Chicken, Seafood, Appetizers (verified, e.g. Garlic Bread 2 pieces 5.50, Buffalo Wings 5 for 10.00), Salads, Desserts, Drinks. No online ordering page exists; the site's order button is a phone link to (708) 544-0380. The pages carry no 'last updated' date (footer copyright 2026).",
+  "sourceDetail": "Gioacchino's website"
+}

@@ -1,0 +1,263 @@
+{
+  "slug": "first-chop-suey",
+  "source": {
+    "label": "First Chop Suey’s website",
+    "url": "https://www.chopsueyno1.com/menus"
+  },
+  "sourceKind": "own-site",
+  "checked": "2026-11-10",
+  "sections": [
+    {
+      "name": "Appetizers",
+      "items": [
+        {
+          "name": "Egg Roll(2)",
+          "description": "",
+          "price": "$6.70"
+        },
+        {
+          "name": "Vegetable Egg Roll(2)",
+          "description": "",
+          "price": "$6.70"
+        },
+        {
+          "name": "Vegetable Spring Roll (2)",
+          "description": "",
+          "price": "$6.70"
+        },
+        {
+          "name": "Teriyaki Chicken (4 pcs)",
+          "description": "",
+          "price": "$10.50"
+        },
+        {
+          "name": "Crab Rangoon (5 pcs)",
+          "description": "",
+          "price": "$9.50"
+        },
+        {
+          "name": "Chicken Wing (6 pcs)",
+          "description": "",
+          "price": "$10.50"
+        },
+        {
+          "name": "Fried Shrimp (8 pcs)",
+          "description": "",
+          "price": "$12.80"
+        },
+        {
+          "name": "Bar-B-Q Pork",
+          "description": "",
+          "price": "$11.20"
+        }
+      ]
+    },
+    {
+      "name": "Soup",
+      "items": [
+        {
+          "name": "Hot & Sour Soup",
+          "description": "Hot and spicy.",
+          "price": "$5.75 – $8.25"
+        },
+        {
+          "name": "Egg Drop Soup",
+          "description": "",
+          "price": "$5.75 – $8.25"
+        },
+        {
+          "name": "Chicken Noodle Soup",
+          "description": "",
+          "price": "$5.75 – $8.25"
+        },
+        {
+          "name": "Chicken Rice Soup",
+          "description": "",
+          "price": "$5.75 – $8.25"
+        },
+        {
+          "name": "Vegetable Soup",
+          "description": "",
+          "price": "$5.75 – $8.25"
+        },
+        {
+          "name": "Wonton Soup",
+          "description": "",
+          "price": "$6.25 – $8.95"
+        }
+      ]
+    },
+    {
+      "name": "Chicken",
+      "items": [
+        {
+          "name": "Orange Chicken",
+          "description": "Hot and spicy.",
+          "price": "$11.70 – $23.45"
+        },
+        {
+          "name": "General Tso's Chicken",
+          "description": "Hot and spicy.",
+          "price": "$11.70 – $23.45"
+        },
+        {
+          "name": "Sesame Chicken",
+          "description": "",
+          "price": "$11.70 – $23.45"
+        },
+        {
+          "name": "Kung Pao Chicken",
+          "description": "Hot and spicy.",
+          "price": "$11.30 – $23.45"
+        },
+        {
+          "name": "Szechwan Chicken",
+          "description": "Hot and spicy.",
+          "price": "$11.30 – $23.45"
+        },
+        {
+          "name": "Pepper Chicken",
+          "description": "",
+          "price": "$11.30 – $23.45"
+        },
+        {
+          "name": "Chicken with Broccoli",
+          "description": "",
+          "price": "$11.30 – $23.45"
+        },
+        {
+          "name": "Chicken w. Mixed Veg",
+          "description": "",
+          "price": "$11.30 – $23.45"
+        }
+      ]
+    },
+    {
+      "name": "Beef",
+      "items": [
+        {
+          "name": "Beef with Broccoli",
+          "description": "",
+          "price": "$12.15 – $17.70"
+        },
+        {
+          "name": "Tomato Pepper Steak",
+          "description": "",
+          "price": "$12.15 – $17.70"
+        },
+        {
+          "name": "Pepper Steak",
+          "description": "",
+          "price": "$12.15 – $17.70"
+        },
+        {
+          "name": "Beef w. Mixed Vegetables",
+          "description": "",
+          "price": "$12.15 – $17.70"
+        },
+        {
+          "name": "Kung Pao Beef",
+          "description": "Hot and spicy.",
+          "price": "$12.15 – $17.70"
+        },
+        {
+          "name": "Hunan Beef",
+          "description": "Hot and spicy.",
+          "price": "$12.15 – $17.70"
+        },
+        {
+          "name": "Szechwan Beef",
+          "description": "",
+          "price": "$12.15 – $17.70"
+        },
+        {
+          "name": "Mongolian Beef",
+          "description": "Hot and spicy.",
+          "price": "$12.45 – $18.20"
+        }
+      ]
+    },
+    {
+      "name": "Seafood",
+      "items": [
+        {
+          "name": "Shrimp with Broccoli",
+          "description": "",
+          "price": "$13.20 – $18.50"
+        },
+        {
+          "name": "Shrimp w. Mixed Vegetables",
+          "description": "",
+          "price": "$13.20 – $18.50"
+        },
+        {
+          "name": "Shrimp Lobster Sauce",
+          "description": "",
+          "price": "$13.20 – $18.50"
+        },
+        {
+          "name": "Kung Pao Shrimp",
+          "description": "Hot and spicy.",
+          "price": "$13.20 – $18.50"
+        },
+        {
+          "name": "Szechwan Shrimp",
+          "description": "Hot and spicy.",
+          "price": "$13.20 – $18.50"
+        },
+        {
+          "name": "Shrimp Chop Suey",
+          "description": "",
+          "price": "$13.20 – $18.50"
+        }
+      ]
+    },
+    {
+      "name": "Fried Rice",
+      "items": [
+        {
+          "name": "Combination Fried Rice",
+          "description": "Shrimp, chicken and beef.",
+          "price": "$10.90 – $24.45"
+        },
+        {
+          "name": "Shrimp Fried Rice",
+          "description": "",
+          "price": "$10.30 – $23.45"
+        },
+        {
+          "name": "Jumbo Shrimp Fried Rice",
+          "description": "",
+          "price": "$11.30 – $24.45"
+        },
+        {
+          "name": "Beef Fried Rice",
+          "description": "",
+          "price": "$10.00 – $23.45"
+        },
+        {
+          "name": "Chicken Fried Rice",
+          "description": "",
+          "price": "$9.70 – $23.05"
+        },
+        {
+          "name": "B.B.Q. Pork Fried Rice",
+          "description": "",
+          "price": "$9.70 – $23.05"
+        },
+        {
+          "name": "Egg Fried Rice",
+          "description": "",
+          "price": "$8.70 – $21.05"
+        },
+        {
+          "name": "Hawaii Fried Rice",
+          "description": "Chicken and pineapple.",
+          "price": "$9.80 – $15.45"
+        }
+      ]
+    }
+  ],
+  "notes": "Read from the restaurant's own site (chopsueyno1.com/menus, address on page: 530 Mannheim Road, Bellwood, IL 60104, (708) 544-7900). The menu page loads its data from the same site's JSON endpoints (https://www.chopsueyno1.com/loader/menus and /loader/menuItems?categoryId=...), which is what was read; names, descriptions and prices are exactly as returned. Price ranges are size ranges as published: soups Small–Large; Chicken and Fried Rice mostly Small–Large–X-Large (range shown is smallest to largest size); Beef and Seafood Small–Large. Appetizers are single-price. Descriptions are the menu's own ('Hot and spicy.' etc.); most items have none. First 8 items of each section in the site's order. Sections shown are 6 of 17 in the site's order, except that 'Vegetables' (3rd on the site) was skipped in favour of 'Fried Rice'. Other sections on the site: Vegetables, Egg Foo Young, Sweet & Sour, Lo Mein, Chow Fun, Family Dinner, House Special, Party Trays, Drink, Extra Additional, Dessert, plus a Lunch Special menu (Lunch Combination). The site's 'Online Order' button goes to https://www.slickmenus.com/restaurants/first-chop-suey-bellwood-il (not separately checked; prices there could differ). No doubts on address match.",
+  "sourceDetail": "First Chop Suey website menu page"
+}

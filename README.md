@@ -31,6 +31,38 @@ The roster came from the Village's own business directory, cross-checked
 against each business's site and listings. Sources are in
 [docs/bellwood-stops.md](docs/bellwood-stops.md).
 
+## The menu board
+
+The site is dish-first. Every kitchen's card is its menu: section tabs and
+priced dishes, printed like a carryout menu (dish, dot leader, price). The
+search at the top of the page runs across every menu in the village, so "rib
+tips" lists the dish at each kitchen that serves it and opens that kitchen's
+sheet at that line. The same words filter the cards, which then lead with their
+matching dishes.
+
+- **Where menus live.** `content/menus.ts`, generated from `docs/menus/<slug>.json`
+  by `node scripts/build-menus.cjs`. Like the galleries, menus sit outside the
+  seed so `/admin` saves cannot drop them. There is no menu editor in `/admin`
+  yet: edit the JSON and rerun the script.
+- **Nothing is invented.** Each menu was read from the page named in its
+  `source` on the date in `checked`, with prices copied as published. Every card
+  prints that source and date. Each JSON file's `notes` says what could not be
+  confirmed. Menus are a selection (up to six sections of eight dishes), not the
+  full list.
+- **Vari's is featured.** `content/featured.ts` lists it first with a "Featured"
+  tag and marks it `comingSoon`, so its card says "Opening soon" instead of open
+  or closed. Delete that flag when it opens.
+- **Twelve of the seventeen stops have a menu.** Vari's has none until it opens. Lezza, Joe's Hideaway, Montego
+  Bay and Bellwood Sweets publish none that could be verified, so their cards
+  show what they are known for, without prices. Mr. Submarine's own PDF prints
+  no prices. Shark's prices come from Uber Eats and Taqueria Mi Jerez's from an
+  undated photo of its printed menu; the site says so on both.
+- **Page order.** The board, the Vari's promotion, the menu cards, the four
+  roads with the map, the kitchens by founding year, then the Mayor's welcome.
+- **Type.** Big Shoulders, Chicago's civic sign face, sets kitchen names and
+  headlines; Figtree sets everything else. New styles are in `app/board.css`.
+  The older stylesheets still carry rules for components this rebuild removed.
+
 ## Discovery experience
 
 ### Bellwood Dine VIP and Restaurant Week
@@ -90,15 +122,13 @@ accent rung rather than the fill/text split GCI's orange required. The gold
 follows the same discipline GCI's orange did — a fill, at display size, with
 dark labels.
 
-Type is Figtree throughout, loaded via `next/font`. The village motto is *Your
+Type is Big Shoulders for names and headlines and Figtree for everything else, both loaded via `next/font`. The village motto is *Your
 Family Is Our Future*.
 
 ### Art
 
 **The hero is the user-supplied Bellwood Gateway photograph**, saved at
-`public/images/brand/bellwood-gateway-hero-v2.avif`. The layout follows the Chatham reference: a full-width 16:9 hero on desktop,
-a tall crop on phones, and a centered script title beneath it. Responsive
-cropping keeps the entrance visible. The source project page credits Angie McMonigal / DESIGNBRIDGE.
+`public/images/brand/bellwood-gateway-hero-v2.avif`. It sits beside the menu search on desktop and above it on phones. The source project page credits Angie McMonigal / DESIGNBRIDGE.
 
 Three menu-inspired illustrations for Mickey’s, Gioacchino’s and Tastee
 Rolls remain available as project assets. The food-category navigation now

@@ -1,0 +1,133 @@
+{
+  "slug": "mickeys",
+  "source": {
+    "label": "Mickey’s Drive-In’s website",
+    "url": "https://mickeysdrivein.com/menu/"
+  },
+  "sourceKind": "own-site",
+  "checked": "2026-11-10",
+  "sections": [
+    {
+      "name": "Menu",
+      "items": [
+        {
+          "name": "“The Special”",
+          "description": "Two Vienna hot dogs, both with fries.",
+          "price": "$8.05"
+        },
+        {
+          "name": "Hot Dog",
+          "description": "“Chicago Style” hot dog. With fries $4.47.",
+          "price": "$3.37"
+        },
+        {
+          "name": "Double Dog",
+          "description": "With fries $6.74.",
+          "price": "$5.64"
+        },
+        {
+          "name": "Italian Beef",
+          "description": "With hot and sweet peppers; cheese and peppers extra. With fries $10.78.",
+          "price": "$8.79"
+        },
+        {
+          "name": "Italian Sausage",
+          "description": "With mozzarella and hot peppers; cheese and peppers extra. With fries $8.88.",
+          "price": "$6.89"
+        },
+        {
+          "name": "Italian Combination",
+          "description": "With fries $11.68.",
+          "price": "$9.69"
+        },
+        {
+          "name": "Italian Meatball",
+          "description": "Meatball sandwich with hot and sweet peppers. With fries $10.48.",
+          "price": "$8.49"
+        },
+        {
+          "name": "Jumbo Polish",
+          "description": "With fries $9.49.",
+          "price": "$8.39"
+        }
+      ]
+    },
+    {
+      "name": "Mini 4″ Sandwiches",
+      "items": [
+        {
+          "name": "Italian Beef",
+          "description": "With fries $7.88.",
+          "price": "$5.89"
+        },
+        {
+          "name": "Italian Sausage",
+          "description": "With fries $6.98.",
+          "price": "$4.99"
+        },
+        {
+          "name": "Combination",
+          "description": "With fries $8.77.",
+          "price": "$6.78"
+        },
+        {
+          "name": "Meatball",
+          "description": "With fries $7.58.",
+          "price": "$5.59"
+        }
+      ]
+    },
+    {
+      "name": "Chili, Tamale & Fries",
+      "items": [
+        {
+          "name": "Chili",
+          "description": "Small or large.",
+          "price": "$4.64 – $5.99"
+        },
+        {
+          "name": "Tamale",
+          "description": "",
+          "price": "$2.99"
+        },
+        {
+          "name": "Fries",
+          "description": "Regular or large.",
+          "price": "$2.69 – $3.99"
+        },
+        {
+          "name": "Chili Cheese Fries",
+          "description": "",
+          "price": "$7.49"
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Drinks",
+          "description": "Regular or large; carbonated and non-carbonated flavors.",
+          "price": "$2.62 – $3.19"
+        },
+        {
+          "name": "Shakes",
+          "description": "Chocolate, vanilla or strawberry.",
+          "price": "$4.84"
+        },
+        {
+          "name": "Italian Ice",
+          "description": "Lemon or strawberry; small or large.",
+          "price": "$3.09 – $4.99"
+        },
+        {
+          "name": "Root Beer Float",
+          "description": "",
+          "price": "$4.84"
+        }
+      ]
+    }
+  ],
+  "notes": "Prices read from the raw HTML of the restaurant's own menu page (digits are split across markup, e.g. '$3.3'+'7', so an automated summary may garble them; values here were read directly). The page is one flat list under the heading 'Menu'; 'Mini 4″ Sandwiches' and 'Drinks' are the site's own headings, but 'Chili, Tamale & Fries' is a grouping label I added for four items the site lists as standalone entries. 'With fries' prices are published on the page and are carried in the descriptions. The '“Chicago Style” Hot Dog & Fries' and Italian beef/sausage/meatball descriptions are photo captions next to those items. Not included: Polish Sausage $5.94, Pizza Puff $3.99, Chili Dog $4.68, Sloppy Joe $4.49, Chicken Tenders $5.84, and the Extras list (cheese/peppers add-ons). Page also says: add a drink to any entrée and fries for $1.99. DOUBTS: the site footer lists both 635 Mannheim Rd, Bellwood and 105 St Charles Rd, Villa Park and the menu page does not say which location the prices apply to (single shared menu). The page carries no date; footer is ©2023 and hours are labelled 'week of 2/5/24', so prices may be stale.",
+  "sourceDetail": "Mickey's Drive-In website menu page"
+}

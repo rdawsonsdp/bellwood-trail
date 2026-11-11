@@ -4,6 +4,8 @@ import path from "node:path";
 import type { Restaurant } from "@/content/restaurants";
 import { GALLERIES, type GalleryPhoto } from "@/content/galleries";
 import { PROFILES, type RestaurantProfile } from "@/content/profiles";
+import { MENUS, type RestaurantMenu } from "@/content/menus";
+import { FEATURED, type Featured } from "@/content/featured";
 import { openState, type OpenState } from "./hours";
 import { fetchSite, phoneHref } from "./site-data";
 
@@ -19,7 +21,11 @@ import { fetchSite, phoneHref } from "./site-data";
  */
 
 export interface StopStatus extends OpenState { source: "live" | "static" }
-export type Stop = Restaurant & { status: StopStatus; imageSrc: string | null; gallery: GalleryPhoto[]; profile: RestaurantProfile | null };
+export type Stop = Restaurant & { status: StopStatus; imageSrc: string | null; gallery: GalleryPhoto[]; profile: RestaurantProfile | null;
+  /** The stop's published menu; null when none could be verified. */
+  menu: RestaurantMenu | null;
+  /** Set when the trail leads with this stop. */
+  featured: Featured | null };
 
 // A seed photo may be .jpg, .png or .webp depending on what its site served,
 // and is stored without the extension. Resolve the real file once on the
@@ -38,22 +44,29 @@ async function resolveStop(r: Restaurant): Promise<Stop> {
   const schedule = live?.schedule ?? r.schedule;
   const gallery = GALLERIES[r.slug] ?? [];
   const cover = gallery[0];
+  const featured = FEATURED[r.slug] ?? null;
+  // An announced restaurant is never shown as open or closed from unconfirmed hours.
+  const state = featured?.comingSoon ? { open: false, headline: "Opening soon", today: "Opening date to be announced" } : openState(schedule);
   return {
     ...r,
     phone,
     phoneHref: live?.phone ? phoneHref(live.phone) : r.phoneHref,
     address: live?.address ?? r.address,
     schedule,
-    status: { ...openState(schedule), source: live?.schedule ? "live" : "static" },
+    status: { ...state, source: live?.schedule ? "live" : "static" },
     // A photo uploaded in /admin (a full URL) wins; otherwise the gallery's
     // cover, which is chosen to be the stop's most inviting picture.
     imageSrc: /^https?:\/\//.test(r.image) ? r.image : cover?.src ?? (r.image ? resolveImage(r.image) : null),
     imageAlt: /^https?:\/\//.test(r.image) ? r.imageAlt : cover?.alt ?? r.imageAlt,
     gallery,
     profile: PROFILES[r.slug] ?? null,
+    menu: MENUS[r.slug] ?? null,
+    featured,
   };
 }
 
 export async function resolveStops(restaurants: Restaurant[]): Promise<Stop[]> {
-  return Promise.all(restaurants.filter((r) => !r.hidden).map(resolveStop));
+  const stops = await Promise.all(restaurants.filter((r) => !r.hidden).map(resolveStop));
+  // Featured stops lead the trail; everyone else keeps their street order.
+  return [...stops.filter(s => s.featured), ...stops.filter(s => !s.featured)];
 }
