@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { useMemo, useState } from "react";
 import { CORRIDORS, FOOD_CATEGORIES } from "@/content/restaurants";
 import type { Stop } from "@/app/lib/live-status";
@@ -9,6 +8,10 @@ import { useDiscovery } from "./DiscoveryContext";
 import { DiscoveryDialog } from "./DiscoveryDialog";
 import { StopCard } from "./StopCard";
 import { RestaurantReviews } from "./RestaurantReviews";
+import { PhotoGallery } from "./PhotoGallery";
+import { DirectionsLink } from "./DirectionsLink";
+import { MealSwitch } from "./MealSwitch";
+import { MEAL_LABELS } from "@/app/lib/meal-time";
 import { Close, Heart, MapPin, Phone, Search, Sliders } from "./icons";
 
 export function PathExplorer({ stops }: { stops: Stop[] }) {
@@ -23,7 +26,7 @@ export function PathExplorer({ stops }: { stops: Stop[] }) {
     ...(filters.q ? [{ label: `“${filters.q}”`, patch: { q: "" } }] : []),
     ...(filters.area ? [{ label: CORRIDORS[filters.area].label, patch: { area: "" as const } }] : []),
     ...filters.foods.map(food => ({ label: FOOD_CATEGORIES.find(c => c.key === food)?.label ?? food, patch: { foods: filters.foods.filter(c => c !== food) } })),
-    ...(filters.meal ? [{ label: filters.meal, patch: { meal: "" as const } }] : []),
+    ...(filters.meal ? [{ label: MEAL_LABELS[filters.meal], patch: { meal: "" as const } }] : []),
     ...(filters.dining ? [{ label: filters.dining === "dine-in" ? "Dine in" : "Carryout only", patch: { dining: "" as const } }] : []),
     ...(filters.open ? [{ label: "Open now", patch: { open: false } }] : []),
     ...(filters.saved ? [{ label: "Saved kitchens", patch: { saved: false } }] : []),
@@ -31,6 +34,7 @@ export function PathExplorer({ stops }: { stops: Stop[] }) {
   return <section id="path" className="explorer-section" aria-labelledby="path-heading">
     <div className="site-container">
       <div className={`section-heading explorer-heading ${filters.saved ? "" : "mobile-hide-heading"}`}><div><h2 id="path-heading" tabIndex={-1}>{filters.saved ? "Your favorites." : "Find your next favorite."}</h2><p>{filters.saved ? "Your favorite places, together in one list." : "Explore the kitchens that make Bellwood taste like home."}</p></div><span className="path-count">{stops.length} local kitchens</span></div>
+      <div className="explorer-controls">
       <div className="explorer-toolbar">
         <label className="directory-search"><Search /><input type="search" enterKeyHint="search" onKeyDown={event => { if (event.key === "Enter") event.currentTarget.blur(); }} value={filters.q} onChange={e => updateFilters({ q: e.target.value }, false, true)} maxLength={200} aria-label="Search kitchens" placeholder="Search kitchens or dishes" /></label>
         <button type="button" className="filter-button mobile-full-filters" aria-haspopup="dialog" onClick={() => { setDraft({ ...filters, foods: [...filters.foods] }); setFilterOpen(true); }}><Sliders />Filters{extraCount > 0 && <span>{extraCount}</span>}</button>
@@ -41,13 +45,14 @@ export function PathExplorer({ stops }: { stops: Stop[] }) {
           <button type="button" className={`filter-button saved-filter ${filters.saved ? "selected" : ""}`} aria-pressed={filters.saved} onClick={() => updateFilters({ saved: !filters.saved })}><Heart filled={filters.saved} />Saved{saved.length > 0 && <span>{saved.length}</span>}</button>
         </div>
       </div>
+      <MealSwitch className="explorer-meals" />
       <div className="mobile-discovery-pills" role="group" aria-label="Quick restaurant choices">
-        <button type="button" aria-pressed={!active.length} onClick={resetFilters}>All</button>
         <button type="button" aria-pressed={filters.open} onClick={() => updateFilters({ open: !filters.open })}><span className="open-dot" />Open now</button>
         <button type="button" aria-pressed={filters.dining === "dine-in"} onClick={() => updateFilters({ dining: filters.dining === "dine-in" ? "" : "dine-in" })}>Dine in</button>
         <button type="button" aria-pressed={filters.dining === "carryout"} onClick={() => updateFilters({ dining: filters.dining === "carryout" ? "" : "carryout" })}>Carryout only</button>
       </div>
-      {active.length > 0 && <div className={`active-filters ${active.every(item => "open" in item.patch || "dining" in item.patch || "saved" in item.patch) ? "mobile-hide-active" : ""}`} aria-label="Active filters">{active.map(item => <button key={item.label} onClick={() => updateFilters(item.patch)} aria-label={`Remove ${item.label} filter`}>{item.label}<Close /></button>)}<button className="clear-filters" onClick={resetFilters}>Clear all</button></div>}
+      </div>
+      {active.length > 0 && <div className={`active-filters ${active.every(item => "open" in item.patch || "dining" in item.patch || "saved" in item.patch || "meal" in item.patch) ? "mobile-hide-active" : ""}`} aria-label="Active filters">{active.map(item => <button key={item.label} onClick={() => updateFilters(item.patch)} aria-label={`Remove ${item.label} filter`}>{item.label}<Close /></button>)}<button className="clear-filters" onClick={resetFilters}>Clear all</button></div>}
       <div className="results-summary"><p role="status" aria-live="polite">{filtered.length === stops.length ? `All ${stops.length} kitchens` : `${filtered.length} of ${stops.length} kitchens`}{!active.length && <span> · Explore at your own pace</span>}</p><label>Sort by<select aria-label="Sort kitchens" value={filters.sort} onChange={e => updateFilters({ sort: e.target.value as DiscoveryFilters["sort"] })}><option value="path">On the path</option><option value="name">Name: A–Z</option><option value="open">Open first</option></select></label></div>
       {filtered.length ? <div className="kitchen-grid">{filtered.map(stop => <StopCard key={stop.slug} stop={stop} onDetails={() => setSelected(stop)} />)}</div> : <div className="discovery-empty">{filters.saved && !saved.length ? <><Heart /><h3>Your next food trail starts here.</h3><p>Tap the heart on any kitchen to keep it in your list.</p></> : <><Search /><h3>No kitchens match just yet.</h3><p>Try another dish or remove a filter to see more of the path.</p></>}<button className="primary-button" onClick={resetFilters}>Explore all kitchens</button></div>}
       <p className="hours-note">Hours shown in Chicago time. Updated from restaurant websites where available; otherwise, the kitchen’s listed hours are shown.</p>
@@ -64,13 +69,15 @@ export function PathExplorer({ stops }: { stops: Stop[] }) {
     </DiscoveryDialog>
     <DiscoveryDialog title={selected?.name ?? "Kitchen details"} open={!!selected} onClose={() => setSelected(null)}>
       {selected && <div className="kitchen-detail">
-        {selected.imageSrc && <div className="detail-photo"><Image src={selected.imageSrc} alt={selected.imageAlt || `${selected.name}: ${selected.signature[0] ?? "in Bellwood"}`} fill sizes="600px" /></div>}
+        <PhotoGallery name={selected.name} photos={selected.gallery} cover={selected.imageSrc} coverAlt={selected.imageAlt || `${selected.name}: ${selected.signature[0] ?? "in Bellwood"}`} />
         <div className="detail-body"><div className="detail-status"><p className={`kitchen-status ${selected.status.open ? "is-open" : ""}`}><span aria-hidden />{selected.status.headline.replace("Now open till", "Open until")}</p><button className="filter-button" aria-pressed={saved.includes(selected.slug)} onClick={() => toggleSaved(selected.slug, selected.name)}><Heart filled={saved.includes(selected.slug)} />{saved.includes(selected.slug) ? "Saved" : "Save"}</button></div>
           <p>{selected.tagline}</p><div className="detail-facts">{selected.cuisine.map(c => <span key={c}>{c}</span>)}{selected.since && <span>Since {selected.since}</span>}{selected.dineIn !== undefined && <span>{selected.dineIn ? "Dine in" : "Carryout only"}</span>}</div>
+          {selected.profile?.about && <><h3>About</h3><p>{selected.profile.about}</p></>}
           <h3>Come hungry for</h3><p>{selected.signature.join(", ")}</p>
-          <a className="detail-address" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selected.address)}`} target="_blank" rel="noopener noreferrer"><MapPin />{selected.address}<span className="sr-only"> — open map in a new tab</span></a>
+          <DirectionsLink className="detail-address" name={selected.name} address={selected.address} label={`${selected.address}: drive there with Google Maps`}><MapPin />{selected.address}</DirectionsLink>
           <details className="detail-hours"><summary>Opening hours <span>{selected.status.today}</span></summary><dl>{selected.schedule.map((hours, day) => <div key={day}><dt>{DAY_SHORT[day]}</dt><dd>{formatRange(hours)}</dd></div>)}</dl><p>{selected.status.source === "live" ? "Hours from the restaurant’s website." : "Listed opening hours."} All times are in Chicago.</p></details>
-          <div className="detail-actions">{selected.site && <a className="primary-button" href={selected.site} target="_blank" rel="noopener noreferrer">Visit restaurant website<span className="sr-only"> — opens in a new tab</span></a>}{selected.phoneHref && <a className="secondary-button" href={selected.phoneHref}><Phone />{selected.phone}</a>}</div>
+          <div className="detail-actions"><DirectionsLink className="primary-button detail-directions" name={selected.name} address={selected.address}><MapPin />Directions</DirectionsLink>{selected.phoneHref && <a className="secondary-button" href={selected.phoneHref}><Phone /><span className="detail-action-label">{selected.phone}</span><span className="detail-action-short" aria-hidden="true">Call</span></a>}{selected.site && <a className="secondary-button" href={selected.site} target="_blank" rel="noopener noreferrer"><span className="detail-action-label">Visit restaurant website</span><span className="detail-action-short" aria-hidden="true">Website</span><span className="sr-only"> — opens in a new tab</span></a>}</div>
+          {!!selected.profile?.links.length && <div className="detail-links">{selected.profile.links.map(l => <a key={l.url} href={l.url} target="_blank" rel="noopener noreferrer">{l.label} ↗<span className="sr-only"> — opens in a new tab</span></a>)}</div>}
           <RestaurantReviews key={selected.slug} slug={selected.slug} name={selected.name} address={selected.address} />
         </div>
       </div>}

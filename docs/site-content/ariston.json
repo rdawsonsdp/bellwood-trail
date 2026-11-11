@@ -1,0 +1,31 @@
+{
+  "slug": "ariston",
+  "website": "https://aristongyros.com/",
+  "otherLinks": [
+    "https://www.onlinemenuorder.com/AristonRestaurant",
+    "https://page-service.doordash.com/store/ariston-drive-in-26063785",
+    "https://www.yelp.com/biz/ariston-restaurant-bellwood",
+    "https://www.tripadvisor.in/Restaurant_Review-g35671-d19678808-Reviews-Ariston_Drive_in-Bellwood_Illinois.html"
+  ],
+  "about": "A late-night Mannheim Road drive-in known for gyros with its house gyro sauce, rib tips and Greek chicken. Ariston says it pairs fresh, locally sourced ingredients with classic recipes and encourages ordering direct from its own site for pickup.",
+  "tagline": "Gyros with the house sauce, rib tips and fries until 1 a.m.",
+  "signature": [
+    "Gyro Sandwich with gyro sauce",
+    "Football Gyro",
+    "1 Lb. BBQ Rib Tips",
+    "Ariston's Famous Chicken Wings",
+    "Gyro Burger",
+    "Big Mannheim Chicken Philly"
+  ],
+  "since": "",
+  "phone": "(708) 544-8766",
+  "hours": "Mon–Thu 9:30 AM–1:00 AM; Fri 9:30 AM–2:00 AM; Sat 9:30 AM–1:00 AM; Sun 10:30 AM–12:00 AM (aristongyros.com/about.html, fetched 2026-11-10)",
+  "sources": [
+    "https://aristongyros.com/",
+    "https://aristongyros.com/about.html",
+    "https://aristongyros.com/menu.html",
+    "https://www.onlinemenuorder.com/AristonRestaurant",
+    "https://page-service.doordash.com/store/ariston-drive-in-26063785"
+  ],
+  "notes": "Hours match trail data. Photos: Ariston's own site gallery images are only 576px (too small) and its large hero/background images are recognisable stock (gyro, Italian beef, ribs on grill); its online-ordering menu (onlinemenuorder.com) uses AI-generated white-background dish renders — none used. All six photos come from Ariston's DoorDash store page (professional DoorDash shoot, store 26063785 'Ariston Drive-In'); the fetched page did not print a street address, but the store name matches the 'Ariston Drive in, Bellwood' listing Ariston links from its own site. No inviting interior photo found (interior is fluorescent counter-service), so no atmosphere shot. DoorDash labels photo 1 'Chicken Gyro Plate (on Pita)'; alt text describes it generically as a gyros plate."
+}

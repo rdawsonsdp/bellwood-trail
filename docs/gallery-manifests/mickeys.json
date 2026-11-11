@@ -1,0 +1,38 @@
+{
+  "slug": "mickeys",
+  "cover": "/images/restaurants/gallery/mickeys-1.jpg",
+  "photos": [
+    {
+      "src": "/images/restaurants/gallery/mickeys-1.jpg",
+      "kind": "food",
+      "alt": "Chicago-style hot dog with pickle spear, tomato and sport peppers beside fries on checkered paper",
+      "sourcePage": "https://mickeysdrivein.com/menu/",
+      "sourceImage": "https://mickeysdrivein.com/wp-content/uploads/2019/07/hotdog.jpg",
+      "credit": "Mickey's website"
+    },
+    {
+      "src": "/images/restaurants/gallery/mickeys-2.jpg",
+      "kind": "food",
+      "alt": "Italian beef piled with hot giardiniera in deli paper",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/mickeys-drive-in-/gallery/",
+      "sourceImage": "https://cdn.localdatacdn.com/il/bellwood/3665081/original/mdoyewmF5f.jpg",
+      "credit": "Restaurantji gallery (credited to Tripadvisor)"
+    },
+    {
+      "src": "/images/restaurants/gallery/mickeys-3.jpg",
+      "kind": "atmosphere",
+      "alt": "Mickey's glowing marquee sign: Famous Italian Beef, Sausage and Meat Balls, Hot Dogs, Polish Sausage, Est. 1959",
+      "sourcePage": "https://mickeysdrivein.com/",
+      "sourceImage": "https://mickeysdrivein.com/wp-content/uploads/2019/06/sign.jpg",
+      "credit": "Mickey's website"
+    },
+    {
+      "src": "/images/restaurants/gallery/mickeys-4.jpg",
+      "kind": "atmosphere",
+      "alt": "Vintage photo of the original Mickey's Drive-In walk-up stand with Vienna Beef signs",
+      "sourcePage": "https://mickeysdrivein.com/",
+      "sourceImage": "https://mickeysdrivein.com/wp-content/uploads/2019/06/mickeys-business-profile_hot-dog-stand.jpg",
+      "credit": "Mickey's website"
+    }
+  ]
+}

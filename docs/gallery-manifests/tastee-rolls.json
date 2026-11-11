@@ -1,0 +1,54 @@
+{
+  "slug": "tastee-rolls",
+  "cover": "/images/restaurants/gallery/tastee-rolls-1.jpg",
+  "photos": [
+    {
+      "src": "/images/restaurants/gallery/tastee-rolls-1.jpg",
+      "kind": "food",
+      "alt": "Overhead spread of golden egg rolls on black plates and a silver tray with dipping sauces, around a cheese-topped rice bowl",
+      "sourcePage": "https://www.tasteerolls.com/gallery",
+      "sourceImage": "https://popmenucloud.com/ebvfwtcd/287cdbdb-4738-4cba-9ee2-2a83158ef766.jpg",
+      "credit": "Tastee Rolls website"
+    },
+    {
+      "src": "/images/restaurants/gallery/tastee-rolls-2.jpg",
+      "kind": "food",
+      "alt": "Close-up of a crispy Italian beef egg roll cut open to show beef, melted cheese and giardiniera, with sauce behind",
+      "sourcePage": "https://www.tasteerolls.com/gallery",
+      "sourceImage": "https://popmenucloud.com/ebvfwtcd/ca50b622-25f5-4c3b-8bbc-df6c4685b3a1.jpg",
+      "credit": "Tastee Rolls website"
+    },
+    {
+      "src": "/images/restaurants/gallery/tastee-rolls-3.jpg",
+      "kind": "food",
+      "alt": "Loaded rice bowl with grilled chicken, steak, shrimp and peppers under melted cheese and fresh herbs",
+      "sourcePage": "https://www.tasteerolls.com/gallery",
+      "sourceImage": "https://popmenucloud.com/ebvfwtcd/b5427f24-5217-481a-ad3b-62f02ab95774.jpg",
+      "credit": "Tastee Rolls website"
+    },
+    {
+      "src": "/images/restaurants/gallery/tastee-rolls-4.jpg",
+      "kind": "food",
+      "alt": "Stacked egg rolls sliced to show their filling on a silver tray as sauce pours from a cup",
+      "sourcePage": "https://www.tasteerolls.com/gallery",
+      "sourceImage": "https://popmenucloud.com/ebvfwtcd/c092b626-bfdd-4a1b-851d-d74ce1653a19.jpg",
+      "credit": "Tastee Rolls website"
+    },
+    {
+      "src": "/images/restaurants/gallery/tastee-rolls-5.jpg",
+      "kind": "food",
+      "alt": "Cheesy steak egg roll split in half on a black plate with orange dipping sauce",
+      "sourcePage": "https://www.tasteerolls.com/gallery",
+      "sourceImage": "https://popmenucloud.com/ebvfwtcd/5e0e072e-912b-4bdf-bb0e-5f9ef0e1e071.jpg",
+      "credit": "Tastee Rolls website"
+    },
+    {
+      "src": "/images/restaurants/gallery/tastee-rolls-6.jpg",
+      "kind": "food",
+      "alt": "Egg roll halves oozing melted cheese and vegetables on a black plate with a cup of honey mustard",
+      "sourcePage": "https://www.tasteerolls.com/gallery",
+      "sourceImage": "https://popmenucloud.com/ebvfwtcd/cc8d9152-6570-4f7e-9e73-4e172ec148b2.jpg",
+      "credit": "Tastee Rolls website"
+    }
+  ]
+}

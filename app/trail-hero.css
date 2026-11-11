@@ -26,7 +26,7 @@
 
 /* Show the opening video frame from first paint on desktop, before hydration. */
 @media(min-width:701px) and (prefers-reduced-motion:no-preference) {
- .trail-hero-scene:not(.video-failed) { background:#003f7d url('/images/brand/dine-bellwood-video-poster.jpg') center / cover no-repeat; }
+ .trail-hero-scene:not(.video-failed) { background:#003f7d url('/images/brand/dine-bellwood-hero-poster.jpg') center / cover no-repeat; }
  .trail-hero-scene:not(.video-failed) .trail-hero-photo,
  .trail-hero-scene:not(.video-failed)::after,
  .trail-hero-scene:not(.video-failed) .hero-photo-credit { display:none; }

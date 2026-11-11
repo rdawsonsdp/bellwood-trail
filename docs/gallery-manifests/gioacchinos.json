@@ -1,0 +1,46 @@
+{
+  "slug": "gioacchinos",
+  "cover": "/images/restaurants/gallery/gioacchinos-1.jpg",
+  "photos": [
+    {
+      "src": "/images/restaurants/gallery/gioacchinos-1.jpg",
+      "kind": "food",
+      "alt": "Chicago tavern-style thin-crust sausage pizza, square-cut with golden bubbling mozzarella, on a metal pizza tray",
+      "sourcePage": "https://gioacchinosristorante.pizza",
+      "sourceImage": "https://img1.wsimg.com/isteam/ip/ad32c2d6-1ccc-42aa-acbe-3c0eea28af9f/bc4eaa9a-87f9-4c14-bceb-a7ab0c0017b4.jpg",
+      "credit": "Gioacchino's website"
+    },
+    {
+      "src": "/images/restaurants/gallery/gioacchinos-2.jpg",
+      "kind": "food",
+      "alt": "Fried zucchini, mushrooms and mozzarella sticks around a bowl of marinara on a red-checkered tablecloth",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/gioacchinos-pizza-and-restaurant-/gallery/",
+      "sourceImage": "https://cdn.localdatacdn.com/il/bellwood/3440207/original/C2YYtcUmS0.jpg",
+      "credit": "Restaurantji gallery"
+    },
+    {
+      "src": "/images/restaurants/gallery/gioacchinos-3.jpg",
+      "kind": "food",
+      "alt": "Baked clams with golden herbed breadcrumb topping and lemon wedges",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/gioacchinos-pizza-and-restaurant-/gallery/",
+      "sourceImage": "https://cdn.localdatacdn.com/il/bellwood/3440207/original/f3ceGVpAch.jpg",
+      "credit": "Restaurantji gallery"
+    },
+    {
+      "src": "/images/restaurants/gallery/gioacchinos-4.jpg",
+      "kind": "food",
+      "alt": "Thin-crust pizza with melted cheese over sausage, fresh from the oven",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/gioacchinos-pizza-and-restaurant-/gallery/",
+      "sourceImage": "https://cdn6.localdatacdn.com/il/bellwood/3440207/original/6i5vNXPyDJ.jpg",
+      "credit": "Restaurantji gallery"
+    },
+    {
+      "src": "/images/restaurants/gallery/gioacchinos-5.jpg",
+      "kind": "atmosphere",
+      "alt": "Vintage sepia collage of the founding couple: holding a fresh pizza, at the shop door, and cooking in the kitchen",
+      "sourcePage": "https://gioacchinosristorante.pizza",
+      "sourceImage": "https://img1.wsimg.com/isteam/ip/ad32c2d6-1ccc-42aa-acbe-3c0eea28af9f/Gioacchinos%203-0d7e56e.jpg",
+      "credit": "Gioacchino's website"
+    }
+  ]
+}

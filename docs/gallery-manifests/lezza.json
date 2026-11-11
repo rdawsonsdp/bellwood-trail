@@ -1,0 +1,46 @@
+{
+  "slug": "lezza",
+  "cover": "/images/restaurants/gallery/lezza-1.jpg",
+  "photos": [
+    {
+      "src": "/images/restaurants/gallery/lezza-1.jpg",
+      "kind": "food",
+      "alt": "Classic Lezza spumoni cake cut open to show its layered pistachio, cherry and chocolate, served with coffee",
+      "sourcePage": "https://lezza.com/spumoni-cannoli-and-desserts/",
+      "sourceImage": "https://lezza.com/wp-content/uploads/2017/06/thumbnail_spumoni.jpg",
+      "credit": "Lezza website"
+    },
+    {
+      "src": "/images/restaurants/gallery/lezza-2.jpg",
+      "kind": "food",
+      "alt": "Plate of lattice-top fruit and crumb pastry squares with small cookies",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/lezza-spumoni-and-desserts-inc-/gallery/",
+      "sourceImage": "https://cdn10.localdatacdn.com/il/bellwood/5630335/original/LFxGuiYBLS.jpg",
+      "credit": "Restaurantji gallery"
+    },
+    {
+      "src": "/images/restaurants/gallery/lezza-3.jpg",
+      "kind": "food",
+      "alt": "Frosted cupcake and two cake pops on a plate beside autumn pumpkin decor",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/lezza-spumoni-and-desserts-inc-/gallery/",
+      "sourceImage": "https://cdn10.localdatacdn.com/il/bellwood/5630335/original/SkZD012pQD.jpg",
+      "credit": "Restaurantji gallery"
+    },
+    {
+      "src": "/images/restaurants/gallery/lezza-4.jpg",
+      "kind": "food",
+      "alt": "Tray of glazed pastry bars, some topped with pink sprinkles",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/lezza-spumoni-and-desserts-inc-/gallery/",
+      "sourceImage": "https://cdn10.localdatacdn.com/il/bellwood/5630335/original/zSj0SW4cKU.jpg",
+      "credit": "Restaurantji gallery"
+    },
+    {
+      "src": "/images/restaurants/gallery/lezza-5.jpg",
+      "kind": "food",
+      "alt": "Slice of spumoni plated with chocolate drizzle and whipped cream",
+      "sourcePage": "https://lezza.com/spumoni-cannoli-and-desserts/",
+      "sourceImage": "https://lezza.com/wp-content/uploads/2017/06/Lezza_Spumoni_Slice_Dressed.jpg",
+      "credit": "Lezza website"
+    }
+  ]
+}

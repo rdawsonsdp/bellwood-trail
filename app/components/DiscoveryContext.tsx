@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { EMPTY_FILTERS, readFilters, writeFilters, type DiscoveryFilters } from "@/app/lib/discovery";
+import { mealMoment, type MealMoment } from "@/app/lib/meal-time";
 
 import { CONSENT_EVENT, readConsent } from "@/app/lib/cookie-consent";
 
@@ -12,6 +13,8 @@ type DiscoveryState = {
   saved: string[];
   toggleSaved: (slug: string, name: string) => void;
   message: string;
+  /** The meal it is in Bellwood right now; null until the browser has mounted. */
+  moment: MealMoment | null;
 };
 const Context = createContext<DiscoveryState | null>(null);
 const parseSaved = (value: string | null): string[] => {
@@ -27,9 +30,16 @@ export function DiscoveryProvider({ children }: { children: ReactNode }) {
   const savedRef = useRef<string[]>([]);
   const changeSaved = (next: string[]) => { savedRef.current = next; setSaved(next); };
   const [message, setMessage] = useState("");
+  const [moment, setMoment] = useState<MealMoment | null>(null);
   useEffect(() => {
     const restore = () => setFilters(readFilters(new URLSearchParams(window.location.search)));
+    // Every visit opens on all kitchens; the time of day only sets the greeting
+    // and the "Now" tag on the meal buttons.
+    setMoment(mealMoment());
     restore();
+    // Coming back to the tab later in the day refreshes the greeting and "Now" tag.
+    const refreshMoment = () => setMoment(mealMoment());
+    window.addEventListener("focus", refreshMoment);
     try { if (readConsent(document.cookie)?.favorites !== false) changeSaved(parseSaved(localStorage.getItem(SAVED_KEY))); } catch { /* Saving still works for this visit. */ }
     const sync = (event: StorageEvent) => { if (readConsent(document.cookie)?.favorites !== false && (event.key === SAVED_KEY || event.key === null)) changeSaved(parseSaved(event.newValue)); };
     const consentChanged = () => {
@@ -42,7 +52,7 @@ export function DiscoveryProvider({ children }: { children: ReactNode }) {
     window.addEventListener(CONSENT_EVENT, consentChanged);
     window.addEventListener("popstate", restore);
     window.addEventListener("storage", sync);
-    return () => { window.removeEventListener(CONSENT_EVENT, consentChanged); window.removeEventListener("popstate", restore); window.removeEventListener("storage", sync); };
+    return () => { window.removeEventListener("focus", refreshMoment); window.removeEventListener(CONSENT_EVENT, consentChanged); window.removeEventListener("popstate", restore); window.removeEventListener("storage", sync); };
   }, []);
   useEffect(() => {
     if (!message) return;
@@ -67,7 +77,7 @@ export function DiscoveryProvider({ children }: { children: ReactNode }) {
     try { const remember = readConsent(document.cookie)?.favorites !== false; if (remember) localStorage.setItem(SAVED_KEY, JSON.stringify(next)); setMessage(removing ? `${name} removed from saved kitchens.` : remember ? `${name} saved on this device.` : `${name} saved for this visit.`); }
     catch { setMessage(removing ? `${name} removed.` : `${name} saved for this visit. Browser storage is unavailable.`); }
   };
-  return <Context.Provider value={{ filters, updateFilters, resetFilters: () => updateFilters(EMPTY_FILTERS), saved, toggleSaved, message }}>{children}</Context.Provider>;
+  return <Context.Provider value={{ filters, updateFilters, resetFilters: () => updateFilters(EMPTY_FILTERS), saved, toggleSaved, message, moment }}>{children}</Context.Provider>;
 }
 
 export function useDiscovery() {

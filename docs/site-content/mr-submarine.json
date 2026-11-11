@@ -1,0 +1,30 @@
+{
+  "slug": "mr-submarine",
+  "website": "https://mrsubmarine.com/bellwood/",
+  "otherLinks": [
+    "https://mrsubmarine.com/",
+    "https://mrsubmarine.com/bellwood/delivery",
+    "https://mrsubmarine.com/wp-content/uploads/2020/09/2018-Bellwood-Menu.pdf"
+  ],
+  "about": "Mr. Submarine calls itself Chicago's original submarine franchise, building subs since 1975 from fresh-sliced vegetables, meats and cheese on fresh-baked bread. The Bellwood store at Mannheim and Butterfield has a drive-thru, offers delivery, and stays open late every night.",
+  "tagline": "Chicago's original sub shop, with a drive-thru open late.",
+  "signature": [
+    "Super Mr. Sub",
+    "Mr. Sub",
+    "Roast Beef Sub",
+    "Italian Beef & Sausage Combo",
+    "Gyro Pita",
+    "Pizza Puff with Fries"
+  ],
+  "since": "1975",
+  "phone": "(708) 544-1007",
+  "hours": "Mon–Thu 9 AM–2 AM; Fri & Sat 9 AM–3 AM; Sunday 10 AM–2 AM (mrsubmarine.com/bellwood store page). Note: the 2018 Bellwood menu PDF lists later closes (Mon–Thu 9 AM–3 AM, Fri–Sat 9 AM–4 AM, Sun 10 AM–3 AM).",
+  "sources": [
+    "https://mrsubmarine.com/",
+    "https://mrsubmarine.com/bellwood/",
+    "https://mrsubmarine.com/wp-content/uploads/2020/09/2018-Bellwood-Menu.pdf",
+    "https://stockist.co/api/v1/u6409/locations/all",
+    "https://mrsubmarine.com/50thanniversary/"
+  ],
+  "notes": "Bellwood store confirmed in the chain's own locator: 4019 Butterfield Rd (Mannheim & Butterfield), (708) 544-1007, Drive Thru / Online Ordering / Delivery; menu PDF also lists (708) 544-1008. Hours conflict with trail data (trail has 10 AM–9/10 PM; official store page says open until 2–3 AM daily) — trail schedule should be updated. Trail signature 'Italian Sub', 'Steak Sub', 'Turkey Sub' are not exact menu names (menu: Mr. Sub, Steak Burger, Turkey Breast, Philly Steak). All photos are chain brand photography (menu shots and 50th-anniversary commercial stills), not the Bellwood store specifically. No suitable atmosphere photo: interior stills are from commercials with actors at an unidentified store."
+}

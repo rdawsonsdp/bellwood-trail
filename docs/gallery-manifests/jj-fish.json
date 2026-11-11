@@ -1,0 +1,46 @@
+{
+  "slug": "jj-fish",
+  "cover": "/images/restaurants/gallery/jj-fish-1.jpg",
+  "photos": [
+    {
+      "src": "/images/restaurants/gallery/jj-fish-1.jpg",
+      "kind": "food",
+      "alt": "Overhead spread of carryout boxes with fried chicken, shrimp, nuggets, fries and a loaded sub sandwich",
+      "sourcePage": "https://order.online/store/jj-fish-chicken-bellwood-179329",
+      "sourceImage": "https://doordash-static.s3.amazonaws.com/media/store/header/84280931-2127-447f-a93a-92659841253c.jpg",
+      "credit": "JJ Fish & Chicken Bellwood online ordering (DoorDash)"
+    },
+    {
+      "src": "/images/restaurants/gallery/jj-fish-2.jpg",
+      "kind": "food",
+      "alt": "Golden fried chicken wings with crinkle-cut fries on red-checked paper over a wood table",
+      "sourcePage": "https://order.online/store/jj-fish-chicken-bellwood-179329",
+      "sourceImage": "https://img.cdn4dd.com/p/fit=contain,width=2000,format=jpeg,quality=95/media/photos/20d888fd-96f4-4acf-993f-d76a9959845e-retina-large.jpg",
+      "credit": "JJ Fish & Chicken Bellwood online ordering (DoorDash)"
+    },
+    {
+      "src": "/images/restaurants/gallery/jj-fish-3.jpg",
+      "kind": "food",
+      "alt": "Crispy chicken tenders with fries, coleslaw and white bread",
+      "sourcePage": "https://order.online/store/jj-fish-chicken-bellwood-179329",
+      "sourceImage": "https://img.cdn4dd.com/p/fit=contain,width=2000,format=jpeg,quality=95/media/photos/2f5b9ed9-9cd9-4303-8dfc-a53b437eaa99-retina-large.jpg",
+      "credit": "JJ Fish & Chicken Bellwood online ordering (DoorDash)"
+    },
+    {
+      "src": "/images/restaurants/gallery/jj-fish-4.jpg",
+      "kind": "food",
+      "alt": "Cornmeal-fried fish fillet and fried shrimp over fries, with coleslaw and hot sauce on the side",
+      "sourcePage": "https://order.online/store/jj-fish-chicken-bellwood-179329",
+      "sourceImage": "https://img.cdn4dd.com/p/fit=contain,width=2000,format=jpeg,quality=95/media/photos/cb634ef1-2905-43ef-8cd2-9dd5637cc4dd-retina-large.jpg",
+      "credit": "JJ Fish & Chicken Bellwood online ordering (DoorDash)"
+    },
+    {
+      "src": "/images/restaurants/gallery/jj-fish-5.jpg",
+      "kind": "food",
+      "alt": "Plate of fried nuggets piled beside thick-cut fries with ketchup",
+      "sourcePage": "https://order.online/store/jj-fish-chicken-bellwood-179329",
+      "sourceImage": "https://img.cdn4dd.com/p/fit=contain,width=2000,format=jpeg,quality=95/media/photos/66fa9ef6-cf7d-4af2-a479-f2c32ce0beda-retina-large.jpg",
+      "credit": "JJ Fish & Chicken Bellwood online ordering (DoorDash)"
+    }
+  ]
+}

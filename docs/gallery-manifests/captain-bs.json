@@ -1,0 +1,38 @@
+{
+  "slug": "captain-bs",
+  "cover": "/images/restaurants/gallery/captain-bs-1.jpg",
+  "photos": [
+    {
+      "src": "/images/restaurants/gallery/captain-bs-1.jpg",
+      "kind": "food",
+      "alt": "Platter of golden fried shrimp with cups of hot sauce and cocktail sauce",
+      "sourcePage": "http://captainbshrimp.com/home_inc.shtml",
+      "sourceImage": "http://captainbshrimp.com/Images/Reg_Shrimp.jpg",
+      "credit": "Captain B's Shrimp House website (brand photo; Cicero/Villa Park menu)"
+    },
+    {
+      "src": "/images/restaurants/gallery/captain-bs-2.jpg",
+      "kind": "food",
+      "alt": "Jumbo fried shrimp on a white platter with hot sauce and cocktail sauce",
+      "sourcePage": "http://captainbshrimp.com/home_inc.shtml",
+      "sourceImage": "http://captainbshrimp.com/Images/Jumbo_Shrimp.jpg",
+      "credit": "Captain B's Shrimp House website (brand photo; Cicero/Villa Park menu)"
+    },
+    {
+      "src": "/images/restaurants/gallery/captain-bs-3.jpg",
+      "kind": "food",
+      "alt": "Fried perch fish chips on a white platter with dipping sauces",
+      "sourcePage": "http://captainbshrimp.com/home_inc.shtml",
+      "sourceImage": "http://captainbshrimp.com/Images/Fish_Chips.jpg",
+      "credit": "Captain B's Shrimp House website (brand photo; Cicero/Villa Park menu)"
+    },
+    {
+      "src": "/images/restaurants/gallery/captain-bs-4.jpg",
+      "kind": "food",
+      "alt": "Crisp fried catfish fillets on a white platter with hot sauce and cocktail sauce",
+      "sourcePage": "http://captainbshrimp.com/home_inc.shtml",
+      "sourceImage": "http://captainbshrimp.com/Images/Cat_Fish.jpg",
+      "credit": "Captain B's Shrimp House website (brand photo; Cicero/Villa Park menu)"
+    }
+  ]
+}

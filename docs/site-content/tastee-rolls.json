@@ -1,0 +1,29 @@
+{
+  "slug": "tastee-rolls",
+  "website": "https://www.tasteerolls.com/locations/bellwood",
+  "otherLinks": [
+    "https://www.tasteerolls.com/popmenu-order",
+    "https://www.grubhub.com/restaurant/tastee-rolls-633-bellwood-ave-bellwood/2099871"
+  ],
+  "about": "Tastee Rolls began in Bellwood and Chicago with a simple idea: stuff classic American comfort flavors into a crunchy, made-to-order egg roll. The menu runs from jerk chicken and Italian beef rolls to footlong egg rolls, loaded rice bowls and dessert rolls, plus catering for local gatherings.",
+  "tagline": "Bold, made-to-order egg rolls and loaded rice bowls",
+  "signature": [
+    "Jerk Chicken Egg Roll",
+    "Italian Beef Egg Roll",
+    "Garlic Parmesan Chicken Egg Roll",
+    "Philly Steak Egg Roll",
+    "Signature Rice Bowl",
+    "Peach Cobbler Egg Roll"
+  ],
+  "since": "",
+  "phone": "(708) 632-4646",
+  "hours": "Tue–Sat 10:00 am–9:00 pm; Sun 11:00 am–7:00 pm; Mon closed (tasteerolls.com Bellwood location page)",
+  "sources": [
+    "https://www.tasteerolls.com/locations/bellwood",
+    "https://www.tasteerolls.com/about",
+    "https://www.tasteerolls.com/",
+    "https://www.tasteerolls.com/popmenu-order/bellwood/menus/menu-synced",
+    "https://www.tasteerolls.com/gallery"
+  ],
+  "notes": "ADDRESS CONFLICT: the official site now lists the Bellwood location at 504 Mannheim Road, Bellwood, IL 60104 (also used for pickup in its online ordering), not 633 Bellwood Ave as in the trail data; the site's Grubhub link still references 633 Bellwood Ave. Phone matches. Site was reachable only via a real browser (Cloudflare blocks curl/WebFetch). No interior/atmosphere photos on the site. Second location: 130 E 79th St, Chicago."
+}

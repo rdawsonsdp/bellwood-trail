@@ -1,0 +1,28 @@
+{
+  "slug": "stacys",
+  "website": "https://www.stacyscafe.com/",
+  "otherLinks": [
+    "https://www.stacyscafe.com/reservation/"
+  ],
+  "about": "A Mannheim Road steak-and-cocktails house that says it opened in 1986 and is now marking 40 years. Stacy's built its name on premium cuts, broiled seafood and hand-made drinks, with every dinner starting with its baked onion soup in a crock.",
+  "tagline": "Prime cuts, onion soup in a crock and a proper cocktail.",
+  "signature": [
+    "Prime Top Sirloin Butt Steak",
+    "Pork Chops (broiled, Grecian or barbecue)",
+    "Baked Onion Soup",
+    "Our Famous Stacy Burger",
+    "Baked Shrimp DeJonghe",
+    "Feta Cheese, Olives and Tomatoes with Grecian dressing"
+  ],
+  "since": "1986",
+  "phone": "(708) 544-6636",
+  "hours": "Mon–Thu 4:00 PM–10:00 PM; Fri–Sat 4:00 PM–11:00 PM; Sun closed (\"Working Hours\" footer on stacyscafe.com, fetched 2026-11-10)",
+  "sources": [
+    "https://www.stacyscafe.com/",
+    "https://www.stacyscafe.com/menu/",
+    "https://www.stacyscafe.com/about-us/",
+    "https://www.stacyscafe.com/contact-us/",
+    "https://www.restaurantji.com/il/bellwood/stacys-cafe-2/gallery/"
+  ],
+  "notes": "HOURS CONFLICT: trail data has Mon–Thu 11–10, Fri 11–11, Sat 4–11 with lunch; the official site lists dinner only from 4 PM Mon–Sat (MapQuest agrees). FOUNDING YEAR: site says established 1986 / '40 years'; third-party listings (MapQuest, naicslist) say 1965 — use the site's 1986. Site also lists email info@stacyscafe.com and says catering/private events are offered. Many dish images on the site are AI-generated or AI-retouched (ChatGPT/Gemini filenames and restyled versions of phone photos) and were deliberately NOT used; the site's Instagram link points to a single post, no confirmed official Facebook/Instagram page found."
+}

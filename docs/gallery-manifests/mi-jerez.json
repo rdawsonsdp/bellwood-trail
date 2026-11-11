@@ -1,0 +1,46 @@
+{
+  "slug": "mi-jerez",
+  "cover": "/images/restaurants/gallery/mi-jerez-1.jpg",
+  "photos": [
+    {
+      "src": "/images/restaurants/gallery/mi-jerez-1.jpg",
+      "kind": "food",
+      "alt": "Enchiladas in green salsa over grilled carne asada with red rice, avocado, tomato and lime",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/mi-jerez-taquieria-/gallery/",
+      "sourceImage": "https://cdn7.localdatacdn.com/il/bellwood/5579089/original/QxwF6I0eYA.jpg",
+      "credit": "Restaurantji gallery"
+    },
+    {
+      "src": "/images/restaurants/gallery/mi-jerez-2.jpg",
+      "kind": "food",
+      "alt": "Enchiladas verdes with rice, refried beans, avocado, salad and sour cream",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/mi-jerez-taquieria-/gallery/",
+      "sourceImage": "https://cdn10.localdatacdn.com/il/bellwood/5579089/original/UhgjXVLSNq.jpeg",
+      "credit": "Restaurantji gallery"
+    },
+    {
+      "src": "/images/restaurants/gallery/mi-jerez-3.jpg",
+      "kind": "food",
+      "alt": "Two sopes topped with steak, lettuce, tomato and queso, with rice and beans",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/mi-jerez-taquieria-/gallery/",
+      "sourceImage": "https://cdn8.localdatacdn.com/il/bellwood/5579089/original/nIL5BuLYr1.jpg",
+      "credit": "Restaurantji gallery"
+    },
+    {
+      "src": "/images/restaurants/gallery/mi-jerez-4.jpg",
+      "kind": "food",
+      "alt": "Chiles rellenos plate with rice, refried beans topped with cheese, and avocado",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/mi-jerez-taquieria-/gallery/",
+      "sourceImage": "https://cdn2.localdatacdn.com/il/bellwood/5579089/original/WmSsf9yFJm.jpg",
+      "credit": "Restaurantji gallery"
+    },
+    {
+      "src": "/images/restaurants/gallery/mi-jerez-5.jpg",
+      "kind": "food",
+      "alt": "Burrito especial cut in half with a pile of french fries",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/mi-jerez-taquieria-/gallery/",
+      "sourceImage": "https://cdn9.localdatacdn.com/il/bellwood/5579089/original/858caxQfmV.jpg",
+      "credit": "Restaurantji gallery"
+    }
+  ]
+}

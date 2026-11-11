@@ -1,0 +1,54 @@
+{
+  "slug": "ariston",
+  "cover": "/images/restaurants/gallery/ariston-1.jpg",
+  "photos": [
+    {
+      "src": "/images/restaurants/gallery/ariston-1.jpg",
+      "kind": "food",
+      "alt": "Gyros plate on pita with onions, tomato, Greek salad with feta and crinkle fries on a wood table",
+      "sourcePage": "https://page-service.doordash.com/store/ariston-drive-in-26063785",
+      "sourceImage": "https://doordash-static.s3.amazonaws.com/media/photosV2/ebe96ef7-9af8-493e-8a4e-1fffb5c759e6-retina-large.jpg",
+      "credit": "Ariston on DoorDash"
+    },
+    {
+      "src": "/images/restaurants/gallery/ariston-2.jpg",
+      "kind": "food",
+      "alt": "Italian beef sandwich heaped with hot giardiniera",
+      "sourcePage": "https://page-service.doordash.com/store/ariston-drive-in-26063785",
+      "sourceImage": "https://doordash-static.s3.amazonaws.com/media/photosV2/73185da1-b04f-49ac-afaa-80e70c33ac4d-retina-large.jpg",
+      "credit": "Ariston on DoorDash"
+    },
+    {
+      "src": "/images/restaurants/gallery/ariston-3.jpg",
+      "kind": "food",
+      "alt": "Greek salad with tomatoes, green peppers, pepperoncini, olives, feta and a stuffed grape leaf",
+      "sourcePage": "https://page-service.doordash.com/store/ariston-drive-in-26063785",
+      "sourceImage": "https://doordash-static.s3.amazonaws.com/media/photosV2/08c55782-edf5-4910-b907-dfe95b79cf45-retina-large.jpg",
+      "credit": "Ariston on DoorDash"
+    },
+    {
+      "src": "/images/restaurants/gallery/ariston-4.jpg",
+      "kind": "food",
+      "alt": "Beef sandwich on French bread smothered in melted cheese",
+      "sourcePage": "https://page-service.doordash.com/store/ariston-drive-in-26063785",
+      "sourceImage": "https://doordash-static.s3.amazonaws.com/media/photosV2/db05c510-6f9a-441a-93f7-b29637889ac4-retina-large.jpg",
+      "credit": "Ariston on DoorDash"
+    },
+    {
+      "src": "/images/restaurants/gallery/ariston-5.jpg",
+      "kind": "food",
+      "alt": "Quarter-pound cheeseburger with tomato, onion and lettuce",
+      "sourcePage": "https://page-service.doordash.com/store/ariston-drive-in-26063785",
+      "sourceImage": "https://doordash-static.s3.amazonaws.com/media/photosV2/8a214716-c313-4c1d-a48b-6ac6b61ddd26-retina-large.jpg",
+      "credit": "Ariston on DoorDash"
+    },
+    {
+      "src": "/images/restaurants/gallery/ariston-6.jpg",
+      "kind": "food",
+      "alt": "Taco salad in a crisp tortilla bowl with cheddar and sour cream",
+      "sourcePage": "https://page-service.doordash.com/store/ariston-drive-in-26063785",
+      "sourceImage": "https://doordash-static.s3.amazonaws.com/media/photosV2/de171d39-eed5-430a-8d11-80cc71fbd71f-retina-large.jpg",
+      "credit": "Ariston on DoorDash"
+    }
+  ]
+}

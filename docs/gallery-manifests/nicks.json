@@ -1,0 +1,54 @@
+{
+  "slug": "nicks",
+  "cover": "/images/restaurants/gallery/nicks-1.jpg",
+  "photos": [
+    {
+      "src": "/images/restaurants/gallery/nicks-1.jpg",
+      "kind": "food",
+      "alt": "Close-up of a cheesy pizza slice lifted from the pie",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/nicks-pizza-and-beef-/gallery/",
+      "sourceImage": "https://cdn.localdatacdn.com/il/bellwood/3440222/original/YTLbIQYESP.jpg",
+      "credit": "Restaurantji gallery (credited to Foursquare)"
+    },
+    {
+      "src": "/images/restaurants/gallery/nicks-2.jpg",
+      "kind": "food",
+      "alt": "Italian beef with roasted sweet peppers and melted mozzarella on French bread",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/nicks-pizza-and-beef-/gallery/",
+      "sourceImage": "https://cdn3.localdatacdn.com/il/bellwood/3440222/original/Gqtgd3gr3j.jpg",
+      "credit": "Restaurantji gallery (credited to Facebook)"
+    },
+    {
+      "src": "/images/restaurants/gallery/nicks-3.jpg",
+      "kind": "food",
+      "alt": "Barbecue ribs with crinkle fries, roll and coleslaw",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/nicks-pizza-and-beef-/gallery/",
+      "sourceImage": "https://cdn.localdatacdn.com/il/bellwood/3440222/original/Ic9KhNMTJs.jpg",
+      "credit": "Restaurantji gallery (credited to Foursquare)"
+    },
+    {
+      "src": "/images/restaurants/gallery/nicks-4.jpg",
+      "kind": "atmosphere",
+      "alt": "Staff member presenting a fresh cheese pizza across the counter",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/nicks-pizza-and-beef-/gallery/",
+      "sourceImage": "https://cdn4.localdatacdn.com/il/bellwood/3440222/original/R1IzPeCT0N.jpg",
+      "credit": "Restaurantji gallery (credited to Facebook)"
+    },
+    {
+      "src": "/images/restaurants/gallery/nicks-5.jpg",
+      "kind": "food",
+      "alt": "Italian sub with salami, lettuce and tomato on a fresh roll",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/nicks-pizza-and-beef-/gallery/",
+      "sourceImage": "https://cdn.localdatacdn.com/il/bellwood/3440222/original/jritXyavcO.jpg",
+      "credit": "Restaurantji gallery (credited to Foursquare)"
+    },
+    {
+      "src": "/images/restaurants/gallery/nicks-6.jpg",
+      "kind": "atmosphere",
+      "alt": "Smiling staff member handing an order out of the drive-thru window",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/nicks-pizza-and-beef-/gallery/",
+      "sourceImage": "https://cdn.localdatacdn.com/il/bellwood/3440222/original/W2RhetHWFR.jpg",
+      "credit": "Restaurantji gallery (credited to Foursquare)"
+    }
+  ]
+}

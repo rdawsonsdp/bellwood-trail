@@ -62,3 +62,6 @@
 .bellwood-promotion .promotion-intro .vip-eyebrow { color:#fdb813; }
 
 .promotion-varis-logo { display:block; width:min(100%,320px); height:auto; margin:18px 0; border-radius:4px; }
+/* Desktop-only Vari's video, faded in over the photo once it is playing. */
+.bellwood-promotion .promotion-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; opacity:0; transition:opacity 600ms ease; }
+.bellwood-promotion .promotion-video.is-playing { opacity:1; }

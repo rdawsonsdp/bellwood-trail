@@ -56,11 +56,14 @@ export function filterStops(stops: Stop[], filters: DiscoveryFilters, saved: str
     if (filters.saved && !saved.includes(s.slug)) return false;
     if (filters.area && s.corridor !== filters.area) return false;
     if (filters.foods.length && !filters.foods.some(food => inCategory(s, food))) return false;
-    if (filters.meal && !s.meals.includes(filters.meal)) return false;
+    // Stops with no listed meals (dessert shops, bars) suit any time of day.
+    if (filters.meal && s.meals.length && !s.meals.includes(filters.meal)) return false;
     if (filters.dining && s.dineIn !== (filters.dining === "dine-in")) return false;
     const text = [s.name, s.tagline, s.address, s.neighborhood, CORRIDORS[s.corridor]?.label, ...s.cuisine, ...s.signature].join(" ").toLowerCase();
     return words.every(word => text.includes(word));
   });
+  // In a meal view, kitchens serving that meal come before the anytime stops.
+  if (filters.meal) matches.sort((a, b) => Number(!a.meals.length) - Number(!b.meals.length));
   if (filters.sort === "name") matches.sort((a, b) => a.name.localeCompare(b.name));
   if (filters.sort === "open") matches.sort((a, b) => Number(b.status.open) - Number(a.status.open) || a.name.localeCompare(b.name));
   return matches;

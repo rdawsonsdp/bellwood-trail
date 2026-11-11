@@ -1,0 +1,46 @@
+{
+  "slug": "mr-submarine",
+  "cover": "/images/restaurants/gallery/mr-submarine-1.jpg",
+  "photos": [
+    {
+      "src": "/images/restaurants/gallery/mr-submarine-1.jpg",
+      "kind": "food",
+      "alt": "Two Mr. Sub sandwiches stacked with ham, salami, cheese, tomato and shredded lettuce on sesame rolls over branded wax paper",
+      "sourcePage": "https://mrsubmarine.com/bellwood/",
+      "sourceImage": "https://mrsubmarine.com/wp-content/uploads/2020/09/2-Mr-Subs-large.jpg",
+      "credit": "Mr. Submarine website (brand photography)"
+    },
+    {
+      "src": "/images/restaurants/gallery/mr-submarine-2.jpg",
+      "kind": "food",
+      "alt": "Overhead of a halved Mr. Sub with salami, ham and cheese beside a pile of potato chips on Mr. Submarine paper",
+      "sourcePage": "https://mrsubmarine.com/bellwood/",
+      "sourceImage": "https://mrsubmarine.com/wp-content/uploads/2020/09/Mr-Sub-Chips-Large.jpg",
+      "credit": "Mr. Submarine website (brand photography)"
+    },
+    {
+      "src": "/images/restaurants/gallery/mr-submarine-3.jpg",
+      "kind": "food",
+      "alt": "Cold-cut sub, crinkle-cut fries and a Mr. Submarine cup against the chain's red-and-white tile wall",
+      "sourcePage": "https://mrsubmarine.com/50thanniversary/",
+      "sourceImage": "https://mrsubmarine.com/wp-content/uploads/2025/10/Our-subs-are-kind-of-old-fashioned.jpg",
+      "credit": "Mr. Submarine website (brand photography)"
+    },
+    {
+      "src": "/images/restaurants/gallery/mr-submarine-4.jpg",
+      "kind": "food",
+      "alt": "Crinkle-cut fries spilling from a retro French Fries bag with a cup of dipping sauce on Mr. Submarine paper",
+      "sourcePage": "https://mrsubmarine.com/50thanniversary/",
+      "sourceImage": "https://mrsubmarine.com/wp-content/uploads/2025/10/And-now-a-message-from-Chicago-fry-guy.jpg",
+      "credit": "Mr. Submarine website (brand photography)"
+    },
+    {
+      "src": "/images/restaurants/gallery/mr-submarine-5.jpg",
+      "kind": "food",
+      "alt": "Tuna sub and seasoned fries on a red tray with a Mr. Submarine cup",
+      "sourcePage": "https://mrsubmarine.com/50thanniversary/",
+      "sourceImage": "https://mrsubmarine.com/wp-content/uploads/2025/10/Ray-Clay-at-dinner-time.jpg",
+      "credit": "Mr. Submarine website (brand photography)"
+    }
+  ]
+}

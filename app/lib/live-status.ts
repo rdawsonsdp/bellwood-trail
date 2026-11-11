@@ -2,6 +2,8 @@ import "server-only";
 import fs from "node:fs";
 import path from "node:path";
 import type { Restaurant } from "@/content/restaurants";
+import { GALLERIES, type GalleryPhoto } from "@/content/galleries";
+import { PROFILES, type RestaurantProfile } from "@/content/profiles";
 import { openState, type OpenState } from "./hours";
 import { fetchSite, phoneHref } from "./site-data";
 
@@ -17,7 +19,7 @@ import { fetchSite, phoneHref } from "./site-data";
  */
 
 export interface StopStatus extends OpenState { source: "live" | "static" }
-export type Stop = Restaurant & { status: StopStatus; imageSrc: string | null };
+export type Stop = Restaurant & { status: StopStatus; imageSrc: string | null; gallery: GalleryPhoto[]; profile: RestaurantProfile | null };
 
 // A seed photo may be .jpg, .png or .webp depending on what its site served,
 // and is stored without the extension. Resolve the real file once on the
@@ -34,6 +36,8 @@ async function resolveStop(r: Restaurant): Promise<Stop> {
   const live = r.liveDetails ? await fetchSite(r.site, r.address) : null;
   const phone = live?.phone ?? r.phone;
   const schedule = live?.schedule ?? r.schedule;
+  const gallery = GALLERIES[r.slug] ?? [];
+  const cover = gallery[0];
   return {
     ...r,
     phone,
@@ -41,7 +45,12 @@ async function resolveStop(r: Restaurant): Promise<Stop> {
     address: live?.address ?? r.address,
     schedule,
     status: { ...openState(schedule), source: live?.schedule ? "live" : "static" },
-    imageSrc: r.image ? resolveImage(r.image) : null,
+    // A photo uploaded in /admin (a full URL) wins; otherwise the gallery's
+    // cover, which is chosen to be the stop's most inviting picture.
+    imageSrc: /^https?:\/\//.test(r.image) ? r.image : cover?.src ?? (r.image ? resolveImage(r.image) : null),
+    imageAlt: /^https?:\/\//.test(r.image) ? r.imageAlt : cover?.alt ?? r.imageAlt,
+    gallery,
+    profile: PROFILES[r.slug] ?? null,
   };
 }
 

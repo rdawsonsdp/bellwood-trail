@@ -1,0 +1,54 @@
+{
+  "slug": "stacys",
+  "cover": "/images/restaurants/gallery/stacys-1.jpg",
+  "photos": [
+    {
+      "src": "/images/restaurants/gallery/stacys-1.jpg",
+      "kind": "food",
+      "alt": "Thick slab of medium-rare prime rib in its own jus on a white plate",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/stacys-cafe-2/gallery/",
+      "sourceImage": "https://cdn10.localdatacdn.com/il/bellwood/6978189/original/a6ZKUgKLip.jpg",
+      "credit": "Restaurantji gallery (credited to Facebook)"
+    },
+    {
+      "src": "/images/restaurants/gallery/stacys-2.jpg",
+      "kind": "food",
+      "alt": "Spaghetti tossed with garlic shrimp and wilted spinach",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/stacys-cafe-2/gallery/",
+      "sourceImage": "https://cdn9.localdatacdn.com/il/bellwood/6978189/original/zoGVf5jgcv.jpg",
+      "credit": "Restaurantji gallery (credited to Facebook)"
+    },
+    {
+      "src": "/images/restaurants/gallery/stacys-3.jpg",
+      "kind": "food",
+      "alt": "Shrimp brochette with peppers, onion and mushroom over seasoned rice, with cocktail sauce and lemon",
+      "sourcePage": "https://www.stacyscafe.com/",
+      "sourceImage": "https://www.stacyscafe.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-27-at-9.40.41-AM.jpeg",
+      "credit": "Stacy's website"
+    },
+    {
+      "src": "/images/restaurants/gallery/stacys-4.jpg",
+      "kind": "food",
+      "alt": "Triple-decker club sandwich with a pile of hand-cut fries",
+      "sourcePage": "https://www.restaurantji.com/il/bellwood/stacys-cafe-2/gallery/",
+      "sourceImage": "https://cdn10.localdatacdn.com/il/bellwood/6978189/original/W6SKTwa8my.jpg",
+      "credit": "Restaurantji gallery (credited to Facebook)"
+    },
+    {
+      "src": "/images/restaurants/gallery/stacys-5.jpg",
+      "kind": "atmosphere",
+      "alt": "Dining room with set tables, wall sconces, framed art and holiday bows",
+      "sourcePage": "https://www.stacyscafe.com/gallery/",
+      "sourceImage": "https://www.stacyscafe.com/wp-content/uploads/2026/04/Stacys-banner-03.png",
+      "credit": "Stacy's website"
+    },
+    {
+      "src": "/images/restaurants/gallery/stacys-6.jpg",
+      "kind": "atmosphere",
+      "alt": "Bar with leather booths, holiday garland and guests at the counter",
+      "sourcePage": "https://www.stacyscafe.com/",
+      "sourceImage": "https://www.stacyscafe.com/wp-content/uploads/2026/04/Stacys-cafe-banner-01.png",
+      "credit": "Stacy's website"
+    }
+  ]
+}

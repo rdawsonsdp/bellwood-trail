@@ -1,0 +1,173 @@
+/* Photo galleries (all widths) and the modern phone layer: list-row kitchen
+   cards, a sticky search bar, single-row chip rails, bottom-sheet dialogs with
+   a sticky action bar, and a quieter tab bar. Imported last on purpose. */
+
+/* ——— Photo gallery ——— */
+.photo-gallery { position: relative; background: #111820; }
+.photo-gallery-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
+.photo-gallery-track::-webkit-scrollbar { display: none; }
+.photo-gallery-track:focus-visible { outline: 3px solid var(--color-gold); outline-offset: -3px; }
+.photo-gallery-slide { position: relative; flex: 0 0 100%; aspect-ratio: 1.6; margin: 0; scroll-snap-align: start; }
+.photo-gallery-slide img { object-fit: cover; }
+.photo-gallery-slide figcaption { position: absolute; right: 8px; bottom: 8px; max-width: 70%; padding: 2px 7px; border-radius: 999px; background: #0008; color: #fffd; font-size: 10px; line-height: 1.5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.photo-gallery-nav { position: absolute; top: 50%; display: grid; place-items: center; width: 40px; height: 40px; margin-top: -20px; border-radius: 50%; background: #fffe; color: #172b45; box-shadow: 0 2px 10px #0003; transition: opacity 160ms ease; }
+.photo-gallery-nav svg { width: 20px; height: 20px; }
+.photo-gallery-nav.prev { left: 10px; }
+.photo-gallery-nav.prev svg { transform: rotate(180deg); }
+.photo-gallery-nav.next { right: 10px; }
+.photo-gallery-nav:disabled { opacity: 0; pointer-events: none; }
+.photo-gallery-count { position: absolute; top: 10px; right: 10px; padding: 3px 9px; border-radius: 999px; background: #000a; color: #fff; font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.photo-gallery-filters { position: absolute; top: 10px; left: 10px; display: flex; gap: 4px; padding: 3px; border-radius: 999px; background: #000a; backdrop-filter: blur(6px); }
+.photo-gallery-filters button { min-height: 30px; padding: 4px 11px; border-radius: 999px; color: #fff; font-size: 12px; font-weight: 700; }
+.photo-gallery-filters button[aria-pressed="true"] { background: #fff; color: #172b45; }
+.photo-gallery-filters button:focus-visible { outline: 2px solid var(--color-gold); }
+.kitchen-photo-count { position: absolute; right: 12px; bottom: 12px; display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 999px; background: #000a; color: #fff; font-size: 11px; font-weight: 700; pointer-events: none; }
+.kitchen-photo-count svg { width: 13px; height: 13px; }
+.detail-action-short { display: none; }
+.detail-actions a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.detail-actions svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+@keyframes sheet-up { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes sheet-fade { from { background: #14243b00; } to { background: #14243b99; } }
+
+@media (max-width: 700px) {
+  /* Softer, touch-friendly shapes on phones. */
+  .culinary-site.culinary-site :is(
+    .primary-button, .secondary-button, .details-button, .card-directions,
+    .icon-button, .filter-button, .active-filters button:not(.clear-filters),
+    .cookie-actions button, .map-controls button
+  ) { border-radius: 12px; }
+  .culinary-site.culinary-site :is(.craving-pills button, .mobile-discovery-pills button) { border-radius: 999px; box-shadow: none; }
+  .culinary-site.culinary-site .directory-search { border-radius: 14px; border-color: #d5dde6; box-shadow: 0 1px 2px #172b450d; }
+
+  /* Single-row, edge-to-edge chip rails. */
+  .culinary-site.culinary-site .craving-pills,
+  .culinary-site.culinary-site .mobile-discovery-pills { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -12px; padding-inline: 12px; scroll-padding-inline: 12px; }
+  .culinary-site.culinary-site :is(.craving-pills, .mobile-discovery-pills)::-webkit-scrollbar { display: none; }
+  .culinary-site.culinary-site .craving-pills button { flex: 0 0 auto; white-space: nowrap; }
+  .culinary-site.culinary-site .mobile-discovery-pills button[aria-pressed="true"] { background: var(--color-blue); border-color: var(--color-blue); }
+
+  /* Search and quick filters stay within thumb reach while scrolling the list. */
+  .culinary-site.culinary-site .explorer-controls { position: sticky; top: 63px; z-index: 30; margin-inline: -12px; padding: 10px 12px 0; background: #f3f6f8f2; backdrop-filter: blur(10px); }
+  .culinary-site.culinary-site .explorer-controls .mobile-discovery-pills { padding-block: 8px 10px; }
+
+  /* Kitchen cards become list rows: photo left, facts right, whole row tappable. */
+  .culinary-site.culinary-site .kitchen-grid { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .culinary-site.culinary-site .kitchen-card { position: relative; display: grid; grid-template-columns: 118px minmax(0, 1fr); min-height: 132px; border: 0; border-radius: 16px; box-shadow: 0 1px 2px #172b4512, 0 6px 16px #172b450d; transition: transform 120ms ease; }
+  .culinary-site.culinary-site .kitchen-card:active { transform: scale(.985); }
+  .culinary-site.culinary-site .kitchen-photo { aspect-ratio: auto; height: 100%; min-height: 132px; }
+  .culinary-site.culinary-site .kitchen-photo-fallback { padding: 10px; font-size: 11px; }
+  .culinary-site.culinary-site .kitchen-area { display: none; }
+  .culinary-site.culinary-site .kitchen-photo-count { left: 6px; right: auto; bottom: 6px; padding: 2px 7px; font-size: 10px; }
+  .culinary-site.culinary-site .kitchen-card .save-kitchen.icon-button { z-index: 2; top: 6px; right: 6px; width: 36px; height: 36px; border-radius: 50%; background: #fffe; box-shadow: 0 1px 6px #172b4526; }
+  .culinary-site.culinary-site .save-kitchen svg { width: 18px; height: 18px; }
+  .culinary-site.culinary-site .kitchen-body { padding: 12px 14px; gap: 3px; justify-content: center; }
+  .culinary-site.culinary-site .kitchen-body h3 { order: 1; padding-right: 0; font-size: 17px; line-height: 1.25; }
+  .culinary-site.culinary-site .kitchen-body h3 button { min-height: 0; text-align: left; }
+  .culinary-site.culinary-site .kitchen-body h3 button::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: 16px; }
+  .culinary-site.culinary-site .kitchen-body h3 button:focus-visible { outline: none; }
+  .culinary-site.culinary-site .kitchen-body h3 button:focus-visible::after { outline: 3px solid var(--color-blue); outline-offset: -3px; }
+  .culinary-site.culinary-site .kitchen-cuisine { order: 2; font-size: 13px; color: #566273; }
+  .culinary-site.culinary-site .kitchen-status { order: 3; font-size: 12px; }
+  .culinary-site.culinary-site .kitchen-card .kitchen-address { order: 4; position: relative; z-index: 2; align-self: flex-start; min-height: 32px; margin-top: 2px; font-size: 12.5px; color: #334155; }
+  .culinary-site.culinary-site .kitchen-card .card-google-review { order: 3; position: relative; z-index: 2; margin: 0; padding: 0; }
+  .culinary-site.culinary-site .kitchen-card .card-google-review:not(:has(.card-google-rating)),
+  .culinary-site.culinary-site .kitchen-card .card-google-review figure { display: none; }
+  .culinary-site.culinary-site .kitchen-card .kitchen-actions { display: none; }
+
+  /* Dialogs open as bottom sheets. */
+  .culinary-site.culinary-site .discovery-dialog { inset: auto 0 0; width: 100%; max-width: 100%; max-height: 92dvh; margin: 0; border-radius: 22px 22px 0 0; animation: sheet-up 280ms cubic-bezier(.2, .8, .2, 1); }
+  .culinary-site.culinary-site .discovery-dialog[open]::backdrop { animation: sheet-fade 280ms ease; }
+  .culinary-site.culinary-site .dialog-heading { padding: 18px 16px 12px; border-bottom: 0; }
+  .culinary-site.culinary-site .dialog-heading::before { content: ""; position: absolute; top: 7px; left: 50%; width: 38px; height: 4px; margin-left: -19px; border-radius: 2px; background: #cdd5de; }
+  .culinary-site.culinary-site .dialog-heading h2 { font-size: 19px; line-height: 1.25; }
+  .culinary-site.culinary-site .dialog-heading button.icon-button { width: 40px; height: 40px; border-radius: 50%; border: 0; background: #eef2f6; box-shadow: none; }
+  .culinary-site.culinary-site .kitchen-detail .photo-gallery { margin-inline: 12px; border-radius: 16px; overflow: hidden; }
+  .culinary-site.culinary-site .photo-gallery-slide { aspect-ratio: 1.25; }
+  .culinary-site.culinary-site .photo-gallery-nav { display: none; }
+  .culinary-site.culinary-site .detail-body { padding: 16px; }
+  .culinary-site.culinary-site .detail-actions { position: sticky; bottom: 0; z-index: 3; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 8px; margin: 20px -16px 0; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); border-top: 1px solid #e3e8ee; background: #fffffff2; backdrop-filter: blur(10px); }
+  .culinary-site.culinary-site .detail-actions > a { min-height: 48px; padding-inline: 8px; font-size: 14px; }
+  .culinary-site.culinary-site .detail-action-short { display: inline; }
+  .culinary-site.culinary-site .detail-action-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+  /* A calmer tab bar: no boxed buttons, a pill behind the active icon. */
+  .culinary-site.culinary-site .mobile-bottom-navigation { gap: 0; background: #fffffff2; backdrop-filter: blur(12px); border-top: 1px solid #e3e8ee; }
+  .culinary-site.culinary-site .mobile-bottom-navigation > button,
+  .culinary-site.culinary-site .mobile-bottom-navigation > button[aria-current="page"] { border: 0; background: transparent; box-shadow: none; color: #566273; }
+  .culinary-site.culinary-site .mobile-bottom-navigation > button[aria-current="page"] { color: var(--color-blue); }
+  .culinary-site.culinary-site .mobile-bottom-navigation > button .mobile-nav-icon { border-radius: 999px; width: 56px; }
+  .culinary-site.culinary-site .mobile-bottom-navigation > button[aria-current="page"] .mobile-nav-icon,
+  .culinary-site.culinary-site .mobile-bottom-navigation > .mobile-home-button[aria-current="page"] .mobile-nav-icon { background: #e3eef9; color: var(--color-blue); }
+}
+@media (max-width: 700px) and (prefers-reduced-motion: reduce) {
+  .culinary-site.culinary-site .discovery-dialog, .culinary-site.culinary-site .discovery-dialog[open]::backdrop { animation: none; }
+  .culinary-site.culinary-site .kitchen-card { transition: none; }
+}
+
+/* Links to the restaurant's own pages, in the detail sheet. */
+.detail-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.detail-links a { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 14px; border: 1px solid #c9d6e3; border-radius: 999px; color: var(--color-blue); font-size: 13px; font-weight: 700; text-decoration: none; }
+.detail-links a:hover { background: #edf4fb; }
+
+/* ——— Kitchen cards on tablet and desktop: separate, bordered, lifted ——— */
+@media (min-width: 701px) {
+  .culinary-site.culinary-site .kitchen-grid { gap: 20px; }
+  .culinary-site.culinary-site .kitchen-card { border: 1px solid #d9e2ec; border-radius: 16px; background: #fff; box-shadow: 0 1px 2px #172b450f, 0 10px 24px -14px #172b4540; transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease; }
+  .culinary-site.culinary-site .kitchen-card:hover { transform: translateY(-3px); border-color: #b9cbe0; box-shadow: 0 2px 4px #172b4514, 0 18px 32px -16px #172b4559; }
+  .culinary-site.culinary-site .kitchen-photo { aspect-ratio: 1.55; }
+  .culinary-site.culinary-site .kitchen-card .save-kitchen.icon-button { width: 38px; height: 38px; border-radius: 50%; background: #fffe; }
+  .culinary-site.culinary-site .kitchen-area { border-radius: 999px; padding: 4px 10px; }
+  .culinary-site.culinary-site .kitchen-body { padding: 14px 16px 16px; gap: 4px; }
+  .culinary-site.culinary-site .kitchen-body h3 { font-size: 18px; line-height: 1.25; }
+  .culinary-site.culinary-site .kitchen-cuisine { color: #566273; font-size: 13px; }
+  .culinary-site.culinary-site .kitchen-card .card-google-review { margin: 0; padding: 2px 0; }
+  .culinary-site.culinary-site .kitchen-card .card-google-link { min-height: 28px; }
+  .culinary-site.culinary-site .kitchen-card .kitchen-address { margin-top: auto; padding-top: 10px; border-top: 1px solid #eef2f6; font-size: 13px; }
+  .culinary-site.culinary-site .kitchen-card .kitchen-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding-top: 10px; }
+  .culinary-site.culinary-site .kitchen-card :is(.details-button, .card-directions) { width: 100%; min-height: 40px; padding: 8px 6px; border-radius: 10px; font-size: 12.5px; }
+}
+@media (min-width: 701px) and (prefers-reduced-motion: reduce) {
+  .culinary-site.culinary-site .kitchen-card, .culinary-site.culinary-site .kitchen-card:hover { transition: none; transform: none; }
+}
+
+/* ——— Time of day: the meal bar at the top and the meal switch ——— */
+.meal-bar { --meal-bg: #fffbf2; --meal-ink: #003f7d; --meal-sub: #4b5a6b; background: var(--meal-bg); color: var(--meal-ink); border-bottom: 1px solid #0055a51f; }
+.meal-bar-breakfast { --meal-bg: linear-gradient(90deg, #fff3d1, #fffbf2); }
+.meal-bar-lunch { --meal-bg: linear-gradient(90deg, #e4f0fb, #f6fbff); }
+.meal-bar-dinner { --meal-bg: linear-gradient(90deg, #003f7d, #0055a5); --meal-ink: #fffbf2; --meal-sub: #d6e5f5; }
+.meal-bar-late { --meal-bg: linear-gradient(90deg, #0b1f3a, #172b45); --meal-ink: #fffbf2; --meal-sub: #c5d3e4; }
+.meal-bar-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px 28px; padding-block: 14px; }
+.meal-bar-copy h2 { font-size: 20px; font-weight: 800; line-height: 1.2; letter-spacing: -.3px; color: var(--meal-ink); }
+.meal-bar-copy p { margin-top: 2px; font-size: 14px; color: var(--meal-sub); }
+.meal-switch { display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; padding: 4px; border-radius: 999px; background: #ffffffd9; box-shadow: 0 1px 2px #172b4514, inset 0 0 0 1px #0055a526; }
+.culinary-site .meal-switch button { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 44px; padding: 8px 18px; border-radius: 999px; background: transparent; color: #003f7d; font-size: 14px; font-weight: 700; white-space: nowrap; box-shadow: none; transition: background-color 160ms ease, color 160ms ease; }
+.culinary-site .meal-switch button:hover { background: #e7f0f9; }
+.culinary-site .meal-switch button[aria-pressed="true"] { background: #0055a5; color: #fff; box-shadow: 0 2px 8px #0055a540; }
+.culinary-site .meal-switch button:focus-visible { outline: 3px solid #fdb813; outline-offset: 1px; }
+.meal-icon { font-size: 15px; line-height: 1; }
+.meal-now { padding: 1px 7px; border-radius: 999px; background: #fdb813; color: #172b45; font-size: 10px; font-weight: 800; letter-spacing: .4px; text-transform: uppercase; }
+.explorer-meals { margin-top: 12px; }
+@media (max-width: 700px) {
+  .meal-bar-inner { flex-direction: column; align-items: stretch; gap: 10px; padding-block: 12px; }
+  .meal-bar-copy h2 { font-size: 18px; }
+  .meal-bar-copy p { font-size: 13px; }
+  .meal-switch { display: grid; width: 100%; }
+  .culinary-site .meal-switch button { min-height: 42px; padding: 6px 8px; font-size: 13.5px; gap: 5px; }
+  .meal-now { padding: 1px 5px; font-size: 9px; }
+  .culinary-site .explorer-meals { margin-top: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .culinary-site .meal-switch button { transition: none; } }
+
+/* Tappable address on the map's selected-kitchen card. */
+.map-detail-address { display: inline-flex; align-items: flex-start; gap: 6px; min-height: 32px; color: var(--color-blue); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.map-detail-address svg { width: 14px; height: 16px; margin-top: 2px; flex-shrink: 0; }
+
+/* When a pin is chosen, one tap from the map itself starts driving directions. */
+.map-canvas { position: relative; }
+.culinary-site .map-drive-chip { position: absolute; left: 50%; bottom: 14px; z-index: 5; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; max-width: calc(100% - 24px); min-height: 48px; padding: 10px 18px; border-radius: 999px; background: var(--color-blue); color: #fff; font-size: 15px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-shadow: 0 6px 18px #0b1f3a59; text-decoration: none; }
+.culinary-site .map-drive-chip:hover { background: var(--color-blue-dark); }
+.culinary-site .map-drive-chip svg { width: 16px; height: 18px; flex-shrink: 0; }
+.culinary-site .map-drive-chip:focus-visible { outline: 3px solid var(--color-gold); outline-offset: 2px; }
+.culinary-site .map-drive-chip span { overflow: hidden; text-overflow: ellipsis; }
+.culinary-site .map-canvas:has(.map-drive-chip) .map-instructions { display: none; }

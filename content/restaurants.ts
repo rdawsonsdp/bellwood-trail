@@ -74,9 +74,9 @@ export const RESTAURANTS: Restaurant[] = [
   // ——— St. Charles Road: downtown Bellwood ———
   {
     slug: "gioacchinos", name: "Gioacchino's Ristorante & Pizzeria",
-    tagline: "Sunday dinner at Nonna's, on St. Charles Road since 1977.",
+    tagline: "Bellwood's Calabrese-style pizza and pasta, since 1977.",
     cuisine: ["Italian", "Pizza", "Pasta"],
-    signature: ["Thin-Crust Pizza", "Chicken Vesuvio", "Baked Mostaccioli", "Italian Beef", "Full Bar"],
+    signature: ["Panzarotti", "Thin-Crust Sausage Pizza", "Pan Pizza", "Baked Mostaccioli", "Chicken Vesuvio", "Veal Marsala"],
     neighborhood: "Bellwood", address: "5201 St Charles Rd, Bellwood, IL 60104",
     phone: "(708) 544-0380", phoneHref: "tel:+17085440380",
     site: "https://gioacchinosristorante.pizza", liveDetails: false,
@@ -84,10 +84,9 @@ export const RESTAURANTS: Restaurant[] = [
     image: "/images/restaurants/gioacchinos.jpg",
     imageAlt: "A cheese and sausage thin-crust pizza on a pan, from Gioacchino's website",
     since: "1977",
-    // UNVERIFIED beyond one day: its site shows "Open today 11:00 am – 10:00 pm"
-    // and notes the kitchen closes 30 minutes before the dining room. Whether
-    // it keeps a closed day (most independents on this block do) is unconfirmed.
-    schedule: Array.from({ length: 7 }, () => [h(11), h(22)] as const),
+    // VERIFIED from its own site (schema + footer), checked 2026-11-10. The
+    // kitchen closes 30 minutes before the dining room.
+    schedule: [[h(13), h(22)], null, [h(11), h(22)], [h(11), h(22)], [h(11), h(22)], [h(11), h(24)], [h(11), h(24)]],
     dineIn: true, meals: ["lunch", "dinner"],
     // The Census geocoder assigns 5201 St Charles to Berkeley; the restaurant,
     // the village directory and the Chamber all list it as Bellwood 60104.
@@ -95,9 +94,9 @@ export const RESTAURANTS: Restaurant[] = [
   },
   {
     slug: "mi-jerez", name: "Taqueria Mi Jerez",
-    tagline: "Tacos, tortas and a full breakfast, made by hand.",
+    tagline: "Tortas, burritos and weekend menudo on St. Charles Road.",
     cuisine: ["Mexican", "Tacos", "Breakfast"],
-    signature: ["Street Tacos", "Tortas", "Birria", "Huevos con Chorizo", "Aguas Frescas"],
+    signature: ["Torta Especial", "Burrito Especial", "Al Pastor Burrito", "Caldo de Pescado", "Coctel de Camarón", "Weekend Menudo & Pozole"],
     neighborhood: "Bellwood", address: "5003 St Charles Rd, Bellwood, IL 60104",
     phone: "(708) 401-5424", phoneHref: "tel:+17084015424",
     site: "", liveDetails: false, image: "/images/restaurants/mi-jerez-photo.jpg",
@@ -126,7 +125,7 @@ export const RESTAURANTS: Restaurant[] = [
     slug: "lezza", name: "Lezza Spumoni & Desserts",
     tagline: "The spumoni Chicago weddings are built on.",
     cuisine: ["Desserts", "Ice Cream", "Bakery"],
-    signature: ["Spumoni", "Italian Ice", "Cassata Cake", "Tortoni", "Cannoli"],
+    signature: ["Spumoni", "Cannoli", "Lemon Ricotta Cookies", "Wedding Cakes", "Gelato", "Italian Ice"],
     neighborhood: "Bellwood", address: "4009 St Charles Rd, Bellwood, IL 60104",
     phone: "(708) 547-5969", phoneHref: "tel:+17085475969",
     site: "https://lezza.com", liveDetails: false,
@@ -136,7 +135,7 @@ export const RESTAURANTS: Restaurant[] = [
     // The company dates itself to 1904; a 2026 business listing puts it at
     // "121 years in business," which agrees within a year. Worth confirming
     // with the family before it goes on a sign.
-    since: "1904",
+    since: "1905",
     // UNVERIFIED — placeholder. This is a wholesale bakery with a retail
     // counter, so its counter hours are narrower than a restaurant's.
     schedule: [null, [h(9), h(17)], [h(9), h(17)], [h(9), h(17)], [h(9), h(17)], [h(9), h(17)], [h(9), h(15)]],
@@ -164,23 +163,24 @@ export const RESTAURANTS: Restaurant[] = [
   },
   {
     slug: "joes-hideaway", name: "Joe's Hideaway",
-    tagline: "The corner bar that has outlasted the corner.",
-    cuisine: ["Bar & Grill", "Burgers"],
-    signature: ["Burgers", "Wings", "Cold Beer"],
+    tagline: "Bellwood's neighborhood hideaway: jukebox, darts and good company.",
+    cuisine: ["Bar", "Lounge"],
+    signature: ["Cold Beer & Cocktails", "Jukebox & Darts", "Packaged Liquor To Go"],
     neighborhood: "Bellwood", address: "2601 St Charles Rd, Bellwood, IL 60104",
     phone: "(708) 547-9320", phoneHref: "tel:+17085479320",
-    site: "", liveDetails: false, image: "/images/restaurants/joes-hideaway-photo.jpg",
-    imageAlt: "Joe’s Hideaway exterior during a classic car gathering",
-    // UNVERIFIED — it publishes no hours anywhere. Tavern hours assumed.
-    schedule: Array.from({ length: 7 }, () => [h(15), h(24)] as const),
-    dineIn: true, meals: ["dinner"],
+    site: "https://joeeads74.wixsite.com/mysite", liveDetails: false, image: "",
+    // The old card photo showed The Mating Place at 2701, not this bar.
+    // A bar with no food menu — kept on the trail pending editorial review.
+    // VERIFIED from its own site, checked 2026-11-10.
+    schedule: [[h(12), h(26)], [h(6), h(26)], [h(6), h(26)], [h(6), h(26)], [h(6), h(26)], [h(6), h(27)], [h(6), h(27)]],
+    dineIn: true, meals: [],
     lat: 41.887918, lng: -87.865055, corridor: "st-charles",
   },
   {
     slug: "sharks", name: "Shark's Fish & Chicken",
-    tagline: "Catfish, perch and wings, late into the night.",
+    tagline: "Fried catfish, shrimp and wings to go on St. Charles Road.",
     cuisine: ["Seafood", "Fried Fish", "Wings"],
-    signature: ["Catfish Fillet", "Ocean Perch", "Wing Dinner", "Jumbo Shrimp", "Frozen Lemonade"],
+    signature: ["Catfish Nuggets", "Fish Fillet Dinner", "Jumbo Shrimp Dinner", "Smelt Dinner", "Wings & Fries"],
     neighborhood: "Bellwood", address: "2500 St Charles Rd, Bellwood, IL 60104",
     phone: "(708) 493-9300", phoneHref: "tel:+17084939300",
     site: "", liveDetails: false, image: "/images/restaurants/sharks-photo.jpg",
@@ -197,24 +197,25 @@ export const RESTAURANTS: Restaurant[] = [
   // ——— Mannheim Road ———
   {
     slug: "stacys", name: "Stacy's Cafe",
-    tagline: "An old-fashioned supper club. Pork chops and a martini.",
+    tagline: "Prime cuts, onion soup in a crock and a proper cocktail.",
     cuisine: ["Steakhouse", "American", "Bar & Grill"],
-    signature: ["Pork Chops", "Steaks", "Homemade Soup", "Broiled Fish", "Full Bar"],
+    signature: ["Prime Top Sirloin", "Pork Chops", "Baked Onion Soup", "Stacy Burger", "Shrimp DeJonghe"],
     neighborhood: "Bellwood", address: "845 Mannheim Rd, Bellwood, IL 60104",
     phone: "(708) 544-6636", phoneHref: "tel:+17085446636",
-    site: "", liveDetails: false, image: "/images/restaurants/stacys-photo.jpg",
+    site: "https://www.stacyscafe.com", liveDetails: false, image: "/images/restaurants/stacys-photo.jpg",
     imageAlt: "Dining room at Stacy’s Cafe",
-    // VERIFIED: closed Sunday, Mon–Thu 11–10, Fri 11–11, Sat 4–11 (its
-    // listing, checked 2026-09-22). Saturday is dinner only.
-    schedule: [null, [h(11), h(22)], [h(11), h(22)], [h(11), h(22)], [h(11), h(22)], [h(11), h(23)], [h(16), h(23)]],
-    dineIn: true, meals: ["lunch", "dinner"],
+    // Dinner only now (its site, 2026-11-10); an older listing showed lunch.
+    since: "1986",
+    // VERIFIED from its own site, checked 2026-11-10.
+    schedule: [null, [h(16), h(22)], [h(16), h(22)], [h(16), h(22)], [h(16), h(22)], [h(16), h(23)], [h(16), h(23)]],
+    dineIn: true, meals: ["dinner"],
     lat: 41.876675, lng: -87.882987, corridor: "mannheim",
   },
   {
     slug: "ariston", name: "Ariston Restaurant",
-    tagline: "Gyros, ribs and that house sauce, till one in the morning.",
+    tagline: "Gyros with the house sauce, rib tips and fries until 1 a.m.",
     cuisine: ["Greek", "Gyros", "Barbecue"],
-    signature: ["Gyros with Ariston Sauce", "Baby Back Ribs", "Chicken Kabob", "Pizza Puff", "Fries with Mild Sauce"],
+    signature: ["Gyros with Ariston Sauce", "Football Gyro", "BBQ Rib Tips", "Famous Chicken Wings", "Gyro Burger", "Big Mannheim Chicken Philly"],
     neighborhood: "Bellwood", address: "919 Mannheim Rd, Bellwood, IL 60104",
     phone: "(708) 544-8766", phoneHref: "tel:+17085448766",
     site: "https://aristongyros.com", liveDetails: false,
@@ -229,9 +230,9 @@ export const RESTAURANTS: Restaurant[] = [
   },
   {
     slug: "nicks", name: "Nick's Pizza & Beef",
-    tagline: "Thin crust and a dipped beef, two doors from Stacy's.",
+    tagline: "Bellwood's original pizza and beef, back with Jasper and family.",
     cuisine: ["Pizza", "Italian Beef", "Sandwiches"],
-    signature: ["Thin-Crust Sausage", "Italian Beef", "Meatball Sandwich", "Stuffed Pizza"],
+    signature: ["Nick's Special Pizza", "Italian Beef", "Beef & Sausage Combo", "BBQ Rib Tips", "Smash Burgers", "Homemade Italian Ice"],
     neighborhood: "Bellwood", address: "815 Mannheim Rd, Bellwood, IL 60104",
     phone: "(708) 493-2200", phoneHref: "tel:+17084932200",
     site: "https://www.nickspizzabeef.com", liveDetails: false,
@@ -241,18 +242,18 @@ export const RESTAURANTS: Restaurant[] = [
     imageAlt: "Nick’s Pizza & Beef exterior with its red menu sign",
     // "EST. 1972" is lettered on the logo.
     since: "1972",
-    // UNVERIFIED — placeholder. Pizzeria hours assumed.
-    schedule: [[h(11), h(21)], [h(11), h(21)], [h(11), h(21)], [h(11), h(21)], [h(11), h(21)], [h(11), h(23)], [h(11), h(23)]],
+    // VERIFIED from its own homepage, checked 2026-11-10 (catering PDF says Sunday opens at noon).
+    schedule: [[h(11), h(20)], [h(10), h(22)], [h(10), h(22)], [h(10), h(22)], [h(10), h(22)], [h(10), h(23)], [h(10), h(23)]],
     meals: ["lunch", "dinner"],
     lat: 41.877361, lng: -87.883024, corridor: "mannheim",
   },
   {
     slug: "mickeys", name: "Mickey's Drive-In",
-    tagline: "Famous Italian beef, sausage and meat balls. Since 1959.",
+    tagline: "Chicago dogs and Italian beef, made in front of you since 1959.",
     // Straight off the marquee: FAMOUS ITALIAN BEEF / SAUSAGE AND MEAT BALLS /
     // HOT DOGS / Polish Sausage, and EST. 1959 along the bottom.
     cuisine: ["Italian Beef", "Hot Dogs", "Sausage"],
-    signature: ["Famous Italian Beef", "Italian Sausage", "Meat Balls", "Hot Dogs", "Polish Sausage"],
+    signature: ["The Special: Two Vienna Dogs & Fries", "Chicago-Style Hot Dog", "Italian Beef", "Italian Combo", "Jumbo Polish"],
     neighborhood: "Bellwood", address: "635 N Mannheim Rd, Bellwood, IL 60104",
     phone: "(708) 547-7866", phoneHref: "tel:+17085477866",
     site: "https://mickeysdrivein.com", liveDetails: false, image: "/images/restaurants/mickeys.jpg",
@@ -266,23 +267,23 @@ export const RESTAURANTS: Restaurant[] = [
   },
   {
     slug: "first-chop-suey", name: "First Chop Suey",
-    tagline: "The neighbourhood Chinese counter on Mannheim.",
+    tagline: "Fresh, made-to-order Chinese favorites on Mannheim Road.",
     cuisine: ["Chinese"],
-    signature: ["Shrimp Fried Rice", "Egg Foo Young", "Sweet & Sour Chicken", "Egg Rolls"],
+    signature: ["Orange Chicken", "General Tso's Chicken", "Beef with Broccoli", "Shrimp Fried Rice", "Crab Rangoon", "Chicken Chop Suey"],
     neighborhood: "Bellwood", address: "530 Mannheim Rd, Bellwood, IL 60104",
     phone: "(708) 544-7900", phoneHref: "tel:+17085447900",
-    site: "", liveDetails: false, image: "/images/restaurants/first-chop-suey-photo.jpg",
+    site: "https://www.chopsueyno1.com", liveDetails: false, image: "/images/restaurants/first-chop-suey-photo.jpg",
     imageAlt: "Illuminated First Chop Suey storefront at night",
-    // UNVERIFIED — placeholder.
-    schedule: [[h(12), h(21)], [h(11), h(21, 30)], [h(11), h(21, 30)], [h(11), h(21, 30)], [h(11), h(21, 30)], [h(11), h(22, 30)], [h(11), h(22, 30)]],
+    // VERIFIED from its own site, checked 2026-11-10.
+    schedule: [[h(11, 30), h(20)], null, [h(11), h(21)], [h(11), h(21)], [h(11), h(21)], [h(11), h(21, 30)], [h(11), h(21, 30)]],
     dineIn: false, meals: ["lunch", "dinner"],
     lat: 41.882583, lng: -87.883354, corridor: "mannheim",
   },
   {
     slug: "jj-fish", name: "JJ Fish & Chicken",
-    tagline: "Fried fish and chicken, next door to the chop suey house.",
+    tagline: "Hot fried fish, wings and shrimp on Mannheim Road.",
     cuisine: ["Seafood", "Fried Fish", "Wings"],
-    signature: ["Catfish Nuggets", "Whiting", "8-Piece Wings", "Shrimp Dinner", "Hush Puppies"],
+    signature: ["Wings", "Fish Combo", "Filet & Shrimp", "Legs & Thighs", "Ocean Perch", "Peach Cobbler"],
     neighborhood: "Bellwood", address: "528 Mannheim Rd, Bellwood, IL 60104",
     phone: "(708) 544-0505", phoneHref: "tel:+17085440505",
     site: "", liveDetails: false, image: "/images/restaurants/jj-fish-photo.jpg",
@@ -316,9 +317,9 @@ export const RESTAURANTS: Restaurant[] = [
   },
   {
     slug: "tastee-rolls", name: "Tastee Rolls",
-    tagline: "Home of the original jerk chicken egg roll.",
+    tagline: "Bold, made-to-order egg rolls and loaded rice bowls.",
     cuisine: ["Caribbean", "Asian Fusion", "Wings"],
-    signature: ["Jerk Chicken Egg Roll", "Philly Chicken Egg Roll", "Jerk Chicken Dinner", "Wings"],
+    signature: ["Jerk Chicken Egg Roll", "Italian Beef Egg Roll", "Garlic Parmesan Chicken Egg Roll", "Philly Steak Egg Roll", "Signature Rice Bowl", "Peach Cobbler Egg Roll"],
     neighborhood: "Bellwood", address: "504 Mannheim Rd, Bellwood, IL 60104",
     phone: "(708) 632-4646", phoneHref: "tel:+17086324646",
     site: "https://www.tasteerolls.com/locations/bellwood", liveDetails: false, image: "/images/restaurants/tastee-rolls-photo.jpg",
@@ -348,6 +349,7 @@ export const RESTAURANTS: Restaurant[] = [
   // ——— 25th Avenue & Butterfield ———
   {
     slug: "captain-bs", name: "Captain B's Shrimp House",
+    hidden: true, // The brand's site now lists only Cicero and Villa Park, and Yelp marks this address closed (2026-11-10). Retained for editorial review.
     tagline: "Shrimp by the bag, on 25th.",
     cuisine: ["Seafood", "Fried Shrimp"],
     signature: ["Fried Shrimp", "Catfish", "Perch Dinner", "Shrimp Basket"],
@@ -377,9 +379,9 @@ export const RESTAURANTS: Restaurant[] = [
   },
   {
     slug: "taco-patio", name: "Taco Patio",
-    tagline: "Steak tacos and a gigante burrito, open past midnight.",
+    tagline: "Family-made tacos and big burritos, open late on Butterfield.",
     cuisine: ["Mexican", "Tacos", "Burritos"],
-    signature: ["Steak Taco", "Gigante Burrito", "Shrimp Tacos", "Chimichanga", "Cheese Fries"],
+    signature: ["El Gigante Burrito", "Steak Taco", "Burrito Suizo", "Super Taco-Pita", "Nacho Supreme", "Chimichanga"],
     neighborhood: "Bellwood", address: "4018 Butterfield Rd, Bellwood, IL 60104",
     phone: "(708) 544-1112", phoneHref: "tel:+17085441112",
     site: "https://tacopatio.com", liveDetails: false,
@@ -389,21 +391,23 @@ export const RESTAURANTS: Restaurant[] = [
     imageAlt: "Taco salad in a crisp shell at Taco Patio",
     // VERIFIED: 10 AM–midnight Sunday to Thursday, 10 AM–2 AM Friday and
     // Saturday (its listings, checked 2026-09-22).
+    since: "1976",
     schedule: [[h(10), h(24)], [h(10), h(24)], [h(10), h(24)], [h(10), h(24)], [h(10), h(24)], [h(10), h(26)], [h(10), h(26)]],
     dineIn: true, meals: ["lunch", "dinner"],
     lat: 41.882719, lng: -87.882292, corridor: "butterfield-25th",
   },
   {
     slug: "mr-submarine", name: "Mr. Submarine",
-    tagline: "A sub and a drive-thru, across from Taco Patio.",
+    tagline: "Chicago's original sub shop, with a drive-thru open late.",
     cuisine: ["Sandwiches", "Subs"],
-    signature: ["Italian Sub", "Steak Sub", "Turkey Sub", "Mr. Sub Special"],
+    signature: ["Super Mr. Sub", "Roast Beef Sub", "Italian Beef & Sausage Combo", "Gyro Pita", "Pizza Puff & Fries"],
     neighborhood: "Bellwood", address: "4019 Butterfield Rd, Bellwood, IL 60104",
     phone: "(708) 544-1007", phoneHref: "tel:+17085441007",
-    site: "", liveDetails: false, image: "/images/restaurants/mr-submarine-photo.jpg",
+    site: "https://mrsubmarine.com/bellwood/", liveDetails: false, image: "/images/restaurants/mr-submarine-photo.jpg",
     imageAlt: "Mr. Submarine sandwiches with breaded sides",
-    // UNVERIFIED — placeholder.
-    schedule: [[h(11), h(20)], [h(10), h(21)], [h(10), h(21)], [h(10), h(21)], [h(10), h(21)], [h(10), h(22)], [h(10), h(22)]],
+    since: "1975",
+    // VERIFIED from its own store page, checked 2026-11-10.
+    schedule: [[h(10), h(26)], [h(9), h(26)], [h(9), h(26)], [h(9), h(26)], [h(9), h(26)], [h(9), h(27)], [h(9), h(27)]],
     dineIn: false, meals: ["lunch", "dinner"],
     // Interpolated from the geocoded 4018 Butterfield across the street.
     lat: 41.882840, lng: -87.882290, corridor: "butterfield-25th",

@@ -1,0 +1,30 @@
+{
+  "slug": "mickeys",
+  "website": "https://mickeysdrivein.com/",
+  "otherLinks": [
+    "https://www.facebook.com/mickeysdrivein/",
+    "https://www.instagram.com/mickeysdrivein",
+    "https://twitter.com/MickeysDriveIn"
+  ],
+  "about": "Ann 'Annie' Sangiacomo opened Mickey's in 1959, turning a Mannheim Road ice-cream stand into a Chicago hot dog stand with her husband Mickey. Still family-run into a fourth generation, it makes every order fresh in front of you — no chairs, no tables — and is a 2006 Vienna Beef Hall of Fame inductee.",
+  "tagline": "Chicago dogs and Italian beef, made in front of you since 1959.",
+  "signature": [
+    "\"The Special\" – 2 Vienna Hot Dogs with Fries",
+    "\"Chicago Style\" Hot Dog",
+    "Italian Beef with Hot and Sweet Peppers",
+    "Italian Combination",
+    "Italian Meatball",
+    "Jumbo Polish"
+  ],
+  "since": "1959",
+  "phone": "(708) 547-7866",
+  "hours": "\"SPECIAL HOURS – WEEK OF 2/5/24\": Mon–Thu 10:30 AM–9:00 PM; Fri–Sat 10:30 AM–9:30 PM; Sun closed (mickeysdrivein.com footer, fetched 2026-11-10 — label is dated 2024, so may be stale)",
+  "sources": [
+    "https://mickeysdrivein.com/",
+    "https://mickeysdrivein.com/menu/",
+    "https://mickeysdrivein.com/mickeys-hometown-stories/",
+    "https://mickeysdrivein.com/wp-json/wp/v2/media",
+    "https://www.restaurantji.com/il/bellwood/mickeys-drive-in-/gallery/"
+  ],
+  "notes": "Address on site is 635 Mannheim Rd (trail has '635 N Mannheim Rd' — fine). Site hours match trail data but are labelled as 2024 'special hours'; confirm. Site also lists a second location at 105 St Charles Rd, Villa Park (630-530-8160) — not this stop. Site says 'No chairs. No tables.' consistent with dineIn:false. Only 4 photos kept: the site's other food images are tiny thumbnails, Pixabay/DALL·E stock, or an off-menu item (Italian beef crunch wrap, 2019)."
+}

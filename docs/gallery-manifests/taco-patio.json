@@ -1,0 +1,38 @@
+{
+  "slug": "taco-patio",
+  "cover": "/images/restaurants/gallery/taco-patio-1.jpg",
+  "photos": [
+    {
+      "src": "/images/restaurants/gallery/taco-patio-1.jpg",
+      "kind": "food",
+      "alt": "Carnitas and barbacoa street tacos on corn tortillas topped with cilantro, onion and diced tomato, with lime wedges and a bottle of Jarritos",
+      "sourcePage": "https://tacopatio.com/",
+      "sourceImage": "https://tacopatio.com/wp-content/uploads/2025/09/5.png",
+      "credit": "Taco Patio website"
+    },
+    {
+      "src": "/images/restaurants/gallery/taco-patio-2.jpg",
+      "kind": "food",
+      "alt": "Combination plate of melted-cheese enchilada, Mexican rice, refried beans, tortilla chips, shredded lettuce and tomato, with a cup of guacamole and red and green salsas",
+      "sourcePage": "https://tacopatio.com/",
+      "sourceImage": "https://tacopatio.com/wp-content/uploads/2025/09/4.png",
+      "credit": "Taco Patio website"
+    },
+    {
+      "src": "/images/restaurants/gallery/taco-patio-3.jpg",
+      "kind": "food",
+      "alt": "Taco-bar catering spread: trays of grilled steak and chicken, warm tortillas, shredded lettuce, pico de gallo, cheese and limes on a woven Mexican runner",
+      "sourcePage": "https://tacopatio.com/caterings/",
+      "sourceImage": "https://tacopatio.com/wp-content/uploads/2025/10/5.webp",
+      "credit": "Taco Patio website"
+    },
+    {
+      "src": "/images/restaurants/gallery/taco-patio-4.jpg",
+      "kind": "food",
+      "alt": "Catering tray of halved burritos packed with rice, beans and meat, with tortilla chips and salsas",
+      "sourcePage": "https://tacopatio.com/caterings/",
+      "sourceImage": "https://tacopatio.com/wp-content/uploads/2025/09/6-1.png",
+      "credit": "Taco Patio website"
+    }
+  ]
+}

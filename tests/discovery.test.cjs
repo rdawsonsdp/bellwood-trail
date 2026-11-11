@@ -60,3 +60,15 @@ test('unknown or repeated URL values cannot become active filters',()=>{
   const parsed=readFilters(new URLSearchParams('area=constructor&food=sweets,sweets,bogus&meal=midnight&dining=maybe&sort=random&open=true'));
   assert.deepEqual(parsed,{...EMPTY_FILTERS,foods:['sweets']});
 });
+test('a meal view keeps anytime stops (no listed meals) after the kitchens serving that meal',()=>{
+  assert.deepEqual(matches({meal:'dinner'}),['jerk','unknown','bakery']);
+  assert.deepEqual(matches({meal:'breakfast'}),['bakery']);
+});
+test('the time of day picks the meal, with late night counted as dinner',()=>{
+  const { mealMoment } = loadTs(path.join(__dirname, '../app/lib/meal-time.ts'));
+  assert.equal(mealMoment(7*60).meal,'breakfast');
+  assert.equal(mealMoment(12*60).meal,'lunch');
+  assert.equal(mealMoment(18*60).meal,'dinner');
+  assert.deepEqual([mealMoment(23*60).meal,mealMoment(23*60).lateNight],['dinner',true]);
+  assert.deepEqual([mealMoment(2*60).meal,mealMoment(4*60+59).lateNight],['dinner',true]);
+});

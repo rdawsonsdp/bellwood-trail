@@ -84,8 +84,20 @@ export function DineVipProvider({ children }: { children: ReactNode }) {
 
 export function BellwoodPromotion() {
   const openVip = useContext(VipContext);
+  // Desktop plays the Vari's video behind the teaser; phones and reduced-motion
+  // visitors keep the still photo (and skip downloading the video).
+  const [motion, setMotion] = useState(false);
+  const [playing, setPlaying] = useState(false);
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 701px) and (prefers-reduced-motion: no-preference)");
+    const sync = () => { setMotion(media.matches); setPlaying(false); };
+    sync();
+    media.addEventListener("change", sync);
+    return () => media.removeEventListener("change", sync);
+  }, []);
   return <section className="bellwood-promotion" aria-labelledby="coming-soon-title">
     <Image className="promotion-background" src="/images/promotions/varis-coming-soon.jpg" alt="" fill sizes="100vw" />
+    {motion && <video className={`promotion-video${playing ? " is-playing" : ""}`} src="/videos/varis-promo.mp4" poster="/images/promotions/varis-coming-soon.jpg" autoPlay muted loop playsInline preload="auto" aria-hidden="true" onPlaying={() => setPlaying(true)} onError={() => setMotion(false)} />}
     <div className="site-container promotion-inner">
       <div className="promotion-intro"><p className="vip-eyebrow">COMING SOON TO BELLWOOD</p><h2 id="coming-soon-title">VARI’S <em>Southern Cuisine</em></h2><p>A new home for Southern comfort food on St. Charles Road. Get ready to pull up a chair.</p></div>
       <div className="promotion-ticket"><div className="promotion-ticket-copy"><span className="promotion-tag">A NEW NEIGHBORHOOD KITCHEN</span><Image className="promotion-varis-logo" src="/images/promotions/varis-southern-cuisine-logo.png" alt="VARI’S Southern Cuisine" width={1638} height={722} sizes="(max-width: 540px) 220px, 320px" /><p>Fried ribs, catfish, and Southern favorites.<br /><strong>2712 St Charles Rd, Bellwood, IL 60104</strong><br />Opening date to be announced.</p><button className="primary-button" type="button" aria-haspopup="dialog" onClick={() => openVip?.()}>Explore Bellwood Dine VIP <span aria-hidden="true">↗</span></button></div><div className="promotion-ticket-date"><span>VARI’S<br />SOUTHERN CUISINE</span><strong>Coming<br />soon</strong><span>BELLWOOD, IL</span></div></div>
